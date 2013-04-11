@@ -1,6 +1,4 @@
 
-
-
  const int LEN = 3;
  struct node{
      int val;
