@@ -21,9 +21,9 @@ bool isMatch(const char* s, const char* p)
 	if (*p == '.' && *(p+1) != '*'){
 		return isMatch(++s, ++p);
 	}else if (*p == '.' && *(p+1) == '*'){
-		return true;
+		return true;  // bug here, greed is not good!!!
 	}else if (*p != '*' && *(p+1) == '*'){
-		while (*s == *p)
+		while (*s == *p) // bug herer, greed is not good!!!
 			++s;
 		p += 2; //skip the pre element and '*'
 		return isMatch(s, p);
