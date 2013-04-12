@@ -87,3 +87,75 @@ int findMinDistance(int arr[], int len){
 
     return min_distance;
 }
+
+/*
+ *@func: find the common element between two ordered arrays.
+ */
+void findCommonElem(int a[], int b[], int len){
+  int i = 0, j = 0;
+  while (i < len && j < len)
+  {
+      if (a[i] == b[j]){
+          cout << a[i] << " ";
+          ++i, ++j;
+      }else if (a[i] < b[j]){
+          ++i;
+      }else
+          ++j;
+  }
+  cout << endl;
+}
+/*
+ *@func: find the element with odd count from array
+ */
+int findElemOfOddCnt(int arr[], int len)
+{
+  if (arr == NULL || len <= 0)
+          return -1;
+  int val = arr[0];
+  for (int index = 1; index < len; ++index){
+      val ^= arr[index];
+  }
+  return val;
+}
+/*
+ *@func: Get the max sub sum of array. from Program Pearling
+ */
+int maxSubSum(int a[], int n){
+  int cur_sum = 0;
+  int max_sum = 0;
+  for (int index = 0; index < n; ++index){
+      if (cur_sum + a[index] < 0)
+          cur_sum = 0;
+      else{
+          cur_sum += a[index];
+          max_sum = max(max_sum, cur_sum);
+      }
+  }
+  return max_sum;
+}
+
+/*
+ *@func: Get the max product of array.
+ *       specially for negative number handling.
+ */
+int maxSubProduct(int arr[], int n){
+  int cur_product = 1;
+  int cur_product_neg = 1; // min negative product.
+  int max_product = 1;
+  for (int index = 0; index < n; ++index){
+      if (arr[index] > 0 ){
+          cur_product *= arr[index];
+          cur_product_neg = min(cur_product_neg, 1);
+      }else if (arr[index] == 0){
+          cur_product = 1;
+          cur_product_neg = 1;
+      }else {
+          int tmp = cur_product;
+          cur_product = max(cur_product_neg * arr[index], 1);
+          cur_product_neg = tmp * arr[index];
+      }
+      max_product = max(max_product, cur_product);
+  }
+  return max_product;
+}
