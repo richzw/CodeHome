@@ -1,4 +1,3 @@
-
 /*
 * @fun: Get the sum of array
 */
@@ -64,4 +63,27 @@ int findModal(int arr[], int len){
             return modal;
     else
             return -1;
+}
+
+/*
+ * @func: Get the min distance between two element of the array
+ */
+int comp(const void* pa, const void* pb){
+    return (*(int*)pa - *(int*)pb);
+}
+
+int findMinDistance(int arr[], int len){
+    if (arr == NULL || len <= 0)
+            return -1;
+
+    qsort(arr, len, sizeof(int), comp);
+
+    int min_distance = INT_MAX;
+    for (int index = 0; index < len - 1; ++index){
+        int distance = arr[index + 1] - arr[index];
+        if (distance < min_distance)
+                min_distance = distance;
+    }
+
+    return min_distance;
 }
