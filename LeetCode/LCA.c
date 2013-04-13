@@ -65,3 +65,58 @@ Node *LCA(Node *root, Node *p, Node *q) {
 	  return root;  // if p and q are on both sides
   return L ? L : R;  // either one of p,q is on one side OR p,q is not in L&R subtrees
 }
+
+/*
+* Q3: Given a binary tree, find the lowest common ancestor of two given nodes in the tree. 
+*     Each node contains a parent pointer which links to its parent.
+*/
+
+typedef struct treenode{
+	treenode* father;
+	treenode* left;
+	treenode* right;
+	int		  data;
+}treenode;
+
+treenode* LCA_tree(treenode* root, int a, int b){
+	vector<treenode*> treenode_queue;
+	int tree_index = 0;
+	treenode* ptreenode_a = NULL;
+	treenode* ptreenode_b = NULL;
+
+	//Breadth-First Search -- level-order search
+	treenode_queue.push_back(root);
+	while((treenode_queue.size() - tree_index) > 0){
+		treenode* pnode = treenode_queue[tree_index];
+		if (pnode->left != NULL){
+			treenode_queue.push_back(pnode->left);
+			if (pnode->left->data == a)
+				ptreenode_a = pnode->left;
+		}
+		if (pnode->right != NULL){
+			treenode_queue.push_back(pnode->right);
+			if (pnode->right->data == b)
+				ptreenode_b = pnode->right;
+		}
+		++tree_index;
+	}
+	
+	//check whether the parent node is visited, 
+	//if so, that is LCA. otherwise, go to parent node.
+	set<treenode*> parent_nodes;
+	pair<set<treenode*>::iterator,bool> ret;
+	while(true){
+		if (ptreenode_a){
+			ret = parent_nodes.insert(ptreenode_a);
+			if (ret.second == false)
+				return *(ret.first);
+			ptreenode_a = ptreenode_a->father;
+		}
+		if (ptreenode_b){
+			ret = parent_nodes.insert(ptreenode_b);
+			if (ret.second == false)
+				return *(ret.first);
+			ptreenode_b = ptreenode_b->father;
+		}
+	}
+}
