@@ -3,7 +3,7 @@
 */
 
 typedef struct elem{
-  elem*	left;
+  	elem*	left;
 	elem*	right;
 	int		data;
 }elem;
@@ -119,4 +119,32 @@ treenode* LCA_tree(treenode* root, int a, int b){
 			ptreenode_b = ptreenode_b->father;
 		}
 	}
+}
+
+//better solution for Q3
+int tree_depth(Node *p) {
+	if (p == NULL)
+		return 0;
+	else
+		return 1+tree_depth(p->father);
+}
+ 
+Node *LCA(Node *p, Node *q) {
+  int h1 = tree_depth(p);
+  int h2 = tree_depth(q);
+  // swap both nodes in case p is deeper than q.
+  if (h1 > h2) {
+    swap(h1, h2);
+    swap(p, q);
+  }
+  // invariant: h1 <= h2.
+  int dh = h2 - h1;
+  for (int h = 0; h < dh; h++)
+    q = q->parent;
+  while (p && q) {
+    if (p == q) return p;
+    p = p->parent;
+    q = q->parent;
+  }
+  return NULL;  // p and q are not in the same tree
 }
