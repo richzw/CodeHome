@@ -1,4 +1,4 @@
-/×
+/*
   MaxVal - maximum value which will have non-zero frequency
   f[i] - frequency of value with index i, i = 1 .. MaxVal
   c[i] - cumulative frequency for index i (f[1] + f[2] + ... + f[i])
