@@ -275,6 +275,33 @@ void AlternatingSplit2(struct node* source, struct node** aRef, struct node** bR
     *bRef = dummy_b.next;
 }
 
+/*
+* @func: shuffle with {1, 2, 3} and {7, 13, 1} should yield {1, 7, 2, 13, 3, 1}
+*        this is perfect shuffle.
+*/
+node* shuffle(node* a, node* b){
+	node dummy;
+	node* pdummy = &dummy;
+	pdummy->next = NULL;
+
+	while(true){
+		if (a == NULL){
+			pdummy->next = b;
+			break;
+		}else if (b == NULL){
+			pdummy->next = a;
+			break;
+		}else{
+			pdummy->next = a;
+			pdummy = a;
+			a = a->next;
+			pdummy->next = b;
+			pdummy = b;
+			b = b->next;
+		}
+	}
+	return (dummy.next);
+}
  
 int main(){
 	int list_array[] = {2, 3, 4, 5, 8, 1, 9};
