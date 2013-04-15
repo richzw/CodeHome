@@ -306,6 +306,34 @@ node* shuffle(node* a, node* b){
 	}
 	return (dummy.next);
 }
+
+/*
+ * @func: Takes two lists sorted in increasing order, and splices their nodes together
+ *        to make one big sorted list which is returned.
+ */
+struct node* SortedMerge(struct node* a, struct node* b){
+    struct node dummy;
+    struct node* pdummy = &dummy;
+    pdummy->next = NULL;
+    while(true){
+        if (a == NULL){
+            pdummy->next = b;
+            break;
+        }else if (b == NULL){
+            pdummy->next = a;
+            break;
+        }else if (a->data <= b->data){
+            pdummy->next = a; // replace by MoveNode(&(pdummy->next), &a);
+            a = a->next;
+        }else if (a->data > b->data){
+            pdummy->next = b; // replace by MoveNode(&(dummy->next), &b);
+            b = b->next;
+        }
+        pdummy = pdummy->next;
+    }
+    return dummy.next;
+}
+
  
 int main(){
 	int list_array[] = {2, 3, 4, 5, 8, 1, 9};
