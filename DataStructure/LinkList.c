@@ -227,6 +227,10 @@ void MoveNode(struct node** destRef, struct node** sourceRef){
 
 /*
  * @func: split the origianal list into two list in alternating way.
+          Given the source list, split its nodes into two shorter lists.
+	If we number the elements 0, 1, 2, ... then all the even elements
+	should go in the first list, and all the odd elements in the second.
+	The elements in the new lists may be in any order.
  */
 void AlternatingSplit(struct node* source, struct node** aRef, struct node** bRef){
     // here is error case, In order to return the pointer,
