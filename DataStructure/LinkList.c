@@ -202,8 +202,79 @@ void FrontBackSplit2(struct node* source, struct node** frontRef, struct node** 
  * @func: Remove duplicates from a sorted list.
  */
 void RemoveDuplicates(struct node* head){
-	
+    if (head == NULL)
+            return;
+    struct node* current = head;
+
+    while (current->next){
+        if (current->data == current->next->data){
+            struct node* tmp = current->next;
+            current->next = current->next->next;
+            free(tmp);
+        }
+        current = current->next;
+    }
 }
+
+void MoveNode(struct node** destRef, struct node** sourceRef){
+    struct node* head_src = *sourceRef;
+
+    *sourceRef = head_src->next;
+
+    head_src->next = *destRef;
+    *destRef = head_src;
+}
+
+/*
+ * @func: split the origianal list into two list in alternating way.
+ */
+void AlternatingSplit(struct node* source, struct node** aRef, struct node** bRef){
+    // here is error case, In order to return the pointer,
+    // the address of node must be passed into MoveNode().
+    struct node* current = source;
+    while (current != NULL){
+        MoveNode(bRef, &current);
+        if (current->next != NULL){
+            MoveNode(aRef, &(source->next));
+        }
+        current = current->next->next;
+    }
+
+    // here is correct version. but, the lists are reverse order.
+    struct node* a = NULL;
+    struct node* b = NULL;
+    while (current != NULL){
+        MoveNode(&a, &current);
+        if (current != NULL){
+            MoveNode(&b, &current);
+        }
+        *aRef = a;
+        *bRef = b;
+    }
+}
+
+void AlternatingSplit2(struct node* source, struct node** aRef, struct node** bRef){
+    struct node dummy_a;
+    struct node* pa = &dummy_a;
+    struct node dummy_b;
+    struct node* pb = &dummy_b;
+    struct node* current = source;
+
+    pa->next = NULL;
+    pb->next = NULL;
+    while(current != NULL){
+        MoveNode(&(pa->next), &current);
+        pa = pa->next;
+        if (current != NULL){
+            MoveNode(&(pb->next), &current);
+            pb = pb->next;
+        }
+    }
+
+    *aRef = dummy_a.next;
+    *bRef = dummy_b.next;
+}
+
  
 int main(){
 	int list_array[] = {2, 3, 4, 5, 8, 1, 9};
