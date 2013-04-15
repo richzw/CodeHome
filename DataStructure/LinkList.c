@@ -334,6 +334,38 @@ struct node* SortedMerge(struct node* a, struct node* b){
     return dummy.next;
 }
 
+/*
+ * @func: merge sort for link list
+ */
+struct node* MergeSortRecur(struct node* head){
+    if (head == NULL)
+            return NULL;
+    struct node* pfront = NULL;
+    struct node* pback = NULL;
+    FrontBackSplit(head, &pfront, &pback);
+    return SortedMerge(MergeSortRecur(pfront), MergeSortRecur(pback));
+}
+void MergeSort(struct node* headRef){
+    if (headRef == NULL)
+            return;
+    headRef = MergeSortRecur(headRef);
+}
+
+//better code...
+void MergeSort(struct node** headRef) {
+	struct node* head = *headRef;
+	struct node* a;
+	struct node* b;
+	// Base case -- length 0 or 1
+	if ((head == NULL) || (head->next == NULL)) {
+		return;
+	}
+	FrontBackSplit(head, &a, &b); // 
+	
+	MergeSort(&a); // 
+	MergeSort(&b);
+	*headRef = SortedMerge(a, b); //
+}
  
 int main(){
 	int list_array[] = {2, 3, 4, 5, 8, 1, 9};
