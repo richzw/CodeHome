@@ -401,6 +401,18 @@ void ReverseListRecur(struct node** headRef){
     *headRef = rest;
 }
 
+void ReverseListRecur2(struct node *rest, struct node * reverseHead){
+    node *current;
+
+    if (rest == NULL)
+        return reverseHead;
+
+    current = rest;
+    rest = rest->next;
+    current->next = reverseHead;
+
+    ReverseListRecur2(rest, current);
+}
  
 int main(){
 	int list_array[] = {2, 3, 4, 5, 8, 1, 9};
