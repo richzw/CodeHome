@@ -383,6 +383,24 @@ void MergeSort(struct node** headRef) {
 	MergeSort(&b);
 	*headRef = SortedMerge(a, b); //
 }
+
+void ReverseListRecur(struct node** headRef){
+    struct node* current;
+    struct node* rest;
+    if (*headRef == NULL)
+            return ;
+    
+    current = *headRef;
+    rest = current->next;
+    if (rest == NULL)
+            return;
+    ReverseListRecur(&rest);
+    
+    current->next->next = current;
+    current->next = NULL;
+    *headRef = rest;
+}
+
  
 int main(){
 	int list_array[] = {2, 3, 4, 5, 8, 1, 9};
