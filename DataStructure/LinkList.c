@@ -334,6 +334,23 @@ struct node* SortedMerge(struct node* a, struct node* b){
     return dummy.next;
 }
 
+struct node* SortMergeRecur(struct node* a, struct node* b){
+    struct node* ret = NULL;
+    if (a == NULL){
+        ret = a;
+    }else if (b == NULL){
+        ret = b;
+    }else if (a->data <= b->data){
+        ret = a;
+        ret->next = SortMergeRecur(a->next, b);
+    }else if (a->data > b->data){
+        ret = b;
+        ret->next = SortMergeRecur(a, b->next);
+    }
+    return ret;
+}
+
+
 /*
  * @func: merge sort for link list
  */
