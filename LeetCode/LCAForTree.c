@@ -56,14 +56,14 @@ int LCA_BT(elem* root, int a, int b){
 
 //better solution
 Node *LCA(Node *root, Node *p, Node *q) {
-  if (!root) return NULL;
-  if (root == p || root == q) return root;
+	if (!root) return NULL;
+	if (root == p || root == q) return root;
 
-  Node *L = LCA(root->left, p, q);
-  Node *R = LCA(root->right, p, q);
-  if (L && R) 
-	  return root;  // if p and q are on both sides
-  return L ? L : R;  // either one of p,q is on one side OR p,q is not in L&R subtrees
+	Node *L = LCA(root->left, p, q);
+	Node *R = LCA(root->right, p, q);
+	if (L && R) 
+	  	return root;  // if p and q are on both sides
+	return L ? L : R;  // either one of p,q is on one side OR p,q is not in L&R subtrees
 }
 
 /*
@@ -130,21 +130,21 @@ int tree_depth(Node *p) {
 }
  
 Node *LCA(Node *p, Node *q) {
-  int h1 = tree_depth(p);
-  int h2 = tree_depth(q);
-  // swap both nodes in case p is deeper than q.
-  if (h1 > h2) {
-    swap(h1, h2);
-    swap(p, q);
-  }
-  // invariant: h1 <= h2.
-  int dh = h2 - h1;
-  for (int h = 0; h < dh; h++)
-    q = q->parent;
-  while (p && q) {
-    if (p == q) return p;
-    p = p->parent;
-    q = q->parent;
-  }
-  return NULL;  // p and q are not in the same tree
+  	int h1 = tree_depth(p);
+  	int h2 = tree_depth(q);
+  	// swap both nodes in case p is deeper than q.
+  	if (h1 > h2) {
+    		swap(h1, h2);
+    		swap(p, q);
+  	}
+  	// invariant: h1 <= h2.
+  	int dh = h2 - h1;
+  	for (int h = 0; h < dh; h++)
+    		q = q->parent;
+  	while (p && q) {
+    		if (p == q) return p;
+    		p = p->parent;
+    		q = q->parent;
+  	}
+  	return NULL;  // p and q are not in the same tree
 }
