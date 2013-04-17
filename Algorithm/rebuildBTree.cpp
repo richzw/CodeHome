@@ -8,7 +8,7 @@ typedef struct node{
   	int   data;
 }node;
 
-node *build(const int *pre, const int *mid, const int n){
+node *build_tree(const int *pre, const int *mid, const int n){
  
  
  
