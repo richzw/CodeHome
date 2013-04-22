@@ -11,6 +11,9 @@ int findNonMin(int arr[], int len){
          while (arr[index] != index &&
                 arr[index] < len &&
                 arr[index] > 0){
+            // fix one bug here...
+            if (arr[arr[index]] == arr[index])
+               break;
              int tmp = arr[arr[index]];
              arr[arr[index]] = arr[index];
              arr[index] = tmp;
