@@ -1,5 +1,6 @@
-// sort collections
+//Q: you are working on a platform that a very fast, 
 
+// sort collections
  void insertSort(int a[], int len){
      for (int j = 1; j < len; ++j){
          int key = a[j];
