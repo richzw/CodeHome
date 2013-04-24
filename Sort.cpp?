@@ -1,4 +1,10 @@
-//Q: you are working on a platform that a very fast, 
+//Q: You are working on a platform that has a very fast, hardwareaccelerated
+//   sort routine. The routine, shakySort(), is not stable, but you need
+//   to perform a fast, stable sort. Write code that uses shakySort() to perform a stable sort. 
+
+// Hint: multi-key sort
+
+
 
 // sort collections
  void insertSort(int a[], int len){
