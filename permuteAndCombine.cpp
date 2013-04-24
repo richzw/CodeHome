@@ -121,6 +121,6 @@ void combine_string(char arr[], int len){
 
  int main(){
      sumSet(0);
+ 
+     return 0;
  }
- 38     return 0;
- 39 }
