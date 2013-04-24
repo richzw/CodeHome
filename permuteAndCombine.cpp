@@ -83,6 +83,38 @@ void combine_string(char arr[], int len){
 	combine_string_recur(arr, 0, len, out);
 }
 
+void print(char arr[], int len, char* paux){
+    for (int index = 0; index < len; ++index){
+        if (*(paux+index) == 1)
+            cout << arr[index];
+    }
+    cout << endl;
+}
+
+void combine_recur(char arr[], int cur, int len, char* paux){
+    if (cur >= len)
+        print(arr, len, paux);
+    else{
+        *(paux+cur) = 1;
+        combine_recur(arr, cur+1, len, paux);
+        *(paux+cur) = 0;
+        combine_recur(arr, cur+1, len, paux);
+    }
+}
+
+void combine(char arr[], int len){
+    if (arr == NULL || len <= 0)
+        return;
+    char* paux = new char[len];
+    if (paux == NULL)
+        return;
+
+    memset(paux, 0, len);
+    combine_recur(arr, 0, len, paux);
+
+    delete[] paux;
+}
+
 
 
 //Q: 整数集合s和一个整数sum，求集合s的所有子集su,使得su的元素之和为sum
