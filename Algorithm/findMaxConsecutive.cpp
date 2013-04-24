@@ -5,3 +5,5 @@
      Is there any O(n) method.
 */
 
+// Hint: 1. hash map
+//       2. union-find set
