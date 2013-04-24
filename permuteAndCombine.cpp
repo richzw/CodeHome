@@ -67,7 +67,7 @@ void permutationBySwap(char arr[], int len){
 }
 
 void combine_string_recur(char arr[], int cur, int len, string out){
-  if (out.length() > 0 && out.length() <= len)
+  	if (out.length() > 0 && out.length() <= len)
 		cout << out << endl;
 	for (int index = cur; index < len; ++index){
 		out.push_back(arr[index]);
