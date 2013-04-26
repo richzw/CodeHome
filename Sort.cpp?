@@ -58,6 +58,17 @@ void merge(int arr[], int left, int mid, int right){
 		else
 			arr[k] = aux[i++];
 }
+
+void merge_no_aux(int arr[], int left, int mid, int right){
+
+}
+
+void mergesort_BU(){
+	for (int m = 1; m < r; m = m+m)
+		for (int i = l; i <= r-m; i += m+m)
+			merge(arr, i, i+m-1, min(i+m+m-1, r));
+}
+
 /*
 * @func: merge sort implementation
 * @params: arr{array},
