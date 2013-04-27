@@ -8,6 +8,49 @@
 // Hint: 1. hash map
 //       2. union-find set
 
+// here is hash map
+int findMaxConsecutive(int arr[], int len){
+	if (arr == NULL || len <= 0)
+		return 0;
+
+	// construct the hash map according to the array
+	unordered_map<int, int> hash_arr;
+	for (int index = 0; index < len; ++index){
+		hash_arr[arr[index]] = arr[index];
+	}
+
+	int max_count = 0;
+	unordered_map<int, int>::iterator find_itor;
+	// mark the visited element as negative, limit for positive elements
+	for (auto it = hash_arr.begin(); it != hash_arr.end(); ++it){
+		if (it->second < 0)
+			continue;
+		
+		int count = 1;
+		int elem_low = it->first;
+		int elem_high = it->first;
+		while ((find_itor = hash_arr.find(elem_low - 1)) != hash_arr.end()){
+			++count;
+			find_itor->second = -find_itor->second;
+			--elem_low;
+		}
+			
+		while ((find_itor = hash_arr.find(elem_high + 1)) != hash_arr.end()){
+			++count;
+			find_itor->second = -find_itor->second;
+			++elem_high;
+		}
+			
+		if (count > max_count)
+			max_count = count;
+
+		// mark the visited element
+		it->second = -it->second;
+	}
+	
+	return max_count;
+}
+
 // here is union-find
 int father[20] = {0};
 int rank[20] = {0};
