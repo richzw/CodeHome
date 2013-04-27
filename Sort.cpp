@@ -85,9 +85,9 @@ void merge_no_aux(int arr[], int left, int mid, int right){
 	}
 }
 
-/×
-× @func: merge sort from down to up method.
-×/
+/*
+* @func: merge sort from down to up method.
+*/
 void mergesort_BU(int arr[], int l, int r){
 	for (int m = 1; m < r; m = m+m)
 		for (int i = l; i <= r-m; i += m+m)
