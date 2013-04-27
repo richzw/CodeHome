@@ -7,3 +7,38 @@
 
 // Hint: 1. hash map
 //       2. union-find set
+
+// here is union-find
+int father[20] = {0};
+int rank[20] = {0};
+
+void make_set(int len){
+    for (int index = 0; index < len; ++index){
+        father[index] = index;
+        rank[index] = 0;
+    }
+}
+
+int find_set(int val){
+    if (val != father[val]){
+        rank[father[val]] += rank[val];
+        father[val] = find_set(father[val]);
+    }
+    return father[val];
+}
+
+void union_set(int x, int y){
+    x = find_set(x);
+	y = find_set(y);
+	if (x == y)
+		return;
+	if (rank[x] > rank[y]){
+		father[y] = x;
+		rank[x] += rank[y];
+	}else{
+		father[x] = y;
+		rank[y] += rank[x];
+	}
+}
+
+//here is hash map
