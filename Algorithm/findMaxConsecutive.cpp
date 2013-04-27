@@ -28,7 +28,7 @@ int find_set(int val){
 }
 
 void union_set(int x, int y){
-    x = find_set(x);
+    	x = find_set(x);
 	y = find_set(y);
 	if (x == y)
 		return;
@@ -36,8 +36,11 @@ void union_set(int x, int y){
 		father[y] = x;
 		rank[x] += rank[y];
 	}else{
+		if (rank[x] == rank[y]){
+			rank[y]++;
+		}else
+			rank[y] += rank[x];
 		father[x] = y;
-		rank[y] += rank[x];
 	}
 }
 
