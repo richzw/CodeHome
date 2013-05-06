@@ -6,6 +6,8 @@
 */
 
 // Hint: 1. hash map
+//        哈希 + 并查集： 哈希存储 每个元素的(key,index) ; 每个元素都是一个并查集，
+//        扫描序列，合并 (key-1,key) , 合并(key,key+1); 合并前通过哈希表查找到key-1,key+1的位置（index）
 //       2. union-find set
 
 // here is hash map
