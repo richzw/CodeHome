@@ -1,5 +1,5 @@
 module.exports = function(app){
-  var fs = require('fs')
+  	var fs = require('fs')
 		, gfs = require('../../lib/gridfs')
 		, path = require('path')
 		, async = require('async')
@@ -141,4 +141,37 @@ module.exports = function(app){
 			}
 		});
 	});
+	
+	app.put('/tasks/assign/:taskIdStr', auth.loadUser, function (req, res, next) {
+		//handle ajax request
+		//var user = req.currentUser;
+		var email = req.body.member.toString().replace(' ', '.')+"@igt.com";
+
+		Task
+			.findAndModify(req.params.taskIdStr,
+					[],
+					{
+						$set: {
+							owner: req.body.member,
+							iteration: req.body.iterations
+						}
+					},
+					{ upsert: true },
+					function (err, result) {
+						if (err)
+							next(err);
+						else {
+							// send browser notification to assigned user
+							_.filter(user_socket_map, function(elem) { 
+								if (elem.name === req.body.member){
+									user_socket_map[i].socket.emit('notifytask', { task: result });
+								}
+							});
+
+							sendAssignTaskEmail(email, req.body.member);
+							res.send(200);
+						}
+
+			});
+	});	
 }
