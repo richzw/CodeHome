@@ -10,3 +10,10 @@ process.on('uncaughtException', function (err) {
   }
 });
 
+  // gzip only in staging and production envs
+  // Add a far further Expire Header in staging and production envs
+  app.configure('staging', function () {
+  app.use(express.static(__dirname+'public', {maxAge: 265400}));
+    app.use(gzippo.staticGzip(__dirname + '/public'))
+    app.enable('view cache')
+  });
