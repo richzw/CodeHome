@@ -19,6 +19,8 @@ process.on('uncaughtException', function (err) {
   });
 
 // Be careful, the data buffer of nodejs, when handling the chinese character
+// http://cnodejs.org/topic/4faf65852e8fb5bc65113403
+// http://www.infoq.com/cn/articles/nodejs-about-buffer
 var http = require('http');
 var $ = require('jquery')
 var fs = require('fs');
