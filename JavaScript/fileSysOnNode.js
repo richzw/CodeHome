@@ -1,3 +1,5 @@
+// http://cnodejs.org/topic/4f16442ccae1f4aa27001071
+
 var server = http.createServer(function(request, response) {
 
 var pathname = url.parse(request.url).pathname;
