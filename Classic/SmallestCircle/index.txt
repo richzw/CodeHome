@@ -1,6 +1,7 @@
 The smallest-circle problem or minimum covering circle problem is a mathematical problem of computing the smallest 
 circle that contains all of a given set of points in the Euclidean plane. The corresponding problem in n-dimensional space, 
-the smallest bounding-sphere problem, is to compute the smallest n-sphere that contains all of a given set of points.[1] The smallest-circle problem was initially proposed by the English mathematician James Joseph Sylvester in 1857.[2]
+the smallest bounding-sphere problem, is to compute the smallest n-sphere that contains all of a given set of points.
+The smallest-circle problem was initially proposed by the English mathematician James Joseph Sylvester in 1857.
 
 The smallest-circle problem in the plane is an example of a facility location problem in which the location of 
 a new facility must be chosen to provide service to a number of customers, minimizing the farthest distance that
