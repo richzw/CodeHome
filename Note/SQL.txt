@@ -1,0 +1,40 @@
+SQL子查询的顺序：
+ (8) SELECT (9) DISTINCT  (11)<TOP_specification>  <select_list>
+ (1) FROM  <left_table>
+ (3)               <join_type> JOIN <right_table>
+ (2)                                       ON <join_condition>
+ (4) WHERE <where_condition>
+ (5) GROUP BY <group_by_list>
+ (6) WITH {CUBE | ROLLUP}
+ (7) HAVING <having_condition>
+ (10) ORDER BY <order_by_list>
+---------------------------------------------------------------------------------------------------- 
+Where vs Having
+Where 子句执行条件判断会需要分组的行数，比having子句执行效率高
+Having子句基于行的条件筛选会强制查询在where子句会被去除data分组
+
+JOIN:  内连接：选出两个表中所有符合链接条件row构成集合
+            外链接： left： 若r与s链接，left是所有满足条件row以及所有在r属性对应于s中为NULL
+  	Right：所有满足条件的row以及所有在s属性对应r中为null
+		Full： 所有满足条件的row以及任何在r或者s中出现null
+	INNER JOIN： A与B的交集
+	FULL outer JOIN： A与B的并集
+	LEFT outer JOIN： A的完全集
+	CROSS JOIN： 笛卡尔积
+SELECT × FROM A LEFT outer join B ON A.name = B.name WHERE B.id is NULL
+----------------------------------------------------------------------------------------------------
+Where 1 = 1 1 = 0 妙用
+Where 1 = 1: lazy programming
+	String sql = select * from table1 where 1 = 1
+	If (!name.equals(“”))
+		Sql = sql + ‘name=’ +name+’’’;
+	If (!age.equals(‘’))
+		Sql = sql + ‘age=’ +age+’’’;
+Where 1 = 0: only for schema not for row values
+	Create table new table as select * from old table where 1 = 0; 
+-----------------------------------------------------------------------------------------------------
+MySQL 中procedure与function区别：
+返回值来看，若返回多个参数最好使用存储过程，若只有一个返回值，可以使用函数。
+Function特殊在于，必须return返回值，不能指定参数的IN，OUT或者INOUT修饰符，所有参数隐式为IN
+SQL的逻辑操作有TRUE，FALSE，UNKNOWN，
+测试某列是否为NULL，is NULL/ is NOT NULL。
