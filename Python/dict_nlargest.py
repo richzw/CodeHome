@@ -23,3 +23,19 @@ d = { 'a':10.0, 'b':2.0, 'c':5.0, 'd':3.0, 'e':15.0 }
 print dict_nlargest(d,3)
 
 
+#-----------------------------------------------------------------------------
+class Toy:
+    def __init__Toy(self, s, i, f):
+        self.s = s
+        self.i = i
+        self.f = f
+
+l = [ Toy('a', 10, 4.4), Toy('b', 4, 12.0),
+      Toy('c', 2, 20.0), Toy('d', 1, 5.0) ]
+
+# largest by the 'f' attribute
+print heapq.nlargest(2, l, key = lambda o: o.f)
+
+# largest by the 'i' attribute
+print heapq.nlargest(2, l, key = lambda o: o.i)
+
