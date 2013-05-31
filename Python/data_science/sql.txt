@@ -1,0 +1,5 @@
+Select max(sim) From 
+      (Select id, sum(product) As sim From 
+            (Select doc.docid As id,query.count*doc.count As product From 
+                   (Select * From myview Where docid="q") As query Join 
+                   (Select * From myview) As doc On query.term = doc.term) Group by id);'
