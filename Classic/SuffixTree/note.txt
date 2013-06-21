@@ -1,0 +1,2 @@
+
+refer to http://mila.cs.technion.ac.il/~yona/suffix_tree/
