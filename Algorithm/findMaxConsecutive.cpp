@@ -6,9 +6,11 @@
 */
 
 // Hint: 1. hash map
-//        哈希 + 并查集： 哈希存储 每个元素的(key,index) ; 每个元素都是一个并查集，
-//        扫描序列，合并 (key-1,key) , 合并(key,key+1); 合并前通过哈希表查找到key-1,key+1的位置（index）
-//       2. union-find set
+//       2. 哈希 + 并查集： 哈希存储 每个元素的(key,index) ; 每个元素都是一个并查集(make_set(x))，
+//        扫描序列，Union(key-1,key) , Union(key,key+1);
+//        合并前通过哈希表查找到key-1,key+1的位置（index）, 需要 O(1) hashmap.
+//       3. http://www.cppblog.com/everyday/articles/201439.html
+//       4. bitmap, 初始为0，如果出现设置为1，找到连续最多的1即可。 
 
 // here is hash map
 int findMaxConsecutive(int arr[], int len){
