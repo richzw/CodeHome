@@ -20,3 +20,25 @@
      fin >> val;
      readBSTHelper(INT_MIN, INT_MAX, val, root, fin);
  }
+
+
+// same idea to solve the quetion: how to check tree is BST?
+/*
+ * Return true if the binary tree is BST (efficient version)
+ */
+bool isBST_e(struct node* node){
+    return isBSTUtil(node, INT_MIN, INT_MAX);
+}
+
+bool isBSTUtil(struct node* node, int min, int max){
+    if (NULL == node)
+        return true;
+
+    // false if this node violates the min/max constraint
+    if (node->data < min || node->data > max)
+        return false;
+
+    // otherwise check the subtree recrusively
+    return isBSTUtil(node->left, min, node->data) &&
+            isBSTUtil(node->right, node->data+1, max);
+}
