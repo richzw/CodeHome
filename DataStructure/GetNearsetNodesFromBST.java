@@ -1,4 +1,7 @@
 //http://blog.csdn.net/zhouhao011280s/article/details/8044056
+/*
+给定key值，在Binary Search Tree中查找最接近该键值的结点集合；还有key值的结点可以不在树中。
+*/
 
 public class BinarySearchTreeTest {
   
