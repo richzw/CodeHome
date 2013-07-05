@@ -90,6 +90,82 @@ Q: 给个数组，打乱了，比如：索引 0 1 2 3 4；值 3 2 1 4 0 。数�
    这样的话数组有环，比如 0 -> 3 -> 4 -> 0 1 -> 2 -> 1， 求最长环的长度。
 
 A: Union-Find.
+class Solution
+{
+private:
+    class UnionSet
+    {
+    public:
+        int * father, * num, maxSize;
+        // make set
+        UnionSet(int len):maxSize(1)
+        {
+            father = new int [len];
+            num = new int [len];
+            for(int i = 0; i < len; ++i)
+            {
+                num[i] = 1;
+            }
+            for(int i = 0; i < len; ++i)
+            {
+                father[i] = i;
+            }
+        }
+        ~UnionSet()
+        {
+            delete [] father;
+            delete [] num;
+        }
+        // find set
+        int findSet(int x)
+        {
+            if(x != father[x])
+            {
+                father[x] = findSet(father[x]);
+            }
+            return father[x];
+        }
+        // union
+        void unionSet(int a, int b)
+        {
+            int x = findSet(a);
+            int y = findSet(b);
+            if(x == y)
+            {
+                return;
+            }
+            if(num[x] >= num[y])
+            {
+                father[y] = x;
+                num[x] += num[y];
+                maxSize = num[x] > maxSize ? num[x]: maxSize;
+            }else
+            {
+                father[x] = y;
+                num[y] += num[x];
+                maxSize = num[y] > maxSize ? num[y]: maxSize;
+            }
+        }
+    };
+ 
+public:
+    int solution(int * A, int len)
+    {
+        if(NULL == A || len <= 0)
+        {
+            return 0;
+        }
+        UnionSet unionSet(len);
+        for(int i = 0; i < len; ++i)
+        {
+            if(A[i] < len)
+            {
+                unionSet.unionSet(i,A[i]);
+            }
+        }
+        return unionSet.maxSize;
+    }
+};
 ----------------------------------------------------------------------------------------------------------------
 Q: 给定一个大整数N，有如下的初始有序序列位于[0, N - 1]之间（见图）。请设计一个数据结构保存这个初始序列，
    然后写一个函数，接受一个input参数x, 满足0 <= x <= N - 1。 
