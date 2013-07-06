@@ -16,6 +16,17 @@ Although the tree is modified through the traversal, it is reverted back to its 
 Unlike Stack based traversal, no extra space is required for this traversal.
 */
 
+/*
+MorrisInOrder()：
+ while 没有结束
+   如果当前节点没有左后代
+     访问该节点
+     转向右节点
+   否则
+     找到左后代的最右节点，且使最右节点的右指针指向当前节点
+     转向左后代节点
+*/
+
 #include<stdio.h>
 #include<stdlib.h>
  
