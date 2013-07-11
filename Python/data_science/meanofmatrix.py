@@ -1,3 +1,6 @@
+# Map-reduce matrix
+# the new element of matrix is the mean value of 8 neighbor nodes of the original matrix
+
 # input: element is the key value pair of matrix
 #        type:    [row, column, value, totle_row, totle_column]
 def mapper(elem):
