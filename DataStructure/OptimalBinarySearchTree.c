@@ -1,5 +1,8 @@
 和 Matrix Chain Multiplication 相同，窮舉所有可以當作 root 的鍵值，並以 root 將原來的樹分作左右兩棵子樹，便縮小了問題。
 所有的子問題共有 O(N^2) 個，每個子問題需要窮舉 O(N) 種分割點，故時間複雜度為 O(N^3) 。
+
+C[i,j]=P[i,j]+min(C[i,r-1]+C[r+1,j]), i<=r<=j
+
 下面是計算 Optimal Binary Search Tree 權重的程式碼，至於印出一棵 Optimal Binary Search Tree 的程式碼就不提供了。
 1.  // 將陣列邊界左右各加一格，如此可省去一些判斷陣列邊界的麻煩。
 2.	// 鍵值排序後，各自對應的出現頻率。最左邊和最右邊是額外加上的空格子。
