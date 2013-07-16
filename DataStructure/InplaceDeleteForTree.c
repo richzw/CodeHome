@@ -1,5 +1,4 @@
-//
-http://www.keithschwarz.com/interesting/code/?dir=inplace-tree-delete
+//http://www.keithschwarz.com/interesting/code/?dir=inplace-tree-delete
 
 /******************************************************************************
  * File: InplaceTreeDelete.hh
