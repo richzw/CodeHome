@@ -5,6 +5,14 @@ Q: 给定一个数组，我们可以找到两个不相交的、并且是连续�
 */
 
 /*
+    max_until[i]和max_until[i-1]是什么关系呢？
+    如果X[i] + max_until[i - 1] > max_until[i - 1] and X[i] + max_until[i - 1] > X[i]。
+    那么X[i]应该加入到连续子数组中，max_until[i] = max_until[i-1] + X[i].
+    否则max_until[i] = X[i]，连续子数组只有一个元素
+
+max_left[i]只需要在max_until[i]和此前保存的最大值里取最大的即可。也就是一次遍历，
+就可以完全求得max_until数组和max_left数组。同理可以求得min_until以及min_left数组。
+
     从左向右遍历数组，计算max_left和min_left数组，O(n)时间复杂度
     从右向左遍历数组，计算max_right和min_right数组，O(n)时间复杂度
     然后对于每一个i，i从1开始到n-1,计算max_left[i - 1] - min_right[i], max_right[i] - min_left[i - 1]。选取绝对值最大的。
