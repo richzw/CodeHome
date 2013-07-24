@@ -59,9 +59,12 @@ ssize_t do_recvfile(int out_fd, int in_fd, off_t offset, size_t count) {
 
     // Splice the data from in_fd into the pipe
     while (total_bytes_sent < count) {
+        // solve issue:
+        //makes the first splice() call hang when you ask for all of the data on the socket. 
+        //  simply limiting the data read from the socket to 16k. 
         if ((bytes_sent = splice(in_fd, NULL, pipefd[1], NULL,
-                count - total_bytes_sent, 
-                SPLICE_F_MORE | SPLICE_F_MOVE)) <= 0) {
+            MIN(count - total_bytes_sent, 16384), 
+            SPLICE_F_MORE | SPLICE_F_MOVE)) <= 0) {
             if (errno == EINTR || errno == EAGAIN) {
                 // Interrupted system call/try again
                 // Just skip to the top of the loop and try again
