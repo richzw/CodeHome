@@ -185,6 +185,19 @@ bool isBSTUtil(struct node* node, int min, int max){
            isBSTUtil(node->right, node->data+1, max);
 }
 
+bool isBSTUtil_1(struct node* node, int min, int max){
+   if (node->left != NULL){
+       if (node->left->data < min || !isBSTUtil_1(node->left, min, node->value))
+          return false;
+   }
+   if (node->right != NULL){
+       if (node->right->data > max || !isBSTUtil_1(node->right, node->value, max))
+          return false;
+   }
+   return true;
+}
+
+
 void printLevelOrder(struct node *root) {
   if (!root) return;
   queue<BinaryTree*> nodesQueue;
