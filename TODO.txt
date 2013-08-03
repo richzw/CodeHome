@@ -1,3 +1,15 @@
+//给定一批查询日志，数量为n。其中，有的查询出现了多于n/3次，请在线性时间内，找到所有满足条件的查询。
+
+1.采用hashmap进行计数，O(n)的空间，O(n)的时间
+2.进行排序，O(nlogn)
+3.快速选择算法，这个也可以做到O(n)的时间。
+4.我们申请一个大小为m的map，开始遍历查询日志，如果：
+  1. 遇到一个不在map中的查询，则插入map中，并且将值设置为1（相当于新落下一个方块）
+	2. 遇到一个在map中的查询，则将map中，该查询对应的值加1（相当于在已有的方块上又多加了一个）
+当map中的查询个数等于m时，则对map中所有查询的值减一（相当于砌满了一层，就会消掉）。
+直到遍历完毕查询日志，map中还存在的查询，就是我们要找的查询的备选。
+
+-------------------------------------------------------------------------------------------------------------------
 //大家都知道facebook用户都是双向的好友，a是b的好友，那么b一定是a的好友，现在给定一个用户列表，
 其中有些用户是好友，有些不是，请判断，这些用户是否可以划分为两组，并且每组内的用户，互相都不是好友。
 如果能，请给出这个划分。
@@ -16,8 +28,7 @@ facebook的好友关系是双向的，意味着是无向图（新浪微博，twi
 如果是黑色，则不变；如果是无色，则染成黑色；如果是白色，也就是同色，程序退出。
 当图遍历完毕时，没有相邻节点同色的，则是二分图，标记为白色和黑色的两组就是一个划分。
 
-
-
+-----------------------------------------------------------------------------------------------------------------------
 //Q:Describe an algorithm that takes an unsorted array of axis‐aligned rectangles and
 //returns any pair of rectangles that overlaps, if there is such a pair. Axis‐aligned
 //means that all the rectangle sides are either parallel or perpendicular to the x‐ and
@@ -107,29 +118,6 @@ int main(int argc, char* argv[])
   }
 }
 
--------------------------------------------------------------------------------------------------------------------
-Q: 给定二叉树，求只有一个child的节点数
-
-def count_one_child_node(btree):
-    count = 0
-    queue = []
-    if btree != None:
-        queue.append(btree)
-
-        while queue:
-            current = queue.pop(0)
-            #print current.data
-            if current.left_node != None and current.right_node == None:
-                count += 1
-                queue.append(current.left_node)
-            elif current.left_node == None and current.right_node != None:
-                count += 1
-                queue.append(current.right_node)
-            elif current.left_node and current.right_node:
-                queue.append(current.left_node)
-                queue.append(current.right_node)
-
-    return count
 ----------------------------------------------------------------------------------------------------------------
 Q: 给定一个大整数N，有如下的初始有序序列位于[0, N - 1]之间（见图）。请设计一个数据结构保存这个初始序列，
    然后写一个函数，接受一个input参数x, 满足0 <= x <= N - 1。 
