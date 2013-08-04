@@ -12,14 +12,14 @@
 之后，乘起来得到的900.这900里，除以2，有多少个2，就有多少个1；
 然后除以3，有多少个3，就有多少个3对应的2；然后除以5，有多少个5，就有多少个5对应的3。
 
-
+-----------------------------------------------------------------------------------------------------------
 //给定一个数组，数组中只包含0和1。请找到一个最长的子序列，其中0和1的数量是相同的。
 //例1：10101010 结果就是其本身。
 //例2：1101000 结果是110100
 原来是0和1的串，我们将0都换为-1。这样题目目标就变成，找到一个最长的子串，子串数字和是0。
 如果DP[i]==DP[j]，i 一种方法，我们用map保存DP的值到位置的映射，如下表：
 上面的这个思路，时间复杂度是O(n),空间复杂度也是O(n).
-
+-----------------------------------------------------------------------------------------------------------
 
 //给定只包含正数的数组，给出一个方法，将数组中的数拼接起来，得到的数，是最大的。 
 //例如： [4, 94, 9, 14, 1] 拼接之后，所得最大数为：9944141
@@ -79,6 +79,7 @@ Then, add the y coordinates of the top and bottom edges of the rectangle to the 
 The search takes O(n log n) time, since it takes O(n log n) time to sort the rectangles
 and each of the 2n iterations takes O(log n) time.
 
+----------------------------------------------------------------------------------------------------------
 
 //Q: 给你一个数组，它有N个8-bit整数， （比如，从0到255）， 和M个子数组，
 //[i, j] （每个子数组由两个下标 i 和 j 确定，0 <= i <= j < N）。对每个子数组，找到平均值和中值。
@@ -91,65 +92,6 @@ c[i][k]里面放b[0]到b[i]中k值出现的次数，对任何i j 中值保证在
 // Q: 每个任务之间有dependency，怎么安排任务顺序，使得执行任务i的时候，所有被depend的任务已经执行过了。
 
 A: 1. 拓扑排序 2. PERT网络 3. 建筑施工网络规划问题 4. 做邻接矩阵，每次删除出度为零的节点
-
-----------------------------------------------------------------------------------------------------------
-// Q: 有两个纯文本文件，其中一个较大，大约上万行，每行是一个具体的域名，比如wudaokou.haidian.beijing.com。
-//    另外一个较小，大约一千多行，每行是一个大域名，比如beijing.com。现在想找到一个较快的算法，
-//    迅速判断小文件中的大域名清单是否能涵盖大文件中的所有域名。 
-
-A:  追求算法效率可用trie，域名倒序，然后砍节点。追求编码简单就先reverse域名再排序，然后用binary search删区间.
-
-bool covered(const vector<string>& filters, const string& line){
-  typedef vector<string>::const_iterator Iterator;
-  Iterator filter = lower_bound(filters.begin(), filters.end(), line);
-  if (filter != filters.end() && *filter == line)
-    return true;
-  if (filter != filters.begin())
-  {
-    --filter;
-    if (line.size() >= filter->size()
-        && equal(filter->begin(), filter->end(), line.begin()))
-      return true;
-  }
-  return false;
-}
-
-int main(int argc, char* argv[])
-{
-  if (argc == 3)
-  {
-    vector<string> filters;
-    {
-      ifstream in2(argv[2]);
-      string filter;
-      while (getline(in2, filter))
-      {
-        reverse(filter.begin(), filter.end());
-        if (filter[filter.size()-1] != '.')
-          filter.push_back('.');
-
-        filters.push_back(filter);
-      }
-    }
-    sort(filters.begin(), filters.end());
-
-    {
-      ifstream in1(argv[1]);
-      string line;
-      while (getline(in1, line))
-      {
-        reverse(line.begin(), line.end());
-        if (line[line.size()-1] != '.')
-          line.push_back('.');
-        
-        if (!covered(filters, line))
-        {
-          cout << "remain " << line << '\n';
-        }
-      }
-    }
-  }
-}
 
 ----------------------------------------------------------------------------------------------------------------
 Q: 给定一个大整数N，有如下的初始有序序列位于[0, N - 1]之间（见图）。请设计一个数据结构保存这个初始序列，
