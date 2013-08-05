@@ -34,3 +34,17 @@ storage unit boundary, a zero width field is used before the one that you want t
 Be careful using them. It can require a surprising amount of run-time code to manipulate these things and you can
 end up using more space than they save.
 Bit fields do not have addresses—you can't have pointers to them or arrays of them.
+
+    union
+    {
+        struct
+        {
+            char a:1;
+            char b:2;
+            char c:3;
+        }d;
+        char e;
+    } f;
+    f.e = 1;
+    printf("%d/n",f.d.a);
+    return 0;
