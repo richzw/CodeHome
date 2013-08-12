@@ -9,6 +9,55 @@ Q: 在柱状图中找最大的矩形：给一组非负的整数来表示一个�
 b）小于的话，pop所有的大于它的元素，计算面积，更新最大值。
 这时如果堆栈空，push一个新的元素，高度等于当前元素，起始位置为0；否则，push当前元素高度和栈顶的起始位置。
 */
+#include <stack>
+
+using namespace std;
+
+typedef struct elem{
+    unsigned char   index;
+    unsigned int    val;
+}elem;
+
+int get_max_area(unsigned int arr[], int len)
+{
+    stack<elem> elem_stack;
+    int max_val = 0;
+
+    elem first;
+    first.index = 0;
+    first.val = arr[0];
+    elem_stack.push(first);
+
+    for (int i = 1; i < len; ++i)
+    {
+        if (elem_stack.size() > 0){
+            elem el = elem_stack.top();
+            if (arr[i] > el.val){
+                elem e;
+                e.index = i;
+                e.val = arr[i];
+                elem_stack.push(e);
+            }else{
+                int number = 1;
+                while (elem_stack.top().val > arr[i]){
+                    if (elem_stack.top().index * number > max_val){
+                        max_val = elem_stack.top().index*number;
+                    }
+                    ++number;
+                    elem_stack.pop();
+                }
+            }
+        }else{
+            elem new_elem;
+            new_elem.index = i;
+            new_elem.val = arr[i];
+
+            elem_stack.push(new_elem);
+        }
+    }
+
+    return max_val;
+}
 
 /*
 设柱状图为非负整数数组A, 则最大矩形的高度必定是数组的某一项A[i]。顾设f(i) 为以数组第i项的高度为矩形高度时矩形的最大宽度，
