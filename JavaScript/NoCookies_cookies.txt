@@ -1,0 +1,20 @@
+有另外一种比较隐蔽的用户追踪技术，不使用cookie或者Javascript。很多网站已经在用了，但知道的人不多。
+本文就来介绍一下这种技术是如何追踪用户，用户又该如何避免追踪。这种技术不依赖于：
+	* Cookies
+	* Javascript
+	* LocalStorage/SessionStorage/GlobalStorage
+	* Flash, Java或插件
+	* 你的IP地址或者User Agent头
+	* Panopticlick
+
+相反，它使用另外一种存储方式，而这种存储即使浏览器关闭仍然能够存在，那就是浏览器缓存。 
+即使你完全禁用了cookie和Javascript，甚至使用VPN服务，这种技术仍然能够跟踪到你。
+
+图像中的ETag是一种图像校验方式，当图像发生变化的时候，ETag也会随之发生变化。因此，浏览器会拿着图片和ETag去服务器进行校验，
+让服务器来应答这张图片是否发生改变，如果没有的话，这张图片就直接从浏览器缓存中命中返回，无需再去服务器重新拉取图片了。
+细心的读者可能已经大概知道这个是如何可以实现追踪的：浏览器把之前的ETag发回到服务器就OK了。
+不过，通过这个ETag貌似能产生好多好多Cookie，不是吗？
+于是，服务器可以给每个浏览器一个唯一的ETag，再次收到这个ETag的时候，就能知道是你了。
+
+https://github.com/lucb1e/cookielesscookies
+
