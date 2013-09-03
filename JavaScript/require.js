@@ -7,10 +7,10 @@
 //define函数是一个全局函数，不需要使用requirejs命名空间.
 define(["logger"], function(logger) {        
         return {
-             firstName: “John",
-             lastName: “Black“,
+             firstName: "John",
+             lastName: "Black",
              sayHello: function () {
-                logger.log(‘hello’);
+                logger.log('hello');
              }
         }
     }
