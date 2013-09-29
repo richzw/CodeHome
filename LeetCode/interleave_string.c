@@ -42,3 +42,41 @@ bool isInterleaved(char* a, char* b, char* c){
 	return ((*c == *a && isInterleaved(a+1, b, c+1))
 		||(*c == *b && isInterleaved(a, b+1, c+1)));
 }
+/*
+下面介绍一个动态规划的解法。一个问题能够用动态规划来解的一个前提是：要有重复的子 问题。这样把子问题的解存储起来，
+后面重复利用才可以提高算法的效率。这个问题有子问题么？考虑一个极端的例 子:a="XXX"，b="XXX"，c="XXXXXX"。子问题，
+显然存在。再不然，画出递归树，就很明了了。
+*/
+
+bool isInterleaved(char* a, char* b, char* c)
+{
+	int M = strlen(a), N = strlen(b);
+	bool I[M+1][N+1];
+	memset(I, 0, sizeof(I));
+
+	if ((M+N) != strlen(c))
+		return false;
+
+	for (int i = 0; i < M + 1; ++i)
+		for (int j = 0; j < N + 1; ++j){
+			if (i == 0 && j == 0)
+				I[i][j] = true;
+			// a is null
+			else if (i == 0 && b[j-1] == c[j-1])
+				I[i][j] = I[i][j-1];
+			// b is null
+			else if (j == 0 && a[i-1] == c[i-1])
+				I[i][j] = I[i-1][j];
+			// match a
+			else if (a[i-1] == c[i+j-1] && b[j-1] != c[i+j-1])
+				I[i][j] = I[i-1][j];
+			// match b
+			else if (a[i-1] != c[i+j-1] && b[j-1] == c[i+j-1])
+				I[i][j] = I[i][j-1];
+			//  match a and b at the same time
+			else if (a[i-1] == c[i+j-1] && b[j-1] == c[i+j-1])
+				I[i][j] = (I[i][j-1] || I[i-1][j]);
+		}
+
+	return I[M][N];
+}
