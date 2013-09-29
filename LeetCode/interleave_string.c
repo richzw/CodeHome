@@ -27,3 +27,18 @@ bool isInterleaved(char* a, char* b, char* c){
     
   return true;
 }
+
+/*
+a和b有相同字符的情况上面的算法，
+不能够处理a和b中有相同字符的情况，例如a="XXY"，b="XXZ"，c="XXZXXY"。如果要处理，有相同字符的情况也是比较直接的。
+有相同的出现，如果都匹配了c中的字符，则两种匹配分别都考虑，只要有一个返回true，整个算法就返回true。
+*/
+bool isInterleaved(char* a, char* b, char* c){
+	if (!(*a || *b || *c))
+		return true;
+	if (*c == '\0')
+		return false;
+		
+	return ((*c == *a && isInterleaved(a+1, b, c+1))
+		||(*c == *b && isInterleaved(a, b+1, c+1)));
+}
