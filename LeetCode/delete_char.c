@@ -25,3 +25,36 @@
 	  2. 然后考虑当前字符，如果不是‘b’或者‘a’，则拷贝字符
 状态转换非常简单，就是每次都检查，是前一个字符为‘a’
 */
+enum ST {ONE, TWO};
+void string_filter(char* str){
+	int state = ONE;
+	int j = 0;
+
+	for (int i = 0; str[i] != '\0'; ++i){
+		if (state == ONE && str[i] != 'a' && str[i] != 'b')
+		{
+			str[j] = str[i];
+			++j;
+		}
+		if (state == TWO && str[i] != 'c')
+		{
+			str[j] = 'a';
+			++j;
+			if (str[i] != 'a' && str[i] != 'b')
+			{
+				str[j] = str[i];
+				++j;
+			}
+		}
+		state = (str[i] == 'a')?TWO:ONE;
+		//attention!!!
+		if (j > 1 && str[j-2] == 'a' && str[j-1] == 'c')
+			j = j - 2;
+	}
+	if (state == TWO){
+		str[j] = 'a';
+		++j;
+	}
+
+	str[j] = '\0';
+}
