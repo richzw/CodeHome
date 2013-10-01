@@ -21,7 +21,24 @@ j==i+1时，P[i][j]=str[i]==str[i]
 ，所以外层循环应该是所要判断的字串的长度。
 */
 
+void isPalin(char* str)
+{
+	int len = strlen(str);
+	bool p[len][len] = {false};
 
+	// all strings which length is 1 is palin
+	for (int i = 0; i < len; ++i)
+		p[i][i] = true;
+
+	for (int L = 2; L <= len; ++L)
+		for (int i = 0; i < len - L +1; ++i){
+			j = i + len -1; // the end of palin string
+			if (L == 2)
+				p[i][j] = (str[i] == str[j]);
+			else
+				p[i][j] = (str[i] == str[j]) && p[i+1][j-1];
+		}
+}
 
 /*
 回文字串判断完毕之后，改如何计算最少分割呢？我们可以根据P构建一棵树，然后宽度有限遍历，找到树的最小深度。
