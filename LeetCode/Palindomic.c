@@ -60,6 +60,27 @@ string longestPalindromeSimple(string s) {
   return longest;
 }
 
+// DP
+void isPalin(char* str)
+{
+	int len = strlen(str);
+	bool p[len][len] = {false};
+
+	// all strings which length is 1 is palin
+	for (int i = 0; i < len; ++i)
+		p[i][i] = true;
+
+	for (int L = 2; L <= len; ++L)
+		for (int i = 0; i < len - L +1; ++i){
+			j = i + len -1; // the end of palin string
+			if (L == 2)
+				p[i][j] = (str[i] == str[j]);
+			else
+				p[i][j] = (str[i] == str[j]) && p[i+1][j-1];
+		}
+}
+
+
 // solution3: Manacher algorithm
 // Transform S into T.
 // For example, S = "abba", T = "^#a#b#b#a#$".
