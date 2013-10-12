@@ -32,3 +32,59 @@ B123412
 
 整体算法的时间复杂度为O(n)，空间复杂度为O(n)。进一步优化，可以将找波谷的一次循环省略。
 */
+int get_least_candy(int arr[], int len)
+{
+	if (len <= 0)
+		return 0;
+
+	int* pcandy = new int[len];
+
+	// get the least candy guys
+	if (arr[0] < arr[1])
+		*pcandy = 1;
+	else
+		*pcandy = 0;
+
+	for (int i = 1; i <= len-2; ++i)
+	{
+		if (arr[i] <= arr[i-1] && arr[i] <= arr[i+1])
+			*(pcandy+i) = 1;
+		else
+			*(pcandy+i) = 0;
+	}
+
+	if (arr[len-2] > arr[len-1])
+		*(pcandy+len-1) = 1;
+	else
+		*(pcandy+len-1) = 0;
+
+	// loop the pcandy from left to right
+	int weight = 1;
+	for (int i = 0; i < len; ++i)
+	{
+		if (*(pcandy+i) == 1)
+			weight = 1;
+		else if (arr[i+1] > arr[i])
+			*(pcandy+i) = ++weight;
+	}
+
+	// loop the pcandy from right to left, get the max value...
+	weight = 1;
+	for (int i = len-1; i >=0; --i)
+	{
+		if (*(pcandy+i) == 1)
+			weight = 1;
+		else if (arr[i-1] < arr[i]) // peak one
+			*(pcandy+i) = std::max(*(pcandy+i), ++weight);
+		else if (arr[i-1] > arr[i])
+			*(pcandy+i) = ++weight;
+	}
+
+	int sum = 0;
+	for (int i = 0; i < len; ++i)
+	{
+		sum += *(pcandy+i);
+	}
+
+	return sum;
+}
