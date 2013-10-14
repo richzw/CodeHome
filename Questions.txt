@@ -1,3 +1,25 @@
+Q:有一个链表，每一个节点除了next指针指向一下节点以外，
+又多出了一个指针random，指向链表中的任何一个节点，包括null。请给出方法完成链表的深拷贝。
+
+这个问题的关键就在于random指针如何完成拷贝，next指针一次遍历就完成了，random指针拷贝的关键在于，
+如何找到random指向的节点对应的新的节点。一般来讲，大家会想到用map来保存旧的节点到新的节点的映射，
+这样得到的方法的时间复杂度为O(n)，空间复杂度为O(n)。
+下面是一个可行的方法：oldlist为原始链表，copylist为新的链表，oldnode为oldlist中的节点，copynode为copylist中的节点：
+	1. 根据oldlist，创建copylist，只拷贝next指针
+	2. 保存oldnode到oldnode.next的映射
+	3. 将oldlist中的oldnode的next指针指向copylist中对应的copynode
+	4. 将copylist中的copynode的random指针指向oldlist中对应的oldnode
+	5. 对于copylist中的每一个节点：copynode.random=copynode.random.random.next
+	6. 根据第2步，建立的映射，恢复oldlist
+
+上面这个方法，需要额外的映射。下面介绍一个巧妙的方法，可以省去映射的部分
+	1. 对oldlist中的节点，依次作如下的操作：对于第i个节点oldnode[i]，生成拷贝节点copynode[i]，
+	并且插入在oldnode[i]和oldnode[i+1]之间，最后一个节点直接附加到oldlist后面即可。
+	2. 处理每一个copynode的random拷贝，及对每一个copynode=oldnode.next, oldnode.next.random=oldnode.random.next 
+	后面的next确保是copynode。
+	3. 通过如下的操作，恢复oldlist，以及生成copylist 1) oldnode.next = oldnode.next.next 2)
+	copynode.next = copynode.next.next 这里要注意，oldnode的最后一个节点，next是null
+---------------------------------------------------------------------------------------------------------------
 Q:一个数组A，数字出现的情况，只有以下三种：
 	1. 一些数字只出现一次
 	2. 一些数字出现两次
