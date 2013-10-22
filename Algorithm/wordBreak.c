@@ -33,3 +33,27 @@ bool word_break(vector<string> vec, string str)
 /*
 DP
 */
+bool word_break_sub(vector<string> vec, string str, int* dp, int index, int len)
+{
+	if (index > len || index < 0)
+		return false;
+	if (index == len && dp[index] == true)
+		return true;
+
+	if (dp[index] == false && dictionaryContains(vec, str))
+		dp[index] == true;
+
+	return word_break_sub(vec, str.substr(0, index++), dp, 0, len)
+		&& word_break_sub(vec, str.substr(index, len-index), dp, 0, len);
+}
+
+bool word_break_dp(vector<string> vec, string str)
+{
+	int len = vec.size();
+	if (len == 0)
+		return true;
+	int* dp = new int[len];
+	memset(dp, 0, sizeof(int));
+
+	return word_break_sub(vec, str, dp, 0, len);
+}
