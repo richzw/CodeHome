@@ -1,4 +1,3 @@
-
 class _EditBufferNode:
 	def __init__(self, text):
 		self.text = text
@@ -63,3 +62,47 @@ class EditBuffer:
 		self._curLineNdx -= nlines
 		if self._curColNdx >= self.numChars():
 			self.moveLineEnd()
+	def moveLeft(left):
+		if self._curColNdx == 0:
+			if self._curLineNdx > 0:
+				self.moveUp(1)
+				self.moveLineEnd()
+		else:
+			self._curColNdx -= 1
+
+	def breakLine(self):
+		nlContents = self._curLine.text[self._curColNdx:]
+		del self._curLine.text[self._curColNdx]
+		self._curLine.append('\n')
+		# insert the new line and increment the line counter
+		self._insertNode(self._curLine, nlContents)
+		# move the cursor
+		self._curLine = newLine
+		self._curLineNdx += 1
+		self._curColNdx = 0
+
+	def addChar(self, char):
+		if char == '\n':
+			self.breakLine()
+		else:
+			ndx = self._curColNdx
+			if self.insertMode():
+				self._curLine.text.insert(ndx, char)
+			else:
+				if self.getChar() == '\n':
+					self._curLine.text.insert(ndx, char)
+				else:
+					self._curLine.text[ndx] = char
+			self._curColNdx += 1
+
+	def deleteChar(self):
+		if self.getChar() != '\n':
+			self._curLine.text.pop(self._curColNdx)
+		else:
+			if self._curLine is self._lastLine:
+				return
+			else:
+				nextLine = self._curLine.next
+				self._curLine.text.pop()
+				self._curLine.text.extend(nextLine.text)
+				self._removeNode(nextLine)
