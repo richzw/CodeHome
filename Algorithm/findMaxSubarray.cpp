@@ -24,3 +24,21 @@ Current element | x  | y  | z
              -8 | 2  | -2 | 12
              -6 | -4 | -4 | 12
               4 | 0  | -4 | 12
+
+
+int find_max_sub_array(int arr[], int len){
+	int max_sum = 0;
+
+	int sub_sum = 0, y = 0;
+
+	for (int index = 0; index < len; ++index){
+		sub_sum += arr[index];
+		if (sub_sum < y)
+			y = sub_sum;
+
+		if (sub_sum-y > max_sum)
+			max_sum = sub_sum-y;
+	}
+
+	return max_sum;
+}
