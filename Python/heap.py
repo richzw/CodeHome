@@ -43,3 +43,28 @@ class MaxMap:
         if large != ndx:
             swap(self._container[large], self._container[ndx])
             self._siftDown(large)
+            
+    def simpleHeapSort(self, tmpList):
+        n = len(tmpList)
+        sortList = list()
+
+        for i in range(n):
+            heap.add(tmpList[i])
+
+        for i in range(n, 0, -1):
+            sortList[i] = heap.peek()
+
+        return sortList
+
+    #in-place heap sort
+    def heapSort(self, tmpList): 
+        n = len(tmpList)
+
+        for i in range(n):
+            _siftUp(i)
+
+        for i in range(n-1, 0, -1):
+            tmp = theList[i]
+            theList[j] = theList[0]
+            theList[0] = tmp
+            _siftDown(i)            
