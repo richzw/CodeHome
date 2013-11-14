@@ -20,7 +20,7 @@ tree_node* insert_tree(tree_node* node, char ch, string code){
 		}
 	}
 
-	if (code.at(1) == '.'){
+	if (code.at(0) == '.'){
 		node->left = insert_tree(node->left, ch, code.substr(1));	
 	}else{
 		node->right = insert_tree(node->right, ch, code.substr(1));
@@ -44,4 +44,38 @@ tree_node* build_decision_tree(map<char, string> morse_code){
 	}
 
 	return root;
+}
+
+int main(){
+	map<char, string> morse_code;
+	morse_code.insert(make_pair('A', ".-"));
+	morse_code.insert(make_pair('B', "-..."));
+	morse_code.insert(make_pair('C', "-.-."));
+	morse_code.insert(make_pair('D', "-.."));
+	morse_code.insert(make_pair('E', "."));
+	morse_code.insert(make_pair('F', "..-."));
+	morse_code.insert(make_pair('G', "--."));
+	morse_code.insert(make_pair('H', "...."));
+	morse_code.insert(make_pair('I', ".."));
+	morse_code.insert(make_pair('J', ".---"));
+	morse_code.insert(make_pair('K', "-.-"));
+	morse_code.insert(make_pair('L', ".-.."));
+	morse_code.insert(make_pair('M', "--"));
+	morse_code.insert(make_pair('N', "-."));
+	morse_code.insert(make_pair('O', "---"));
+	morse_code.insert(make_pair('P', ".--."));
+	morse_code.insert(make_pair('Q', "--.-"));
+	morse_code.insert(make_pair('R', ".-."));
+	morse_code.insert(make_pair('S', "..."));
+	morse_code.insert(make_pair('T', "-"));
+	morse_code.insert(make_pair('U', "..-"));
+	morse_code.insert(make_pair('V', "...-"));
+	morse_code.insert(make_pair('W', ".--"));
+	morse_code.insert(make_pair('X', "-..-"));
+	morse_code.insert(make_pair('Y', "-.--"));
+	morse_code.insert(make_pair('Z', "--.."));
+
+	build_decision_tree(morse_code);	
+	
+	return 0;
 }
