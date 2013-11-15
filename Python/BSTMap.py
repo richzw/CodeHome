@@ -15,10 +15,22 @@ class BSTMap:
         return node
 
     def _bstSearch(self, subtree, target):
-        pass
+        if subtree is None:
+            return subtree
+        elif subtree.value < target:
+            subtree.right = _bstSearch(subtree.right, target)
+        elif subtree.value > target:
+            subtree.left = _bstSearch(subtree.left, target)
+        else:
+            return subtree
 
     def _bstMin(self, subtree):
-        pass
+        if subtree is None:
+            return subtree
+        if subtree.left is None:
+            return subtree
+        else:
+            return _bstMin(subtree.left)
 
     def add(self, key, value):
         node = self._bstSearch(key)
@@ -30,12 +42,39 @@ class BSTMap:
             self._size += 1
             return True
 
-    def _bstInsert(self, key, value):
-        pass
+    def _bstInsert(self, subtree, key, value):
+        if subtree is None:
+            subtree = _BSTMapNode(key, value)
+        elif subtree.value < key:
+            subtree.right = self._bstInsert(subtree.right, key, value)
+        elif subtree.value > key:
+            subtree.left = self._bstInsert(subtree.left, key, value)
+        return subtree
 
     def remove(self, key):
         self._root = self._bstRemove(self._root, key)
         self._size -= 1
 
     def _bstRemove(self, subtree, target):
-        pass
+        if subtree is None:
+            return subtree
+        elif subtree.value < target:
+            subtree.right = self._bstRemove(subtree.right, target)
+        elif subtree.value > target:
+            subtree.left = self._bstRemove(subtree.left, target)
+        else:
+            # leaf node
+            if subtree.left is None and subtree.right is None:
+                return None
+            # only one child node
+            elif subtree.left is None or subtree.right is None:
+                if subtree.left is not None:
+                    return subtree.left
+                else:
+                    return subtree.right
+            else: # has two children
+                successor = self._bstMin(subtree.right)
+                subtree.value = successor.value
+                subtree.key = successor.key
+                subtree.right = self._bstRemove(subtree.right, successor.key)
+                return subtree
