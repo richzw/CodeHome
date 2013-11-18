@@ -78,3 +78,49 @@ class BSTMap:
                 subtree.key = successor.key
                 subtree.right = self._bstRemove(subtree.right, successor.key)
                 return subtree
+class _BSTMapIterator:
+    def __init__(self, root, size):
+        self._theKeys = Array(size)
+        self._curItem = 0
+        self._bstTranversal(root)
+        self._curItem = 0
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self._curItem < len(self._theKeys):
+            key = self._theKeys[self._curItem]
+            self._curItem += 1
+            return key
+        else:
+            raise StopIteration
+
+    def _bstTranversal(self, subtree):
+        if subtree is not None:
+            self._bstTranversal(subtree.left)
+            self._theKeys[self._curItem] = subtree.key
+            self._curItem += 1
+            self._bstTranversal(subtree.right)
+
+class _BSTMapIter:
+    def __init__(self, root):
+        self._theStack = Stack()
+        self._tranverseToMinNode(root)
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self._theStack.isEmpty():
+            raise StopIteration
+        else:
+            node = self._theStack.pop()
+            key = node.key
+            if node.right is not None:
+                self._tranverseToMinNode(node.right)
+
+    def _tranverseToMinNode(self, subtree):
+        if subtree is not None:
+            self._theStack.push(subtree)
+            self._tranverseToMinNode(subtree.left)                
