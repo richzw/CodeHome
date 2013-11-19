@@ -13,3 +13,45 @@ dp[i][j]的意思是长度为i的文本串需要改变dp[i][j]个序列顺利到
 k代表当前边的权。最后在min(dp[len][j])即为所求。
 
 */
+#define MAX 20
+typedef struct Tries{
+	bool danger;
+	bool flag;	
+	int next[MAX];
+}Tries;
+int find_dna_seq(char dna[]){
+	int dp[MAX][MAX] = {0};
+	int nP = 10; //tmp value
+	int code[MAX];
+	Tries* trie = new Tries[MAX];
+
+	int len = strlen(dna);
+	for (int i = 0; i <= len; ++i)
+		for (int j = 0; j < nP; ++j)
+			dp[i][j] = -1;
+	
+	int i, j, k;
+	dp[0][0] = 0;
+	for (i = 1; i <= len; ++i){
+		for (j = 0; j < nP; ++j){
+			if (trie[j].danger) continue;
+			if (dp[i-1][j] == -1) continue;
+			for (k = 0; k < 4; ++k){
+				int nNext = trie[j].next[k];
+				if (trie[nNext].danger)
+					continue;
+				int temp = dp[i-1][j] + (k != code[dna[i-1]]);
+				dp[i][nNext] = min(dp[i][nNext], temp);
+			}
+		}
+	}
+
+	int result = -1;
+	for (i = 0; i < nP; ++i){
+		if (!trie[i].flag && dp[len][i] != -1){
+			result = result == -1? dp[len][i]:min(result, dp[len][i]);
+		}
+	}
+
+	return result;
+}
