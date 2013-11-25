@@ -39,6 +39,27 @@ string delete_number(string str, int k){
 	return str;
 }
 
+string deleteNum(string input, int k){
+	int k_orig = k;
+	int len = input.size();
+
+	while (k){
+		int i = 0;
+		for (; i < len - 1; ++i){
+			if (input[i] > input [i+1])
+				break;
+		}
+
+		for (; i < len - 1; ++i)
+			input[i] = input[i+1];
+
+		--k;
+		--len;
+	}
+
+	return input.substr(0, input.size() - k_orig);
+}
+
 string delete_number_v1(string str, int k){
 	int len = str.length();
 	int index = 0;
