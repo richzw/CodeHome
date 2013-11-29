@@ -16,49 +16,51 @@
 第一个方法就是记忆法，将计算过的结果缓存起来，这样可以后续接着使用。但是更近一步，我们是可以采用动态规划的方法的。
 很多同学也都直接的想到了。
 */
-string map_string_recur(string number_str, string str, unordered_map<string, string> str_map, unordered_map<int, char> char_map){
-	if (number_str.length() <= 0){
+string map_string_recur(string number_str, int idx, string str, unordered_multimap<string, string>& str_map, unordered_map<int, char> char_map){
+	if (idx >= number_str.length()){
 		cout << str.c_str() << endl;
 		return str;
 	}
 
 	string ret_str;
-	unordered_map<string, string>::iterator itor = str_map.find(number_str);
+	unordered_multimap<string, string>::iterator itor = str_map.find(number_str.substr(idx));
 	if (itor != str_map.end()){
 		str += itor->second;
 		cout << str.c_str() << endl;
 		return str;
 	}else{
-		if (number_str.length() > 1){
+		if (number_str.length() - idx >= 2){
 			// 2 numbers case
-			int num = atoi(number_str.substr(0, 2).c_str());
+			int num = atoi(number_str.substr(idx, 2).c_str());
 			if (num > 0 && num < 27){
-				char ch = char_map[num];
-				str.push_back(ch);
-				ret_str = map_string_recur(number_str.substr(2), str, str_map, char_map);
-				str_map.insert(make_pair<string, string>(number_str, ret_str));
+				str.push_back(char_map[num]);
+				ret_str = map_string_recur(number_str, idx+2, str, str_map, char_map);
+				str_map.insert(make_pair<string, string>(number_str.substr(0, idx+2), str));
+				if (ret_str.length() > str.length())
+					str_map.insert(make_pair<string, string>(number_str.substr(idx+2), ret_str.substr(str.length())));
 				str.pop_back();
 			}
 		}
 		// 1 number case
-		int n = atoi(number_str.substr(0,1).c_str());
-		char c = char_map[n];
-		str.push_back(c);
-		ret_str = map_string_recur(number_str.substr(1), str, str_map, char_map);
-		str_map.insert(make_pair<string, string>(number_str, ret_str));
+		int n = atoi(number_str.substr(idx, 1).c_str());
+		str.push_back(char_map[n]);
+		ret_str = map_string_recur(number_str, idx+1, str, str_map, char_map);
+		str_map.insert(make_pair<string, string>(number_str.substr(0, idx+1), str));
+		if (ret_str.length() > str.length())
+			str_map.insert(make_pair<string, string>(number_str.substr(idx+1), ret_str.substr(str.length())));
 	}
 
-	return str;
+	return ret_str;
 }
 
 string number_map_string(string number_str){
 	unordered_map<int, char> char_map; // 'a' - 'z' map to 1-26
-	unordered_map<string, string> str_map; // store the results
+	unordered_multimap<string, string> str_map; // store the results
 	string str = "";
 
 	for (int i = 1; i < 27; ++i){
 		char_map[i] = 'a'+i-1;
 	}
 
-	return map_string_recur(number_str, str, str_map, char_map);
+	return map_string_recur(number_str, 0, str, str_map, char_map);
 }
