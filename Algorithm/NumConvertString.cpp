@@ -64,3 +64,60 @@ string number_map_string(string number_str){
 
 	return map_string_recur(number_str, 0, str, str_map, char_map);
 }
+
+//v2
+string convert_string(string num_str, int idx, string str, unordered_multimap<string, string> str_map){
+	if (idx == num_str.length()){
+		cout << str.c_str() << endl;
+		return str;
+	}
+	
+	while (idx < num_str.length()){
+		for (int gap = 1; gap < 3; ++gap){
+			unordered_multimap<string, string>::iterator itor = str_map.find(num_str.substr(idx, gap));
+			str += itor->second;
+			str = convert_string(num_str, idx+gap, str, str_map);
+		}
+	}
+
+	return str;
+}
+
+string number_convert_string(string num_str){
+	unordered_multimap<string, string> str_map;
+	unordered_multimap<string, string>::iterator itor;
+	int len = num_str.length();
+
+	// build the string map
+	for (int i = 0; i < len; ){
+		for (int gap = 1; gap < 3; ++gap){
+			string str = "";
+
+			itor = str_map.find(num_str.substr(i));
+			if (itor != str_map.end()){
+				i = len;
+				continue;
+			}
+			itor = str_map.find(num_str.substr(i, gap));
+			if (itor != str_map.end()){
+				i += gap;
+				continue;
+			}
+
+			int nn = atoi(num_str.substr(i, gap).c_str());
+			if (nn < 27 && nn > 0){
+				str.push_back('a'+nn-1);
+				i += gap;
+				str_map.insert(make_pair<string, string>(std::to_string((long long)nn), std::to_string((long long)'a'+nn-1)));
+				str_map.insert(make_pair<string, string>(num_str.substr(0, i), str));
+			}else
+				continue;
+		}
+	}
+
+	string ret_str = "";
+	// build the output string
+	convert_string(num_str, 0, ret_str, str_map);
+
+	return num_str;
+}
