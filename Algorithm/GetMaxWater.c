@@ -63,3 +63,33 @@ int get_max_water(int arr[], int len){
 	else
 		return max_water_left > max_water_right? max_water_left: max_water_right;
 }
+
+// v2
+int volume_calcuate(int walls[] , int length){
+    int * p_l = &walls[0];
+    int * p_r = &walls[length-1];
+    int max_l = walls[0];
+    int max_r = walls[length-1];
+
+    int total_volume = 0;
+
+    while(p_r > p_l){
+        if (max_l < max_r){
+            p_l++;
+            if (*p_l >= max_l){
+                max_l = *p_l;
+            }else{
+                total_volume += max_l - *p_l;
+            }
+        }else{
+            p_r--;
+            if (*p_r >= max_r){
+                max_r = *p_r;
+            }
+            else{
+                total_volume += max_r - *p_r;
+            }
+        }
+    }
+    return total_volume;
+}
