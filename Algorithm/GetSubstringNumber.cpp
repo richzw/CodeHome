@@ -10,7 +10,29 @@
  与这种题目类似的还有编辑距离问题，某个字符串是否是另外两个字符串的interleaving问题，
 */
 int get_sub_string_number(string str, string subStr){
+	int s_len = str.size();
+	int t_len = subStr.size();
+	if (s_len == 0 || t_len == 0)
+		return 0;
 
+	int** dp = new int*[t_len+1];
+	for (int i = 0; i < t_len+1; ++i)
+		dp[i] = new int[s_len+1];
+
+	for (int i = 0; i < t_len; ++i)
+		dp[i][0] = 0;
+	for (int j = 0; j < s_len; ++j)
+		dp[0][j] = 1;
+
+	for (int i = 0; i < t_len; ++i)
+		for (int j = 0; j < s_len; ++j){
+			if (subStr[i] == str[j])
+				dp[i+1][j+1] = dp[i][j] + dp[i+1][j];
+			else
+				dp[i+1][j+1] = dp[i+1][j];
+		}
+
+	return dp[t_len][s_len];
 }
 
 int numSubSequence(string s, string t){
