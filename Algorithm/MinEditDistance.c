@@ -48,3 +48,41 @@ int get_min_edit_distance(string word1, string word2){
 
 	return vec[len1][len2];
 }
+
+//recursive version
+int edit_distance_helper(string w1, int w1Idx, string w2, int w2Idx, unordered_map<string, int>& map){
+	string key = to_string((long long)w1Idx) + "," + to_string((long long)w2Idx);
+	unordered_map<string, int>::iterator itor; 
+	if ((itor = map.find(key)) != map.end()){
+		return itor->second;
+	}
+
+	int edit_dis = 0;
+	if (w1Idx == w1.length()-1 && w2Idx < w2.length()){
+		return w2.length() - w2Idx;
+	}else if (w2Idx == w2.length()-1 && w1Idx < w1.length()){
+		return w1.length() - w1Idx;
+	}else {
+		if (w1[w1Idx] == w2[w2Idx]){
+			edit_dis = edit_distance_helper(w1, w1Idx+1, w2, w2Idx+1, map);
+		}else{
+			//insert
+			int if_insert = edit_distance_helper(w1, w1Idx, w2, w2Idx+1, map) + 1;
+			//replace
+			int if_replace = edit_distance_helper(w1, w1Idx+1, w2, w2Idx+1, map) + 1;
+			//delete
+			int if_delete = edit_distance_helper(w1, w1Idx+1, w2, w2Idx, map) + 1;
+
+			edit_dis = min(if_insert, min(if_replace, if_delete));
+		}
+	}
+	map.insert(make_pair<string, int>(key, edit_dis));
+
+	return edit_dis;
+}
+
+int min_edit_distance(string w1, string w2){
+	unordered_map<string, int> hash_map;
+	
+	return edit_distance_helper(w1, 0, w2, 0, hash_map);
+}
