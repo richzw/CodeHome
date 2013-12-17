@@ -24,3 +24,30 @@ bst_node* convertoBSTHelper(int arr[], int left, int right){
 bst_node* sortedArrayConvertoBST(int arr[], int len){
 	return convertoBSTHelper(arr, 0, len-1);
 }
+
+/*Write a function isBST(BinaryTree *node) to verify if a given binary tree is a Binary Search Tree (BST) or not.*/
+bool isBstLessThan(bst_node* tree, int val){
+	if (!tree)
+		return true;
+	return (tree->data < val &&
+		isBstLessThan(tree->left, val)&&
+		isBstLessThan(tree->right, val));
+}
+
+bool isBstGreaterThan(bst_node* tree, int val){
+	if (!tree)
+		return true;
+	return (tree->data > val &&
+		isBstGreaterThan(tree->left, val) &&
+		isBstGreaterThan(tree->right, val));
+}
+
+bool isBstBruteForce(bst_node* tree){
+	if (!tree)
+		return true;
+
+	return (isBstLessThan(tree->left, tree->data)&&
+		isBstGreaterThan(tree->right, tree->data)&&
+		isBstBruteForce(tree->left)&&
+		isBstBruteForce(tree->right));
+}
