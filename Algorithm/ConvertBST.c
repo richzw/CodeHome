@@ -51,3 +51,22 @@ bool isBstBruteForce(bst_node* tree){
 		isBstBruteForce(tree->left)&&
 		isBstBruteForce(tree->right));
 }
+
+// more better solution
+bool isBstHelper(bst_node* tree, int min, int max){
+	if (!tree)
+		return true;
+
+	if (tree->data > min && tree->data < max)
+		return (isBstHelper(tree->left, min, tree->data)&&
+		isBstHelper(tree->right, tree->data, max));
+	else
+		return false;
+}
+
+bool isBst(bst_node* tree){
+	if (!tree)
+		return true;
+
+	return isBstHelper(tree, INT_MIN, INT_MAX);
+}
