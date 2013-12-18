@@ -70,3 +70,28 @@ bool isBst(bst_node* tree){
 
 	return isBstHelper(tree, INT_MIN, INT_MAX);
 }
+
+// the third solution
+bool isBstInorderHelper(bst_node* tree, int& prev){
+	if (!tree)
+		return true;
+
+	// bug version
+	//return (isBstInorderHelper(tree->left, prev)&&
+	//	(tree->data > prev)&&(prev = tree->data)&&
+	//	isBstInorderHelper(tree->right, prev));
+	if (isBstInorderHelper(tree->left, prev)){
+		if (tree->data > prev){
+			prev = tree->data;
+			return isBstInorderHelper(tree->right, prev);
+		}else
+			return false;
+	}else
+		return false;
+}
+
+bool isBstInorder(bst_node* tree){
+	int prev = INT_MIN;
+
+	return isBstInorderHelper(tree, prev);
+}
