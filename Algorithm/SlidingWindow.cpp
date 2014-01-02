@@ -25,3 +25,27 @@ void get_max_window(int A[], int len, int w, int B[]){
 
 	B[len-w] = pq.top().first;
 }
+
+// better solution, O(N) time
+void get_max_window_improve(int A[], int len, int w, int B[]){
+	deque<int> queue;
+
+	for (int i = 0; i < w; ++i){
+		while (!queue.empty() && A[i] > queue.back())
+			queue.pop_back();
+		queue.push_back(A[i]);
+	}
+
+	for (int i = w; i < len; ++i){
+		B[i-w] = queue.front();
+
+		while (!queue.empty() && A[i] > queue.back()){
+			queue.pop_back();
+		}
+
+		if (queue.size() < w)
+			queue.push_back(A[i]);
+	}
+
+	B[len-w] = queue.front();
+}
