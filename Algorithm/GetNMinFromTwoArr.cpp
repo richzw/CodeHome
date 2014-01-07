@@ -38,3 +38,27 @@ int* merge_two_array(int a[], int a_len, int b[], int b_len, int k){
 
 	return presult;
 }
+
+//A better way, O(k):
+//There is an improvement from the above method, Using two pointers, you can traverse both arrays without actually merging them,
+//thus without the extra space. Both pointers are initialized to point to head of A and B respectively, 
+//and the pointer that has the larger smaller of the two is incremented one step.
+void merge_v1_helper(int a[], int** pa, int a_len, int b[], int** pb, int b_len, int k){
+	if (*pa >= a+a_len-1){
+		*pb += k - a_len - (*pb - b)/sizeof(int*);
+		return;
+	}else if (*pb >= b+b_len-1){
+		*pa += k - b_len - (*pa - a)/sizeof(int*);
+		return;
+	}
+
+	if ((*pb - b)/sizeof(int*) + (*pa - a)/sizeof(int*) >= k)
+		return;
+
+	if (**pa > **pb)
+		*pb++;
+	else
+		*pa++;
+
+	return merge_v1_helper(a, pa, a_len, b, pb, b_len, k);
+}
