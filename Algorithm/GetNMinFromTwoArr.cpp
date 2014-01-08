@@ -62,3 +62,45 @@ void merge_v1_helper(int a[], int** pa, int a_len, int b[], int** pb, int b_len,
 
 	return merge_v1_helper(a, pa, a_len, b, pb, b_len, k);
 }
+
+int* findKthSmallest_v2(int a[], int a_len, int b[], int b_len, int k){
+	if (k > a_len+b_len)
+		return NULL;
+
+	int* pa = a;
+	int* pb = b;
+
+	merge_v1_helper(a, &pa, a_len, b, &pb, b_len, k);
+
+	return a;
+}
+
+//The best solution, but non-trivial, O(lg m + lg n):
+//Binary search is a great example of achieving logarithmic complexity by halving its search space in each iteration. 
+//Maintaining the invariant
+//i + j = k – 1,
+//If Bj-1 < Ai < Bj, then Ai must be the k-th smallest,
+//or else if Ai-1 < Bj < Ai, then Bj must be the k-th smallest.
+int findKthSmallest(int a[], int a_len, int b[], int b_len, int k){
+	if (k > a_len+b_len)
+		return 0;
+
+	int i = (float)a_len/(a_len+b_len)*(k-1); // attention: k - 1!!!
+	int j = (k-1) - i;                        // invariant: i + j = k-1
+
+	int ai_1 = (i == 0)?INT_MIN:a[i-1];
+	int bj_1 = (j == 0)?INT_MIN:b[j-1];
+	int ai = (i == a_len)?INT_MAX:a[i];
+	int bj = (j == b_len)?INT_MAX:b[j];
+
+	if (bj_1 < ai && ai < bj)
+		return ai;
+	else if (ai_1 < bj && bj < ai)
+		return bj;
+
+	if (ai < bj)
+		return findKthSmallest(a+i+1, a_len-i-1, b, b_len, k-i-1);
+	else
+		return findKthSmallest(a, a_len, b+j+1, b_len-j-1, k-j-1);
+}
+
