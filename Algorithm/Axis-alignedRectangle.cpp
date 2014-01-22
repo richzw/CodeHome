@@ -30,3 +30,15 @@ bool is_point_in_rectangle(const Rect& rect, const Point& p) {
   return (P3_P4.Dot(TWO_P_C - P3_P4) <= 0 && P3_P4.Dot(TWO_P_C + P3_P4) >= 0) &&
          (P1_P4.Dot(TWO_P_C - P1_P4) <= 0 && P1_P4.Dot(TWO_P_C + P1_P4) >= 0);
 }
+
+/*Given two axis-aligned rectangles A and B. Write a function to determine if the two rectangles overlap.*/
+/*
+A much easier and better approach would be to think from the opposite. How about asking yourself how the two rectangles cannot overlap each other? 
+Two rectangles do not overlap when one is above/below, or to the left/right of the other rectangle.
+
+The condition’s expression is:
+! ( P2.y < P3.y || P1.y > P4.y || P2.x < P3.x || P1.x > P4.x )
+
+Using De Morgan’s law, we can further simplify the above expression to:
+( P2.y = P3.y && P1.y = P4.y && P2.x = P3.x && P1.x = P4.x )
+*/
