@@ -14,8 +14,6 @@ coordinates of the upper‐left corner and the bottom‐right corner.
  The rotation equation can be written as x’ = ux*x + uy*y and y’ = vx*x + vy*y, where (x,y) is the original point, (x’,y’) is the rotated point, 
  (ux,uy) and (vx,vy) are both the normalized orthogonal vector of the axes of the rectangle (see figure above).
 */
-
-
 bool is_point_in_rectangle(const Rect& rect, const Point& p) {
   Vector2d P1(rect.p1.x, rect.p1.y);
   Vector2d P2(rect.p2.x, rect.p2.y);
@@ -30,6 +28,7 @@ bool is_point_in_rectangle(const Rect& rect, const Point& p) {
   return (P3_P4.Dot(TWO_P_C - P3_P4) <= 0 && P3_P4.Dot(TWO_P_C + P3_P4) >= 0) &&
          (P1_P4.Dot(TWO_P_C - P1_P4) <= 0 && P1_P4.Dot(TWO_P_C + P1_P4) >= 0);
 }
+
 
 /*Given two axis-aligned rectangles A and B. Write a function to determine if the two rectangles overlap.*/
 /*
