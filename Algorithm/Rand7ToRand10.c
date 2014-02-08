@@ -37,3 +37,37 @@ int rand10(){
 
 	return 1+(idx-1)%10;
 }
+
+/*
+It seems wasteful to throw away the integers in the range 41 to 49. In fact, we could reuse them in the hope of minimizing the number of calls to rand7().
+In the event that we could not generate a number in the desired range (1 to 40), it is equally likely that each number of 41 to 49 would be chosen.
+In other words, we are able to obtain integers in the range of 1 to 9 uniformly. Now, run rand7() again and we obtain integers in the range of 1 to 63 uniformly. 
+Apply rejection sampling where the desired range is 1 to 60. If the generated number is in the desired range (1 to 60), we return the number. 
+If it is not (61 to 63), we at least obtain integers of 1 to 3 uniformly. Run rand7() again and we obtain integers in the range of 1 to 21 uniformly.
+The desired range is 1 to 20, and in the unlikely event we get a 21, we reject it and repeat the entire process again.
+*/
+int rand10Imp() {
+	int row, col, idx;
+
+	while(true){
+		row = rand7();
+		col = rand7();
+		idx = col + (row-1)*7;
+		if (idx <= 40)
+			break;
+		
+		row = idx - 40;
+		col = rand7();
+		idx = col + (row-1)*7;
+		if (idx <= 60)
+			break;
+
+		row = idx - 60;
+		col = rand7();
+		idx = col +(row-1)*7;
+		if (idx <= 20)
+			break;
+	}
+
+	return 1+(idx+1)%10;
+}
