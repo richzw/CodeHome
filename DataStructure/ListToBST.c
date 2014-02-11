@@ -1,4 +1,30 @@
 /*
+* convert sorted array to BST
+*/
+typedef struct BinaryTree{
+	BinaryTree* left;
+	BinaryTree* right;
+	int			data;
+	BinaryTree(int n){
+		data = n;
+	}
+}BinaryTree;
+
+BinaryTree* sortedArrayToBST(int arr[], int start, int end) {
+  if (start > end) return NULL;
+  // same as (start+end)/2, avoids overflow.
+  int mid = start + (end - start) / 2;
+  BinaryTree *node = new BinaryTree(arr[mid]);
+  node->left = sortedArrayToBST(arr, start, mid-1);
+  node->right = sortedArrayToBST(arr, mid+1, end);
+  return node;
+}
+ 
+BinaryTree* sortedArrayToBST(int arr[], int n) {
+  return sortedArrayToBST(arr, 0, n-1);
+}
+
+/*
 Q1: Given a singly linked list where elements are sorted in ascending order, convert it to a height balanced BST.
 
 top-down solution: run time complexity is O(NlgN), easy to implementation
