@@ -57,3 +57,43 @@ bool findMinWindow(const char* str, const char* pattern, int& winBegin, int& win
 
 	return (m.size() == pat_len)?true:false;
 }
+
+//Both the begin and end pointers can advance at most N steps (where N is S‘s size) in the worst case, 
+//adding to a total of 2N times. Therefore, the run time complexity must be in O(N).
+bool findMinWindow_improve(const char* str, const char* pattern, int& winBegin, int& winEnd){
+	int slen = strlen(str);
+	int plen = strlen(pattern);
+	int hmap[256] = {0};
+
+	for (int i = 0; i < plen; ++i)
+		hmap[pattern[i]]++;
+
+	int hasFound[256] = {0};
+	int min_window = INT_MAX;
+	int count = 0;
+
+	for (int begin = 0, end = 0; end < slen; ++end){
+		if (hmap[str[begin]] == 0)
+			continue;
+		hasFound[str[begin]]++;
+		if (hasFound[str[begin]] <= hmap[str[begin]])
+			++count;
+
+		if (count == plen){
+			while (hmap[str[begin]] == 0 || hasFound[str[begin]] > hmap[str[begin]]){
+				if (hasFound[str[begin]] > hmap[str[begin]])
+					hasFound[str[begin]]--;
+				begin++;
+			}
+
+			int len = end - begin + 1;
+			if (len > min_window){
+				min_window = len;
+				winBegin = begin;
+				winEnd = end;
+			}
+		}// end if
+	}// end for
+
+	return (count == plen)?true:false;
+}
