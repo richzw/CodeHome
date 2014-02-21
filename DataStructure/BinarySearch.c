@@ -31,3 +31,17 @@ int binary_search_imp(int* A, int n, int target){
 	else
 		return low;
 }
+
+int binary_search_first_position(int *A, int n, int target) {
+	int end[2] = { -1, n };
+	while (end[0] + 1 < end[1]) {
+		int mid = (end[0] + end[1]) / 2;
+		int sign = (unsigned)(A[mid] - target) >> 31;
+		end[1-sign] = mid;
+	}
+	int high = end[1];
+	if (high >= n || A[high] != target)
+		return -high - 1;
+	else
+		return high;
+}
