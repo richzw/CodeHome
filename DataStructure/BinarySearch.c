@@ -45,3 +45,21 @@ int binary_search_first_position(int *A, int n, int target) {
 	else
 		return high;
 }
+
+// loop invariant
+int binary_search_last_position(int* A, int n, int target){
+	int low = -1, high = n;
+	// assert(A != NULL && n >= 0);
+	while (low + 1 < high){
+		int mid = (low + high) >> 1;
+		if (A[mid] > high)
+			high = mid;
+		else
+			low = mid;
+	}
+
+	if (low < 0 || A[low] != target)
+		return -low-2;
+	else
+		return low;  // low == high - 1
+}
