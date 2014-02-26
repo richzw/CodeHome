@@ -12,3 +12,20 @@
 11. 一个有序（升序）数组，没有重复元素，在某一个位置发生了旋转后，求最小值所在位置
 12. 一个有序（升序）数组，没有重复元素，在某一个位置发生了旋转后，求第k(k > 0)小元素
 */
+
+//给定一个有序（非降序）数组A，可含有重复元素，求最大的i使得A[i]小于target，不存在则返回-1。
+int searchLastPosLessThan(int A[], int n, int target){
+	if (n <= 0)
+		return -1;
+
+	int low = 0, high = n - 1;
+	while (low < high){
+		int mid = low + (high - low + 1) >> 1; // avoid bad loop
+		if (A[mid] < target)
+			low = mid;
+		else
+			high = mid - 1;
+	}
+
+	return A[low] < target? low : -1;
+}
