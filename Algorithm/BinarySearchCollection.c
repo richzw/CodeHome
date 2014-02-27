@@ -29,3 +29,14 @@ int searchLastPosLessThan(int A[], int n, int target){
 
 	return A[low] < target? low : -1;
 }
+
+// 给定一个有序（非降序）数组A，可含有重复元素，求target在数组中出现的次数
+int count(int A[], int n, int target)
+{
+	int firstPos = binary_search_first_position(A, n, target); 
+	if(firstPos == -1)
+		return 0;
+	int lastPos = binary_search_last_position(A, n, target); 
+
+	return lastPos-firstPos+1;  // 出现次数
+}
