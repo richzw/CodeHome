@@ -40,3 +40,25 @@ int count(int A[], int n, int target)
 
 	return lastPos-firstPos+1;  // 出现次数
 }
+
+/* 给定一个有序（非降序）数组A，若target在数组中出现，返回位置，若不存在，返回它应该插入的位置
+
+[1,3,5,6], 5 → 2
+[1,3,5,6], 2 → 1
+[1,3,5,6], 7 → 4
+[1,3,5,6], 0 → 0 */
+int searchInsert(int A[], int n, int target){
+	if (A[n-1] < target)
+		return n-1;
+
+	int low = 0, high = n - 1;
+	while (low < high){
+		int mid = low + (high - low)>>2;
+		if (A[mid] >= target)
+			high = mid;
+		else
+			low = mid+1;  // A[mid] < target  
+	}
+
+	return high;
+}
