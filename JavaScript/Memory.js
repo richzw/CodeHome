@@ -29,3 +29,13 @@ function memoize(fn, sort) {
         return result;
     };
 }
+
+
+// example...
+var fibonacciFromCache = memoize(fibonacci);
+
+console.time('Memoized function call');
+for (var i = 0; i < 3; i++) {
+    fibonacciFromCache(40);
+}
+console.timeEnd('Memoized function call');
