@@ -62,3 +62,23 @@ int searchInsert(int A[], int n, int target){
 
 	return high;
 }
+
+/*
+给定一个有序（非降序）数组A，可含有重复元素，求绝对值最小的元素的位置
+*/
+int searchMinAbs(int A[], int n, int target){
+	int low = 0, high = n-1;
+
+	while (low < high){
+		int mid = low + (high - low)>>1;
+		if (A[mid] < 0)
+			low = mid + 1;
+		else  //A[mid] >= 0
+			high = mid;
+	}
+
+	if (low > 0 && abs(A[low-1]) < abs(A[low]))
+		return low-1;
+	else
+		return low;
+}
