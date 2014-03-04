@@ -82,3 +82,48 @@ int searchMinAbs(int A[], int n, int target){
 	else
 		return low;
 }
+
+/*
+给定一个有序（非降序）数组A和一个有序（非降序）数组B，可含有重复元素，求两个数组合并结果中的第k(k>=0)个数字。
+*/
+int findKthFromTwoArrays(int A[], int m, int B[], int n, int k){
+	if (m == 0)
+		return B[k];
+	if (n == 0)
+		return A[k];
+
+	int mid_a = (m-1)>>1;
+	int mid_b = (n-1)>>1;
+
+	if (A[mid_a] <= B[mid_b]){
+		if (k < mid_a+1+mid_b+1){
+			/*
+			设x为数组A和数组B中小于B[j]的元素数目，则i+1+j+1小于等于x，
+			因为A[i+1]到A[m-1]中还可能存在小于等于B[j]的元素；
+			如果k小于i+1+j+1，那么要查找的第k个元素肯定小于等于B[j]，
+			因为x大于等于i+1+j+1；既然第k个元素小于等于B[j]，那么只
+			需要在A[0]~A[m-1]和B[0]~B[j]中查找第k个元素即可，递归调用下去。
+			*/
+			if (mid_b > 1)
+				return findKthFromTwoArrays(A, m, B, mid_b, k);
+			else{ // mid_b == 0
+				if (k == 0)
+					return min(A[0], B[0]);
+				else if (k == m)
+					return max(A[m-1], B[0]);
+				else
+					return A[k] < B[0] ? A[k] : max(A[k-1], B[0]);
+			}
+		}else{
+			/*
+			设y为数组A和数组B中小于于等于A[i]的元素数目，则i+1+j+1大于等于y；
+			如果k大于等于i+1+j+1，那么要查找到第k个元素肯定大于A[i]，因为
+			i+1+j+1大于等于y；既然第k个元素大于A[i]，那么只需要在A[i+1]~A[m-1]
+			和B[0]~B[n-1]中查找第k-i-1个元素，递归调用下去。
+			*/
+			return findKthFromTwoArrays(A+mid_a+1, m-mid_a-1, B, n, k-mid_a-1);
+		}
+	}else{
+		return findKthFromTwoArrays(B, n, A, m, k);
+	}
+}
