@@ -155,3 +155,24 @@ int searchInRotateArr(int A[], int n, int target){
 
 	return -1;
 }
+
+/*
+一个有序（升序）数组，没有重复元素，在某一个位置发生了旋转后，求最小值所在位置
+*/
+int searchMinFromRotateArr(int A[], int n, int target){
+	if (n == 1)
+		return 0;
+
+	int low = 0, high = n-1;
+
+	while (low < high - 1){
+		int mid = low + (high - low)>>1;
+
+		if (A[mid] < A[low])
+			high = mid;
+		else
+			low = mid;
+	}
+
+	return (A[low] < A[low+1])?low:low+1;
+}
