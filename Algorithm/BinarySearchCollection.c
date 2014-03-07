@@ -176,3 +176,12 @@ int searchMinFromRotateArr(int A[], int n, int target){
 
 	return (A[low] < A[low+1])?low:low+1;
 }
+
+/*
+一个有序（升序）数组，没有重复元素，在某一个位置发生了旋转后，求第k(k > 0)小元素的位置
+*/
+int searchKthInRotatedArray(int A[], int n, int k) 
+{
+	int posMin = searchMinFromRotateArr(A, n, k);
+	return (posMin+k-1)%n;
+}
