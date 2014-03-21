@@ -1,8 +1,25 @@
+#class method
 class Human(object):
-    def __init__(self, weight):
-        self.weight = weight
+    weight = 12
+    @classmethod
     def get_weight(self):
         return self.weight
+
+#instance method
+class Human1(object):
+    def __init__(self, weight):
+        self.weight = weight
+
+    def get_weight(self):
+        return self.weight
+
+#static method
+class Human2(object):
+    @staticmethod
+    def add(a, b):
+        return a+b
+    def get_weight(self):
+        return self.add(1, 2)
 
 
 In [10]: Human.get_weight(Human(45))
