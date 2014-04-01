@@ -73,6 +73,30 @@ class Human2(object):
     def get_weight(self):
         return self.add(1, 2)
 
+
+#args and **kwargs
+def one(*args):
+    print args
+one()
+one(1, 2, 3)
+
+def two(x, y, *args):
+    print x, y, args
+two('a', 'b', 'c')
+
+def add(x, y):
+    return x+y
+lst = [1, 2]
+add(lst[0], lst[1])
+add(*lst)
+dct = {'x':1, 'y':2}
+bar(**dct)
+
+def myfoo(**kwargs):
+    print kwargs
+myfoo()
+myfoo(x=1, y=2)
+
 #Decorator
 def hello(fn):
     print "hello %s" % fn.__name__[::-1].upper()
