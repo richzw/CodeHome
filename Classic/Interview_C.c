@@ -19,7 +19,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	
 }
 
-
+/////////////////////////////////////////////////////////////////////////////
 #include <stdlib.h>
 #include <string.h>
  
@@ -36,3 +36,19 @@ int main(){
     memset(thisline->contents, 'a', this_length);
     return 0;
 }
+
+/////////////////////////////////////////////////////////////////////////////
+//在一台主流配置的PC机上，调用f(35)所需要的时间大概是——
+  
+int f(int x)
+{
+  
+int s = 0;
+  
+while(x-->0) s+=f(x);
+  
+return max(s, 1);
+  
+}
+  
+//A、几毫秒 B、几秒   C、几分钟 D、几小时 
