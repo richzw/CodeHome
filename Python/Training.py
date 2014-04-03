@@ -180,7 +180,151 @@ def hello(name):
  
 print hello("Benz")
 
+#set arguments of decorator
+# method 1
+def decorate_A(func):
+    def wrap_function(*args, **kwargs):
+        kwargs['str'] = 'Hello!'
+        return func(*args, **kwargs)
+    return wrap_function
+@decorate_A
+def print_msg_A(*args, **kwargs):
+    print(kwargs['str'])
+print_msg_A()
 
+#method 2
+def decorate_B(func):
+    def wrap_function(*args, **kwargs):
+        str = 'Hello!'
+        return func(str, *args, **kwargs)
+    return wrap_function
+@decorate_B
+def print_msg_B(str, *args, **kwargs):
+    print(str)
+print_msg_B()
+
+#method 3
+def decorate_C(func):
+    def wrap_function(*args, **kwargs):
+        str = 'Hello'
+        args = args + (str,)
+        return func(*args, **kwargs)
+    return wrap_function
+
+class Printer:
+    @decorate_C
+    def print_msg(self, str, *args, **kwargs):
+        print(str)
+p = Printer()
+p.print_msg()
+
+#side effect of decorator, eliminate it
+from functools import wraps
+def hello(fn):
+    @wraps(fn)
+    def wrapper():
+        print "hello, %s" % fn.__name__
+        fn()
+        print "bye, %s" % fn.__name__
+    return wrapper
+@hello
+def foo():
+    print 'i am foo'
+    pass
+foo()
+print foo.__name__
+print foo.__doc__
+
+#examples
+# ex 1
+from functools import wraps
+def memo(fn):
+    cache = {}
+    miss = object()
+
+    @wraps(fn)
+    def wraps(*args):
+        result = cache.get(args, miss)
+        if result is miss:
+            result = fn(*args)
+            cache[args] = result
+        return result
+    return wrapper
+@memo
+def fib(n):
+    if n < 2:
+        return n
+    return fib(n-1) + fib(n-2)
+
+#ex 2
+class MyApp():
+    def __init__(self):
+        self.func_map = {}
+    def register(self, name):
+        def func_wrapper(func):
+            self.func_map[name] = func
+            return func
+        return func_wrapper
+    def call_method(self, name=None):
+        func = self.func_map.get(name, None)
+        if func is None:
+            raise Exception("No function registered against - " + str(name))
+        return func()
+
+app = MyApp()
+@app.register('/')
+def main_page_func():
+    return "This is the main page"
+@app.register('/next_page')
+def next_page_func():
+    return "This is the next page"
+
+print app.call_method('/')
+print app.call_method('/next_page')
+
+#ex 3
+import inspect
+def advance_logger(logLevel):
+   def get_line_number():
+       return inspect.currentframe().f_back.f_back.f_lineno
+    def _basic_log(fn, result, *args, **kwargs):
+        print "function  =  " + fn.__name__
+        print "     arguments = {0} {1}".format(args, kwargs)
+        print "     return    = {0}".format(result)
+    def info_log_decorate(fn):
+        @wraps(fn)
+        def wrapper(*args, **kwargs):
+            result = fn(*args, **kwargs)
+            _basic_log(fn, result, args, kwargs)
+        return wrapper
+    def debug_log_decorate(fn):
+        @wraps(fn)
+        def wrapper(*args, **kwargs):
+            ts = time.time()
+            result = fn(*args, **kwargs)
+            te = time.time()
+            _basic_log(fn, result, args, kwargs)
+            print "    time   =  %.6f sec" % (te - ts)
+            print "    called_from_line : " + str(get_line_number())
+        return wrapper
+    if logLevel is "debug":
+        return debug_log_decorate
+    else:
+        return info_log_decorate
+
+@advance_logger
+def sum_num(n):
+    s = 0
+    for i in xrange(n+1):
+        s += i
+    return s
+
+print sum_num(100)
+print sum_num(1000000)
+
+
+# here is more example...
+#https://wiki.python.org/moin/PythonDecoratorLibrary 
 
 if __name__ == '__main__':
     pass
