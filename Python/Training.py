@@ -119,7 +119,14 @@ foo()
 '''
 
 '''*args, **kwds'''
-
+def logger(func):
+    def inner(*args, **kwargs):
+        print "Arguments were: %s, %s" % (args, kwargs)
+        return func(*args, **kwargs)
+    return inner
+@logger
+def foo1(x, y=1):
+    return x*y
 
 def makeHtmlTag(tag, *args, **kwds):
     def real_decorator(fn):
