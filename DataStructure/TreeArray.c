@@ -22,3 +22,32 @@ int sum_oarr(int n){
 }
 
 //
+// two dimensionality tree array
+const int MAX = 1010;  
+int carr[MAX][MAX];  
+int n;
+int Lowbit(int t)  
+{  
+    return t & (-t);  
+}  
+void modify(int x, int y, int delta)  
+{  
+    int i,j;  
+    for(i=x; i<=n; i+=Lowbit(i))  
+        for(j=y; j<=n; j+=Lowbit(j))  
+            carr[i][j] += delta;  
+}  
+int get_sum(int x,int y)  
+{  
+    int i,k,sum = 0;  
+    for(i=x; i>0; i-=Lowbit(i))  
+        for(k=y; k>0; k-=Lowbit(k))  
+            sum += carr[i][k];  
+    return sum;  
+} 
+/*
+    Sun(1,1)=C[1][1];  Sun(1,2)=C[1][2]; Sun(1,3)=C[1][3]+C[1][2];...
+    Sun(2,1)=C[2][1];  Sun(2,2)=C[2][2]; Sun(2,3)=C[2][3]+C[2][2];...
+    Sun(3,1)=C[3][1]+C[2][1]; Sun(3,2)=C[3][2]+C[2][2];
+*/
+
