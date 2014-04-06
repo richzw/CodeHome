@@ -1,6 +1,5 @@
-
 void merge(int arr[], int left, int mid, int right){
-  int aux[14] = {0};
+	int aux[14] = {0};
 	int i, j, k;
 
 	for (i = mid+1; i > left; --i) aux[i-1] = arr[i-1];
