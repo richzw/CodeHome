@@ -47,3 +47,48 @@ int find_once_number(int arr[], int len){
 	}
 	return num;
 }
+
+// better solution, bit operation
+/*
+The bit operations gives me the hint and remind me about logic design. Then I started to sketch a truth table like below.
+B1	B0	Input	B1`	B0`
+0	0	1	0	1
+0	1	1	1	0
+1	0	1	0	0
+0	0	0	0	0
+0	1	0	0	1
+1	0	0	1	0
+
+Then the straightforward transition function for B0 and B1 is as follows:
+b1' = (!b1) b0 Inp + b1(!b0)(!inp);ie. bi` is 1 when b1b0Inp is 010 or 100.
+b0` = (!b1) (!b0) Inp + (!b1) b0 (!Inp); ie. b0' is 1 when b1b0Inp is 001 or 010.
+*/
+int singleNumber(int A[], int n) {
+        int one = 0, two = 0;
+        for (int i = 0; i < n; i++) {
+            int one_ = (one ^ A[i]) & ~two;
+            int two_ = A[i] & one | ~A[i] & two;
+            one = one_;
+            two = two_;
+        }
+        return one;
+}
+
+// another solution
+/*
+用ones记录到当前计算的变量为止，二进制1出现“1次”（mod 3 之后的 1）的数位。用twos记录到当前计算的变量为止，
+二进制1出现“2次”（mod 3 之后的 2）的数位。当ones和twos中的某一位同时为1时表示二进制1出现3次，此时需要清零。
+即用二进制模拟三进制计算。最终ones记录的是最终结果。
+*/
+int singleNumber(int A[], int n) {
+    int ones = 0, twos = 0, xthrees = 0;
+    for(int i = 0; i < n; ++i) {
+        twos |= (ones & A[i]);
+        ones ^= A[i];
+        xthrees = ~(ones & twos);
+        ones &= xthrees;
+        twos &= xthrees;
+    }
+    return ones;
+}
+
