@@ -1,3 +1,7 @@
+'''
+http://stackoverflow.com/questions/986006/python-how-do-i-pass-a-variable-by-reference
+https://www.jeffknupp.com/blog/2012/11/13/is-python-callbyvalue-or-callbyreference-neither/
+'''
 
 # list - mutable variable
 def try_to_change_list_contents(the_list):
