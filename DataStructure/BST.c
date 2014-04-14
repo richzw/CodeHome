@@ -168,6 +168,31 @@ bool isBST(struct node* node){
        return false;
    return true;
 }
+
+/*
+* Return true if the tree is symmetric
+*/
+bool isSynmmectricRecv(struct node* root1, struct node* root2){
+  if (root1 == NULL || root2 == NULL)
+    return false;
+  else if (root1 != NULL && root2 != NULL){
+    if (root1->data == root2->data && 
+        isSynmmectricRecv(root1->left, root1->right) &&
+        isSynmmectricRecv(root2->left, root2->right))
+       return true;
+    else
+       return false;
+  }else
+    return false;
+}
+
+bool isSynmmetric(struct node* head){
+  if (head == NULL)
+   return false;
+  
+  return isSynmmectricRecv(head->left, head->right);
+}
+
 /*
 * Return true if the binary tree is BST (efficient version)
 */
