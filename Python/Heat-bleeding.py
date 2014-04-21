@@ -2,6 +2,7 @@
 """
 Author: takeshix <takeshix@adversec.com>
 PoC code for CVE-2014-0160. Original PoC by Jared Stafford (jspenguin@jspenguin.org).
+https://www.mattslifebytes.com/?p=533
  
 Supportes all versions of TLS and has STARTTLS support for SMTP,POP3,IMAP,FTP and XMPP.
 """
