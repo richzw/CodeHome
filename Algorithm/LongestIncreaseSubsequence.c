@@ -7,8 +7,9 @@ For example, length of LIS for { 10, 22, 9, 33, 21, 50, 41, 60, 80 } is 6 and LI
 //Solution1: dp[i]=max(dp[j])+1,(j∈[1, i-1])
 int LIS(int arr[1000], int n)
 {
-  for(int i=1; i<=n; ++i)
+ 	for(int i=1; i<=n; ++i)
 		dp[i] = 0;
+	
 	int max;
 	dp[1] = 1;
 	for(int i = 2; i <= n; ++i)
@@ -24,6 +25,7 @@ int LIS(int arr[1000], int n)
 
 	return max;
 }
+
 //Solution 2: 用f[k]表示长度为k的上升子序列最后一个数最小是多少。易知数组f是递增的。读到一个新的数x后，
 //找到某个i使得x>f[i]且x<=f[i+1]，于是用x去更新f[i+1]；特别地，如果所有的f[i]都小于x，则增加f的长度。f的长度即为所求。
 //由于f是递增的，因此可以采用二分查找，时间复杂度为O(nlgn)
