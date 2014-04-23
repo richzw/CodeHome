@@ -8,6 +8,7 @@
 当i=0或j=0时，空序列是Xi和Yj的最长公共子序列，故c[i,j]=0。
 */
 
+/*
 function LCSLength(X[1..m], Y[1..n])
     C = array(0..m, 0..n)
     for i := 0..m
@@ -21,6 +22,51 @@ function LCSLength(X[1..m], Y[1..n])
             else
                 C[i,j] := max(C[i,j-1], C[i-1,j])
     return C[m,n]
+    */
+// Longest Common Subsequence - LCS
+// DP solution
+int LCS_DP(char* x, int xlen, char* y, int ylen){
+	int max_len = 0;
+	int dp[MAXLEN][MAXLEN] = {0};
+
+	for (int i = 0; i < xlen; ++i)
+		dp[i][0] = 0;
+	for (int j = 0; j < ylen; ++j)
+		dp[0][j] = 0;
+
+	for (int i = 1; i < xlen; ++i)
+		for (int j = 1; j < ylen; ++j){
+			if (x[i] == y[j]){
+				dp[i][j] = dp[i-1][j-1] + 1;
+			}else{
+				dp[i][j] = max(dp[i][j-1], dp[i-1][j]);
+			}
+		}
+
+	return dp[xlen][ylen];
+}
+
+// rolling array
+// the main codes pieces
+    for(i = 1; i <= xlen; ++i)
+    {
+        k = i & 1;
+        for(j = 1; j <= ylen; ++j)
+        {
+            if(X[i-1] == Y[j-1])
+            {
+                dp[k][j] = dp[k^1][j-1] + 1;
+            }else if(dp[k][j-1] > dp[k^1][j])
+            {
+                dp[k][j] = dp[k][j-1];
+            }else
+            {
+                dp[k][j] = dp[k^1][j];
+            }
+        }
+    }
+    
+// another solution...    
 function backtrack(C[0..m,0..n], X[1..m], Y[1..n], i, j)
     if i = 0 or j = 0
         return ""
