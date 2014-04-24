@@ -2,6 +2,7 @@
 // method 1: doubling algorithm
 #define maxn 100
 int wa[maxn], wb[maxn], wv[maxn], ws[maxn];
+int rank[maxn],height[maxn];
 int cmp(int* r, int a, int b, int i){
 	return r[a]==r[b]&&r[a+l] ==a[b+l];
 }
@@ -37,3 +38,12 @@ void da(int *r, int *sa, int n, int m){
 			x[sa[i]] = cmp(y, sa[i-1], sa[i], j)?p-1:p++;
 	}
 }
+
+void get_height(int *r,int n)//Get height
+{
+    int i,j,k=0;
+    for(i=1; i<=n; i++) rank[sa[i]]=i; //rank function
+    for(i=0; i<n; height[rank[i++]]=k)
+        for(k?k--:0,j=sa[rank[i]-1]; r[i+k]==r[j+k]; k++);
+}
+
