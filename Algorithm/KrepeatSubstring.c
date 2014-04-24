@@ -1,5 +1,6 @@
 /*
 给定一个字符串,求至少出现 k 次的最长重复子串,这 k 个子串可以重叠。
+repeats identically at least K (2 ≤ K ≤ N) times. This may include overlapping patterns -- 1 2 3 2 3 2 3 1 repeats 2 3 2 3 twice, for example.
 */
 
 #define M 20007
