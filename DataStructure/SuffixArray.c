@@ -4,7 +4,7 @@
 int wa[maxn], wb[maxn], wv[maxn], ws[maxn];
 int rank[maxn],height[maxn];
 int cmp(int* r, int a, int b, int i){
-	return r[a]==r[b]&&r[a+l] ==a[b+l];
+	return r[a]==r[b]&&r[a+i]==a[b+i];
 }
 void da(int *r, int *sa, int n, int m){
 	int i, j, p, *x = wa, *y = wb, *t;
