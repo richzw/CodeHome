@@ -1,4 +1,3 @@
-
 // Suffix Array
 
 #include<stdio.h>
