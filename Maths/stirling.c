@@ -35,3 +35,32 @@ N个房间N个钥匙的总数为N！。之后是求N个房间形成i个环的总
 枚举形成的环，但是要除掉1号独立成环的可能。
 S(N,M)-S(N-1,M-1)，N个元素形成 M个环，减去除了1之外的N-1个元素形成M-1个环，也就是1独立成环。
 */
+#define eps 1e-7
+#define LL long long
+using namespace std;
+LL fac[21]={1};
+LL stir1[21][21];
+int main(){
+    for(int i=1;i<21;i++)
+        fac[i]=fac[i-1]*i;
+    for(int i=1;i<=20;i++){
+        stir1[i][0]=0;
+        stir1[i][i]=1;
+       for(int j=1;j<i;j++)
+           stir1[i][j]=stir1[i-1][j-1]+(i-1)*stir1[i-1][j];
+    }
+    int t,n,k;
+    scanf("%d",&t);
+    while(t--){
+        scanf("%d%d",&n,&k);
+        if(n==1||k==0){
+            printf("0.0000\n");
+            continue;
+        }
+        LL sum=0;
+        for(int i=1;i<=k;i++)
+            sum+=stir1[n][i]-stir1[n-1][i-1];
+        printf("%.4f\n",(double)sum/fac[n]);
+    }
+    return 0;
+}
