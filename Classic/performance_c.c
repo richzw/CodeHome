@@ -1,3 +1,4 @@
+// Ref:https://www.facebook.com/notes/facebook-engineering/three-optimization-tips-for-c/10151361643253920
 // stock codes
 uint32_t digits10(uint64_t v) {
     uint32_t result = 0;
