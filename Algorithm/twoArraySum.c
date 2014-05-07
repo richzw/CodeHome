@@ -81,4 +81,214 @@ B的指针前移。不过问题的关键在于计数，同时统计大于C[k]的
 到此为止，优化到头了么？其实此问题可以转为在杨氏矩阵中找第k大的值，问题还有优化的空间，关键在于Log(Max - Min)，
 可以优化到Log(m*n)，后者适用范围就不仅仅是整数了，实数范围都可以
 */
+/*
+http://stackoverflow.com/questions/18557175/how-to-find-pair-with-kth-largest-sum
+I start with a simple but not quite linear-time algorithm. We choose some value between array1[0]+array2[0] and array1[N-1]+array2[N-1]. 
+Then we determine how many pair sums are greater than this value and how many of them are less. 
+This may be done by iterating the arrays with two pointers: pointer to the first array incremented when sum is too large and pointer to the second array decremented when sum is too small.
+Repeating this procedure for different values and using binary search (or one-sided binary search) we could find Kth largest sum in O(N log R) time,
+where N is size of the largest array and R is number of possible values between array1[N-1]+array2[N-1] and array1[0]+array2[0].
+This algorithm has linear time complexity only when the array elements are integers bounded by small constant.
 
+We could estimate value range with the following trick: get every second element from each array and try to 
+find the pair sum with rank k/4 for these half-arrays (using the same algorithm recursively). Obviously this should give some approximation for needed value range.
+And in fact slightly improved variant of this trick gives range containing only O(N) elements. 
+This is proven in following paper: "Selection in X + Y and matrices with sorted rows and columns" by A. Mirzaian and E. Arjomandi. 
+This paper contains detailed explanation of the algorithm, proof, complexity analysis, and pseudo-code for all parts of the algorithm except Quickselect.
+If linear worst-case complexity is required, Quickselect may be augmented with Median of medians algorithm.
+
+This algorithm has complexity O(N). If one of the arrays is shorter than other array (M < N) we could assume that
+this shorter array is extended to size N with some very small elements so that all calculations in the algorithm use size of the largest array.
+We don't actually need to extract pairs with these "added" elements and feed them to quickselect, which makes algorithm a little bit faster but does not improve asymptotic complexity.
+
+If k < N we could ignore all the array elements with index greater than k. In this case complexity is equal to O(k). 
+If N < k < N(N-1) we just have better complexity than requested in OP. If k > N(N-1), we'd better solve the opposite problem: k'th smallest sum.
+*/
+int qceil(int x)
+{
+	return (x + 3) / 4;
+}
+
+int qhigh(int x, int n)
+{
+	if (n & 1) // odd
+		return qceil(x + 2 * n + 1);
+	else // even
+		return n + 1 + qceil(x);
+}
+
+typedef std::vector<int> Vec;
+
+struct Ranks
+{
+	int ra_less;
+	int rb_more;
+	Vec l;
+
+	Ranks(const Vec& a1, const Vec& a2, int a, int b)
+	{
+		int n = a1.size() - 1;
+		ra_less = 0;
+		rb_more = n * n;
+		l.reserve(12 * n + 1);
+		l.push_back(0);
+
+		int j = n;
+		for (int i = 1; i <= n; ++i)
+		{
+			while (j && a1[i] + a2[j] <= a)
+				--j;
+
+			ra_less += j;
+			int jj = j;
+
+			while (jj && a1[i] + a2[jj] < b)
+			{
+				l.push_back(a1[i] + a2[jj]);
+				--jj;
+			}
+
+			rb_more -= jj;
+		}
+	}
+};
+
+Vec half(const Vec& a)
+{
+	Vec res;
+	res.reserve(2 + (a.size() - 1) / 2);
+	res.push_back(0);
+
+	for (int i = 1; i < a.size(); i += 2)
+		res.push_back(a[i]);
+
+	if (a.size() & 1)
+		res.push_back(a[a.size() - 1]);
+
+	return res;
+}
+
+struct AB
+{
+	int a;
+	int b;
+};
+
+AB biselect(const Vec& a1, const Vec& a2, int k1, int k2)
+{
+	AB res;
+	int n = a1.size() - 1;
+	assert(n > 0);
+
+	if (n == 1)
+	{
+		res.a = res.b = a1[1] + a2[1];
+	}
+	else if (n == 2)
+	{
+		Vec l {a1[1] + a2[1], a1[1] + a2[2], a1[2] + a2[1], a1[2] + a2[2]};
+		std::nth_element(l.begin(),
+			l.end() - k1,
+			l.end());
+		res.a = l[4 - k1];
+		std::nth_element(l.begin(),
+			l.end() - k2,
+			l.end());
+		res.b = l[4 - k2];
+	}
+	else
+	{
+		int k1_half = qhigh(k1, n);
+		int k2_half = qceil(k2);
+		AB ab = biselect(half(a1), half(a2), k1_half, k2_half);
+		Ranks ranks(a1, a2, ab.a, ab.b);
+		int r1 = k1 + ranks.rb_more - n * n;
+		int r2 = k2 + ranks.rb_more - n * n;
+
+		if (ranks.ra_less <= k1 - 1)
+			res.a = ab.a;
+		else if (r1 <= 0)
+			res.a = ab.b;
+		else
+		{
+			std::nth_element(ranks.l.begin() + 1,
+				ranks.l.end() - r1,
+				ranks.l.end());
+			res.a = *(ranks.l.end() - r1);
+		}
+
+		if (ranks.ra_less <= k2 - 1)
+			res.b = ab.a;
+		else if (r2 <= 0)
+			res.b = ab.b;
+		else
+		{
+			std::nth_element(ranks.l.begin() + 1,
+				ranks.l.end() - r2,
+				ranks.l.end());
+			res.b = *(ranks.l.end() - r2);
+		}
+	}
+
+	return res;
+}
+
+int select(const Vec& a1, const Vec& a2, int k)
+{
+	assert(a1.size() == a2.size());
+	AB ab = biselect(a1, a2, k, k);
+	assert(ab.a == ab.b);
+	return ab.a;
+}
+
+int check(const Vec& a1, const Vec& a2, int k)
+{
+	int n = a1.size() - 1;
+	Vec sum;
+	sum.reserve(n * n);
+
+	for (int i = 1; i <= n; ++i)
+		for (int j = 1; j <= n; ++j)
+			sum.push_back(a1[i] + a2[j]);
+
+	std::nth_element(sum.begin(),
+		sum.end() - k,
+		sum.end());
+	return *(sum.end() - k);
+}
+
+#include <random>
+
+int sovle_two_arrays_sum()
+{
+	std::random_device rd;
+	std::default_random_engine e1(rd());
+	std::uniform_int_distribution<int> uniform_dist(1, 6);
+
+	int n = 100000;
+	Vec a1, a2;
+	a1.reserve(n+1);
+	a2.reserve(n+1);
+	int x = 1000;
+
+	a1.push_back(0);
+	for (int i = 0; i < n; ++i)
+	{
+		x -= uniform_dist(e1);
+		a1.push_back(x);
+	}
+
+	x = 1000;
+
+	a2.push_back(0);
+	for (int i = 0; i < n; ++i)
+	{
+		x -= uniform_dist(e1);
+		a2.push_back(x);
+	}
+
+	std::cout << select(a1, a2, 1 + n * n / 7) << '\n'
+		/*<< check(a1, a2, 1 + n * n / 7) << '\n'*/;
+
+	return 0;
+}
