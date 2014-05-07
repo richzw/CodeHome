@@ -9,9 +9,38 @@ B数组排序，从大到小。 构造一个大顶堆h。对于i=0,1,2,...,len(A
   
 每次从堆里取出堆顶元素，设其为(s,i,j)。输出s。 
 设m=j+1。如果m小于B的长度减一，那么将三元组(A[i]+B[m], i, m)压入堆中。 重复，直到输出了k个数为止。 
-  
 时间复杂度：O(len(B)*log(len(B)) + len(A) + k*log(len(A))) 
 */
+/*
+That can be easily done in O(k*logk). I'll only assume arrays are sorted in descending order, to simplify notation.
+The idea is simple. We'll find 1st, 2nd, .., k-th maximum values one by one.
+But to even consider pair (i, j) we need to have both (i-1, j) and (i, j-1) already selected, because they both are greater or equal than (i, j).
+It's much like if we push all n*m pairs into the heap and then remove max k times. Only we don't need all n*m pairs.
+*/
+void GetKthLargestSum(int arrA[], int lenA, int arrB[], int lenB, int k){
+	if (arrA == NULL || lenA == 0 || lenB == NULL || lenB == 0)
+		return;
+
+	// sort array A and B, descending order...
+	qsort(arrA, lenA, sizeof(int), compare);
+	qsort(arrB, lenB, sizeof(int), compare);
+
+	// key: sum(A, B), value: pair<indexOfA, indexOfB>
+	priority_queue<int, pair<int, int> > maxHeap;
+
+	int idxA = 0, idxB = 0;
+	maxHeap.push(pair<int, pair<int, int> >(arrA[0]+arrB[0], make_pair(idxA, idxB)));
+	for (int idx = 0; idx < k; ++idx){
+		pair<int, pair<int, int> > val = maxHeap.top();
+		cout << val.first << " ";
+		maxHeap.pop();
+
+		maxHeap.push(pair<int, pair<int, int> >(arrA[val.second.first+1]+arrB[val.second.second], make_pair(val.second.first+1, val.second.second)));
+		maxHeap.push(pair<int, pair<int, int> >(arrA[val.second.first]+arrB[val.second.second+1], make_pair(val.second.first, val.second.second+1)));
+	}
+	// TODO: 1. Duplicated pairs can be added to the heap, this can be prevented with hash.
+	//		 2. Indexes need to be validated, e.g. that max.i + 1 < arrA.length.
+}
 
 /*
 solution 2:
