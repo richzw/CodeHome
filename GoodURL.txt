@@ -1,5 +1,12 @@
 
-http://dailyjs.com/tags.html#js101
+DailyJS --> http://dailyjs.com/tags.html#js101
+Advanced data structure --> http://courses.csail.mit.edu/6.851/spring12/lectures/
+Protections from Buffer-Overflow Attacks --> http://engj.org/index.php/ej/article/view/112/167
+Big Data Summary --> http://u.memect.com/103/?tag=bigdata
+
+// Good Questions
 http://chuansong.me/account/daiziguizhongren
-http://www.tuicool.com/mags
 http://hawstein.com/posts/ctci-solutions-contents.html
+
+
+http://www.tuicool.com/mags
