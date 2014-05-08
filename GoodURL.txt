@@ -5,6 +5,10 @@ Protections from Buffer-Overflow Attacks --> http://engj.org/index.php/ej/articl
 Big Data Summary --> http://u.memect.com/103/?tag=bigdata
 Data structure in Linux Kernel --> http://cstheory.stackexchange.com/questions/19759/core-algorithms-deployed/19773#19773
 
+// TCP/IP 
+http://blog.csdn.net/dog250/article/details/6612496
+TIME-WAIT  --> http://vincent.bernat.im/en/blog/2014-tcp-time-wait-state-linux.html
+
 
 // Good Questions
 http://chuansong.me/account/daiziguizhongren
