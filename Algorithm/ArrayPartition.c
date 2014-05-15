@@ -36,11 +36,62 @@ bool isSubsetSum(int arr[], int idx, int sum){
 }
 
 bool isPartitionArray(int arr[], int len){
+	if (arr == NULL || len <= 1)
+		return false;
+
 	int sum = 0;
 
 	for (int idx = 0; idx < len; ++idx){
 		sum += arr[idx];
 	}
 
+	if (sum%2 != 0)
+		return false;
+		
 	return isSubsetSum(arr, len, sum/2);
+}
+
+/*
+DP:
+part[i][j] = true if a subset of {arr[0], arr[1], ..arr[j-1]} has sum 
+             equal to i, otherwise false 
+*/
+bool isPartitionArr_dp(int arr[], int len){
+	if (arr == NULL || len <= 1)
+		return false;
+	int sum = 0;
+
+	for (int idx = 0; idx < len; ++idx){
+		sum += arr[idx];
+	}
+
+	if (sum%2 != 0)
+		return false;
+
+	//int dp[sum/2 + 1][len+1]; // dynamic program array
+	// Fixme: the length should be sum/2+1 and len+1
+	bool** dp = new bool*[sum/2+1];
+	for (int i = 0; i < sum/2+1; ++i)
+		dp[i] = new bool[len+1];
+
+	memset(dp, false, sizeof(int)*len*sum/2);
+
+	// initialize the dp array
+	for (int i = 0; i <= sum/2; ++i){
+		dp[i][0] = false;
+	}
+	for (int j = 0; j <= len; ++j){
+		dp[0][j] = true;
+	}
+
+	// Fill up the dp array in bottom-up mode
+	for (int i = 1; i <= sum/2; ++i){
+		for (int j = 1; j <= len; ++j){
+			dp[i][j] = dp[i][j-1];
+			if (i > arr[j])
+				dp[i][j] = dp[i][j] || dp[i-arr[j]][j-1];
+		}
+	}
+
+	return dp[sum/2][len];
 }
