@@ -95,3 +95,25 @@ bool isPartitionArr_dp(int arr[], int len){
 
 	return dp[sum/2][len];
 }
+
+#define MAX_SUM 200
+// better solution, need to verify
+bool isPartitionArr_imp(int arr[], int len){
+	if (arr == NULL || len <= 1)
+		return false;
+
+	bitset<MAX_SUM+1> bit;
+
+	int sum = 0;
+
+	// bit operation
+	bit.reset();
+	bit[0] = 1;
+
+	for (int idx = 0; idx < len; ++idx){
+		sum += arr[idx];
+		bit |= bit << arr[idx];
+	}
+
+	return (sum%2 == 0) && (bit[sum/2] == 1);
+}
