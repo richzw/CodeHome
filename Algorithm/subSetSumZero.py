@@ -1,4 +1,5 @@
-/* NP-Hard issue
+# NP-Hard issue
+'''
 我们假定输入序列为：
  x1, ..., xn 
 我们需要判断是否存在某个非空子集，使得子集中的数字和为0。
@@ -13,11 +14,10 @@
 随后，对于i = 2, …, n和N ≤ s ≤ P，设定
  Q(i, s) := Q(i - 1, s) 或 (xi = s) 或 Q(i - 1, s - xi) 
 算法运行的总时间为O(n(P - N))。
+'''
 
-*/
 
-
-// from hacker news 
+# from hacker news 
 def subset_summing_to_zero (activities):
   subsets = {0: []}
   for (activity, cost) in activities.iteritems():
