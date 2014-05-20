@@ -16,7 +16,83 @@
 算法运行的总时间为O(n(P - N))。
 '''
 
+import random
+from time import time
+from itertools import product
 
+# create a zero matrix of size a (row), b(col)
+def create_zero_matrix(a,b):
+    return [[0]*b for x in xrange(a)]
+
+# generate a list of size num with random integers with an upper and lower bound
+def random_ints(num, lower=-1000, upper=1000):
+    return [random.randrange(lower,upper+1) for i in range(num)]
+
+# split a list up into N and P where N be the sum of the negative values and P the sum of the positive values.
+# 0 does not count because of additive identity
+def split_sum(A):
+    N_list = 0
+    P_list = 0
+    for x in A:
+        if x < 0:
+            N_list += x
+        elif x > 0:
+            P_list += x
+    return [N_list, P_list]
+
+# since the column indexes are in the range from 0 to P - N
+# we would like to retrieve them based on the index in the range N to P
+# n := row, m := col
+def get_element(table, n, m, N):
+    if n < 0:
+        return 0
+    try:
+        return table[n][m - N]
+    except:
+        return 0
+
+# same definition as above
+def set_element(table, n, m, N, value):
+    table[n][m - N] = value
+
+# input array
+#A = [1, -3, 2, 4]
+A = random_ints(200)
+
+[N, P] = split_sum(A)
+
+# create a zero matrix of size m (row) by n (col)
+#
+# m := the number of elements in A
+# n := P - N + 1 (by definition N <= s <= P)
+#
+# each element in the matrix will be a value of either 0 (false) or 1 (true)
+m = len(A)
+n = P - N + 1;
+table = create_zero_matrix(m, n)
+
+# set first element in index (0, A[0]) to be true
+# Definition: Q(1,s) := (x1 == s). Note that index starts at 0 instead of 1.
+set_element(table, 0, A[0], N, 1)
+
+# iterate through each table element
+#for i in xrange(1, m): #row
+#    for s in xrange(N, P + 1): #col
+for i, s in product(xrange(1, m), xrange(N, P + 1)):
+    if get_element(table, i - 1, s, N) or A[i] == s or get_element(table, i - 1, s - A[i], N):
+        #set_element(table, i, s, N, 1)
+        table[i][s - N] = 1
+
+# find zero-sum subset solution
+s = 0
+solution = []
+for i in reversed(xrange(0, m)):
+    if get_element(table, i - 1, s, N) == 0 and get_element(table, i, s, N) == 1:
+        s = s - A[i]
+        solution.append(A[i])
+
+
+##################################################################################################
 # from hacker news 
 def subset_summing_to_zero (activities):
   subsets = {0: []}
