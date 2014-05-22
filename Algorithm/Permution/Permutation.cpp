@@ -54,7 +54,7 @@ void permutationBySwapRecur(char arr[], int cur, int len){
         for (int index = cur; index < len; ++index){
             swap(arr, cur, index);
             permutationBySwapRecur(arr, cur+1, len);
-            swap(arr, cur, index);
+            swap(arr, cur, index); //backtrace
         }
      }
 }
