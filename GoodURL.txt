@@ -6,6 +6,10 @@ Protections from Buffer-Overflow Attacks --> http://engj.org/index.php/ej/articl
 Big Data Summary --> http://u.memect.com/103/?tag=bigdata
 Data structure in Linux Kernel --> http://cstheory.stackexchange.com/questions/19759/core-algorithms-deployed/19773#19773
 
+// C
+Bit operation --> http://graphics.stanford.edu/~seander/bithacks.html
+
+
 // Go
 https://cdn.rawgit.com/gophercon/2014-talks/master/derekcollison/HighPerformanceSystemsInGo.pdf
 https://software.intel.com/en-us/blogs/2014/05/10/debugging-performance-issues-in-go-programs
