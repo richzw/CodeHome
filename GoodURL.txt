@@ -5,6 +5,7 @@ Code example --> http://www.keithschwarz.com/interesting/
 Protections from Buffer-Overflow Attacks --> http://engj.org/index.php/ej/article/view/112/167
 Big Data Summary --> http://u.memect.com/103/?tag=bigdata
 Data structure in Linux Kernel --> http://cstheory.stackexchange.com/questions/19759/core-algorithms-deployed/19773#19773
+add salt for user password --> http://drops.wooyun.org/papers/1066
 
 // C
 Bit operation --> http://graphics.stanford.edu/~seander/bithacks.html
