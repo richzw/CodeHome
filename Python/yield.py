@@ -11,6 +11,9 @@ Iterable:
 Everything you can use "for... in..." on is an iterable: lists, strings, files... These iterables are handy 
 because you can read them as much as you wish, but you store all the values in memory and it's not always 
 what you want when you have a lot of values.
+Iteration is a process implying iterables (implementing the __iter__() method) and iterators (implementing the __next__() 
+method). Iterables are any objects you can get an iterator from. Iterators are objects that let you iterate on iterables.
+
 
 Generator:
 Generators are iterators, but you can only iterate over them once. 
@@ -44,6 +47,36 @@ The first time the for calls the generator object created from your function,
 it will run the code in your function from the beginning until it hits yield, 
 then it'll return the first value of the loop. Then, each other call will run the loop you have written in the function 
 one more time, and return the next value, until there is no value to return.
+
+Controlling a generator exhaustion
+>>> class Bank(): # let's create a bank, building ATMs
+...    crisis = False
+...    def create_atm(self):
+...        while not self.crisis:
+...            yield "$100"
+>>> hsbc = Bank() # when everything's ok the ATM gives you as much as you want
+>>> corner_street_atm = hsbc.create_atm()
+>>> print(corner_street_atm.next())
+$100
+>>> print(corner_street_atm.next())
+$100
+>>> print([corner_street_atm.next() for cash in range(5)])
+['$100', '$100', '$100', '$100', '$100']
+>>> hsbc.crisis = True # crisis is coming, no more money!
+>>> print(corner_street_atm.next())
+<type 'exceptions.StopIteration'>
+>>> wall_street_atm = hsbc.create_atm() # it's even true for new ATMs
+>>> print(wall_street_atm.next())
+<type 'exceptions.StopIteration'>
+>>> hsbc.crisis = False # trouble is, even post-crisis the ATM remains empty
+>>> print(corner_street_atm.next())
+<type 'exceptions.StopIteration'>
+>>> brand_new_atm = hsbc.create_atm() # build a new one to get back in business
+>>> for cash in brand_new_atm:
+...    print cash
+$100
+$100
+$100
 
 """
 
