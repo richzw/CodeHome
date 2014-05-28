@@ -144,6 +144,7 @@ def read_restaurants(file):
     rest_name_arr = []
     rate_arr = []
     cusine_arr = []#[val for key, val in enumerate(lines) if key%5 == 3]
+    """
     with open(file) as fd:
         for idx, line in enumerate(fd.readlines()):
             if idx%5 == 0:
@@ -154,6 +155,17 @@ def read_restaurants(file):
                 price_to_names[line.rstrip()].append(rest_name_arr[idx/5])
             elif idx%5 == 3:
                 cusine_arr.append(line.rstrip())
+                """
+    with open(file) as fd:
+    file_contents = fd.readlines()
+    file_length = len(file_contents)
+    max_index = file_length//5+1 if file_length%5 else file_length//5
+    for idx in range(max_index):
+        (rest, rate, price, cusine) = file_contents[5*idx:5*idx+4]
+        rest_name_arr.append(rest.rstrip())
+        rate_arr.append(rate.rstrip().strip('%'))
+        price_to_names[price.rstrip()].append(rest_name_arr[idx])
+        cusine_arr.append(cusine.rstrip())
 
     for k, v in zip(cusine_arr, rest_name_arr):
         cuisine_to_names.setdefault(k, []).append(v)
