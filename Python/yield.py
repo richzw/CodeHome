@@ -13,7 +13,7 @@ because you can read them as much as you wish, but you store all the values in m
 what you want when you have a lot of values.
 Iteration is a process implying iterables (implementing the __iter__() method) and iterators (implementing the __next__() 
 method). Iterables are any objects you can get an iterator from. Iterators are objects that let you iterate on iterables.
-
+---> fib example bellow...
 
 Generator:
 Generators are iterators, but you can only iterate over them once. 
