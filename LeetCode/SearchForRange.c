@@ -9,45 +9,42 @@ Given [5, 7, 7, 8, 8, 10] and target value 8,
 return [3, 4].
 */
 
-//Do two binary searches, for max number equal or than target and target + 1
+// binary search
 
-class Solution {
-private:
-    int searchMaxEqLess(int A[], int n, int target){
-        int head = 0, tail = n - 1;
-        
-        while (head <= tail){
-            if (head == tail){
-                return A[head] < target ? head : head - 1;
-            }
-            if (head == tail - 1){
-                return A[tail] < target ? tail : (A[head] < target ? head : head - 1);
-            }
-            int mid = head + (tail - head) / 2;
-            if (A[mid] >= target){
-                tail = mid - 1;
-            } else {
-                head = mid;
-            }
-        }
-    }
-public:
-    vector<int> searchRange(int A[], int n, int target) {
-        vector<int> out;
-        if (n <= 0){
-            return out;
-        }
-        
-        int head = searchMaxEqLess(A, n, target);
-        int tail = searchMaxEqLess(A, n, target + 1);
-		if (head == tail){
-		    head = tail = -1;
-		} else {
-		    head++;
-		}
-        out.push_back(head);
-        out.push_back(tail);
- 
-        return out;
-    }
-};
+int searchFirstPos(int A[], int n, int target)
+{
+	if(n <= 0) return -1;
+	int low = 0, high = n-1;
+	while(low < high)
+	{
+		int mid = low+((high-low)>>1);
+		if(A[mid] < target)
+			low = mid+1;
+		else // A[mid] >= target
+			high = mid;
+	}
+
+	if(A[low] != target)
+		return -1;
+	else
+		return low;
+}
+
+int searchLastPos(int A[], int n, int target)
+{	
+	if(n <= 0) return -1;
+	int low = 0, high = n-1;
+	while(low < high)
+	{
+		int mid = low+((high-low+1)>>1);
+		if(A[mid] > target)
+			high = mid-1;
+		else // A[mid] <= target
+			low = mid;
+	}
+
+	if(A[high] != target)
+		return -1;
+	else
+		return high;
+}
