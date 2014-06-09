@@ -15,6 +15,7 @@ class Solution {
 private:
     int searchMaxEqLess(int A[], int n, int target){
         int head = 0, tail = n - 1;
+        
         while (head <= tail){
             if (head == tail){
                 return A[head] < target ? head : head - 1;
@@ -32,12 +33,11 @@ private:
     }
 public:
     vector<int> searchRange(int A[], int n, int target) {
-        // IMPORTANT: Please reset any member data you declared, as
-        // the same Solution instance will be reused for each test case.
         vector<int> out;
         if (n <= 0){
             return out;
         }
+        
         int head = searchMaxEqLess(A, n, target);
         int tail = searchMaxEqLess(A, n, target + 1);
 		if (head == tail){
