@@ -1,4 +1,49 @@
 //use 1-D array to solve N Queens questions
+vector<string[]> solveNQueens(int n) {
+    vector<string[]> res = new vector<string[]>();
+    helper(n,0,new int[n], res);
+    
+    return res;
+}
+void helper(int n, int row, int[] columnForRow, vector<string[]> res)
+{
+    if(row == n)
+    {
+        String[] item = new String[n];
+        for(int i=0;i<n;i++)
+        {
+            string strRow;
+            for(int j=0;j<n;j++)
+            {
+                if(columnForRow[i]==j)
+                    strRow.append('Q');
+                else
+                    strRow.append('.');
+            }
+            item[i] = strRow.toString();
+        }
+        res.add(item);
+        return;
+    }
+    for(int i=0;i<n;i++)
+    {
+        columnForRow[row] = i;
+        if(check(row,columnForRow))
+        {
+            helper(n,row+1,columnForRow,res);
+        }
+    }
+}
+bool check(int row, int columnForRow[])
+{
+    for(int i=0;i<row;i++)
+    {
+        if(columnForRow[row]==columnForRow[i] || abs(columnForRow[row]-columnForRow[i])==row-i)
+            return false;
+    }
+    return true;
+}
+
 class QueenBoard{
 public:
 	QueenBoard(int size):m_size(size), m_queens(0){
