@@ -13,6 +13,61 @@
 12. 一个有序（升序）数组，没有重复元素，在某一个位置发生了旋转后，求第k(k > 0)小元素
 */
 
+//给定一个有序（非降序）数组A，可含有重复元素，求最小的i使得A[i]等于target，不存在则返回-1
+int searchFirstPos(int A[], int n, int target)
+{
+	if(n <= 0) return -1;
+	int low = 0, high = n-1;
+	while(low < high)
+	{
+		int mid = low+((high-low)>>1);
+		if(A[mid] < target)
+			low = mid+1;
+		else // A[mid] >= target
+			high = mid;
+	}
+	/* 
+	循环过程中，当low大于0时，A[low-1]是小于target的，因为A[mid] < target时，
+	low=mid+1；当high小于n-1时，A[high]是大于等于target的，因为A[mid] >= target时，
+	high = mid；循环结束时，low 等于 high，所以，如果A[low](A[high])等于target，
+	那么low(high)就是target出现的最小位置，否则target在数组中不存在。
+	*/
+	if(A[low] != target)
+		return -1;
+	else
+		return low;
+}
+
+//给定一个有序（非降序）数组A，可含有重复元素，求最大的i使得A[i]等于target，不存在则返回-1
+int searchLastPos(int A[], int n, int target)
+{	
+	if(n <= 0) return -1;
+	int low = 0, high = n-1;
+	while(low < high)
+	{
+		/*
+		这里中间位置的计算就不能用low+((high-low)>>1)了，因为当low+1等于high
+		且A[low] <= target时，会死循环；所以这里要使用low+((high-low+1)>>1)，
+		这样能够保证循环会正常结束。
+		*/
+		int mid = low+((high-low+1)>>1);
+		if(A[mid] > target)
+			high = mid-1;
+		else // A[mid] <= target
+			low = mid;
+	}
+	/* 
+	循环过程中，当high小于n-1时，A[high+1]是大于target的，因为A[mid] > target时，
+	high=mid-1；当low大于0时，A[low]是小于等于target的，因为A[mid] <= target时，
+	low = mid；循环结束时，low 等于 high，所以，如果A[high](A[low])等于target，
+	那么high(low)就是target出现的最大位置，否则target在数组中不存在。
+	*/
+	if(A[high] != target)
+		return -1;
+	else
+		return high;
+}
+
 //给定一个有序（非降序）数组A，可含有重复元素，求最大的i使得A[i]小于target，不存在则返回-1。
 int searchLastPosLessThan(int A[], int n, int target){
 	if (n <= 0)
