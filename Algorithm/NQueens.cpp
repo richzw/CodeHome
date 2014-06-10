@@ -1,15 +1,15 @@
 //use 1-D array to solve N Queens questions
-vector<string[]> solveNQueens(int n) {
-    vector<string[]> res = new vector<string[]>();
-    helper(n,0,new int[n], res);
+vector<vector<string> > solveNQueens(int n) {
+    vector<vector<string> > res;
+    helper(n, 0, new int[n], res);
     
     return res;
 }
-void helper(int n, int row, int[] columnForRow, vector<string[]> res)
+void helper(int n, int row, int columnForRow[], vector<vector<string> >& res)
 {
     if(row == n)
     {
-        String[] item = new String[n];
+        vector<string> item;
         for(int i=0;i<n;i++)
         {
             string strRow;
@@ -20,7 +20,7 @@ void helper(int n, int row, int[] columnForRow, vector<string[]> res)
                 else
                     strRow.append('.');
             }
-            item[i] = strRow.toString();
+            item[i] = strRow;
         }
         res.add(item);
         return;
