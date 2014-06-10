@@ -68,4 +68,55 @@ class Solution:
             board[r][c] = ch    
         return False
 
-
+//Like any graph search, nodes need to be marked as visited.
+//When backtracking, these nodes need to have their visited status removed.
+class Solution {
+private:
+    bool _exist(vector<vector<char> > &board, string& word, int ptr, 
+				vector<vector<bool> > &visited, int row, int col, 
+				const int rowCount, const int colCount){
+        if (row < 0 || row >= rowCount || col < 0 || col >= colCount){
+            return false;
+        }
+        if (visited[row][col]){
+            return false;
+        }
+        if (ptr == word.length() - 1){
+            return board[row][col] == word[ptr];
+        }
+        if (board[row][col] != word[ptr]){
+            return false;
+        }
+ 
+        visited[row][col] = true;
+        int result = _exist(board, word, ptr + 1, visited, row - 1, col, rowCount, colCount) ||
+                     _exist(board, word, ptr + 1, visited, row + 1, col, rowCount, colCount) ||
+                     _exist(board, word, ptr + 1, visited, row, col - 1, rowCount, colCount) ||
+                     _exist(board, word, ptr + 1, visited, row, col + 1, rowCount, colCount);
+        visited[row][col] = false;
+        return result;
+    }
+public:
+    bool exist(vector<vector<char> > &board, string word) {
+        if (board.empty()){
+            return false;
+        }
+        if (board[0].empty()){
+            return false;
+        }
+        if (word.length() == 0){
+            return true;
+        }
+        int rowCount = board.size();
+        int colCount = board[0].size();
+        vector<vector<bool> > visited(rowCount, vector<bool>(colCount, false));
+        for (int row = 0; row < rowCount; row++){
+            for (int col = 0; col < colCount; col++){
+                if (_exist(board, word, 0, visited, row, col, rowCount, colCount)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+};
