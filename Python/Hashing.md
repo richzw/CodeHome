@@ -39,3 +39,14 @@ Hash function:
 		Sting ‘hashing’ = 104+97+115+104+105+110+103 = 738
 
 Consistent Hashing:
+
+SimHash:
+
+
+Merkle Hash Tree:
+
+
+Bloom Filter:
+
+
+
