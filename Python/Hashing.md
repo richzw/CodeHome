@@ -41,10 +41,14 @@ Hashing
 
 
 ***Consistent Hashing***:
+
 Now we consider the common way to do load balance. The machine number chosen to cache object o will be: `hash(o) mod n`
+
 When we add or remove machine from machine group. The new location will be calculated again.
+
 `Hash(o) mod (n+1)`  add a machine
 `Hash(o) mod (n-1)`  remove a machine.
+
 Consistent hashing can guarantee that when a cache machine is removed, only the objects cached in it will be rehashed; when a new cache machine is added, only a fairly few objects will be rehashed.
 
 ***SimHash***:
