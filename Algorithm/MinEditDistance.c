@@ -86,3 +86,27 @@ int min_edit_distance(string w1, string w2){
 	
 	return edit_distance_helper(w1, 0, w2, 0, hash_map);
 }
+
+/*
+Following the same method, the edit distance from "CHIAR" to "CHAIR" is 2:
+    CHIAR → CHAR (delete 'I')
+    CHAR → CHAIR (insert 'I')
+I would like to count this as "1 edit", since I only exchange two adjacent letters.
+*/
+if s[i] = t[j] then 
+  d[i, j] := d[i-1, j-1]
+else if i > 0 and j > 0 and s[i] = t[j - 1] and s[i - 1] = t[j] then
+  d[i, j] := minimum
+             (
+               d[i-2, j-2] + 1 // transpose
+               d[i-1, j] + 1,  // deletion
+               d[i, j-1] + 1,  // insertion
+               d[i-1, j-1] + 1 // substitution
+             )
+else
+  d[i, j] := minimum
+             (
+               d[i-1, j] + 1,  // deletion
+               d[i, j-1] + 1,  // insertion
+               d[i-1, j-1] + 1 // substitution
+             )
