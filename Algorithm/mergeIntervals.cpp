@@ -57,7 +57,56 @@ vector<Interval> merge(vector<Interval>& intervals){
 count += l[i]，如果count>0说明i处于一个区间中
 count -= r[i]，如果count==0说明i是一个区间的尾端点
 */
+/**
+ * Definition for an interval.
+ * struct Interval {
+ *     int start;
+ *     int end;
+ *     Interval() : start(0), end(0) {}
+ *     Interval(int s, int e) : start(s), end(e) {}
+ * };
+ */
+class Solution {
+public:
+    vector<Interval> merge(vector<Interval> &intervals) {
+        // Start typing your C/C++ solution below
+        // DO NOT write int main() function
+        vector<Interval> answer;
+        if (intervals.empty()) {
+            return answer;
+        }
 
+        int min = 1000000, max = -1000000;
+        for (vector<Interval>::iterator iter = intervals.begin(); iter != intervals.end(); iter++) {
+            min = min < iter->start ? min : iter->start;
+            max = max > iter->end ? max : iter->end;
+        }
+        
+        int left[max - min + 1];
+        int right[max - min + 1];
+        memset(left, 0, sizeof(int) * (max - min + 1));
+        memset(right, 0, sizeof(int) * (max - min + 1));
+        for (vector<Interval>::iterator iter = intervals.begin(); iter != intervals.end(); iter++) {
+            left[iter->start - min]++;
+            right[iter->end - min]++;
+        }
+        
+        int start = -1, count = 0;
+        for (int i = 0; i < max - min + 1; i++) {
+            count += left[i];
+            if (count > 0 && start == -1) {
+                start = i;
+            }
+            count -= right[i];
+            if (count == 0 && start != -1) {
+                answer.push_back(Interval(start + min, i + min));
+                start = -1;
+            }
+        }
+        
+        return answer;
+    }
+};
 
 /*
 同样给定一组区间，将区间中存在的任意区间的区间删除。​
