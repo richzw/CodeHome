@@ -1,7 +1,7 @@
-Q:There is a 100-story building and you are given two eggs. The eggs (and the building) have an interesting property that 
+Q:**There is a 100-story building and you are given two eggs. The eggs (and the building) have an interesting property that 
 if you throw the egg from a floor number less than X, it will not break. And it will always break if the floor number 
 is equal or greater than X. Assuming that you can reuse the eggs which didn't break, you need to find X in 
-a minimal number of throws. Give an algorithm to find X in minimal number of throws.
+a minimal number of throws. Give an algorithm to find X in minimal number of throws.**
 
 A:
 the whole question grinds up to how to make use of the first egg to reduce the linear testing using the second egg.
@@ -17,8 +17,8 @@ N = 14, so the answer is 14 maximum drops and we can find the floor.
 The computer algorithm would be like this. Drop first egg from floors 14, 27, 39, 50, 60, 69, 77, 84, 90, 95, 99, 100... 
 (i.e. move up 14 then 13, then 12 floors, etc) until it breaks (or doesn't at 100)
 
-
-Q2: With 3 eggs, you could use the extra egg for binary divide-and-conquer. Here is my thoughts:
+=========
+Q2: **With 3 eggs, you could use the extra egg for binary divide-and-conquer.** Here is my thoughts:
 
 1) Use the first egg to drop from floor 50. The worst case is it will be broken.
 2) Now we try with the remaining 2 eggs, for floor 1 to 49, using the same algorithm above.
@@ -27,8 +27,8 @@ So, with 3 eggs, it is slightly better than 2 eggs. It seems there is a diminish
 Overall, in terms of solving a computer science problem, certain optimization is better, but too much would be overkill.
 
 
-
-Q3: Suppose that we wish to know which stories in a N-story building are safe to drop eggs from, and which will
+=========
+Q3:** Suppose that we wish to know which stories in a N-story building are safe to drop eggs from, and which will
 cause the eggs to break on landing. We make a few assumptions: An egg that survives a fall can be used again.
     A broken egg must be discarded.
     The effect of a fall is the same for all eggs.
@@ -37,7 +37,7 @@ cause the eggs to break on landing. We make a few assumptions: An egg that survi
     It is not ruled out that the first-floor windows break eggs, nor is it ruled out that the Nth-floor windows 
     do not cause an egg to break.
 Given an N story building and a supply of d eggs, ﬁnd the strategy which minimizes (in the worst case) the number of 
-experimental drops required to determine the breakﬂoor.
+experimental drops required to determine the breakﬂoor.**
 
 A:
 (1) Consider the case that the first drop breaks the egg. Then you can determine the breakfloor if and 
