@@ -28,7 +28,7 @@ Overall, in terms of solving a computer science problem, certain optimization is
 
 
 =========
-Q3:** Suppose that we wish to know which stories in a N-story building are safe to drop eggs from, and which will
+Q3:**Suppose that we wish to know which stories in a N-story building are safe to drop eggs from, and which will
 cause the eggs to break on landing. We make a few assumptions: An egg that survives a fall can be used again.
     A broken egg must be discarded.
     The effect of a fall is the same for all eggs.
