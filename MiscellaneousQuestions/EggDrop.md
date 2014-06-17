@@ -1,6 +1,4 @@
-Q:**There is a 100-story building and you are given two eggs. The eggs (and the building) have an interesting property that 
-if you throw the egg from a floor number less than X, it will not break. And it will always break if the floor number 
-is equal or greater than X. Assuming that you can reuse the eggs which didn't break, you need to find X in 
+Q1:**There is a 100-story building and you are given two eggs. The eggs (and the building) have an interesting property that if you throw the egg from a floor number less than X, it will not break. And it will always break if the floor number is equal or greater than X. Assuming that you can reuse the eggs which didn't break, you need to find X in 
 a minimal number of throws. Give an algorithm to find X in minimal number of throws.**
 
 A:
@@ -41,9 +39,10 @@ experimental drops required to determine the breakﬂoor.
 
 A:
 1. Consider the case that the first drop breaks the egg. Then you can determine the breakfloor if and 
-only if it is at most f[d-1, e-1]. Therefore you can't start higher than f[d-1, e-1] + 1 
+only if it is at most f[d-1, e-1]. Therefore you can't start higher than `f[d-1, e-1] + 1`
 (and shouldn't start lower, of course).
-2. If your first drop doesn't breaks the egg, you are in the case of f[d-1, e], just starting at the floor of 
+
+2. If your first drop doesn't breaks the egg, you are in the case of `f[d-1, e]`, just starting at the floor of 
 your first drop + 1, instead of floor 1.
 
 So, the best you can do is to start dropping eggs at floor `f[d-1, e-1] + 1` (because of (1)), 
