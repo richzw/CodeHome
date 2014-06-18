@@ -82,6 +82,14 @@ void ShuffleArray_Recursive(int arr[], int len){
    memcpy(arr, RecurArr, len);
 }
 
+int RNG(int small, int large);
+void poker_shuffle(int a[], int len){
+	for (int i = len; i > 0; --i){
+		int rand = RNG(0, i);
+		std::swap(a[i], a[rand]);
+	}
+}
+
 //
 void ShuffleArray_Fish_Ya(int arr[], int len)
 {
