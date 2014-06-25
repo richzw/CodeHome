@@ -4,6 +4,7 @@
 `prototype` is the object that is used to build `__proto__` when you create an object with `new`
 
 [Javascript Object treasure map](http://i.stack.imgur.com/KFzI3.png)
+![Alt text](http://i.stack.imgur.com/KFzI3.png)
 
   ```javascript
   Object.O1 = '';
