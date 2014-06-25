@@ -1,5 +1,7 @@
-### prototype vs __proto__
+## prototype vs __proto__
 
+`__proto__` is the actual object taht is used in the lookup chain to resolve methods.
+`prototype` is the object that is used to build `__proto__` when you create an object with `new`
 
 [Javascript Object treasure map](http://i.stack.imgur.com/KFzI3.png)
 
