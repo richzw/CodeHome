@@ -49,3 +49,17 @@ So, the best you can do is to start dropping eggs at floor `f[d-1, e-1] + 1` (be
 and you can get up to `f[d-1, e]` floors higher than that (because of (2)). That's
 `f[d, e] = f[d-1, e-1] + 1 + f[d-1, e]`
 
+=========
+Q4: **Suppose that you have an N-story building and plenty of eggs. An egg breaks if it is dropped from floor T or higher and does not break otherwise. Your goal is to devise a strategy to determine the value of T given the following limitations on the number of eggs and tosses:**
+- Version 0: 1 egg, ≤T tosses.
+- Version 1: ∼1lgN eggs and ∼1lgN tosses.
+- Version 2: ∼lgT eggs and ∼2lgT tosses.
+- Version 3: 2 eggs and ∼2N−−√ tosses.
+- Version 4: 2 eggs and ≤cT−−√ tosses for some fixed constant c.
+
+**A:**
+1. Version 0: sequential search.
+2. Version 1: binary search.
+3. Version 2: find an interval containing T of size ≤2T, then do binary search.
+4. Version 3: find an interval of size N−−√, then do sequential search. Note: can be improved to ∼2N−−−√ tosses.
+5. Version 4: 1+2+3+…+t∼12t2. Aim for c=22√.
