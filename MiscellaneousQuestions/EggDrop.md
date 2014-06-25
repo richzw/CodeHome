@@ -58,8 +58,8 @@ Q4: **Suppose that you have an N-story building and plenty of eggs. An egg break
 - Version 4: 2 eggs and ≤cT−−√ tosses for some fixed constant c.
 
 **A:**
-1. Version 0: sequential search.
-2. Version 1: binary search.
-3. Version 2: find an interval containing T of size ≤2T, then do binary search.
-4. Version 3: find an interval of size N−−√, then do sequential search. Note: can be improved to ∼2N−−−√ tosses.
-5. Version 4: 1+2+3+…+t∼12t2. Aim for c=22√.
++ Version 0: sequential search.
++ Version 1: binary search.
++ Version 2: find an interval containing T of size ≤2T, then do binary search.
++ Version 3: find an interval of size N−−√, then do sequential search. Note: can be improved to ∼2N−−−√ tosses.
++ Version 4: 1+2+3+…+t∼12t2. Aim for c=22√.
