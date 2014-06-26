@@ -53,11 +53,39 @@ Consistent hashing can guarantee that when a cache machine is removed, only the 
 
 ***SimHash***:
 
+- Split strings into words
+
+    the cat sat on the mat -> {"th", "he", "e ", " c", "ca", "at", "t ", " s", "sa", " o", "on", "n ", " t", " m", "ma"}
+    ”th”.weight = 5, “he”.weight = 3
+
+- Hash words
+
+    "th".hash = 100110 , "he".hash = 110000
+
+- Add weight
+
+    ”th” = 5 -5 -5 5 5 -5, “he” = 3 3 -3 -3 -3 -3
+
+- Combine
+
+    ”th”+”he” = 8 -2 -8 2 2 -8 
+
+- Dimensionality reduction
+
+    8 -2 -8 2 2 -8 = 1 0 0 1 1 0
+
 
 ***Merkle Hash Tree***:
 
 
 ***Bloom Filter***:
+
+a space-efficient probabilistic data structure that is used to test whether an element is a member of a set.
+- False positive matches are possible
+- but false negatives are not
+- Easy to insert and test
+
+
 
 
 
