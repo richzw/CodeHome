@@ -15,6 +15,11 @@ int partition(int arr[], int low, int high){
 
 //
 int select(int arr[], int len, int k){
+	if (k < 0 || k > len)
+		return -1;
+	if (len == 0)
+		return arr[left];
+	
 	radom_shuffle(arr, len); // to make the key random so get high performance of partition.
 	
 	int lo = 0, hi = len - 1;
