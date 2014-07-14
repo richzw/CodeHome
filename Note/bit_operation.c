@@ -36,3 +36,27 @@ int getAverage(int x, int y){
     /*(x^y) >> 1得到x，y其中一个为1的位并除以2，
        x&y得到x，y都为1的部分，加一起就是平均数了*/  
 }
+
+//
+int fitsBits(int x, int n) {
+	/* mask the sign bit against ~x and vice versa to get highest bit in x. Shift by n-1, and not. */
+	int mask = x >> 31;
+
+	return !(((~x & mask) + (x & ~mask)) >> (n + ~0));
+}
+/*
+((~x & mask) + (x & ~mask)) is same as (x<0)?~x : x
+~x is -(x+1)
+~0 is -1 so (n+~0) is (n-1)
+*/
+int fitsBits(int x, int n){
+	if (x < 0)
+		x = -(x+1);
+
+	x >>= n-1;
+
+	if (x)
+		return it_doesnot_fit;
+	else
+		return it_fits;
+}
