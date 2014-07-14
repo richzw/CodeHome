@@ -1,7 +1,21 @@
+int partition(int arr[], int low, int high){
+	int pivot = arr[high];
+	int swapIdx = low;
+	
+	for (int idx = low; idx < high; ++idx){
+		if (arr[idx] < pivot){
+			swap(arr[idx], arr[swapIdx]);
+			++swapIdx;
+		}
+	}
+	
+	swap(arr[swapIdx], arr[right]);
+	return swapIdx;
+}
 
 //
 int select(int arr[], int len, int k){
-	radom_shuffle(arr, len);
+	radom_shuffle(arr, len); // to make the key random so get high performance of partition.
 	
 	int lo = 0, hi = len - 1;
 	while (hi > lo){
@@ -13,3 +27,6 @@ int select(int arr[], int len, int k){
 	}
 	return arr[k];
 }
+
+// py version
+
