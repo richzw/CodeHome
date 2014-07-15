@@ -34,4 +34,15 @@ int select(int arr[], int len, int k){
 }
 
 // py version
-
+// median of medians version
+def kthLargest2(arr, left, right, k): 
+	length=right-left+1 
+	if not 1<=k<=length: 
+		return 
+	if length<=5: 
+		return sorted(arr[left:right+1])[k-1]   
+	
+	numMedians=length/5 
+	medians=[kthLargest2(arr, left+5*i, left+5*(i+1)-1, 3) for i in range(numMedians)] 
+	pivot=kthLargest2(medians, 0, len(medians)-1, len(medians)/2+1) 
+	pivotIndex=partition2(arr, left, right, pivot) 
