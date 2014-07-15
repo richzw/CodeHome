@@ -13,6 +13,10 @@ Big Data Summary --> http://u.memect.com/103/?tag=bigdata
 Data structure in Linux Kernel --> http://cstheory.stackexchange.com/questions/19759/core-algorithms-deployed/19773#19773
 add salt for user password --> http://drops.wooyun.org/papers/1066
 
+// AngularJS
+http://www.html-js.com/article/1884?utm_source=tuicool
+http://www.oschina.net/translate/angularjs-seo-with-prerender-io
+
 // Linux Kernel
 http://blog.coly.li/?p=261
 
