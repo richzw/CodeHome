@@ -48,3 +48,26 @@ var sum = 0;
 for (var i = 0, len = arrayNum.length; i < len; ++i){
 	sum += arrayNum[i];
 }
+
+//1. Failed to save page in web browser
+<noscript> <iframe src="*.html"></iframe></noscript>
+
+//2. prevent frame or iframe be contained by others
+<script language="javascript">
+	if (top.location != self.location)
+		top.location = self.location
+</script>
+
+//3. Do not alert the script errors
+<script language="javascript">
+	function killErrors(){
+		return true;
+	}
+
+	window.onerror = killErrors;
+</script>
+
+//4. display the latest update time autumatically
+<script language="javascript">
+	document.write("The last modify date :" + document.lastModified + "")
+</script>
