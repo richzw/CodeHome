@@ -1,3 +1,9 @@
+// Interval tree
+//Every node of Interval Tree stores following information.
+//a) i: An interval which is represented as a pair [low, high]
+//b) max: Maximum high value in subtree rooted with this node.
+[](http://d2o58evtke57tz.cloudfront.net/wp-content/uploads/IntervalSearcTree.png)
+
 #include <iostream>
 using namespace std;
  
