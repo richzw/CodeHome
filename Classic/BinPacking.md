@@ -1,6 +1,6 @@
-**Q**:Given N objects and they are 1~n, the volume of the i-th object is ti and ti <= M; Meanwhile, there are many boxes, 
+**Q:Given N objects and they are 1~n, the volume of the i-th object is ti and ti <= M; Meanwhile, there are many boxes, 
 and the volume of each box is M. Now we should put all these objects into boxes with the order of 1~N, what the minimum
-number of boxes should be used?
+number of boxes should be used?**
 
 For example, there are 5 objects and their volume are {7,2,5,3,9} with order 1~5. The volume of each box is 10.
 So the optimal solution is 3 boxes and they are {7}，{2，5，3}，{9} respectively.
@@ -28,6 +28,7 @@ The third strategy places the next item in the *tightest* spot. That is, put it 
 	0.2	     0.4	0.7	    0.8
 
 -4. Fisrt Fit Descreasing
+
 1. Suppose the N items have been sorted in descending order of size;
        s1 > s2 > ... > sN. If the optimal packing uses M bins, then
        all bins in the FFD after M have items of size <= 1/3.
