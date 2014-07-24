@@ -33,7 +33,7 @@ int select(int arr[], int len, int k){
 	return arr[k];
 }
 
-// py version
+// py version -- BFPRT  http://en.wikipedia.org/wiki/Median_of_medians
 // median of medians version
 def kthLargest2(arr, left, right, k): 
 	length=right-left+1 
