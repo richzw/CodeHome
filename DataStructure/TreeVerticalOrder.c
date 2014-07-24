@@ -59,3 +59,19 @@ void vertical_order1(TreeNode* root){
 		}
 	}
 }
+
+// print tree vertical
+void print_tree(TreeNode* root, int pos){
+	if (root == NULL){
+		for (int i = 0; i < pos; ++i)
+			printf("\t");
+		printf("*");
+		return;
+	}
+
+	print_tree(root->right, pos+1);
+	for (int i = 0; i < pos; ++i)
+		printf("\t");
+	printf("%d", root->data);
+	print_tree(root->left, pos+1);
+}
