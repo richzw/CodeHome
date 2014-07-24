@@ -1,3 +1,4 @@
+// version 1
 void get_min_max_length(TreeNode* root, int* min, int *max, int level){
 	if (root == NULL)
 		return;
@@ -32,3 +33,29 @@ void vertical_order(TreeNode* root){
 	}
 }
 
+// version 2
+// with hashmap
+void traverse_tree(TreeNode* root, int level, map<int, vector<int> >& m /*key is the vlevel*/){
+	if (root == NULL)
+		return;
+
+	m[level].push_back(root->data);
+
+	traverse_tree(root->left, level-1, m);
+	traverse_tree(root->right, level+1, m);
+}
+
+void vertical_order1(TreeNode* root){
+	if (root == NULL)
+		return;
+
+	map<int, vector<int> > hmap;
+
+	traverse_tree(root, 0, hmap);
+
+	for (map<int, vector<int>>::iterator itor = hmap.begin(); itor != hmap.end(); ++itor){
+		for (vector<int>::iterator it = itor->second.begin(); it != itor->second.end(); ++it){
+			printf("%d ", *it);
+		}
+	}
+}
