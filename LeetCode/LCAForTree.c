@@ -1,11 +1,10 @@
 /*
 * Q1: Given a binary search tree, find the lowest common ancestor of two given nodes.
 */
-
 typedef struct elem{
   	elem*	left;
 	elem*	right;
-	int		data;
+	int	data;
 }elem;
 
 int LCA_BST(elem* root, int a, int b){
@@ -65,9 +64,10 @@ Node *LCA(Node *root, Node *p, Node *q) {
 	  	return root;  // if p and q are on both sides
 	return L ? L : R;  // either one of p,q is on one side OR p,q is not in L&R subtrees
 }
+
+// the robust version
 TreeNode *findLCAUtil(TreeNode* root, int n1, int n2, bool &v1, bool &v2)
 {
-    // Base case
     if (root == NULL) return NULL;
  
     // If either n1 or n2 matches with root's key, report the presence
