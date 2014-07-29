@@ -127,6 +127,31 @@ TreeNode *findLCA(TreeNode *root, int n1, int n2)
     return NULL;
 }
 
+/* convert LCA to RMQ
+The LCA of nodes u and v is the shallowest node encountered between the visits to u and to v during a depth first search traversal of T.
+This is the Eular tour.
+
+On an input tree T, we build 3 arrays.
+1. Euler[1,..,2n-1] – The nodes visited in an Euler tour of T. Euler[i] is the label of the i-th node visited in the tour.
+2. Level[1,..2n-1] – The level of the nodes we got in the tour. Level[i]  is the level of node Euler[i].
+	(level is defined to be the distance from the root)
+3. Representative[1,..n] – Representative[i] will hold the index of the first occurrence of node i in Euler[].
+*/
+void Euler_tour(TreeNode* root, vector<int>& result){
+	if (root == NULL)
+		return;
+
+	result.push_back(root->data);
+	if (root->left){
+		Euler_tour(root->left, result);
+		result.push_back(root->data);
+	}
+	if (root->right){
+		Euler_tour(root->right, result);
+		result.push_back(root->data);
+	}
+}
+
 
 /*
 * Q3: Given a binary tree, find the lowest common ancestor of two given nodes in the tree. 
