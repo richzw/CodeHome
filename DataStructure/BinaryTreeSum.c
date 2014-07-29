@@ -1,4 +1,4 @@
-//1. Given a Binary Tree, find the maximum sum path from a leaf to root. 
+//Q1. Given a Binary Tree, find the maximum sum path from a leaf to root. 
 
 void printPath(TreeNode* root, TreeNode* target_leaf){
   if (root == NULL)
@@ -41,3 +41,11 @@ int maxSumPathFromRoot(TreeNode* root){
   
   return max_sum;
 }
+//Q2: Given a binary tree in which each node element contains a number. 
+//Find the maximum possible sum from one leaf node to another.
+
+/*
+We can find the maximum sum using single traversal of binary tree. The idea is to maintain two values in recursive calls
+1) Maximum root to leaf path sum for the subtree rooted under current node.
+2) The maximum path sum between leaves (desired output).
+*/
