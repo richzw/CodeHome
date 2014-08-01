@@ -49,3 +49,17 @@ We can find the maximum sum using single traversal of binary tree. The idea is t
 1) Maximum root to leaf path sum for the subtree rooted under current node.
 2) The maximum path sum between leaves (desired output).
 */
+// Get max sum of leaves
+int GetMaxLeaves(TreeNode* root, int& maxVal){
+	if (root == NULL)
+		return 0;
+
+	int left = GetMaxLeaves(root->left, maxVal);
+	int right = GetMaxLeaves(root->right, maxVal);
+
+	int cur_max = max((root->data + left + right), max(left, right));
+	if (cur_max > maxVal)
+		maxVal = cur_max;
+
+	return max(left, right)+root->data;
+}
