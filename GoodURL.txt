@@ -33,6 +33,10 @@ https://software.intel.com/en-us/blogs/2014/05/10/debugging-performance-issues-i
 http://blog.csdn.net/dog250/article/details/6612496
 TIME-WAIT  --> http://vincent.bernat.im/en/blog/2014-tcp-time-wait-state-linux.html
 
+// JS
+http://www.toptal.com/javascript/interview-questions#.
+http://www.codeproject.com/Articles/620811/Latest-JavaScript-Interview-Questions-and-Answers
+
 
 // Good Questions
 http://chuansong.me/account/daiziguizhongren
