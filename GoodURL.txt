@@ -42,6 +42,6 @@ http://www.codeproject.com/Articles/620811/Latest-JavaScript-Interview-Questions
 http://chuansong.me/account/daiziguizhongren
 http://hawstein.com/posts/ctci-solutions-contents.html
 http://www.cnblogs.com/wuyuegb2312/tag/algorithm(chinese)/
-
+http://www.guokr.com/blog/491044/
 
 http://www.tuicool.com/mags
