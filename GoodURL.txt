@@ -3,7 +3,10 @@
 救煩無若靜　補拙莫如勤
 志者忌妄自菲薄　胡亂設限礙築夢
 今學之道何其多　更有知友解君惑
-何不謀定而後動　日復精益求進哉 
+何不謀定而後動　日復精益求進哉
+
+//Algorithm Design manual
+http://www.cnblogs.com/wuyuegb2312/tag/算法/
 
 DailyJS --> http://dailyjs.com/tags.html#js101
 Advanced data structure --> http://courses.csail.mit.edu/6.851/spring12/lectures/
