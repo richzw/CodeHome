@@ -48,4 +48,39 @@ console.log(f());
 关于第5行其实还有点小问题，为什么这里的function f() {return false;}没有像第6行的函数g一样被当做一个局部函数，
 如果这样的话，那么f也是一个局部函数，对f的赋值应该不会影响全局函数f。这里的原因在于，整个第5行不是一个函数声明，
 第5行作为一个整体其实是一条赋值语句，所以这里的f不会被当做局部变量。
+
+ECMAScript 5, the current official specification of the JavaScript language, does not define the behavior for function 
+declarations inside blocks.
+
+FunctionDeclarations are only allowed to appear in Program or FunctionBody. Syntactically, they can not appear in Block
+({ ... }) — such as that of if, while or for statements. This is because Blocks can only contain Statements, 
+not SourceElements, which FunctionDeclaration is. If we look at production rules carefully, we can see that the only 
+way Expression is allowed directly within Block is when it is part of ExpressionStatement. However, 
+ExpressionStatement is explicitly defined to not begin with "function" keyword, and this is exactly why 
+FunctionDeclaration cannot appear directly within a Statement or Block (note that Block is merely a list of Statements).
+
+Because of these restrictions, whenever function appears directly in a block (such as in the previous example) 
+it should actually be considered a syntax error, not function declaration or expression. 
+The problem is that almost none of the implementations I've seen parse these functions strictly per rules
+(exceptions are BESEN and DMDScript). They interpret them in proprietary ways instead.
+
+Also worth quoting the ECMAScript 6 draft - B.3.3 Block-Level Function Declarations Web Legacy Compatibility Semantics:
+
+Prior to the Sixth Edition, the ECMAScript specification did not define the occurrence of a FunctionDeclaration as
+an element of a Block statement’s StatementList. However, support for that form of FunctionDeclaration was an allowable 
+extension and most browser-hosted ECMAScript implementations permitted them. Unfortunately, 
+the semantics of such declarations differ among those implementations. [...]
+
+As ES5 does not define the behavior for function declarations inside blocks while allowing proprietary extensions, 
+there are technically no "rights" or "wrongs". Consider them "unspecified behavior" which is not portable across 
+different ES5-compliant environments.
+
+Those are easy to rewrite into portable code anyway:
+
+Should the function declaration be hoisted to the top of the current function/global scope? Make sure the function 
+declaration is not directly inside of a block.
+Should the function be declared only when the block executes? Assign a function expression to a variable 
+(var f = function() {};). Note that there is no hoisting and the variable is still accessible outside of the block 
+(var declarations are function-level scoped).
+As per ECMAScript 6, function declarations are block-scoped, so Firefox implements the correct behavior ES6-wise.
 */
