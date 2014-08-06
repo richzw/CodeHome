@@ -1,3 +1,5 @@
+#http://www.redblobgames.com/pathfinding/a-star/introduction.html
+
 '''
 A* algorithm is like Dijkstra's algorithm in that it can be used to find a shortest path.
 A* is like Greedy Best-First-Search in that it can use a heuristic to guide itself. 
