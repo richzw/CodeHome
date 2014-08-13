@@ -15,6 +15,7 @@ Protections from Buffer-Overflow Attacks --> http://engj.org/index.php/ej/articl
 Big Data Summary --> http://u.memect.com/103/?tag=bigdata
 Data structure in Linux Kernel --> http://cstheory.stackexchange.com/questions/19759/core-algorithms-deployed/19773#19773
 add salt for user password --> http://drops.wooyun.org/papers/1066
+http://www.redblobgames.com/pathfinding/a-star/introduction.html
 
 // AngularJS
 http://www.html-js.com/article/1884?utm_source=tuicool
@@ -23,10 +24,8 @@ http://www.oschina.net/translate/angularjs-seo-with-prerender-io
 // Linux Kernel
 http://blog.coly.li/?p=261
 
-
 // C
 Bit operation --> http://graphics.stanford.edu/~seander/bithacks.html
-
 
 // Go
 https://cdn.rawgit.com/gophercon/2014-talks/master/derekcollison/HighPerformanceSystemsInGo.pdf
