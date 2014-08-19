@@ -12,8 +12,8 @@ int getIndex(int target, int in[], int start, int stop){
               return 0;
        
        for (int index = start; index < stop; ++index){
-              
-              
+              if (in[index] == target)
+                     return index;
        }
        
        return -1;
