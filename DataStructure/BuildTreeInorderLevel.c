@@ -19,9 +19,12 @@ int getIndex(int target, int in[], int start, int stop){
        return -1;
 }
 
-int* getElements(){
+int* getElements(int in[], int left, int right){
+       int pnew = new int[right-left+1];
+       for (int index = left; index < right; ++index)
+              pnew[index-left] = in[index];
        
-       
+       return pnew;
 }
 
 TreeNode* buildTreeByInorderLevel(int in[], int level[], int start, int stop){
@@ -32,11 +35,11 @@ TreeNode* buildTreeByInorderLevel(int in[], int level[], int start, int stop){
        
        int index = getIndex(node->data, in, start, stop);
        
-       int* pLeft = getElements();
-       int* pRight = getElements();
+       int* pLeft = getElements(in, start, index-1);
+       int* pRight = getElements(in, index+1, stop);
        
-       node->left = buildTreeByInorderLevel();
-       node->right = buildTreeByInorderLevel();
+       node->left = buildTreeByInorderLevel(pLeft, level, start, index-1);
+       node->right = buildTreeByInorderLevel(pRight, level, index+1, stop);
        
        delete[] pLeft;
        delete[] pRight;
