@@ -1,4 +1,6 @@
 #http://www.redblobgames.com/pathfinding/a-star/introduction.html
+#http://www.redblobgames.com/pathfinding/a-star/introduction.html
+
 
 '''
 A* algorithm is like Dijkstra's algorithm in that it can be used to find a shortest path.
