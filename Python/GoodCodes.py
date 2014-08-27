@@ -39,6 +39,14 @@ set([1, 3, 4, 5, 6, 7])
 >>> aa  
 {'pwd': 'secret', 'database': 'master', 'uid': 'sa', 'server': 'mpilgrim'} 
 
+#('a','b','c','d','e','f') which I want to convert to dictionary having elements like ['a':'b', 'c':'d', 'e':'f'].
+>>> dict(zip(t[::2], t[1::2]))
+'''
+This is called an "extended slice", which is of the form start:stop:step. The first one is ::2, 
+so it has the default start (the beginning of the tuple) and stop (the end of the tuple), and a step of 2,
+'''
+
+
 #将时间对象转换成字符串
 >>> import datetime
 >>> datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
