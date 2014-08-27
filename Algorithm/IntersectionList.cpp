@@ -37,5 +37,21 @@ vector<int> intersectionList(vector<vector<int> > vectors){
 
 }
 
+template<class Output, class... Cs>
+Output intersect( Output out, Cs const&... cs ) {
+  using std::begin; using std::end;
+  auto its = std::make_tuple( begin(cs)... );
+  const auto ends = std::make_tuple( end(cs)... );
+  while( !at_end( its, ends ) ) {
+    if ( all_same( its ) ) {
+      *out++ = *std::get<0>(its);
+      advance_all( its );
+    } else {
+      advance_least( its );
+    }
+  }
+  return out;
+}
+
 //参考答案。另外一种是用最小堆，堆中存放第几个list和list中的位置，同时一个变量存放当前最大值。
 //每次移动堆中最小list中元素，和之前最大值比较。相等则有共同元素。循环至结束。
