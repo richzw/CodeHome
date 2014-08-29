@@ -1,3 +1,32 @@
+// by stack
+bool isPalindromeList_stack(list_node* head){
+	list_node* fast = head;
+	list_node* slow = head;
+
+	stack<int> list_stack;
+
+	// find the mid node of the list
+	while (fast != NULL && fast->next != NULL){
+		list_stack.push(slow->data);
+		slow = slow->next;
+		fast = fast->next->next;
+	}
+
+	// odd number case
+	if (fast != NULL)
+		slow = slow->next;
+
+	while (slow != NULL){
+		if ( slow->data != list_stack.top())
+			return false;
+		slow = slow->next;
+		list_stack.pop();
+	}
+
+	return true;
+}
+
+// recursive method
 int getListLength(list_node* head){
 	int len = 0;
 
