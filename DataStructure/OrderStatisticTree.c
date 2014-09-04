@@ -15,3 +15,36 @@ function Select(t, i)
         return Select(left[t], i)
     else
         return Select(right[t], i - (r + 1))
+        
+Rank(root, x):
+  if root is null:
+    error: not found
+  else if x < root.key:
+    return Rank(root.left, x)
+  else if x = root.key:
+    if root.left is not null:
+      return root.left.count + 1
+    else:
+      return 1
+  else if x > root.key:
+    if root.left is not null:
+      return root.left.count + 1 + Rank(root.right, x)
+    else:
+      return 1 + Rank(root.right, x)
+      
+      
+FindByRank(root, k):
+  if root is null:
+    error: not found
+
+  if root.left is null:
+    leftcount = 0
+  else:
+    leftcount = root.left.count
+  
+  if k <= leftcount:
+    return FindByrank(root.left, k)
+  else if k = leftcount + 1:
+    return root
+  else if k > leftcount + 1:
+    return FindByRank(root.right, k - leftcount - 1)
