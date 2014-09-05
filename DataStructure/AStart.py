@@ -1,6 +1,16 @@
 #http://www.redblobgames.com/pathfinding/a-star/introduction.html
 #http://www.redblobgames.com/pathfinding/a-star/introduction.html
+frontier = Queue()
+frontier.put(start)
+visited = {}
+visited[start] = True
 
+while not frontier.empty():
+   current = frontier.get()
+   for next in graph.neighbors(current):
+      if next not in visited:
+         frontier.put(next)
+         visited[next] = True
 
 '''
 A* algorithm is like Dijkstra's algorithm in that it can be used to find a shortest path.
