@@ -315,3 +315,18 @@
       ```res.end(buf/string)``` 方法
     * 尽量在 ```res.writeHead``` 时设置 ```Content-Length```
     
+* MemoryStore in production memory leak
+
+The solution seems to be rather simple, at least this is what I plan to do: use setInterval to periodically clean up the expired sessions. MemoryStore provides all() to get the list, and we can use get() to force reading and thus expire them. Pseudo-code:
+
+```js
+function sessionCleanup() {
+    sessionStore.all(function(err, sessions) {
+        for (var i = 0; i < sessions.length; i++) {
+            sessionStore.get(sessions[i], function() {} );
+        }
+    });
+}
+```
+
+Now just call sessionCleanup periodically via setInterval() and you have automatic garbage collection for expired sessions. No more memory leaks.
