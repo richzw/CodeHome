@@ -55,3 +55,5 @@ What happens, for example, if the address you're double-freeing has been realloc
 Chaos, that's what.
 
 Memory allocation functions are a tool just like a chainsaw and, provided you use them correctly, you should have no problems. If you misuse them, however, the consequences are your own fault, either corrupting memory or worse, or cutting off one of your arms :-)
+
+**[pointer validity](http://stackoverflow.com/questions/551069/testing-pointers-for-validity-c-c)**
