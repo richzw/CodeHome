@@ -38,3 +38,18 @@ void findSum(TreeNode* root, int sum, int path[], int level){
 
 	path[level] = 0;
 }
+
+// another version
+void pathSum(TreeNode* root, int sum){
+	if (root == NULL)
+		return;
+
+	int subSum = sum - root->data;
+	if (subSum == 0 ){
+		//find the path and print it
+	}
+
+	pathSum(root->left, subSum);
+	pathSum(root->right, subSum);
+
+}
