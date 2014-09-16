@@ -6,15 +6,15 @@ try{
      //…
 }catch(std::bad_alloc& e)
 {
-	cout << “Catch bad alloc exception ” << e.what() << endl;
+	cout << "Catch bad alloc exception" << e.what() << endl;
 }
 catch(std::bad_cast& e)
 {
-	cout << “Catch bad alloc exception ” << e.what() << endl;
+	cout << "Catch bad alloc exception" << e.what() << endl;
 }
 catch(std::bad_exception& e)
 {
-	cout << “Catch bad alloc exception ” << e.what() << endl;
+	cout << "Catch bad alloc exception" << e.what() << endl;
 }
 // catch more exception types here
 // … 
