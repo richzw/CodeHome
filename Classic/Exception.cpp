@@ -1,3 +1,7 @@
+//http://stackoverflow.com/questions/315948/c-catching-all-exceptions
+//http://stackoverflow.com/questions/541235/how-to-build-a-c-dll-wrapper-that-catches-all-exceptions
+//http://blogs.msdn.com/b/jaredpar/archive/2008/01/11/mixing-seh-and-c-exceptions.aspx
+
       try{
       				//…
 			}catch(std::bad_alloc& e)
