@@ -10,7 +10,6 @@
 */
 
 public class Gallop {
-    public long accessed;
 
     public int search(final int[] arr, final int val, int left, int right) {
         if (arr == null || arr.length == 0 || arr[left] > val || arr[right - 1] < val) {
@@ -47,9 +46,4 @@ public class Gallop {
         return -1;
     }
 
-    public long getAccessed() {
-        final long old = accessed;
-        accessed = 0;
-        return old;
-    }
 }
