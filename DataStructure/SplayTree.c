@@ -1,3 +1,5 @@
+//http://www.cs.cornell.edu/courses/cs3110/2009fa/recitations/rec-splay.html
+
 typedef struct splay{
 	KEY_TYPE key;
 	struct splay* lchild;
