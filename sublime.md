@@ -5,6 +5,8 @@ Please refer to official documentation from [Sublime Text 2 doc1][STD1] and [Sub
 
 I will bring topics for some major functionalities as below.
 
+http://zh.lucida.me/blog/sublime-text-complete-guide/
+
 ### Download and Installation
 Open it up in shell by creating a symbol link:
 
