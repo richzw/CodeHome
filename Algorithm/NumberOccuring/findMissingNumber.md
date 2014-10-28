@@ -1,4 +1,4 @@
-Q: ** given numbers 1..100, find the missing number(s) **
+Q: **given numbers 1..100, find the missing number(s)**
 
 Remember sum of i-th powers, where i=1,2,..,k. This reduces the problem to solving the system of equations
 
