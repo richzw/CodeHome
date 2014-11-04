@@ -7,6 +7,10 @@ I will bring topics for some major functionalities as below.
 
 http://zh.lucida.me/blog/sublime-text-complete-guide/
 
+Some good plugin can be found here
+
+http://ipestov.com/the-best-plugins-for-sublime-text/
+
 ### Download and Installation
 Open it up in shell by creating a symbol link:
 
