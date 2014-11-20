@@ -22,10 +22,7 @@ map<string, int> getSubStringsLessThan(const string s, int k){
 		for (int j = 1; j <= k && j <= (len-i); ++j){
 			string sub = s.substr(i, j);
 
-			if (substr_map.find(sub) != substr_map.end())
-				substr_map[sub]++;
-			else
-				substr_map[sub] = 1;
+			substr_map[sub]++;
 		}
 	}
 
@@ -45,7 +42,7 @@ bool pair_compare(pair<string, int> &a, pair<string, int> &b){
 vector<pair<string, int>> generateStrLen3(const string s){
 	map<string, int> ret = getSubStringsLessThan(s, 3);
 
-	vector<pair<string, int>> vec_str;
+	vector<pair<string, int>> vec_str(ret.size());
 	transform(ret.begin(), ret.end(), back_inserter(vec_str), [](pair<string, int> v){ return v; });
 
 	sort(vec_str.begin(), vec_str.end(), pair_compare);
