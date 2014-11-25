@@ -38,6 +38,55 @@ b^c, a
 For each pair, check the even count integer. If it is zero, then we know the other integer is a^b^c, 
 since no two of our results will be equal. Otherwise, we've found a value at the odd count integer.
 */
+// two numbers occur odd times
+int lowerbits(int val){
+	return val & ~(val - 1);
+}
+
+void getTwoNumbers(int arr[], int len, int& a, int& b){
+	int xors = 0;	
+	for(int i = 0; i < len; i++)
+		xors = xors^arr[i];
+	   
+	int bit_one = lowerbits(xors);
+
+	a = 0, b = 0;
+	for(int i = 0; i < len; i++)
+	{
+		if(bit_one & arr[i])         
+			a ^= arr[i];
+		else
+			b ^= arr[i];
+	}
+}
+
+// three numbers occur odd times
+void getThreeNumbers(int arr[], int len, int& a, int& b, int& c){
+	int i, xors = 0;
+	for (i = 0; i < len; ++i)
+		xors ^= arr[i];
+
+	int flips = 0;
+	// flips=lowbit(a^b)^lowbit(a^c)^lowbit(b^c)
+	for (i = 0; i < len; ++i)
+		flips ^= lowerbits(xors^arr[i]);
+
+	//三个数两两异或后lowbit有两个相同，一个不同，可以分为两组
+	a = 0;
+	for (i = 0; i < len; ++i)
+		if (lowerbits(arr[i]^xors) == flips)
+			a ^= arr[i];
+
+	//
+	for (i = 0; i < len; ++i)
+		if ( a == arr[i]){
+			std::swap(arr[i], arr[len-1]);
+			break;
+		}
+
+	getTwoNumbers(arr, len-1, b, c);
+}
+
 void find3(int list[], int len) {
 	int xors[32][2] = {0};
 	bool counts[32] = {false};
