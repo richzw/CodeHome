@@ -1,3 +1,42 @@
+// output?
+(function() {
+   var a = b = 5;
+})();
+console.log(b);
+
+(function() {
+   'use strict';
+   var a = window.b = 5;
+})();
+console.log(b);
+
+// add repeatify method to String like  console.log('hello'.repeatify(3));
+String.prototype.repeatify = String.prototype.repeatify || function(times) {
+   var str = '';
+   for (var i = 0; i < times; i++) {
+      str += this;
+   }
+   return str;
+};
+
+// what output?
+var fullname = 'John Doe';
+var obj = {
+   fullname: 'Colin Ihrig',
+   prop: {
+      fullname: 'Aurelio De Rosa',
+      getFullname: function() {
+         return this.fullname;
+      }
+   }
+};
+console.log(obj.prop.getFullname());  // 'Aurelio De Rosa'
+var test = obj.prop.getFullname;
+console.log(test()); // 'John Doe'
+
+// fix it to console.log(test.call(obj.prop))  
+
+
 // 传入一个string类型的参数，然后将string的每个字符间加个空格返回
   function spacify(str) {
       return str.split('').join(' ');
