@@ -7,7 +7,7 @@
 
 //Algorithm Design manual
 http://www.cnblogs.com/wuyuegb2312/tag/算法/
-http://clrs.skanev.com/index.html   // Introduction to algorithm
+http://clrs.skanev.com/index.html   // The answers of 'Introduction to Algorithm'
 
 DailyJS --> http://dailyjs.com/tags.html#js101
 Advanced data structure --> http://courses.csail.mit.edu/6.851/spring12/lectures/
