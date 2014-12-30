@@ -22,6 +22,9 @@ http://www.redblobgames.com/pathfinding/a-star/introduction.html
 http://www.html-js.com/article/1884?utm_source=tuicool
 http://www.oschina.net/translate/angularjs-seo-with-prerender-io
 
+//python
+http://www.jeffknupp.com/blog/2013/08/16/open-sourcing-a-python-project-the-right-way/
+
 // Linux Kernel
 http://blog.coly.li/?p=261
 
