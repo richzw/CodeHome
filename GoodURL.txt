@@ -27,6 +27,8 @@ http://www.jeffknupp.com/blog/2013/08/16/open-sourcing-a-python-project-the-righ
 
 // Linux Kernel
 http://blog.coly.li/?p=261
+// Linux Lecture
+http://haifux.org/lectures.html
 
 // C
 Bit operation --> http://graphics.stanford.edu/~seander/bithacks.html
