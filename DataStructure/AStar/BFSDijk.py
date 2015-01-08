@@ -1,5 +1,5 @@
 
- def astar_dijk(graph, start, goal):
+ def bfs_dijk(graph, start, goal):
 	frontier = Queue.PriorityQueue()
 	frontier.put(start, 0)
 	came_from = {}
