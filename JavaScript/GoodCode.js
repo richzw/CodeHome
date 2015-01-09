@@ -1,3 +1,12 @@
+// falsy value
+ underfined, null, 0, false, NaN, ''
+
+// random number of array
+var items = [12, 548 , 'a' , 2 , 5478 , 'foo' , 8852, , 'Doe' , 2145 , 119];
+var randomItem = items[Math.floor(Math.random() * items.length)];
+
+var x = Math.floor(Math.random() * (max - min + 1)) + min;
+
 // convert arguments into native javascript array
 var args = Array.prototype.slice.call(arguments, 0);
 
@@ -9,7 +18,6 @@ String.prototype.trim = function () {
 // append one array into another array
 var array1 = [12 , "foo" , {name: "Joe"} , -2458]; 
 var array2 = ["Doe" , 555 , 100];
-
 Array.prototype.push.apply(array1, array2);
 
 //
