@@ -57,6 +57,26 @@ for (var i = 0, len = arrayNum.length; i < len; ++i){
 	sum += arrayNum[i];
 }
 
+// replace if else with switch case
+function getCategory(age) {  
+    var category = "";  
+    switch (true) {  
+        case isNaN(age):  
+            category = "not an age";  
+            break;  
+        case (age >= 50):  
+            category = "Old";  
+            break;  
+        case (age <= 20):  
+            category = "Baby";  
+            break;  
+        default:  
+            category = "Young";  
+            break;  
+    };  
+    return category;  
+}  
+
 var person = {name :'Saad', age : 26, department : {ID : 15, name : "R&D"} };
 var stringFromPerson = JSON.stringify(person);
 /* stringFromPerson  "{"name":"Saad","age":26,"department":{"ID":15,"name":"R&D"}}"   */
