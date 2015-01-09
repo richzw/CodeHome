@@ -57,6 +57,20 @@ for (var i = 0, len = arrayNum.length; i < len; ++i){
 	sum += arrayNum[i];
 }
 
+var person = {name :'Saad', age : 26, department : {ID : 15, name : "R&D"} };
+var stringFromPerson = JSON.stringify(person);
+/* stringFromPerson  "{"name":"Saad","age":26,"department":{"ID":15,"name":"R&D"}}"   */
+var personFromString = JSON.parse(stringFromPerson);
+
+setInterval(doSomethingPeriodically, 1000);  
+setTimeout(doSomethingAfterFiveSeconds, 5000);
+
+// comma symbol
+var a = 0; 
+var b = ( a++, 99 ); 
+console.log(a);  // a will be equal to 1 
+console.log(b);  // b is equal to 99
+
 //1. Failed to save page in web browser
 <noscript> <iframe src="*.html"></iframe></noscript>
 
