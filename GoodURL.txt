@@ -34,6 +34,7 @@ http://haifux.org/lectures.html
 Bit operation --> http://graphics.stanford.edu/~seander/bithacks.html
 
 // Go
+http://talks.golang.org/2014/readability.slide#1
 https://cdn.rawgit.com/gophercon/2014-talks/master/derekcollison/HighPerformanceSystemsInGo.pdf
 https://software.intel.com/en-us/blogs/2014/05/10/debugging-performance-issues-in-go-programs
 http://www.sitepoint.com/go-building-web-applications-beego/
