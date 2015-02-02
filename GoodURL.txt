@@ -9,6 +9,7 @@
 http://www.cnblogs.com/wuyuegb2312/tag/算法/
 http://clrs.skanev.com/index.html   // The answers of 'Introduction to Algorithm'
 
+JavaScript code style --> https://github.com/rwaldron/idiomatic.js
 DailyJS --> http://dailyjs.com/tags.html#js101
 Advanced data structure --> http://courses.csail.mit.edu/6.851/spring12/lectures/
 Code example --> http://www.keithschwarz.com/interesting/ 
