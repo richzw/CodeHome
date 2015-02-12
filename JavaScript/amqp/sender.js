@@ -11,9 +11,10 @@ var amqp = require('amqplib'),
  * Sender Class, initialized with amqp address
  * @param {string} amqpAddr The amqp address
  * @param {number} retryDelay A delay time per milliseconds 
+ * @param {number} attempts Retry connection number
  * @constructor
  */
-var Sender = function( amqpAddr, retryDelay ) {
+var Sender = function( amqpAddr, retryDelay, attempts, callback ) {
 	/**
 	 * amqp address
 	 * @type {!string}
@@ -36,6 +37,10 @@ var Sender = function( amqpAddr, retryDelay ) {
 	this.ex_ = 'BS';
 
 	this.retryDelay_ = retryDelay;
+
+	this.attempts_ = attempts;
+
+	this.cb_ = callback;
 
 	this.tryConnect_( retryDelay );
 };
@@ -78,6 +83,10 @@ Sender.prototype.handleUnrouteableMessages_ = function() {
 Sender.prototype.handleDisconnections_ = function() {
 	return this.con_.on('error', (function( that ) {
 		return function( err ) {
+			if ((err.code === 'ECONNRESET') && (that.ch_ !== null)) {
+				//that.ch_.close();
+			}
+
 			return that.retryConnect_( that.retryDelay_ , err );
 		};
 	})(this));
@@ -92,10 +101,18 @@ Sender.prototype.handleDisconnections_ = function() {
 Sender.prototype.publish_ = function( key, msg ) {
 	var self = this;
 
-	this.ch_.publish( this.ex_, key, msg, { deliveryMode: 2, mandatory: true }, function() {
-		console.log('message processed');
-		return self.ch_.close();
-	});
+	return when( this.ch_.publish( this.ex_, key, msg, { deliveryMode: 2, mandatory: true } ) )
+		.then(function(info) {
+			console.log('publishing message processed' + info);
+			return self.ch_.close();
+		}, function( err ) {
+			console.log( err );
+			// should close the channel??
+			return self.ch_.close( function( e ) {
+				console.log(e);
+				return e;
+			});
+		});
 };
 
 /**
@@ -106,10 +123,12 @@ Sender.prototype.publish_ = function( key, msg ) {
  */
 Sender.prototype.deliverMessage = function ( key, msg ) {
 	return this
-		.tryConnect_( this.retryDelay_ )
+		.tryConnect_( this.attempts_, this.retryDelay_ )
 		.with(this)
-		.done(function() {
+		.then(function() {
 			return this.publish_( key, msg );
+		}).catch( function( e ) {
+			console.log( e );
 		});
 }
 
@@ -119,21 +138,26 @@ Sender.prototype.deliverMessage = function ( key, msg ) {
  * @param {Object} err Error object
  * @private
  */
-Sender.prototype.retryConnect_ = function( retryDelay, err ) {
-	console.error('MessageBus disconnected, attempted to reconnect' + err);
+Sender.prototype.retryConnect_ = function( attempts, retryDelay, err ) {
+	if (attempts === 0) {
+		console.error('Sender: MessageBus disconnected, attempted to reconnect. Err:' + err);
+		this.cb_();
+		return when.reject( new Error('Max reconnect attempts exceeded, connection failed'));
+	}
+
 	return when( 'retry' )
 		.with( this )
 		.delay( retryDelay )
 		.then(function() { 
-			return this.tryConnect_( this.retryDelay_ ); 
-		});
+			return this.tryConnect_( attempts - 1, this.retryDelay_ ); 
+		})
 }
 
 /**
  * Try to connect to amqp.
  * @private
  */
-Sender.prototype.tryConnect_ = function( retryDelay ) {
+Sender.prototype.tryConnect_ = function( attempts, retryDelay ) {
 	return when(amqp.connect( this.addr_ ))
 		.with( this )
 		.then( this.createChannel_ )
@@ -141,7 +165,7 @@ Sender.prototype.tryConnect_ = function( retryDelay ) {
 		.then( this.handleUnrouteableMessages_ )
 		.then( this.handleDisconnections_ )
 		.catch( function( e ) {
-			return this.retryConnect_( retryDelay, e );
+			return this.retryConnect_( attempts, retryDelay, e );
 		});
 };
 
