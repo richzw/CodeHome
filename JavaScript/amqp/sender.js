@@ -102,10 +102,13 @@ Sender.prototype.handleDisconnections_ = function() {
 Sender.prototype.publish_ = function( key, msg ) {
 	var self = this;
 
-	this.ch_.publish( this.ex_, key, msg, { deliveryMode: 2, mandatory: true }, function( e ) {
-		console.log('Sender: publishing message processed' + e);
-		return self.ch_.close();
-	});
+	return when( this.ch_.publish( this.ex_, key, msg, { deliveryMode: 2, mandatory: true }))
+		.then(function() {
+			console.log('Sender: publishing message processed');
+			return self.ch_.close();
+		}, function() {
+			return when.reject(new Error('Publish Message Error'));
+		});
 };
 
 /**
@@ -121,6 +124,8 @@ Sender.prototype.deliverMessage = function ( key, msg ) {
 		.then(function() {
 			return this.publish_( key, msg );
 		}).catch( function( e ) {
+			// callback function to notify sender error to UI client
+			this.cb_();
 			console.log( e );
 		});
 }
@@ -134,8 +139,6 @@ Sender.prototype.deliverMessage = function ( key, msg ) {
 Sender.prototype.retryConnect_ = function( attempts, retryDelay, err ) {
 	if (attempts === 0) {
 		console.error('Sender: MessageBus disconnected, attempted to reconnect. Err:' + err);
-		// callback function to notify sender error to UI client
-		this.cb_();
 		return when.reject( new Error('Max reconnect attempts exceeded, connection failed') );
 	}
 
