@@ -91,7 +91,7 @@ Receiver.prototype.consume_ = function( queue ) {
 Receiver.prototype.handleDisconnection_ = function() {
 	return this.con_.on('error', (function( that ) {
 		return function( err ) {
-			return that.reconnect_( that.retryDelay_ , err );
+			return that.reconnect_( err );
 		};
 	})(this));
 };
