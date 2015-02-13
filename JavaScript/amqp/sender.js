@@ -88,10 +88,23 @@ Sender.prototype.handleDisconnections_ = function() {
 				//return when.reject( err );
 			//}
 
-			return that.retryConnect_( that.attempts_, that.retryDelay_ , err );
+			return that;//.retryConnect_( that.attempts_, that.retryDelay_ , err );
 		};
 	})(this));
 };
+
+/**
+ *
+ *
+Sender.prototype.handleClose_ = function() {
+	return this.con_.on('close', (function(that) {
+		return function( err ) {
+			console.log( err );
+			return that;
+		}
+	})(this));
+}*/
+
 
 /**
  * publish message to amqp  
@@ -125,7 +138,7 @@ Sender.prototype.deliverMessage = function ( key, msg ) {
 			return this.publish_( key, msg );
 		}).catch( function( e ) {
 			// callback function to notify sender error to UI client
-			this.cb_();
+			this.cb_( key );
 			console.log( e );
 		});
 }
@@ -161,6 +174,7 @@ Sender.prototype.tryConnect_ = function( attempts, retryDelay ) {
 		.then( this.createExchange_ )
 		.then( this.handleDisconnections_ )			
 		.then( this.handleUnrouteableMessages_ )
+		//.then( this.handleClose_ )
 		.catch( function( e ) {
 			return this.retryConnect_( attempts, retryDelay, e );
 		});
