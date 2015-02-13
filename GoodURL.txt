@@ -41,6 +41,7 @@ https://software.intel.com/en-us/blogs/2014/05/10/debugging-performance-issues-i
 http://www.sitepoint.com/go-building-web-applications-beego/
 http://talks.golang.org/2014/go4gophers.slide#2
 http://dave.cheney.net/2014/10/17/functional-options-for-friendly-apis
+http://peter.bourgon.org/go-kit/
 
 // TCP/IP 
 http://blog.csdn.net/dog250/article/details/6612496
