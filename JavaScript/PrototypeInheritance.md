@@ -65,9 +65,9 @@ this is the flexibility you talk of.
 This flexibility is then used a lot to extend and alter classes programmatically, using only the given object-mutation
 capabilities of JavaScript:
 
-•	mixins and traits for multiple inheritance
-•	prototypes can be modified after objects that inherit from them have been instantiated
-•	higher-order functions and method decorators can be used easily in the creation of prototypes
+- •mixins and traits for multiple inheritance
+- •prototypes can be modified after objects that inherit from them have been instantiated
+- •higher-order functions and method decorators can be used easily in the creation of prototypes
 
 Function:
 
