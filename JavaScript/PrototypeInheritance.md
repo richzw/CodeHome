@@ -50,7 +50,7 @@ var johnDoe = Object.create(man);
 In my humble opinion prototypal object-oriented programming languages are more powerful than classical object-oriented
 programming languages because:
 
--	There is only one type of abstraction.
+- There is only one type of abstraction.
 - Generalizations are simply objects.
 
 By now you must have realized the difference between classical inheritance and prototypal inheritance. 
@@ -70,36 +70,49 @@ capabilities of JavaScript:
 •	higher-order functions and method decorators can be used easily in the creation of prototypes
 
 Function:
-1.	Prototype inheritance is simple
+
+**1.Prototype inheritance is simple**
+
 Hence we only need two things to make prototypal inheritance work:
-1.	A way to create a new object (e.g. object literals).
-2.	A way to extend an existing object (e.g. Object.create).
+
+- 1.	A way to create a new object (e.g. object literals).
+- 2.	A way to extend an existing object (e.g. Object.create).
+
 In contrast classical inheritance is much more complicated. In classical inheritance you have:
-1.	Classes.
-2.	Object.
-3.	Interfaces.
-4.	Abstract Classes.
-5.	Final Classes.
-6.	Virtual Base Classes.
-7.	Constructors.
-8.	Destructors.
-2.	Prototype inheritance is powerful
+
+- 1.	Classes.
+- 2.	Object.
+- 3.	Interfaces.
+- 4.	Abstract Classes.
+- 5.	Final Classes.
+- 6.	Virtual Base Classes.
+- 7.	Constructors.
+- 8.	Destructors.
+
+**2.Prototype inheritance is powerful**
 
 Most programmers who come from a classical background argue that classical inheritance is more powerful than 
 prototypal inheritance because it has:
-1.	Private variables.
-2.	Multiple inheritance.
+
+- 1.	Private variables.
+- 2.	Multiple inheritance.
+
 This claim is false. We already know that JavaScript supports private variables via closures, but what about multiple
 inheritance? Objects in JavaScript only have one prototype.
 The truth is that prototypal inheritance supports inheriting from multiple prototypes. Prototypal inheritance simply
 means one object inheriting from another object. There are actually two ways to implement prototypal inheritance:
-1.	Delegation or Differential Inheritance
-2.	Cloning or Concatenative Inheritance
-3.	Prototype inheritance is less redundant
+
+- 1.	Delegation or Differential Inheritance
+- 2.	Cloning or Concatenative Inheritance
+
+**3.Prototype inheritance is less redundant**
+
 Since prototypal inheritance allows for multiple inheritance, code which requires multiple inheritance is less
 redundant if written using prototypal inheritance rather than in a language which has classical inheritance 
 but no multiple inheritance.
-4.	Prototype inheritance is dynamic
+
+**4.Prototype inheritance is dynamic**
+
 One of the most important advantages of prototypal inheritance is that you can add new properties to prototypes 
 after they are created. This allows you to add new methods to a prototype which will be automatically made available
 to all the objects which delegate to that prototype.
