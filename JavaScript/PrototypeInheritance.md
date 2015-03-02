@@ -62,48 +62,51 @@ Of course, this is mostly used to express the established and simple concept of 
 but without classes as language-level immutable structures that need specific syntax to create them. 
 By using plain objects, all you can do to objects (and you can do everything) you can now do to "classes" - 
 this is the flexibility you talk of.
+
 This flexibility is then used a lot to extend and alter classes programmatically, using only the given object-mutation
 capabilities of JavaScript:
 
-- •mixins and traits for multiple inheritance
-- •prototypes can be modified after objects that inherit from them have been instantiated
-- •higher-order functions and method decorators can be used easily in the creation of prototypes
+- mixins and traits for multiple inheritance
+- prototypes can be modified after objects that inherit from them have been instantiated
+- higher-order functions and method decorators can be used easily in the creation of prototypes
 
-Function:
+Benefit of prototype:
+======
 
 **1.Prototype inheritance is simple**
 
 Hence we only need two things to make prototypal inheritance work:
 
-- 1.	A way to create a new object (e.g. object literals).
-- 2.	A way to extend an existing object (e.g. Object.create).
+- A way to create a new object (e.g. object literals).
+- A way to extend an existing object (e.g. Object.create).
 
 In contrast classical inheritance is much more complicated. In classical inheritance you have:
 
-- 1.	Classes.
-- 2.	Object.
-- 3.	Interfaces.
-- 4.	Abstract Classes.
-- 5.	Final Classes.
-- 6.	Virtual Base Classes.
-- 7.	Constructors.
-- 8.	Destructors.
+- Classes.
+- Object.
+- Interfaces.
+- Abstract Classes.
+- Final Classes.
+- Virtual Base Classes.
+- Constructors.
+- Destructors.
 
 **2.Prototype inheritance is powerful**
 
 Most programmers who come from a classical background argue that classical inheritance is more powerful than 
 prototypal inheritance because it has:
 
-- 1.	Private variables.
-- 2.	Multiple inheritance.
+- Private variables.
+- Multiple inheritance.
 
 This claim is false. We already know that JavaScript supports private variables via closures, but what about multiple
 inheritance? Objects in JavaScript only have one prototype.
+
 The truth is that prototypal inheritance supports inheriting from multiple prototypes. Prototypal inheritance simply
 means one object inheriting from another object. There are actually two ways to implement prototypal inheritance:
 
-- 1.	Delegation or Differential Inheritance
-- 2.	Cloning or Concatenative Inheritance
+- Delegation or Differential Inheritance
+- Cloning or Concatenative Inheritance
 
 **3.Prototype inheritance is less redundant**
 
@@ -119,6 +122,7 @@ to all the objects which delegate to that prototype.
 
 
 **Ref:**
+
 http://stackoverflow.com/questions/28783077/what-can-the-javascript-prototype-system-do-beyond-mimicking-a-classical-class-s#
 
 http://stackoverflow.com/questions/19633762/classical-inheritance-vs-protoypal-inheritance-in-javascript/19640910#19640910
