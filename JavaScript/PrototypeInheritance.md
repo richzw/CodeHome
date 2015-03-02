@@ -11,7 +11,7 @@ JavaScript Prototype
          +------------------------------+
          |                                 |
          v                                 v
-Prototypal Pattern               Constructor Pattern
+    Prototypal Pattern               Constructor Pattern
 
 
 **Object-oriented programming**
@@ -71,7 +71,7 @@ capabilities of JavaScript:
 - higher-order functions and method decorators can be used easily in the creation of prototypes
 
 Benefit of prototype:
-======
+------------
 
 **1.Prototype inheritance is simple**
 
