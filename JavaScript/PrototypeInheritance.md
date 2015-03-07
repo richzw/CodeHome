@@ -27,10 +27,12 @@ or prototypes to create generalizations of these objects. Generalizations are cr
 
 **Classical object-oriented programming**
 
-classical object-oriented programming we have two types of abstractions: classes and objects. An object, 
-as mentioned before, is an abstraction of a real world entity. A class on the other hand is an abstraction 
-of an object or another class (i.e. it's a generalization)
-Objects in classical object-oriented programming languages can only be created by instantiating classes:
+classical object-oriented programming we have two types of abstractions: _classes_ and _objects_. 
+
+_object_, as mentioned before, is an abstraction of a real world entity. 
+
+_class_ on the other hand is an abstraction of an object or another class (i.e. it's a generalization)
+
 In summation in classical object-oriented programming languages objects are abstractions of real world entities and 
 classes are generalizations
 
@@ -120,6 +122,7 @@ but no multiple inheritance.
 One of the most important advantages of prototypal inheritance is that you can add new properties to prototypes 
 after they are created. This allows you to add new methods to a prototype which will be automatically made available
 to all the objects which delegate to that prototype.
+
 
 
 **Ref:**
