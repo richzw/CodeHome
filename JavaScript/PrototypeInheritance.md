@@ -60,6 +60,33 @@ By now you must have realized the difference between classical inheritance and p
 Classical inheritance is limited to classes inheriting from other classes. However prototypal inheritance 
 includes not only prototypes inheriting from other prototypes but also objects inheriting from prototypes.
 
+Classical Inheritance vs Prototype Inheritance
+----------
+
+| Classical Inheritance | Prototypal Inheritance  |
+| -------------------------- | ------------------------------- |
+| Classes are immutable. You can't modify or add new methods to them at runtime. | Prototypes are flexible. They may be either mutable or immutable. |
+| Classes may or may not support multiple inheritance. | Objects can inherit from multiple prototypes. |
+| It's verbose and complicated. You have abstract classes, final classes, interfaces, etc. | It's simple. You only have objects and extending objects is the only operation required. |
+
+
+
+```javascript
+Function.prototype.new = function () {
+     function functor() { return constructor.apply(this, args); }
+     var args = Array.prototype.slice.call(arguments);
+     functor.prototype = this.prototype;
+     var constructor = this;
+     return new functor;
+};
+```
+
+
+
+
+PostScript
+=========
+
 The prototype system offers a captivating model of **metaprogramming**, by implementing inheritance via standard objects. 
 Of course, this is mostly used to express the established and simple concept of classes of instances, 
 but without classes as language-level immutable structures that need specific syntax to create them. 
