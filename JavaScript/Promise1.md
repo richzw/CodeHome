@@ -4,7 +4,7 @@ Promise
 JavaScript is functional programming language???
 -	function are first-class values
 
-The feature of _functional programming_
+However, the feature of _functional programming_
 -	immutable data
 -	preference for recursion over looping
 -	algebraic type system
