@@ -123,6 +123,12 @@ var rectangle = {
  alert(rect.area());
 ```
 
+| Constructor Pattern | Prototypal Pattern |
+| ------------------- | ---------------------- |
+| Functional features can't be used in conjunction with the new keyword. | Functional features can be used in conjunction with create. |
+| Forgetting to use new leads to unexpected bugs and global variables. | Since create is a function the program will always work as expected. |
+| Prototypal inheritance is unnecessarily complicated and confusing. | Prototypal inheritance is simple and easy to understand. |
+
 
 
 PostScript
@@ -201,4 +207,4 @@ http://stackoverflow.com/questions/19633762/classical-inheritance-vs-protoypal-i
 
 http://stackoverflow.com/questions/2800964/benefits-of-prototypal-inheritance-over-classical#
 
-
+http://aaditmshah.github.io/why-prototypal-inheritance-matters/#toc_6
