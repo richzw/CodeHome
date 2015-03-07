@@ -13,6 +13,8 @@ The feature of _functional programming_
 
 Nodejs asynchronous through callback.
 
+Oh, my God, [callback hell](http://callbackhell.com/)
+
 Actually, **promise** provide a compelling alternative to raw callback when dealing with asynchronous codes.
 
 What is a _promise_?
