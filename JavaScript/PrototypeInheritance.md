@@ -58,7 +58,7 @@ By now you must have realized the difference between classical inheritance and p
 Classical inheritance is limited to classes inheriting from other classes. However prototypal inheritance 
 includes not only prototypes inheriting from other prototypes but also objects inheriting from prototypes.
 
-The prototype system offers a captivating model of metaprogramming, by implementing inheritance via standard objects. 
+The prototype system offers a captivating model of **metaprogramming**, by implementing inheritance via standard objects. 
 Of course, this is mostly used to express the established and simple concept of classes of instances, 
 but without classes as language-level immutable structures that need specific syntax to create them. 
 By using plain objects, all you can do to objects (and you can do everything) you can now do to "classes" - 
