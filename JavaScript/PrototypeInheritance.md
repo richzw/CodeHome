@@ -34,7 +34,8 @@ Objects in classical object-oriented programming languages can only be created b
 In summation in classical object-oriented programming languages objects are abstractions of real world entities and 
 classes are generalizations
 
-Prototype object-oriented programming
+**Prototype object-oriented programming**
+
 As you can see in prototypal object-oriented programming languages objects are abstractions of either 
 real world entities (in which case they are simply called objects) or other objects 
 (in which case they are called prototypes of those objects that they abstract). Hence a prototype is a generalization.
