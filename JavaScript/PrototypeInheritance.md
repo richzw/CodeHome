@@ -60,8 +60,8 @@ By now you must have realized the difference between classical inheritance and p
 Classical inheritance is limited to classes inheriting from other classes. However prototypal inheritance 
 includes not only prototypes inheriting from other prototypes but also objects inheriting from prototypes.
 
-Classical Inheritance vs Prototype Inheritance
-----------
+
+**Classical Inheritance vs Prototype Inheritance**
 
 | Classical Inheritance | Prototypal Inheritance  |
 | -------------------------- | ------------------------------- |
@@ -69,7 +69,29 @@ Classical Inheritance vs Prototype Inheritance
 | Classes may or may not support multiple inheritance. | Objects can inherit from multiple prototypes. |
 | It's verbose and complicated. You have abstract classes, final classes, interfaces, etc. | It's simple. You only have objects and extending objects is the only operation required. |
 
+**Constructor pattern vs Prototype pattern**
 
+1. _Constructor pattern_
+
+```javascript
+ function Rectangle(width, height) {
+     this.height = height;
+     this.width = width;
+ }
+ 
+ Rectangle.prototype.area = function () {
+     return this.width * this.height;
+ };
+ 
+ var rect = new Rectangle(5, 10);
+ 
+ alert(rect.area());
+```
+
+In order to make JavaScript look more like Java the prototypal pattern was inverted to yield the constructor pattern.
+Hence every function in JavaScript has a prototype object and can be used as a constructor. The new keyword allows us
+to use a function as a constructor. In addition it clones the prototype of the constructor and binds it to the this
+pointer of the constructor, returning this if no other object is returned.
 
 ```javascript
 Function.prototype.new = function () {
@@ -81,6 +103,25 @@ Function.prototype.new = function () {
 };
 ```
 
+2. _Prototype Inheritance_
+
+```javascript
+var rectangle = {
+     create: function (width, height) {
+         var self = Object.create(this);
+         self.height = height;
+         self.width = width;
+         return self;
+     },
+     area: function () {
+         return this.width * this.height;
+     }
+ };
+ 
+ var rect = rectangle.create(5, 10);
+ 
+ alert(rect.area());
+```
 
 
 
