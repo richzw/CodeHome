@@ -37,6 +37,7 @@ http://haifux.org/lectures.html
 
 // C
 Bit operation --> http://graphics.stanford.edu/~seander/bithacks.html
+C memory -- http://marek.vavrusa.com/c/memory/2015/02/20/memory/
 
 // Go
 http://talks.golang.org/2014/readability.slide#1
