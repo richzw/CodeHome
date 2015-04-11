@@ -128,8 +128,8 @@ TreeNode *findLCA(TreeNode *root, int n1, int n2)
 }
 
 /* convert LCA to RMQ
-The LCA of nodes u and v is the shallowest node encountered between the visits to u and to v during a depth first search traversal of T.
-This is the Eular tour.
+The LCA of nodes u and v is the shallowest node encountered between the visits to u and to v 
+during a depth first search traversal of T. This is the Eular tour.
 
 On an input tree T, we build 3 arrays.
 1. Euler[1,..,2n-1] – The nodes visited in an Euler tour of T. Euler[i] is the label of the i-th node visited in the tour.
