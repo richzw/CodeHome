@@ -19,6 +19,9 @@ Data structure in Linux Kernel --> http://cstheory.stackexchange.com/questions/1
 add salt for user password --> http://drops.wooyun.org/papers/1066
 http://www.redblobgames.com/pathfinding/a-star/introduction.html
 
+// network
+http://boolan.com/course/4
+
 //NOSQL
 http://juliashine.com/distributed-algorithms-in-nosql-databases/
 
