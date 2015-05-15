@@ -7,6 +7,9 @@
  
 // English
 http://www.happyge.com/
+
+// Web UI design
+http://tuweia.cn/c/home/a/create/ad/wb409
  
 //Algorithm Design manual
 http://www.cnblogs.com/wuyuegb2312/tag/算法/
