@@ -246,3 +246,29 @@ void printLevelOrder(struct node *root) {
     }
   }
 }
+
+void getHD(Node* root, int hd, map<int, vector<int>> &hmap)
+{
+	if (root == nullptr)
+		return;
+	
+	// store current node in hash map
+	hmap[hd].push_back(root->val);
+
+	getHD(root->left, hd-1, hmap);
+
+	getHD(root->right, hd+1, hmap);
+}
+
+void printVerticalOrder(Node* root)
+{
+	map<int, vector<int>> hmap;
+	getHD(root, 0, hmap);
+
+	for (auto it = std::begin(hmap), en = std::end(hmap); it != en; ++it)
+	{
+		for (auto v : it->second)
+			cout << v << " ";
+		cout << endl;
+	}
+}
