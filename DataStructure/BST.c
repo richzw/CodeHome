@@ -272,3 +272,17 @@ void printVerticalOrder(Node* root)
 		cout << endl;
 	}
 }
+/*
+What the interviewer probably meant is to pass a linked list down the tree and 
+give each node a pointer to the list element that represents its column.
+
+Just imagine the linked list to be infinite in both directions, you can easily extend it whenever you hit an end. 
+Every item of the list is in turn a list of nodes:
+
+function traverse(tree_node, list_node):
+    if tree_node is NIL:
+        return
+    list_node.add(tree_node)
+    traverse(tree_node.left, list_node.prev)
+    traverse(tree_node.right, list_node.next)
+*/
