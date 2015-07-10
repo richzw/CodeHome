@@ -5,8 +5,9 @@
 
 void RNG::kiss_init()
 {
+	//clock_gettime(2), with an argument of CLOCK_REALTIME_HR.
 	LARGE_INTEGER counter;
-	QueryPerformanceCounter(&counter);
+	QueryPerformanceCounter(&counter); 
 
 	w = 916191069L;
 	x = (x ^ (counter.QuadPart & 0xFFFF)) | 1;
