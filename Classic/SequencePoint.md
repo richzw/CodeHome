@@ -166,9 +166,13 @@ Evaluations A and B are indeterminately sequenced when either A is sequenced bef
 
 > [NOTES] 
 > 1 : A strict partial order is a binary relation "<" over a set P which is asymmetric, and transitive, i.e., for all a, b, and c in P, we have that:
+
 > ........(i). if a < b then ¬ (b < a) (asymmetry);
+
 > ........(ii). if a < b and b < c then a < c (transitivity).
+
 > 2 : The execution of unsequenced evaluations can overlap.
+
 > 3 : Indeterminately sequenced evaluations cannot overlap, but either could be executed first.
 
 ------------
