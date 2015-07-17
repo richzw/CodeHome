@@ -141,5 +141,37 @@ Example 3 :
 
      int x = i + i++ ;// Similar to above
 
+-------------
+
+**Is it true that there are no Sequence Points in C++11**
+
+**Yes!** This is very true.
+
+Sequence Points have been replaced by the more clear Sequenced Before and Sequenced After (and Unsequenced and Indeterminately Sequenced) relations in C++11.
+
+-------------
+
+**What exactly is this 'Sequenced before' thing?**
+
+Sequenced Before(§1.9/13) is a relation which is:
+
+- **Asymmetric**
+- **Transitive**
+
+between evaluations executed by a single thread and induces a **strict partial order1**
+
+Formally it means given any two evaluations(See below) A and B, if A is sequenced before B, then the execution of A shall precede the execution of B. If A is not sequenced before B and B is not sequenced before A, then A and B are **unsequenced 2.**
+
+Evaluations A and B are indeterminately sequenced when either A is sequenced before B or B is sequenced before A, but it is **unspecified** which3.
+
+> [NOTES] 
+> 1 : A strict partial order is a binary relation "<" over a set P which is asymmetric, and transitive, i.e., for all a, b, and c in P, we have that:
+> ........(i). if a < b then ¬ (b < a) (asymmetry);
+> ........(ii). if a < b and b < c then a < c (transitivity).
+> 2 : The execution of unsequenced evaluations can overlap.
+> 3 : Indeterminately sequenced evaluations cannot overlap, but either could be executed first.
+
+------------
+
 
 
