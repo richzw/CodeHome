@@ -48,6 +48,23 @@ int maxValue(struct node* node){
        curr = curr->right;
    return curr->data;
 }
+
+// Get the count of nodes in BST in range [low, high]
+int getCount(struct node* root, int low, int high)
+{
+	if (root == NULL)
+		return 0;
+	if (root->data == low && root->data == high)
+		return 1;
+		
+	if (root->data >= low && root->data <= high)
+		return 1 + getCount(root->left, low, high) + getCount(root->right, low, high);
+	else if (root->data < low)
+		return getCount(root->right, low, high);
+	else 
+		return getCount(root->left, low, high);
+}
+
 /*
 * Given a tree and a sum, return true if there is a path from the root
 * down to a leaf, such that adding up all the values along the path
