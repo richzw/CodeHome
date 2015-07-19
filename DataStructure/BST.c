@@ -65,6 +65,23 @@ int getCount(struct node* root, int low, int high)
 		return getCount(root->left, low, high);
 }
 
+// Get count of nodes whose subtree is in range from low to hgih. 
+bool getSubtreeCount(struct node* root, int low, int high, int* count)
+{
+	if (root == NULL)
+		return true;
+	
+	bool l = (root->left)? getSubtreeCount(root->left, low, high, count): true;
+	bool r = (root->right)? getSubtreeCount(root->right, low, high, count): true;
+	
+	if (l && r && (root->data >= low && root->data <= high))
+	{
+		++*count;
+		return true;
+	}
+	return false;
+}
+
 // find ceil of a given input in BST. If input is more
 // than the max key in BST, return -1
 int Ceil(struct node* root, int input)
