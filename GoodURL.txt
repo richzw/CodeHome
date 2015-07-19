@@ -36,6 +36,7 @@ http://www.html-js.com/article/1884?utm_source=tuicool
 http://www.oschina.net/translate/angularjs-seo-with-prerender-io
 http://www.angularjsbook.com/angular-basics/chapters/
 
+
 //python
 http://www.jeffknupp.com/blog/2013/08/16/open-sourcing-a-python-project-the-right-way/
 
