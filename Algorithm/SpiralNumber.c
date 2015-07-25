@@ -32,3 +32,14 @@ int spiralNumber(int x, int y)
     }
     return squ+pos;
 }
+
+if y * y >= x * x then begin
+  p := 4 * y * y - y - x;
+  if y < x then
+    p := p - 2 * (y - x)
+end
+else begin
+  p := 4 * x * x - y - x;
+  if y < x then
+    p := p + 2 *(y - x)
+end;
