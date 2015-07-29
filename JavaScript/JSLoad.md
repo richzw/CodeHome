@@ -20,7 +20,7 @@ Basically CommonJS specifies that you need to have a the `require()` function to
 
 **CommonJS** was not particularly designed with browsers in mind so, it doesn't fit to the browser environment very well (I really have no source for this, it just says so everywhere, for example the RequireJS site.). Apparently this has something to do with asynchronous loading etc.
 
-On the contrary, RequireJS implements AMD, which is designed to suit the browser environment(source). Apparently AMD started as an offspin of CommonJS Transport format and evolved into its own module definition API. Hence the similiarities between the two. The new thing in AMD is the `define()`
+On the contrary, `Require.JS` implements AMD, which is designed to suit the browser environment(source). Apparently AMD started as an offspin of CommonJS Transport format and evolved into its own module definition API. Hence the similiarities between the two. The new thing in AMD is the `define()`
 -function that allows the module to declare its dependencies before being loaded. For example the definition could be:
 
 ```javascript
@@ -30,10 +30,12 @@ function(module, factory function) {
 });
 ```
 
+一个用来进行模块定义的 define 方法以及一个用来处理依赖项加载的 require 方法
+
 So CommonJS and AMD are JavaScript module definition APIs that have different implementations, but both come from the same origins.
 
 - **AMD** is more suited for the browser, because it supports asynchronous loading of module dependencies.
-- **RequireJS** is an implementation of AMD, while at the same time trying to keep the spirit of CommonJS (mainly in the module identifiers).
+- **Require.JS** is an implementation of AMD, while at the same time trying to keep the spirit of CommonJS (mainly in the module identifiers).
 
 To confuse you even more, RequireJS, while being an AMD implementation, offers a CommonJS wrapper so CommonJS modules can almost directly be imported into use with RequireJS.
 
