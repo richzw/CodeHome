@@ -1,5 +1,5 @@
 
-[AMD, CommonJS (CMD?), Require.js](http://stackoverflow.com/questions/16521471/relation-between-commonjs-amd-and-requirejs)
+[AMD, CommonJS, Require.js](http://stackoverflow.com/questions/16521471/relation-between-commonjs-amd-and-requirejs)
 ============================
 
 **RequireJS** implements the **AMD** API (source).
