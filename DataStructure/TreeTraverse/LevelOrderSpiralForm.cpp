@@ -28,5 +28,42 @@ void printSpiralByOrder(Node* node, int level, bool lhr) {
   }
 }
 
-// 2. by stack....
+// 2. solve it through two stacks
+void printSpiral(Node* node) {
+  if (node == NULL)
+    return;
+    
+  stack<int> stlr;
+  stack<int> strl;
+  
+  stlr.push(node);
+  
+  while (!stlr.empty() || !strl.empty()) {
+    while (!stlr.empty()) {
+      Node* n = stlr.top();
+      print(n->data);
+      
+      // Attention: different order
+      if (n->right != NULL)
+        strl.push(n->right);
+      if (n->left != NULL)
+        strl.push(n->left);
+        
+      stlr.pop();
+    }
+    
+    while (!strl.empty()) {
+      Node* n = strl.top();
+      print(n->data);
+      
+      // Attention: different order
+      if (n->left != NULL)
+        stlr.push(n->left);
+      if (n->right != NULL)
+        stlr.push(n->right);
+      
+      strl.pop();
+    }
+  }
+}
 
