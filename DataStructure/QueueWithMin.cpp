@@ -43,3 +43,6 @@ but that's not too hard to work around).
 
 It will have O(1) get_min() and push() and amortized O(1) pop().
 */
+
+
+//3. Cartesian tree
