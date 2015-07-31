@@ -200,6 +200,33 @@ int countTrees(int numKeys){
        return sum;
    }
 }
+
+//remove all the half nodes (which has only one child)
+struct node* removeHalfNode(struct node* root) {
+	if (root == NULL)
+		return NULL;
+	
+	root->left = removeHalfNode(root->left);
+	root->right = removeHaflNode(root->right);
+	
+	if (root->left == NULL && root->right == NULL)
+		return root;
+	
+	if (root->left == NULL) {
+		struct node* new_node = root->right;
+		free(root);
+		return new_node;
+	}
+	
+	if (root->right == NULL) {
+		struct node* new_node = root->left;
+		free(root);
+		return new_node;
+	}
+	
+	return root;
+}
+
 /*
 * Return true if a binary tree is BST
 */
