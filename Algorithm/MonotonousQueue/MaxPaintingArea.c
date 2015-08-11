@@ -76,7 +76,7 @@ int GetMaxMatrix_monqueue(int arr[], int len){
     }
 
 
-    /* calc right continuous block */
+    /* calc left continuous block */
     for (i = n - 1;i >= 0;i--) {
         for (;end >= start && s[i] < s[P[end]];end--) {
             ln[P[end]] = i;
