@@ -1,5 +1,14 @@
 
 Vim command
+--------------
+
+_Command Mode_
+
+- '/' - forward search
+- '?' - backward search
+- '*' - 向下完全匹配光标下的词
+- '#' - 向上完全匹配光标下的词
+- 'g*' - 向下部分匹配光标下的词
 
 - **3diw**—delete inside the current word and the next two words
 - **dwwP**—swap the current word with the next word
@@ -12,4 +21,6 @@ Vim command
 - **c(**—change from the cursor to the begining of a sentence
 - **>}**—go to the end of the current paragraph
 - **dapP**—swap current paragraph with the next paragraph
-
+- **:%s/\s\+$//** - 去掉所有的行尾空
+- **:%s!\s*//.*!!** - 去掉所有的注释//
+- **:%s!\s*/\*\_.\{-}\*/\s*!!g** - 去掉所有的注释/* */
