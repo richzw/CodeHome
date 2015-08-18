@@ -1,4 +1,5 @@
 
+http://www.quora.com/What-should-one-say-when-the-interviewer-asks-Do-you-have-any-questions-for-me/answer/Edmond-Lau?srid=5X05&share=1
 
 - They want to know what the company culture is like,
 - how teams go about shipping projects,
