@@ -17,6 +17,8 @@ So what we need to do is:
 So the time complexity will be O(n log n)
 
 **Solution 1**
+
+```python
 class Solution:
     def subarraySumII(self, A, start, end):
         """
@@ -68,3 +70,4 @@ class Solution:
                     cnt += 1
 
         return cnt
+```        
