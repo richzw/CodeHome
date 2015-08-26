@@ -1,5 +1,6 @@
-Q: Find all contiguous subsequence in a given array of integers, whose sum falls in the given range.
-===========
+Q: **Find all contiguous subsequence in a given array of integers, whose sum falls in the given range.**
+
+-------------------------
 
 Starting from this problem: **find all contigous sub-sequence that has sum equals to x , so what we need is something similar.**
 
@@ -14,3 +15,56 @@ So what we need to do is:
 - Add x to the tree.
 
 So the time complexity will be O(n log n)
+
+**Solution 1**
+class Solution:
+    def subarraySumII(self, A, start, end):
+        """
+        O(n lg n) Binary Search
+        Bound:
+        f[i] - f[j] = start
+        f[i] - f[j'] = end
+        start < end
+        f[j] > f[j']
+        :param A: an integer array
+        :param start: start an integer
+        :param end: end an integer
+        :return:
+        """
+        n = len(A)
+        cnt = 0
+        f = [0 for _ in xrange(n+1)]
+
+        for i in xrange(1, n+1):
+            f[i] = f[i-1]+A[i-1]  # from left
+
+        f.sort()
+        for i in xrange(n+1):
+            lo = bisect_left(f, f[i]-end, 0, i)
+            hi = bisect_right(f, f[i]-start, 0, i)
+            cnt += hi-lo  # 0----lo----hi-----END
+
+        return cnt
+
+    def subarraySumII_TLE(self, A, start, end):
+        """
+        O(n^2)
+        :param A: an integer array
+        :param start: start an integer
+        :param end: end an integer
+        :return:
+        """
+        n = len(A)
+        cnt = 0
+        f = [0 for _ in xrange(n+1)]
+
+        for i in xrange(1, n+1):
+            f[i] = f[i-1]+A[i-1]  # from left
+
+        for i in xrange(0, n+1):
+            for j in xrange(i+1, n+1):
+                s = f[j]-f[i]
+                if start <= s <= end:
+                    cnt += 1
+
+        return cnt
