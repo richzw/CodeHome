@@ -2,6 +2,8 @@ Q: **Find all contiguous subsequence in a given array of integers, whose sum fal
 
 -------------------------
 
+**Solution 2**
+
 Starting from this problem: **find all contigous sub-sequence that has sum equals to x , so what we need is something similar.**
 
 For every index ith, we can calculate the sum of the segment from 0 to ith, which is x, so, the problem now is we need to find from 0 to i - 1, 
