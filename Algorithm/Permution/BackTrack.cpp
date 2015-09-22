@@ -1,3 +1,5 @@
+//http://www.cnblogs.com/wuyuegb2312/p/3273337.html
+
 bool finished = false;
 backtrack(int a[], int k, data input)
 {
