@@ -1,4 +1,27 @@
 /*
+Q: I want one data structure like that:
+1. Insert any element(should be able to contain repetetive ones) in O(log(n)) time
+2. Remove an element in O(log(n)) time as well.
+3. If i want to query for the number of elemenes in range [a,b], I should get that count in O(log(n)) time..
+
+A:
+1. The two obvious data structures for this task are the skip list
+2. Some variant of the order statistic tree
+
+An order statistic tree stores one extra piece of information in each node. You can store any of a number of different things,
+but the one I find easiest to understand is if each node stores the number of elements in its left sub-tree.
+
+When you insert, as you walk down the tree to store an element, you increment the count every time you descend to
+the left in the tree. Since you're only modifying the nodes you'd traverse anyway, this doesn't change the O(log N) insertion.
+When you re-balance, you have to adjust accordingly (but, again, you're only modifying counts in nodes
+you're already modifying when you do rotations, so (again) you don't affect the overall complexity.
+
+When you need to find a distance from one element to another, you just find the two nodes, each with O(log N) complexity. 
+You get the index of each element in the tree as you find it by initializing an index from the root, 
+then updating it from there (subtract the count as you descend to the left, add as you descend to the right).
+*/
+
+/*
  an order statistic tree is a variant of the binary search tree (or more generally, a B-tree[1]) 
  that supports two additional operation beyond insertion, lookup and deletion:
 
