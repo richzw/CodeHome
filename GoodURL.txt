@@ -39,6 +39,8 @@ http://www.html-js.com/article/1884?utm_source=tuicool
 http://www.oschina.net/translate/angularjs-seo-with-prerender-io
 http://www.angularjsbook.com/angular-basics/chapters/
 
+// react.js
+http://www.oschina.net/translate/going-native-with-react
 
 //python
 http://www.jeffknupp.com/blog/2013/08/16/open-sourcing-a-python-project-the-right-way/
