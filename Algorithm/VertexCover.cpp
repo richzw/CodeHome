@@ -38,3 +38,38 @@ int vertexCoverForBinaryTree(struct Node* root)
   return std:min(noroot_cnt, root_cnt);
 }
 
+// Issue: time complexity of the above naive recursive approach is exponential.
+
+// Improvement: Dynamic Programming
+// re-computations of same subproblems can be avoided by storing the solutions to subproblems and 
+// solving problems in bottom up manner.
+
+typedef struct node {
+  node* left;
+  node* right;
+  int val;
+  int vc_cnt;  // store the vertex cover count 
+};
+
+int vertexCoverDP(struct node* root)
+{
+  if (root == NULL)
+    return 0;
+  if (root->left == NULL && root->right == NULL)
+    return 0;
+    
+  //If vertex cover for this node is already evaluated, just return it.
+  if (root->vc_cnt > 0)
+    return root->vc_cnt;
+  
+  int root_cnt = 1 + vertexCoverDP(root->left) + vertexCoverDP(root->right);
+  
+  int noroot_cnt = 0;
+  if (root->left)
+    noroot_cnt += 1 + vertexCoverDP(root->left->left) + vertexCoverDP(root->left->right);
+  if (root->right)
+    noroot_cnt += 1 + vertexCoverDP(root->right->left) + vertexCoverDP(root->right->right);
+  
+  root->vc_cnt = std::min(root_cnt, noroot_cnt);
+  return root->vc_cnt;
+}
