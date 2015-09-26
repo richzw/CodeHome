@@ -23,6 +23,18 @@ int vertexCoverForBinaryTree(struct Node* root)
   if (root->left == NULL && root->right == NULL)
     return 0;
   
+  // root is part of vertex cover
+  int root_cnt = 1 + vertexCoverBinaryTree(root->left) + vertexCoverBinaryTree(root->right);
   
+  // root is not part of vertex cover
+  int noroot_cnt = 0;
+  if (root->left != NULL)
+    //noroot_cnt = 1 + vertexCoverBinaryTree(root->left);
+    noroot_cnt = 1 + vertexCoverBinaryTree(root->left->left) + vertexCoverBinaryTree(root->left->right); // Fixme
+  if (root->right != NULL)
+    //noroot_cnt = 1 + vertexCoverBinaryTree(root->right);
+    noroot_cnt = 1 + vertexCoverBinaryTree(root->right->left) + vertexCoverBinaryTree(root->right->right); // Fixme
+  
+  return std:min(noroot_cnt, root_cnt);
 }
 
