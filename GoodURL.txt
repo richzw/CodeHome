@@ -17,6 +17,7 @@ http://tuweia.cn/c/home/a/create/ad/wb409
 //Algorithm Design manual
 http://www.cnblogs.com/wuyuegb2312/tag/算法/
 http://clrs.skanev.com/index.html   // The answers of 'Introduction to Algorithm'
+http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/lecture-videos/
 
 JavaScript code style --> https://github.com/rwaldron/idiomatic.js
 DailyJS --> http://dailyjs.com/tags.html#js101
