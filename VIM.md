@@ -24,3 +24,7 @@ _Command Mode_
 - **:%s/\s\+$//** - 去掉所有的行尾空
 - **:%s!\s*//.*!!** - 去掉所有的注释//
 - **:%s!\s*/\*\_.\{-}\*/\s*!!g** - 去掉所有的注释/* */
+
+Put your cursor on the first `#` character, press `CtrlV` (or `CtrlQ` for gVim), and go down until the last commented line and press `x`, that will delete all the # characters vertically.
+
+For commenting a block of text is almost the same: First, go to the first line you want to comment, press `CtrlV`, and select until the last line. Second, press `Shift``I``#``Esc` (then give it a second), and it will insert a `#` character on all selected lines. For the stripped-down version of vim shipped with debian/ubuntu by default, type `: s/^/#` in the second step instead.
