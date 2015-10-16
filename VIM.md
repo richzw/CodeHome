@@ -2,6 +2,8 @@
 Vim command
 --------------
 
+[Vim Video](http://derekwyatt.org/vim/tutorials/)
+
 _Command Mode_
 
 - '/' - forward search
