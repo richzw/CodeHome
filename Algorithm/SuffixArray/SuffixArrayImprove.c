@@ -1,5 +1,11 @@
 //Suffix Array
-// method 1: doubling algorithm
+/*
+Prefix-doubling Algorithm ：各回合拿前一個、前二個、前四個、前八個、……字元實施排序，總共 logT 回合。
+每回合可以採用 Quicksort 或 Counting Sort 。
+
+http://www.csie.ntnu.edu.tw/~u91029/StringMatching2.html#1
+*/
+
 #define maxn 100
 int wa[maxn], wb[maxn], wv[maxn], ws[maxn];
 int rank[maxn],height[maxn];
