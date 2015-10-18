@@ -11,3 +11,11 @@ void knapsack(int n, int w){
 	cout << "the max weight " << c[w];
 
 }
+
+def knapsack_onearray(v, w, limit, n):
+     F = [0]*(limit + 1)
+     for i in range(n):
+         for j in range(limit, w[i], -1):
+             F[j] = max(F[j-w[i]] + v[i], F[j])
+ 
+     return F[:-1] 
