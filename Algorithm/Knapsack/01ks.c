@@ -6,12 +6,14 @@ void knapsack(int n, int w){
   memset(c, 0, sizeof(c));
 
 	for (int i = 0; i < n; ++i)
-		for (int j = w; j - weight[i] > 0; --j)
+		for (int j = w; j - weight[i] >= 0; --j)
 			c[j] = max(c[j], c[j-weight[i]]+cost[i]);
 	cout << "the max weight " << c[w];
 
 }
 
+
+/*
 def knapsack_onearray(v, w, limit, n):
      F = [0]*(limit + 1)
      for i in range(n):
@@ -19,3 +21,4 @@ def knapsack_onearray(v, w, limit, n):
              F[j] = max(F[j-w[i]] + v[i], F[j])
  
      return F[:-1] 
+*/
