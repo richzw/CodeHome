@@ -116,7 +116,7 @@ For example Binary Search(refer iterative implementation) has O(Logn) time compl
    
 See this for more explanation.
 
-- **O(n^(1/2))**
+- **O(n^(1/2))** 
 
 ```
 void fun(int n)
@@ -131,11 +131,11 @@ void fun(int n)
 }
 ```
 
-The loop variable `i` is incremented by 1, 2, 3, 4, … until i becomes greater than or equal to n.
+The loop variable `i` is incremented by `1, 2, 3, 4, …` until i becomes greater than or equal to `n`.
 
-The value of i is x(x+1)/2 after x iterations. So if loop runs x times, then x(x+1)/2 < n. Therefore time complexity can be written as Θ(√n). 
+The value of `i` is `x(x+1)/2` after `x` iterations. So if loop runs `x` times, then `x(x+1)/2 < n`. Therefore time complexity can be written as _O(√n)_. 
 
-- ps
+- one example
 
 ```
 int fun(int n)
@@ -161,9 +161,9 @@ For i = 4, the inner loop is executed approximately n/4 times.
 For i = n, the inner loop is executed approximately n/n times.
 ```
 
-So the total time complexity of the above algorithm is (n + n/2 + n/3 + … + n/n), Which becomes n * (1/1 + 1/2 + 1/3 + … + 1/n)
+So the total time complexity of the above algorithm is `(n + n/2 + n/3 + … + n/n)`, Which becomes `n * (1/1 + 1/2 + 1/3 + … + 1/n)`
 
-The important thing about series (1/1 + 1/2 + 1/3 + … + 1/n) is, it is equal to Θ(Logn). So the time complexity of the above code is Θ(nLogn).
+The important thing about series `(1/1 + 1/2 + 1/3 + … + 1/n)` is equal to _O(Logn)_. So the time complexity of the above code is _O(nLogn)_.
 
 ------
 
