@@ -152,12 +152,14 @@ int fun(int n)
 
 **Analysis**:
 
+```
 For i = 1, the inner loop is executed n times.
 For i = 2, the inner loop is executed approximately n/2 times.
 For i = 3, the inner loop is executed approximately n/3 times.
 For i = 4, the inner loop is executed approximately n/4 times.
 …………………………………………………….
 For i = n, the inner loop is executed approximately n/n times.
+```
 
 So the total time complexity of the above algorithm is (n + n/2 + n/3 + … + n/n), Which becomes n * (1/1 + 1/2 + 1/3 + … + 1/n)
 
