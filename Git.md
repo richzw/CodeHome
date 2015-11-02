@@ -115,3 +115,48 @@ before the revert (see the previous section).
 - Stage changes for commit.
 - Commit the changes, reusing the old commit message. reset copied the old head to .git/ORIG_HEAD; commit with -c ORIG_HEAD will open an editor, which initially contains the log message from the old commit and allows you to edit it. If you do not need to edit the message, you could use the -C option instead.
 
+-----------------------------------------------
+
+- **git 自动补全**
+
+```
+if [ -f ~/.git-completetion.bash ]; then
+  . ~/.git-completion.bash
+fi
+```
+
+- **谁动了我的代码**
+
+`git blame [file_name]`
+
+- **review history**
+
+`git log --oneline --graph --all`
+ 
+- **不丢失一个提交信息**
+
+`git reflog`
+
+- **暂存一个文件的部分改动**
+
+`git add -p [file_name]`
+
+```
+y - 缓存该块
+n - 不缓存该块
+e - 来人工编辑该块
+s - 分割这个块
+```
+
+- **合并多次提交**
+
+`git rebase -i HEAD~[number_of_commits]`
+
+- **检查丢失的提交**
+
+`git fsck --lost-found`
+
+- **cherry-pick command**
+
+`git cherry-pick [commit_hash]`
+
