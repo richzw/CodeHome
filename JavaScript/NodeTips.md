@@ -6,11 +6,11 @@
 
 ```javascript
 try {
-			var protoPath = path.resolve(__dirname, './message');
-			var stats = fs.statSync(protoPath);
-		} catch (e) {
+		var protoPath = path.resolve(__dirname, './message');
+		var stats = fs.statSync(protoPath);
+} catch (e) {
 		
-		}
+}
 
 ```
 
@@ -60,4 +60,16 @@ Global, Process and Buffer are combinedly termed as Globals.
   - Process : Its also a global object but it provides essential functionality to transform a synchronous function into a asynchronous callback.
   - Buffer : Raw data is stored in instances of the Buffer class.
 
+- 6. **What is Callback in context of Node.js ?**
 
+A callback is an asynchronous equivalent for a function which is being called when a given task is completed. Node.js makes heavy use of callbacks, all the API's are written such as way that it supports callbacks. The advantage of using callback is that it makes Node.js highly scalable i.e. processing high number of request without waiting for any function to complete. 
+
+- 7. **What is Callback Hell and how to avoid it ?**
+
+Callback hell means a heavily nested callbacks which make the code unreadable and difficult to maintain. To avoid callback hell one should use modularization, which means breaking the callbacks into independent functions. Another method to avoid callback hell is use to use Promises, which allows error propagation and chaining.
+
+- 8. **What is Event Loop and Event Emitter ?**
+
+Node.js supports concurrency with the help of events and callbacks even if it is single threaded application. Node thread keeps an event loop and whenever any task gets completed, that thread fires the corresponding event.
+
+EventEmitter fires an event whenever any tasks gets completed, any error occurred, any new listener is added or any listener is removed. It provides properties like on and emit, where on is used to bind the function and emit is used to fire an event.
