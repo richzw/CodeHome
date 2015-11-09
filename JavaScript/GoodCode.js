@@ -7,6 +7,22 @@ var randomItem = items[Math.floor(Math.random() * items.length)];
 
 var x = Math.floor(Math.random() * (max - min + 1)) + min;
 
+// Detecting an undefined object property
+if (typeof something === "undefined") {
+    alert("something is undefined");
+}
+    //If an object variable which have some properties you can use same thing like this:
+if (typeof my_obj.someproperties === "undefined"){
+    console.log('the property is not available...'); // print into console
+}
+
+//Contrary to common belief, "undefined" is NOT a keyword in JavaScript and can in fact have a value assigned to it.
+// Degenerate code. DO NOT USE.
+var undefined = false;  // Shockingly, this is completely legal!
+if (myVar === undefined) {
+    alert("You have been misled. Run away!");
+}
+
 // convert arguments into native javascript array
 var args = Array.prototype.slice.call(arguments, 0);
 
