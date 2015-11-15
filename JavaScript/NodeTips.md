@@ -38,6 +38,38 @@ But if you set `exports` to something new, it will no longer be set to `module.e
 
 Nodejs is a platform for building fast, scalable network application. Its advantages over other server side languages is that it uses event-driven, non-blocking I/O model that makes it light-weight and efficient.
 
+**Synchronous vs Asynchronous**
+
+**Synchronous** execution usually refers to code executing in sequence. **Asynchronous** execution refers to execution that doesn't run in the sequence it appears in the code. In the following example, the synchronous operation causes the `alerts` to fire in sequence. In the async operation, while `alert(2)` appears to execute second, it doesn't.
+
+```javascript
+// Synchronous: 1,2,3
+alert(1);
+alert(2);
+alert(3);
+
+// Asynchronous: 1,3,2
+alert(1);
+setTimeout(() => alert(2), 0);
+alert(3);
+```
+
+**Blocking vs Non-blocking**
+
+**Blocking** refers to operations that block further execution until that operation finishes. **Non-blocking** refers to code that doesn't block execution. In the given example, localStorage is a blocking operation as it stalls execution to read. On the other hand, fetch is a non-blocking operation as it does not stall `alert(3`) from execution.
+
+```javascript
+// Blocking: 1,... 2
+alert(1);
+var value = localStorage.getItem('foo');
+alert(2);
+
+// Non-blocking: 1, 3,... 2
+alert(1);
+fetch('example.com').then(() => alert(2));
+alert(3);
+```
+
 - 2. **Can you explain how Nodejs works**
 
 It uses Google V8 Javascript engine to execute code. It contains built-in asynchronous I/O library for file, socket and HTTP communication. Node.js encapsulates libuv to handle asynchronous events.
