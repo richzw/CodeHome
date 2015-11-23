@@ -8,6 +8,14 @@
 
 // For question 1
 // Integer Partition...
+/*
+* Counts the number of ways of representing n as a distinct sum of
+* positive integers <= max.
+* 
+* @param n number to sum to
+* @param max restriction on the component numbers
+* @return number of ways
+*/
 // naive method, recursive version
 unsigned long GetPartitionCount(int n, int max){
 	if (n == 1 || max == 1)
