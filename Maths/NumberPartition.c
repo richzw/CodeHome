@@ -60,18 +60,43 @@ int partition(int sum, int largestNumber){
 	if i = j, dp[i][j] = 1 + dp[i][j-1]
 	if i > j, dp[i][j] = dp[i-j][j] + dp[i][j-1]
 	so, dp[i][k] is the answer of question 3.
+设dp[i][j]为将i划分为不大于j的划分数
+(1) 当i<j 时，i不能划分为大于i的数，所以dp[i][j]=dp[i][i]；
+(2) 当i>j 时，可以根据划分中是否含有j分为两种情况。若划分中含有j，划分方案数为dp[i-j][j]；
+    若划分数中不含j，相当于将i划分为不大于j-1的划分数，为dp[i][j-1]。所以当i>j时dp[i][j]=dp[i-j][j]+dp[i][j-1]；
+(3) 当i=j 时，若划分中含有j只有一种情况，若划分中不含j相当于将i划分为不大于j-1的划分数。此时dp[i][j]=1+dp[i][j-1]。	
+	
 2.dp[i][j], divide i into the number of integres j.
 	if i < j, impossible.
 	if i = j, only one case, all numbers are 1, dp[i][j] = 1
 	if i < j, case 1, including 1, extract all 1 from j numbers, dp[i-j][j-1].
 					  not including 1, equal i-j... j numbers. dp[i-j][j]
 		dp[i][j]=dp[i-j][j-1]+dp[i-j][j]
+设dp[i][j]为将i划分为j个整数的划分数。
+　　(1) i<j为不可能出现的情况，dp[i][j]=0；
+　　(2) 若i=j，有一种情况：i可以划分为i个1之和，dp[i][j]=1；
+　　(3) 若i>j，可以根据划分数中是否含有1分为两类：若划分数中含有1，可以使用“截边法”将j个划分分别截去一个1，
+　　    把问题转化为i-j的j-1个划分数，为dp[i-j][j-1]；
+　　    若划分中不包含1，使用“截边法”将j个划分数的最下面一个数截去，将为题转化为求i-j的j个划分数，为dp[i-j][j]。
+　　    所以i>j时dp[i][j]=dp[i-j][j-1]+dp[i-j][j]。		
+		
 4.f[i][j], all even numbers of division i, g[i][j], all odd numbers of division i
+设f[i][j]为将i划分为j个奇数之和的划分数，g[i][j]为将i划分为j个偶数之和的划分数。
+使用截边法，将g[i][j]的j个划分都去掉1，可以得到f[i-j][j]，所以g[i][j] = f[i-j][j]。
+f[i][j]中有包含1的划分方案和不包含1的划分方案。对于包含1的划分方案，可以将1的划分除去，
+转化为“将i-1划分为j-1个奇数之和的划分数”，即f[i-1][j-1]；
+对于不包含1的划分方案，可以使用截边法对j个划分每一个都去掉一个1，转化为“将i-j划分为j个偶数之和的划分数”，即g[i-j][j]。
+所以f[i][j]=f[i-1][j-1]+g[i-j][j]。
 	
 5.dp[i][j], divide i into different numbers and no more than j, count number
 	if i < j, dp[i][j] = dp[i][j]
 	if i = j, dp[i][j] = 1+ dp[i][j-1]
 	if i > j, dp[i][j] = dp[i-j][j-1] + dp[i][j-1]
+　　设dp[i][j]为将i划分为不超过j的不同整数的划分数
+　　(1) 当i<j时，i不能划分为大于i的数，所以dp[i][j]=dp[i][i]；
+　　(2) 当i>j时，可以根据划分中是否含有j分为两种情况。若划分中含有j，则其余的划分中最大只能是j-1，方案数为dp[i-j][j-1]
+　　  ；若划分中不含j，相当于将i划分为不大于j-1的划分数，为dp[i][j-1]。所以当i>j时dp[i][j]=dp[i-j][j-1]+dp[i][j-1]；
+　　(3) 当i=j时，若划分中含有j只有一种情况，若划分中不含j相当于将i划分为不大于j-1的划分数。此时dp[i][j]=1+dp[i][j-1]	
 */
 unsigned long GetPartionCount_DP(int n, int k){
     int num[n+1][n+1];                     // num[i][j]表示将i划分为不大于j的划分数
