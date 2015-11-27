@@ -160,3 +160,42 @@ s - 分割这个块
 
 `git cherry-pick [commit_hash]`
 
+- **修改错误的提交信息（commit message）**
+
+`git commit --amend -m "YOUR-NEW-COMMIT-MESSAGE"`
+
+代码提交推送到远程分支
+
+`git push <remote> <branch> --force`
+
+- **commit之前撤销git add**
+
+`git reset <filename>`
+
+revert all files from `staging area`
+
+`git reset`
+
+- **Git仓库撤销至前一次提交时的状态**
+
+`git checkout <SHA>`
+
+- **删除本地或者远程Git分支**
+
+delete local branch
+
+`git branch --delete --force <branchname>`
+
+delete remote branch
+
+`git push origin --delete <branchname>`
+
+- **移出git分支未追踪的本地文件**
+
+'''
+git clean -f -n
+git clean -f 
+git clean -fd
+'''
+
+
