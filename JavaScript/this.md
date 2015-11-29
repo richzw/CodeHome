@@ -133,6 +133,235 @@ var user = {
     showUserData (); // P. Mickelson 43
 ```
 
+--------------------------------------------------------
+
+- **gloabl this**
+
+- In a browser, at the global scope, `this` is the `window `object
+
+```javascript
+<script type="text/javascript">
+    console.log(this === window); // true
+    var foo = "bar";
+    console.log(this.foo); // "bar"
+    console.log(window.foo); // "bar"
+</script>
+```
+
+- In node using the repl, `this` is the top namespace. You can refer to it as `global`.
+
+```javascript
+> this
+{ ArrayBuffer: [Function: ArrayBuffer],
+  Int8Array: { [Function: Int8Array] BYTES_PER_ELEMENT: 1 },
+  Uint8Array: { [Function: Uint8Array] BYTES_PER_ELEMENT: 1 },
+  ...
+> global === this
+true
+```
+
+- In node executing from a script, `this` at the global scope starts as an empty object. It is not the same as `global`
+
+```javascript
+\\ test.js
+console.log(this);  \\ {}
+console.log(this === global); \\ fasle
+```
+
+- **function this**
+
+Except in the case of DOM event handlers or when a `thisArg` is provided (see further down), both in node and in a browser using `this` in a function that is not called with `new` references the global scope…
+
+```javascript
+<script type="text/javascript">
+    foo = "bar";
+
+    function testThis() {
+      this.foo = "foo";
+    }
+
+    console.log(this.foo); //logs "bar"
+    testThis();
+    console.log(this.foo); //logs "foo"
+</script>
+```
+
+If you use `use strict;`, in which case `this` will be `undefined`
+
+```javascript
+<script type="text/javascript">
+    foo = "bar";
+
+    function testThis() {
+      "use strict";
+      this.foo = "foo";
+    }
+
+    console.log(this.foo); //logs "bar"
+    testThis();  //Uncaught TypeError: Cannot set property 'foo' of undefined 
+</script>
+```
+
+If you call a function with `new` the `this` will be a new context, it will not reference the global `this`.
+
+```javascript
+<script type="text/javascript">
+    foo = "bar";
+
+    function testThis() {
+      this.foo = "foo";
+    }
+
+    console.log(this.foo); //logs "bar"
+    new testThis();
+    console.log(this.foo); //logs "bar"
+
+    console.log(new testThis().foo); //logs "foo"
+</script>
+```
+
+- **prototype this**
+
+Functions you create become function objects. They automatically get a special `prototype` property, which is something you can assign values to. When you create an instance by calling your function with `new` you get access to the values you assigned to the `prototype` property. You access those values using `this`.
+
+```javascript
+    function Thing() {
+      console.log(this.foo);
+    }
+
+    Thing.prototype.foo = "bar";
+
+    var thing = new Thing(); //logs "bar"
+    console.log(thing.foo);  //logs "bar"
+```
+
+It is usually a mistake to assign _arrays_ or _objects_ on the `prototype`. If you want instances to each have their own arrays, create them in the function, not the prototype.
+
+```javascript
+function Thing() {
+    this.things = [];
+}
 
 
+var thing1 = new Thing();
+var thing2 = new Thing();
+thing1.things.push("foo");
+console.log(thing1.things); //logs ["foo"]
+console.log(thing2.things); //logs []
+```
 
+- **object this**
+
+You can use `this` in any function on an object to refer to other properties on that object. This is not the same as an instance created with `new`.
+
+```javascript
+var obj = {
+    foo: "bar",
+    logFoo: function () {
+        console.log(this.foo);
+    }
+};
+
+obj.logFoo(); //logs "bar"
+```
+
+- **DOM event this**
+
+In an HTML DOM event handler, `this` is always a reference to the DOM element the event was attached to 
+
+```javascript
+function Listener() {
+    document.getElementById("foo").addEventListener("click",
+       this.handleClick);
+}
+Listener.prototype.handleClick = function (event) {
+    console.log(this); //logs "<div id="foo"></div>"
+}
+
+var listener = new Listener();
+document.getElementById("foo").click();
+```
+
+Unless you `bind` the context
+
+```javascript
+function Listener() {
+    document.getElementById("foo").addEventListener("click", 
+        this.handleClick.bind(this));
+}
+Listener.prototype.handleClick = function (event) {
+    console.log(this); //logs Listener {handleClick: function}
+}
+
+var listener = new Listener();
+document.getElementById("foo").click();
+```
+
+- **HTML this**
+
+Inside HTML attributes in which you can put JavaScript, `this` is a reference to the element. 
+
+```javascript
+<div id="foo" onclick="console.log(this);"></div>
+<script type="text/javascript">
+document.getElementById("foo").click(); //logs <div id="foo"...
+</script>
+```
+
+- **eval this**
+
+You can use `eval` to access `this`.
+
+```javascript
+function Thing () {
+}
+Thing.prototype.foo = "bar";
+Thing.prototype.logFoo = function () {
+    eval("console.log(this.foo)"); //logs "bar"
+}
+
+var thing = new Thing();
+thing.logFoo(); 
+```
+
+- **with this**
+
+You can use `with` to add `this` to the current scope to read and write to values on `this` without referring to `this` explicitly.
+
+```javascript
+function Thing () {
+}
+Thing.prototype.foo = "bar";
+Thing.prototype.logFoo = function () {
+    with (this) {
+        console.log(foo);
+        foo = "foo";
+    }
+}
+
+var thing = new Thing();
+thing.logFoo(); // logs "bar"
+console.log(thing.foo); // logs "foo"
+```
+
+- **jQuery this**
+
+the jQuery will in many places have `this` refer to a DOM element. 
+
+```javascript
+<div class="foo bar1"></div>
+<div class="foo bar2"></div>
+<script type="text/javascript">
+$(".foo").each(function () {
+    console.log(this); //logs <div class="foo...
+});
+$(".foo").on("click", function () {
+    console.log(this); //logs <div class="foo...
+});
+$(".foo").each(function () {
+    this.click();
+});
+</script>
+```
+
+// Source: http://bjorn.tipling.com/all-this
