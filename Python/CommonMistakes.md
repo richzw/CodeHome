@@ -87,4 +87,21 @@ Workaround:
 >>>
 ```
 
+Test
+
+```python
+>>> try:
+...     l = ['a', 'b']
+...     int(l[2])
+... except IndexError, ValueError:
+...     pass
+... 
+>>> try:
+...     l = ['a', 'b']
+...     int(l[2])
+... except Exception, e:
+...     pass
+... 
+
+```
 
