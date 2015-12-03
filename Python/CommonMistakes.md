@@ -1,3 +1,6 @@
+[Source](http://www.toptal.com/python/top-10-mistakes-that-python-programmers-make)
+
+---------------------------
 
 - **Misusing expressions as defaults for function arguments**
 
@@ -58,9 +61,30 @@ So in the above code, since the attribute `x` is not found in class `C`, it will
 
 - **Specifying parameters incorrectly for an exception block**
 
-
+```python
+>>> try:
+...     l = ["a", "b"]
+...     int(l[2])
+... except ValueError, IndexError:  # To catch both exceptions, right?
+...     pass
+...
+Traceback (most recent call last):
+  File "<stdin>", line 3, in <module>
+IndexError: list index out of range
+```
  
+in the above code, the `IndexError` exception is _not_ being caught by the `except` statement; rather, the exception instead ends up being bound to a parameter named `IndexError`. 
 
+Workaround:
 
+```python
+>>> try:
+...     l = ["a", "b"]
+...     int(l[2])
+... except (ValueError, IndexError) as e:  
+...     pass
+...
+>>>
+```
 
 
