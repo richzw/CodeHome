@@ -198,4 +198,89 @@ git clean -f
 git clean -fd
 '''
 
+---------------------------------------------------------------------------------------------
+
+**git revert** _vs_ **git reset**
+
+[Source](https://www.atlassian.com/git/tutorials/resetting-checking-out-and-reverting/commit-level-operations)
+
+- Commit level operation
+
+_git reset_
+
+```
+git checkout hotfix
+git reset HEAD~2
+```
+
+![](https://www.atlassian.com/git/images/tutorials/advanced/resetting-checking-out-and-reverting/02.svg)
+
+> - soft – The staged snapshot and working directory are not altered in any way.
+> - mixed – The staged snapshot is updated to match the specified commit, but the working directory is not affected. This is the default option.
+> - hard – The staged snapshot and the working directory are both updated to match the specified commit.
+
+![](https://www.atlassian.com/git/images/tutorials/advanced/resetting-checking-out-and-reverting/03.svg)
+
+`git reset --mixed HEAD` has the affect of unstaging all changes, but leaves them in the working directory. 
+If you want to completely throw away all your uncommitted changes, you would use `git reset --hard HEAD`.
+
+_git checkout_
+
+```
+git checkout hotfix
+```
+
+![](https://www.atlassian.com/git/images/tutorials/advanced/resetting-checking-out-and-reverting/04.svg)
+
+```
+git checkout HEAD~2
+```
+
+![](https://www.atlassian.com/git/images/tutorials/advanced/resetting-checking-out-and-reverting/05.svg)
+
+_git revert_
+
+```
+git checkout hotfix
+git revert HEAD~2
+```
+
+![](https://www.atlassian.com/git/images/tutorials/advanced/resetting-checking-out-and-reverting/06.svg)
+
+Contrast this with `git reset`, which does alter the existing commit history. 
+For this reason, `git revert` should be used to undo changes on a _public branch_, and `git reset` should be reserved for undoing changes on a _private branch_.
+
+You can also think of `git revert` as a tool for _undoing committed changes_, while `git reset HEAD` is for _undoing uncommitted changes_.
+
+- **File Level Operation**
+
+_reset_
+
+```
+git reset HEAD~2 foo.py
+```
+
+![](https://www.atlassian.com/git/images/tutorials/advanced/resetting-checking-out-and-reverting/07.svg)
+
+_checkout_
+
+```
+git checkout HEAD~2 foo.py
+```
+
+![](https://www.atlassian.com/git/images/tutorials/advanced/resetting-checking-out-and-reverting/08.svg)
+
+--------------------------------------------------
+
+**Summary**
+
+
+| Command	    | Scope	       | Common use cases        |
+|-------------|--------------|-------------------------|
+| git reset	  | Commit-level |	Discard commits in a private branch or throw away uncommited changes |
+| git reset	  | File-level	 | Unstage a file |
+| git checkout|	Commit-level | Switch between branches or inspect old snapshots |
+| git checkout|	File-level	 | Discard changes in the working directory |
+| git revert	| Commit-level | Undo commits in a public branch |
+| git revert	| File-level	 | (N/A) |
 
