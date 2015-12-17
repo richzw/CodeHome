@@ -16,6 +16,49 @@ if (typeof my_obj.someproperties === "undefined"){
     console.log('the property is not available...'); // print into console
 }
 
+//Avoid null comparisons, unless null value is specifically assigned
+
+//Bad
+function(items){
+    if(items != null){
+        items.sort();
+    }
+    //Will work with:
+    //var items = true;
+    //var items = 1;
+    //var items = "blah";   
+}
+
+function(items){
+    if(items != null){
+        items.sort();
+    }
+    //Will work with:
+    //var items = true;
+    //var items = 1;
+    //var items = "blah";   
+}
+
+//Better communicate your intention and prevent false positive with:
+function(items){
+    if(items instanceof Array){
+        items.sort();
+    }
+}
+
+function(items){
+    if(items instanceof Array){
+        items.sort();
+    }
+}
+
+/*
+instanceof to test for specific object types
+- object instanceof MyType
+- typeof to test for primitive types
+- typeof value == "string"
+- BEWARE typeof null == object
+*/
 //Contrary to common belief, "undefined" is NOT a keyword in JavaScript and can in fact have a value assigned to it.
 // Degenerate code. DO NOT USE.
 var undefined = false;  // Shockingly, this is completely legal!
