@@ -68,9 +68,39 @@ It will also give you a chance to edit the commit message. Push the clean branch
 
 **Three stages in git**
 
+Three stages
 
+- Not staged for commit
+- Staged for commit
+- Committed
 
+_Resetting the files_
 
+- `git reset --hard {{some-commit-hash}}` – Return to a particular point in history. _All changes made after this commit are discarded._
+- `git reset {{some-commit-hash}}` – Return to a particular point in history. _All changes made after this commit are moved not yet staged for commit stage._ Meaning you would have to run `git add .` and `git commit` to add them back in.
+- `git reset --soft {{some-commit-hash}}` – Return to a particular point in history. _All changes made after this commit are moved to _staged for commit stage._ Meaning you only need to run `git commit` to add them back in.
+
+Common use cases that I find myself using the reset are bellow:
+
+- I want to forget all the changes I’ve made, clean start – `git reset --hard HEAD` (Most common)
+- I want to edit, re-stage and re-commit files in some different order – `git reset {{some-start-point-hash}}`
+- I just want to re commit past 3 commits, as one big commit – `git reset --soft {{some-start-point-hash}}`
+
+_Check out some files_
+
+As mentioned before you can also check out a different version of a file from another branch or commit.
+
+`git checkout some-branch-name file-name.js` 
+
+`git checkout {{some-commit-hash}} file-name.js`
+
+------------------------------------------------
+
+**Ignore the white space**
+
+You can invoke a lot of the commands (i.e. `git diff`, `git blame`) with a `-w` flag, and git will ignore the white space changes.
+
+-------------------------------------
 
 
 
