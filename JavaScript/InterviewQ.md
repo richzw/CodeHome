@@ -1,4 +1,7 @@
 
+[http://www.ido321.com/1660.html?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io](http://www.ido321.com/1660.html?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io)
+
+
 ```javascript
 Number.isInteger = Number.isInteger || function(value) {
     return typeof value === "number" && 
