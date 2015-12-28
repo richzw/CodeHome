@@ -76,8 +76,8 @@ http://kangax.github.io/nfe/
 http://netflix.github.io/falcor/documentation/jsongraph.html  --> JSON graph
 http://javascript.info/tutorial/memory-leaks
 
-// Git
-http://www.oschina.net/translate/10-tips-git-next-level
+// Convex Hull - bouding box
+http://www.datagenetics.com/blog/march12014/index.html
 
 // Good Questions
 http://chuansong.me/account/daiziguizhongren
