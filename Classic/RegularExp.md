@@ -47,6 +47,35 @@ by the . (dot). The regex (?!hede). will do that only once, so it is wrapped in 
 
 [Ref](http://stackoverflow.com/questions/406230/regular-expression-to-match-line-that-doesnt-contain-a-word)
 
+------------------------------------------------------------
+
+`"f|u|n|n|y||b|o|y||a||c|a|t"`
+
+I would like to replace all "|"s which are not next to another "|" with nothing, to get the result:
+
+`"funny|boy|a|cat"`
+
+**A**
+
+```python
+>>> import re
+>>> st = "f|u|n|n|y||b|o|y||a||c|a|t" 
+>>> re.sub(r'\|(?=[a-z]|$)',r'',st)
+'funny|boy|a|cat'
+```
+
+```python
+>>> import re
+>>> s = "f|u|n|n|y||b|o|y||a||c|a|t"
+>>> re.sub('\|(?!\|)' , '', s)
+'funny|boy|a|cat'
+```
+
+```python
+>>> s = "f|u|n|n|y||b|o|y||a||c|a|t"
+>>> s.replace('||','~').replace('|','').replace('~','|')
+'funny|boy|a|cat'
+```
 
 ------------------------------------------
 
