@@ -76,4 +76,16 @@ console.log(myCounter.get());   //-- prints "105"
 ![](http://dmitryfrank.com/_media/articles/js_closure_6_inc.png)
 
 
+```javascript
+"use strict";
+ 
+function createCounter(initial) {
+  /* ... see the code from previous example ... */
+}
+ 
+//-- create counter objects
+var myCounter1 = createCounter(100);
+var myCounter2 = createCounter(200);
+```
 
+![](http://dmitryfrank.com/_media/articles/js_closure_7.png)
