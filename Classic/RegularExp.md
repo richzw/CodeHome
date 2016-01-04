@@ -79,6 +79,30 @@ I would like to replace all "|"s which are not next to another "|" with nothing,
 
 ------------------------------------------
 
+I would like to find all alternating digits in a string using regular expressions. An alternating digit is defined as two equal digits having a digit in between; for example, `1212` contains `2` alternations (`121` and `212`) and `1111` contains `2` alternations as well (`111` and `111`). I have the following regular expression code:
+
+```python
+s = "1212"
+re.findall(r'(\d)(?:\d)(\1)+', s)
+```
+
+This works for strings like "121656", but not "1212". This is a problem to do with overlapping matches I think. How can I deal with that?
+
+**A**
+
+`(?=((\d)\d\2))`
+
+Use lookahead to get all overlapping matches. Use re.findall and get the first element from the tuple. See the demo:
+
+- (?=((\d)\d\2)) Positive Lookahead - Assert that the regex below can be matched
+- 1st Capturing group ((\d)\d\2)
+- 2nd Capturing group (\d)
+- \d match a digit [0-9]
+- \d match a digit [0-9]
+- \2 matches the same text as most recently matched by the 2nd capturing group
+
+-------------------------------------------
+
 - 数字：`^[0-9]*$`
 - n位的数字：`^\d{n}$`
 - 至少n位的数字: `^\d{n,}$`
