@@ -1,4 +1,51 @@
 
+**Find “one letter that appears twice” in a string**
+
+------------------
+
+I'm trying to catch if one letter that appears twice in a string using RegEx (or maybe there's some better ways?), for example my string is:
+
+`ugknbfddgicrmopn`
+
+The output would be:
+
+`dd`
+
+**A**
+
+```python
+>>> re.search(r'([a-z])\1', 'ugknbfddgicrmopn').group()
+'dd'
+>>> [i+i for i in re.findall(r'([a-z])\1', 'abbbbcppq')]
+['bb', 'bb', 'pp']
+
+>>> [i[0] for i in re.findall(r'(([a-z])\2)', 'abbbbcppq')]
+['bb', 'bb', 'pp']
+```
+
+As a Pythonic way You can use zip function within a list comprehension:
+
+```python
+>>> s = 'abbbcppq'
+>>>
+>>> [i+j for i,j in zip(s,s[1:]) if i==j]
+['bb', 'bb', 'pp']
+```
+
+If you are dealing with large string you can use `iter()` function to convert the string to an iterator and use `itertols.tee()` to create two independent iterator, then by calling the next function on second iterator consume the first item and use call the zip class (in Python 2.X use `itertools.izip()` which returns an `iterator`) with this iterators.
+
+```python
+>>> from itertools import tee
+>>> first = iter(s)
+>>> second, first = tee(first)
+>>> next(second)
+'a'
+>>> [i+j for i,j in zip(first,second) if i==j]
+['bb', 'bb', 'pp']
+```
+
+-----------------------------
+
 **How to match a line does NOT include a word?**
 
 ----------
