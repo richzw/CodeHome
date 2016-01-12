@@ -46,6 +46,16 @@ This is called an "extended slice", which is of the form start:stop:step. The fi
 so it has the default start (the beginning of the tuple) and stop (the end of the tuple), and a step of 2,
 '''
 
+#sum([1,2,3]) should be 6 but sum(['A', 1, 'B', 2, 3]) should also be 6. 
+sum(val for val in l1 if isinstance(val, numbers.Number))
+
+val=0
+for item in list:
+    try:
+        val+=int(item)
+    except ValueError:
+        pass
+
 
 #将时间对象转换成字符串
 >>> import datetime
