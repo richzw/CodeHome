@@ -46,6 +46,23 @@ This is called an "extended slice", which is of the form start:stop:step. The fi
 so it has the default start (the beginning of the tuple) and stop (the end of the tuple), and a step of 2,
 '''
 
+#mesh two string together
+'''
+Input:
+    u = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    l = 'abcdefghijklmnopqrstuvwxyz'
+Output:
+    'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz'
+'''
+>>> "".join("".join(item) for item in zip(u, l))
+>>> "".join(i + j for i, j in zip(u, l))
+>>> "".join(list(chain.from_iterable(zip(u, l))))
+res = [''] * len(u) * 2
+res[::2] = u
+res[1::2] = l
+print(''.join(res))
+
+
 #sum([1,2,3]) should be 6 but sum(['A', 1, 'B', 2, 3]) should also be 6. 
 sum(val for val in l1 if isinstance(val, numbers.Number))
 
