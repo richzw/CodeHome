@@ -1,3 +1,15 @@
+
+I want to match those five numbers `3, 7, 8, 9, 87` through regular express.
+
+Here is my thought:
+
+- match those four numbers `3 7 8 9` var `^[3|7|8|9]$`
+- match number `87` var `^87$`
+
+Then combine them together, `(^[3|7|8|9]$|^87$)`. With some test, it seems correct. Is there any way to do that more efficiently?
+
+-------------------------------
+
 Q: 已知三个升序整数数组a[l], b[m]和c[n]。请在三个数组中各找一个元素，是的组成的三元组距离最小。
 三元组的距离定义是：假设a[i]、b[j]和c[k]是一个三元组，那么距离为:
 Distance = max(|a[i] – b[j]|, |a[i] – c[k]|, |b[j] – c[k]|)
