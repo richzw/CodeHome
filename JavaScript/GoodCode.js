@@ -1,5 +1,18 @@
 // falsy value
  underfined, null, 0, false, NaN, ''
+ 
+// Remove empty elements from an array in Javascript???
+[1, false, "", undefined, , NaN, 2].filter(Boolean); // simple solution
+
+var arr = [1,2,null, undefined,3,,3,,,0,,,4,,4,,5,,6,,,,], 
+    temp = [];
+
+for(let i of arr)
+    i && temp.push(i); // copy each non-empty value to the 'temp' array
+
+arr = temp;
+delete temp; // discard the variable
+arr // [1, 2, 3, 3, 4, 4, 5, 6]
 
 // random number of array
 var items = [12, 548 , 'a' , 2 , 5478 , 'foo' , 8852, , 'Doe' , 2145 , 119];
