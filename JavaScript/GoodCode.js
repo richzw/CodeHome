@@ -1,6 +1,30 @@
 // falsy value
  underfined, null, 0, false, NaN, ''
  
+//
+var obj = { a: 10, b: { c: 20, d: { e: 30 } } };
+
+_.mapKeys(obj, function (val, key) {
+	return key + '1';
+});
+
+function transformKeysDeep (data, keyTransformFunc) {
+
+    function transformKeys (obj, v, k) {
+        obj[keyTransformFunc(k)] = _.isObject(v) ? transformKeysDeep(v, keyTransformFunc) : v;
+    }
+
+    function transform (data) {
+        return !_.isString(data) && !_.isNumber(data) ? _.transform(data, transformKeys) : data;
+    }
+
+    return _.isArray(data) ? _.map(data, transform) : transform(data);
+}
+
+// usage
+transformKeysDeep(response.data, _.camelCase)
+
+ 
 // Remove empty elements from an array in Javascript???
 [1, false, "", undefined, , NaN, 2].filter(Boolean); // simple solution
 
