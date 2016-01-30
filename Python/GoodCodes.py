@@ -46,6 +46,22 @@ This is called an "extended slice", which is of the form start:stop:step. The fi
 so it has the default start (the beginning of the tuple) and stop (the end of the tuple), and a step of 2,
 '''
 
+'''
+allsets = [set([1, 2, 4]), set([4, 5, 6]), set([4, 5, 7])]
+What is a pythonic way to compute the corresponding list of sets of elements having no overlap with other sets?
+only = [set([1, 2]), set([6]), set([7])]
+'''
+import itertools
+import collections
+element_counts = collections.Counter(itertools.chain.from_iterable(allsets))
+all_uniques = {elem for elem, count in element_counts.items() if count == 1}
+#                                                     ^ viewitems() in Python 2.7
+nondupes = [original & all_uniques for original in allsets]
+
+nondupes = [{elem for elem in original if element_counts[elem] == 1}
+            for original in allsets]
+
+
 #mesh two string together
 '''
 Input:
