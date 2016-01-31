@@ -36,3 +36,39 @@ then you can tell if a new document was created or not.
 
 The $addToSet makes sure that nothing new really gets added on match. But you could use $setOnInsert instead.
 
+-----------------------------------------
+
+Q: calculate average from date ranges
+
+```js
+{
+    "_id" : ObjectId("56ad2e080fa76101bdd17573"),
+    "date" : ISODate("2016-01-30T21:40:00Z"),
+    "response_times" : [
+        10,
+        22,
+        21,
+        37
+    ]
+}
+{
+    "_id" : ObjectId("56ad2c9d0fa76101bdd17572"),
+    "date" : ISODate("2016-01-30T21:35:00Z"),
+    "response_times" : [
+        27,
+        32
+    ]
+}
+```
+
+You can use the aggregation framework for this:
+
+```js
+db.so.aggregate( 
+    [ { $unwind : "$response_times" }, 
+      { $group: 
+          { _id:"$date", 
+            average: { $avg : "$response_times" } } } 
+    ] )
+```
+
