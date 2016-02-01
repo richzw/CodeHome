@@ -72,3 +72,19 @@ db.so.aggregate(
     ] )
 ```
 
+------------------------------
+
+Q:
+
+ Prevent empty element is added into subdocument array.
+
+```js 
+db.collection.update(
+    { },
+    { "$pull": { "tradename": { "element": { "$exists": false } } } },
+    { "multi": true }
+)
+```
+
+
+
