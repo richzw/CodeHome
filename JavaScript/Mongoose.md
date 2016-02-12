@@ -86,5 +86,35 @@ db.collection.update(
 )
 ```
 
+----------------------------------------
+
+Q:
+
+convert 
+
+```js
+{
+     "user1":["l1","l2","l3","l4","l5"]
+     "user2":["l2","l3",l4","l7"]
+     "user3":["l7,"l5"]
+}
+```
+
+So I want to convert this collection into reverse index form
+
+```js
+{
+      "l1":[user1]
+      "l2":[user1,user2]
+      "l3":[user1,user2]
+      "l4":[user1,user2]
+      "l5":[user1,user3]
+      "l7":[user2,user3]
+}
+```
+
+```js
+db.users.aggregate([{$unwind:'$l'},{$group:{_id:'$l',users:{$push:'$name'}}}])
+```
 
 
