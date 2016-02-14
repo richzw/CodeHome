@@ -117,4 +117,41 @@ So I want to convert this collection into reverse index form
 db.users.aggregate([{$unwind:'$l'},{$group:{_id:'$l',users:{$push:'$name'}}}])
 ```
 
+----------------------------------------------
 
+Q: $lookup in the embeded document.
+
+```js
+{
+     "name": "Joe Soap",
+     "gender": "male",
+     "employee_no: 123245678,
+     "jobs": [
+         {
+             "name": "Defy washing machine repair",
+             "spares": 569f6d002e16e55f2f8958d9,
+         },
+         {
+             "name": "Samsung fridge regas",
+             "spares": 569f6d002e16e55f2f8958e4,
+         }
+     ]
+}
+```
+
+with `$lookup`
+
+```js
+db.doc.aggregate([
+  {$unwind: '$jobs'}, 
+  {$lookup: 
+    {from: 'spares', 
+     localField: 'jobs.spares', 
+     foreignField: '_id', 
+     as: 'sp'}}, 
+  {$unwind: '$sp'}, 
+  {$group: 
+    {'_id': '$_id', 
+    jobs: {$push: '$sp'}}}
+]);
+```
