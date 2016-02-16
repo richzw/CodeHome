@@ -117,6 +117,50 @@ So I want to convert this collection into reverse index form
 db.users.aggregate([{$unwind:'$l'},{$group:{_id:'$l',users:{$push:'$name'}}}])
 ```
 
+------------------------------------------------------
+
+Q: filter the certain child documents
+
+```js
+var schema = new mongoose.Schema({
+    confirmed: { type: Boolean, default: false },
+    moves: [new mongoose.Schema({
+        name: { type: String, default: '' },
+        live: { type: Boolean, default: true }
+    })]
+});
+mongoose.model('Batches', schema);
+```
+
+A: 
+
+1. `$filter` and `$project`
+
+```js
+var Batch = mongoose.model('Batches'),
+    pipeline = [
+        {
+            "$match": { "confirmed": true, "moves.live": true }
+        },
+        { 
+            "$project": {
+                "confirmed": 1,
+                "moves": {
+                    "$filter": {
+                         "input": "$moves",
+                         "as": "el",
+                         "cond": { "$eq": [ "$$el.live", true ] }
+                     }
+                }
+            }
+        }
+    ];
+
+Batch.aggregate(pipeline).exec(function(err, batches){
+    console.log('batches: ', batches);
+});
+```
+
 ----------------------------------------------
 
 Q: $lookup in the embeded document.
