@@ -129,11 +129,11 @@ Q: $lookup in the embeded document.
      "jobs": [
          {
              "name": "Defy washing machine repair",
-             "spares": 569f6d002e16e55f2f8958d9,
+             "spares": '569f6d002e16e55f2f8958d9',
          },
          {
              "name": "Samsung fridge regas",
-             "spares": 569f6d002e16e55f2f8958e4,
+             "spares": '569f6d002e16e55f2f8958e4',
          }
      ]
 }
