@@ -199,3 +199,24 @@ db.doc.aggregate([
     jobs: {$push: '$sp'}}}
 ]);
 ```
+
+-------------------------------------------------------
+
+Group every 5 interval count through aggregate like below
+
+```js
+db.data.aggregate([
+    { "$group": {
+        "_id": {
+            "$subtract": [
+                { "$subtract": [ "$value.count", 0 ] },
+                { "$mod": [ 
+                    { "$subtract": [ "$value.count", 0 ] },
+                    5
+                ]}
+            ]
+        },
+        "count": { "$sum": 1 }
+    }}
+])
+```
