@@ -220,3 +220,66 @@ db.data.aggregate([
     }}
 ])
 ```
+
+---------------------------------------------------------------
+
+Q:
+
+```js
+{
+  _id: ObjectId("55b164c65c1a8f360078c917"),
+  message_id: ["abc","def"],
+  message: [{message_id: "efgh", message_body: "somebody"}]
+}
+```
+
+I want to find out mongodb query to find out those document whose `message.message_id` is not in `message_id`. Can anyone please help me with this.
+
+A:
+
+```js
+db.collection.aggregate([
+    { "$redact": {
+        "$cond": {
+            "if": { 
+                "$gt": [
+                    { "$size": {
+                        "$setIntersection": [
+                            { "$map": {
+                                "input": "$message",
+                                 "as": "msg",
+                                 "in": "$$msg.message_id"
+                            }},
+                            "$message_id" 
+                        ]
+                    }},
+                    0
+                ]
+            },
+            "then": "$$PRUNE",
+            "else": "$$KEEP"
+        }
+    }}
+])
+```
+
+The `inside out` of the logic here is that `$map` is used to take out the keys of `message_id` from the `messages` array, and return that for comparison with the `message_id` array itself to see the result of `$setIntersection`. It's done this way to see `"intersection"` as there is nothing concrete here that says one is the `"subset"` of the other. So it's just the common elements, otherwise there is `$setIsSubset`.
+
+Or
+
+```js
+db.collection.find({
+    "$where": function() {
+        var self = this;
+        return self.message.map(function(el) {
+            return el.message_id;
+        }).filter(function(el) {
+            return self.mesage_id.indexOf(el) != -1
+        }).length == 0;
+    }
+})
+```
+
+
+
+
