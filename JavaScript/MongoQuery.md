@@ -34,3 +34,52 @@ A:
 )
 ```
 
+---------------------------------------
+
+```js
+{
+  "_id": "56c58adf4f40",
+  "data1": "test1",
+   "data2": "test2"
+
+}
+
+//I need output to be like data2 = data1 + data2 for all records.
+
+{
+  "_id": "56c58adf4f40",
+  "data1": "test1",
+   "data2": "test1 test2"
+
+}
+```
+
+A:
+
+```js
+var cursor = db.collection.aggregate([
+        {
+            "$project": {
+                "data1": 1,
+                "data2": { $concat: [ "$data1", " ", "$data2" ] }
+            }
+        }
+    ]),
+    updateCollUsingAgg = function(doc){
+        db.collection.update(
+            { "_id": doc._id },
+            { "$set": { "data2": doc.data2 } }
+        )
+    }
+
+cursor.forEach(updateCollUsingAgg);
+
+var cursor = db.collection.find(),
+    updateCollUsingFind = function(doc){
+        db.collection.update(
+            { "_id": doc._id },
+            { "$set": { "data2": doc.data1+" "+doc.data2 } }
+        )
+    };
+cursor.forEach(updateCollUsingFind);
+```
