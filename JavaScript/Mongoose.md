@@ -280,6 +280,55 @@ db.collection.find({
 })
 ```
 
+-------------------------------------------------------------
+
+I want to find only documents that have **all** `'docs.foo'` present in a array. In my example I should get only `_id: 2` result:
+
+```js
+{  
+    _id : 1,
+    docs : [
+        { bar : 2},
+        { foo : 3, bar : 3}
+    ]
+},
+{  
+    _id : 2,
+    docs : [
+        { foo : 2, bar : 2},
+        { foo : 3, bar : 3}
+    ]
+}
+```
+
+Trough aggregation
+
+```js
+db.collection.aggregate([
+    { "$match": { "docs.foo": { "$exists": true } } }, 
+    { "$redact": { 
+        "$cond": [ 
+            { "$eq": [ 
+                { "$size": "$docs" }, 
+                { "$size":  { 
+                    "$filter": { 
+                        "input": "$docs", 
+                        "as": "doc", 
+                        "cond": { 
+                            "$ne": [ 
+                                { "$ifNull": [ "$$doc.foo", null ] },
+                                null 
+                            ] 
+                        } 
+                    }
+                }}
+            ]}, 
+            "$$KEEP", 
+            "$$PRUNE"
+        ]
+    }}
+])
+```
 
 
 
