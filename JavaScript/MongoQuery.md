@@ -19,30 +19,36 @@ instead a new array corresponding to the sum of the original arrays on an elemen
 A:
 
 ```js
-.aggregate([
-  {
-    "$unwind" :  { path: "$result", includeArrayIndex: "arrayIndex" }
-  },
-
-  {
-    "$group": {
-      "_id": "arrayIndex",
-      "results" : { "$sum" : "$result"}
-              }
-  },
-  {
-    "$group":{
-      "_id": null,
-      "results":{"$push":"$results"}
-             } 
-  },
-  {
-    "$project": {"_id":0,"results":1}
-  }
-])
+.aggregate(
+    [
+      {
+        "$unwind" :  { path: "$result", includeArrayIndex: "arrayIndex" }
+      },
+      {
+        "$group": {
+          "_id": "$arrayIndex",
+          "results" : { "$sum" : "$result"}
+          }
+      },
+      { 
+        $sort: { "_id": 1}
+      },
+      {
+        "$group":{
+          "_id": null,
+          "results":{"$push":"$results"}
+          } 
+      },
+      {
+        "$project": {"_id":0,"results":1}
+      }
+    ]
+)
 ```
 
 ---------------------------------------
+
+Q:
 
 ```js
 {
