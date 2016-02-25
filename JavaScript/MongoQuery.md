@@ -97,3 +97,45 @@ var cursor = db.collection.find(),
     };
 cursor.forEach(updateCollUsingFind);
 ```
+
+---------------------------------------------------------------------
+
+Q: remove duplicat document from collection
+
+A: 
+```js
+var bulk = db.testkdd.initializeOrderedBulkOp(),
+    count = 0;
+
+// List "all" fields that make a document "unique" in the `_id`
+// I am only listing some for example purposes to follow
+db.testkdd.aggregate([
+    { "$group": {
+        "_id": {
+           "duration" : "$duration",
+          "protocol_type": "$protocol_type", 
+          "service": "$service",
+          "flag": "$flag"
+        },
+        "ids": { "$push": $_id" },
+        "count": { "$sum": 1 }
+    }},
+    { "$match": { "count": { "$gt": 1 } } }
+],{ "allowDiskUse": true}).forEach(function(doc) {
+    doc.ids.shift();     // remove first match
+    bulk.find({ "_id": { "$in": doc.ids } }).remove();  // removes all $in list
+    count++;
+
+    // Execute 1 in 1000 and re-init
+    if ( count % 1000 == 0 ) {
+       bulk.execute();
+       bulk = db.testkdd.initializeOrderedBulkOp();
+    }
+});
+
+if ( count % 1000 != 0 ) 
+    bulk.execute();
+```
+
+
+
