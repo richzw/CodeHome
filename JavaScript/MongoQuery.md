@@ -117,7 +117,7 @@ db.testkdd.aggregate([
           "service": "$service",
           "flag": "$flag"
         },
-        "ids": { "$push": $_id" },
+        "ids": { "$push": "$_id" },
         "count": { "$sum": 1 }
     }},
     { "$match": { "count": { "$gt": 1 } } }
