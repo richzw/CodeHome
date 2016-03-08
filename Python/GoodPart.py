@@ -1,3 +1,25 @@
+'''
+So for example I have
+
+'ab@cde@@fghi@jk@lmno@@@p@qrs@tuvwxy@z'
+
+and want
+
+'ab1cde23fghi1jk2lmno312p3qrs1tuvwxy2z'
+
+for replace_chars = ['1', '2', '3']
+'''
+
+>>> from itertools import cycle
+>>> s = 'ab@cde@@fghi@jk@lmno@@@p@qrs@tuvwxy@z'
+>>> replace_chars = ['1', '2', '3']
+>>>
+>>> replacer = cycle(replace_chars)
+>>> ''.join([next(replacer) if c == '@' else c for c in s])
+'ab1cde23fghi1jk2lmno312p3qrs1tuvwxy2z'
+
+
+
 # Get odd index from list
 >>> a = [1,2,3,4,5,6,7,8]
 >>> for i in xrange(len(a)):
