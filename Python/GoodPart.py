@@ -1,4 +1,17 @@
 '''
+Given the string '123abc456def', what is the cleanest way to obtain the string '123'?
+'''
+>>> from itertools import takewhile
+>>> input = '123abc456def'
+>>> ''.join(takewhile(str.isdigit, input))
+'123'
+
+>>> import re
+>>> input = '123abc456def'
+>>> re.findall('\d+', s)
+['123','456']
+
+'''
 So for example I have
 
 'ab@cde@@fghi@jk@lmno@@@p@qrs@tuvwxy@z'
