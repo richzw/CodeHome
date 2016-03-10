@@ -1,3 +1,5 @@
+[Adding Validation for Embedded Array in Array Objects in Mongoose](http://jasonjl.me/blog/2014/10/23/adding-validation-for-embedded-objects-in-mongoose/)
+
 Q: 
 
 ```js
