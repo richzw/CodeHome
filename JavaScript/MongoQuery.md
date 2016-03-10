@@ -137,5 +137,61 @@ if ( count % 1000 != 0 )
     bulk.execute();
 ```
 
+----------------------------------------------------------------------------
 
+Q: When I get the above project with the USER role, I need to have the following representation, without the `OTHER` file :
 
+```
+{
+  "_id": ObjectId("..."),
+  "title": "MySuperProject",
+  "files": [
+    {
+      "title":"My skiing day !",
+      "right":[{
+        "role":"USER",
+        "access":["read"]
+      }]
+    },
+    {
+      "title":"My little dog, so cute !",
+      "right":[{
+        "role":"OTHER",
+        "access":["read"]
+      }]
+    }
+  ]
+}
+```
+
+A:
+
+```
+db.t.aggregate([
+  {
+    $match: {
+      "title": projectTitle
+    }
+  },
+  {
+    $redact: {
+      $cond: [{
+        $eq: [role, {
+          $ifNull: ["$role", role]
+        }]
+      }, "$$DESCEND", "$$PRUNE"]
+    }
+  },
+  {
+    $redact: {
+      $cond: [{
+        $gt: [{
+          $size: {
+            $ifNull: ["$right", [1]]
+          }
+        }, 0]
+      }, "$$DESCEND", "$$PRUNE"]
+    }
+  },
+])
+```
