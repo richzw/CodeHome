@@ -195,3 +195,47 @@ db.t.aggregate([
   },
 ])
 ```
+
+----------------------------
+
+```js
+  { 
+            "_id" : "9aa072e4-b706-47e6-9607-1a39e904a05a", 
+            "customerId" : "2164289-4", 
+            "channelStatuses" : [
+                {
+                    "channel": "FOO",
+                    "status" : "done"
+                }, 
+                {
+                    "channel": "BAR",
+                    "status" : "error"
+                }
+            ], 
+            "channel" : "BAR", 
+    }
+```
+
+```js
+{ "$group": {
+        "_id": {
+            "customerId" : "$customerId", 
+            "channel" : "$channel", 
+            "status": {
+                "$arrayElemAt": [
+                    { "$map": {
+                        "input": { "$filter": {
+                            "input": "$chanelStatuses",
+                            "as": "el", 
+                            "cond": { "$eq": [ "$$el.channel", "$channel" ] }
+                        }},
+                        "as": "el",
+                        "in": "$$el.status"
+                    }},
+                    0
+                ]
+            }
+        },
+        "count": { "$sum": 1 }
+    }}
+```
