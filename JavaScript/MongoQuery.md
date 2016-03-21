@@ -239,3 +239,37 @@ db.t.aggregate([
         "count": { "$sum": 1 }
     }}
 ```
+
+----------------------------------------
+
+Q: Update large collection
+
+A:
+
+> `node --max-old-space-size=4096 server.js`
+
+> Currently, by default v8 has a memory limit of 512MB on 32-bit systems, and 1.4GB on 64-bit systems. The limit can be raised by setting --max_old_space_size to a maximum of ~1024 (~1 GB) (32-bit) and ~4096 (~4GB) (64-bit), but it is recommended that you split your single process into several workers if you are hitting memory limits
+
+Or 
+
+You can use the `async.eachLimit` method of the `async` library to limit the number of concurrent save operations.
+
+For example, to limit the saves to no more than 5 outstanding at a time:
+
+```js
+MyModel.find().exec(function(err, data){
+   if (err) {
+      return console.log(err);
+   }
+   async.eachLimit(data, 5, function(doc, callback){
+      doc.Field = doc.Field + 1;
+      doc.save(function(err) {
+        if (err) {
+          console.error('ERROR!');
+        }
+        callback(err);
+      });
+   });
+});
+```
+
