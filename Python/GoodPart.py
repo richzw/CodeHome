@@ -134,5 +134,27 @@ Now I want the sum of all indexes of first list's index wise and then the 2nd li
 >>> [[sum(item) for item in zip(*items)] for items in zip(*data)]
 [[54, 40, 50, 50, 200], [20, 30, 75, 90, 180]]
 
+'''
+def check_all_conditions():
+    x = check_size()
+    if x:
+        return x
 
+    x = check_color()
+    if x:
+        return x
 
+    x = check_tone()
+    if x:
+        return x
+
+    x = check_flavor()
+    if x:
+        return x
+    return None
+'''
+
+# refine it as below
+
+def check_all_conditions():
+    return check_size() or check_color() or check_tone() or check_flavor() or None
