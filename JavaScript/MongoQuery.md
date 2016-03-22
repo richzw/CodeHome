@@ -273,3 +273,31 @@ MyModel.find().exec(function(err, data){
 });
 ```
 
+-----------------------------------------------------
+
+Q: Pull data from array nested array
+
+```js
+{
+    "_id" : "FfEj5chmviLdqWh52",
+    "favorites" : [ 
+        [ 
+            5719, 
+            "2016-03-21T17:46:01.441Z", 
+            "a"
+        ]
+    ]
+}
+```
+
+A:
+
+```js
+users.update(
+  { "favorites": { "$elemMatch": { "$elemMatch": { "$eq": 5719 }  } } },
+  { "$pull": { "favorites.$": 5719 } }
+)
+```
+
+
+
