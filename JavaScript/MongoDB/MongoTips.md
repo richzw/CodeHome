@@ -30,6 +30,48 @@ Node.js node-native-driver for MongoDB doesn't implement it at all.
 
 ----------------------
 
+3. limit
+---------
+
+```js
+function getItems (N) {
+  if (N < 0) N = -N;
+  if (N > 50 || !N) // check if N is falsy ("no limit")
+    N = 50;
+  return db.items.find({}).sort({ year: 1 }).limit(N);
+}
+```
+
+-------------------
+
+4. Mongo sorting
+--------
+
+For data
+
+```js
+{
+  _id: 'A',
+  locations: [5, 1, 3]
+}
+{
+  _id: 'B',
+  locations: [2, 4, 9]
+}
+{
+  _id: 'C',
+  locations: [1]
+}
+```
+
+with codes `collection.find().sort({locations: 1})`
+
+```
+_id:       A C B A B A B
+locations: 1 1 2 3 4 5 9
+```
+
+--------------------------
 
 
 
