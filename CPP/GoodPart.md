@@ -28,3 +28,14 @@ int main()
     std::system("./prog"); // run
 }
 ```
+
+----------------------------------------------------------
+
+Array in Cpp
+
+```c++
+int* p = new int[s];  // allocated array, p has type int*
+int q[10];            // declared array, q has type int[10]
+std::vector<int> u;   // has member allocated array
+std::array<int, 5> v; // has member declared array
+```
