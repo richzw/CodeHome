@@ -39,3 +39,25 @@ for (var i = 0; i < 3; i++) {
     fibonacciFromCache(40);
 }
 console.timeEnd('Memoized function call');
+
+
+// simple version
+
+var memoize = function(func){
+    var cache = {};
+    return function(){
+        var key = Array.prototype.slice.call(arguments).toString();
+        return key in cache ? cache[key] : (cache[key] = func.apply(this,arguments));
+    }
+}
+fibonacci = memoize(fibonacci);
+
+var memoize = function(func){
+    const cache = {};
+    return (...args) => {
+        const key = [...args].toString();
+        return key in cache ? cache[key] : (cache[key] = func(...args));
+    }
+}
+fibonacci = memoize(fibonacci);
+
