@@ -1,3 +1,7 @@
+Source: http://jayconrod.com/posts/55/a-tour-of-v8-garbage-collection
+
+-------------------------
+
 V8 heap is divided into several different spaces:
 
 - **New Space**: This space is relatively small and has a size of between 1MB and 8MB. Most of the objects are allocated here.
