@@ -61,3 +61,10 @@ var memoize = function(func){
 }
 fibonacci = memoize(fibonacci);
 
+var gcd = memoize(function(a,b){
+    var t;
+    if (a < b) t=b, b=a, a=t;
+    while(b != 0) t=b, b = a%b, a=t;
+    return a;
+})
+gcd(27,183); //=> 3
