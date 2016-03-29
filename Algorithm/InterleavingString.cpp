@@ -28,6 +28,8 @@ bool isInterleavingRecv(string s1, string s2, string s3, int i, int j, int k){
 	return ret;
 }
 
+// The worst case time complexity of recursive solution is O(2^n)
+
 bool isInterleaving(string s1, string s2, string s3){
 	if (s1.length() + s2.length() != s3.length())
 		return false;
@@ -35,10 +37,9 @@ bool isInterleaving(string s1, string s2, string s3){
 		return isInterleavingRecv(s1, s2, s3, 0, 0, 0);
 }
 
-bool isInterleaving_v1(string s1, string s2, string s3){
+bool isInterleaving_dp(string s1, string s2, string s3){
 	int len1 = s1.length();
 	int len2 = s2.length();
-	int len3 = s3.length();
 
 	vector<vector<bool> > vec(len1+1);
 	for (int idx = 0; idx < len1+1; ++idx){
@@ -69,7 +70,7 @@ bool isInterleaving_v1(string s1, string s2, string s3){
 	return vec[len1][len2];
 }
 
-bool isInterleaving_v2(string s1, string s2, string s3){
+bool isInterleaving_dp_improve(string s1, string s2, string s3){
     int len1=s1.size(), len2=s2.size(), len3=s3.size();        
     if(len1+len2 != len3) return false;
 
@@ -80,7 +81,7 @@ bool isInterleaving_v2(string s1, string s2, string s3){
     isPrefix[0]=true;
 
     for(int i=1; i<=s2.size(); i++) 
-		isPrefix[i] = s2.substr(0, i) == s3.substr(0, i);
+	isPrefix[i] = s2.substr(0, i) == s3.substr(0, i);
 
     for(int i=1; i<=s1.size(); i++){
         isPrefix[0] = s1.substr(0, i)==s3.substr(0,i);
@@ -95,7 +96,6 @@ If the two strings are 'ab' and 'cd', the output I wish to get is:
 
 ['abcd', 'acbd', 'acdb', 'cabd', 'cadb', 'cdab']
 */
-
 void printIlsRecur (char *str1, char *str2, char *iStr, int m, 
                     int n, int i)
 {
@@ -149,3 +149,58 @@ def interleave(s, t, res, i, j, lis):
         interleave(s, t, res + s[i], i + 1, j, lis)
     if j < len(t):
         interleave(s, t, res + t[j], i, j + 1, lis)
+
+// backup
+bool isInterleaved(char* A, char* B, char* C)
+{
+    // Find lengths of the two strings
+    int M = strlen(A), N = strlen(B);
+ 
+    // Let us create a 2D table to store solutions of
+    // subproblems.  C[i][j] will be true if C[0..i+j-1]
+    // is an interleaving of A[0..i-1] and B[0..j-1].
+    bool IL[M+1][N+1];
+ 
+    memset(IL, 0, sizeof(IL)); // Initialize all values as false.
+ 
+    // C can be an interleaving of A and B only of sum
+    // of lengths of A & B is equal to length of C.
+    if ((M+N) != strlen(C))
+       return false;
+ 
+    // Process all characters of A and B
+    for (int i=0; i<=M; ++i)
+    {
+        for (int j=0; j<=N; ++j)
+        {
+            // two empty strings have an empty string
+            // as interleaving
+            if (i==0 && j==0)
+                IL[i][j] = true;
+ 
+            // A is empty
+            else if (i==0 && B[j-1]==C[j-1])
+                IL[i][j] = IL[i][j-1];
+ 
+            // B is empty
+            else if (j==0 && A[i-1]==C[i-1])
+                IL[i][j] = IL[i-1][j];
+ 
+            // Current character of C matches with current character of A,
+            // but doesn't match with current character of B
+            else if(A[i-1]==C[i+j-1] && B[j-1]!=C[i+j-1])
+                IL[i][j] = IL[i-1][j];
+ 
+            // Current character of C matches with current character of B,
+            // but doesn't match with current character of A
+            else if (A[i-1]!=C[i+j-1] && B[j-1]==C[i+j-1])
+                IL[i][j] = IL[i][j-1];
+ 
+            // Current character of C matches with that of both A and B
+            else if (A[i-1]==C[i+j-1] && B[j-1]==C[i+j-1])
+                IL[i][j]=(IL[i-1][j] || IL[i][j-1]) ;
+        }
+    }
+ 
+    return IL[M][N];
+}
