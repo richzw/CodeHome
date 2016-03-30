@@ -1,6 +1,6 @@
-/*
-* Recursive function time complexity
-*/
+
+**Recursive function time complexity**
+
 
 ```c
  int recursiveFun1(int n)
