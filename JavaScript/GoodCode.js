@@ -1,6 +1,35 @@
 // falsy value
  underfined, null, 0, false, NaN, ''
  
+// get the file extensions, source: http://stackoverflow.com/questions/190852/how-can-i-get-file-extensions-with-javascript
+
+// 1. regex
+return (/[.]/.exec(filename)) ? /[^.]+$/.exec(filename) : undefined;
+
+// 2. split by '.', then pop the last element
+var a = filename.split(".");
+if( a.length === 1 || ( a[0] === "" && a.length === 2 ) ) {
+    return "";
+}
+return a.pop();
+
+// 3. more robust version
+return fname.slice((fname.lastIndexOf(".") - 1 >>> 0) + 2);
+return fname.slice((Math.max(0, fname.lastIndexOf(".")) || Infinity) + 1);
+
+function getExtension(path) {
+    var basename = path.split(/[\\/]/).pop(),  // extract file name from full path ...
+                                               // (supports `\\` and `/` separators)
+        pos = basename.lastIndexOf(".");       // get last position of `.`
+
+    if (basename === "" || pos < 1)            // if file name is empty or ...
+        return "";                             //  `.` not found (-1) or comes first (0)
+
+    return basename.slice(pos + 1);            // extract extension ignoring `.`
+}
+
+console.log( getExtension("/path/to/file.ext") ); 
+ 
 //
 var obj = { a: 10, b: { c: 20, d: { e: 30 } } };
 
