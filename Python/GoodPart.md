@@ -45,13 +45,15 @@ Given `'ab@cde@@fghi@jk@lmno@@@p@qrs@tuvwxy@z'` and want `'ab1cde23fghi1jk2lmno3
 
 **Q**:Consider I have a list of lists as:
 
+```
 [[5, 10, 30, 24, 100], [1, 9, 25, 49, 81]]
 [[15, 10, 10, 16, 70], [10, 1, 25, 11, 19]]
 [[34, 20, 10, 10, 30], [9, 20, 25, 30, 80]]
+```
 
 Now I want the sum of all indexes of first list's index wise and then the 2nd list  `5+15+34=54`   `10+10+20=40` and so on as:
 
-[54,40,50, 50,200], [20,30,75,90,180]
+`[54,40,50, 50,200], [20,30,75,90,180]`
 
 -----------------------------------------------
 
@@ -152,9 +154,9 @@ a.append(b())
 
 --------------------------------------------------------------------------------
 
-'''
-Refine the following codes
+**Q:Refine the following codes**
 
+```
 def check_all_conditions():
     x = check_size()
     if x:
@@ -172,7 +174,7 @@ def check_all_conditions():
     if x:
         return x
     return None
-'''
+```
 
 -----------------------------------------------------
 
