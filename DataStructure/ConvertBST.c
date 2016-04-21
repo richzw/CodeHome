@@ -28,38 +28,20 @@ bst_node* sortedArrayConvertoBST(int arr[], int len){
 /*
  * convert sorted list to BST
 */
-struct TNode* sortedListToBST(struct LNode *head)
-{
-    /*Count the number of nodes in Linked List */
-    int n = countLNodes(head);
- 
-    /* Construct BST */
-    return sortedListToBSTRecur(&head, n);
+BinaryTree* sortedListToBST(ListNode *& list, int start, int end) {
+  if (start > end) return NULL;
+  // same as (start+end)/2, avoids overflow
+  int mid = start + (end - start) / 2;
+  BinaryTree *leftChild = sortedListToBST(list, start, mid-1);
+  BinaryTree *parent = new BinaryTree(list->data);
+  parent->left = leftChild;
+  list = list->next;
+  parent->right = sortedListToBST(list, mid+1, end);
+  return parent;
 }
  
-struct TNode* sortedListToBSTRecur(struct LNode **head_ref, int n)
-{
-    /* Base Case */
-    if (n <= 0)
-        return NULL;
- 
-    /* Recursively construct the left subtree */
-    struct TNode *left = sortedListToBSTRecur(head_ref, n/2);
- 
-    /* Allocate memory for root, and link the above constructed left 
-       subtree with root */
-    struct TNode *root = newNode((*head_ref)->data);
-    root->left = left;
- 
-    /* Change head pointer of Linked List for parent recursive calls */
-    *head_ref = (*head_ref)->next;
- 
-    /* Recursively construct the right subtree and link it with root 
-      The number of nodes in right subtree  is total nodes - nodes in 
-      left subtree - 1 (for root) which is n-n/2-1*/
-    root->right = sortedListToBSTRecur(head_ref, n-n/2-1);
- 
-    return root;
+BinaryTree* sortedListToBST(ListNode *head, int n) {
+  return sortedListToBST(head, 0, n-1);
 }
 
 /*Write a function isBST(BinaryTree *node) to verify if a given binary tree is a Binary Search Tree (BST) or not.*/
