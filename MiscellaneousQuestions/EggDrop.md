@@ -3,18 +3,18 @@ a minimal number of throws. Give an algorithm to find X in minimal number of thr
 
 **Approach:**:
 
-**A First Try**: Suppose we drop an Marble from the 10th floor, then the 20th, …
+**A First Try**: Suppose we drop an egg from the 10th floor, then the 20th, …
 
-- In the first Marble breaks on the first drop (Floor 10), then we have at most 10 drops total.
-- If the first Marble breaks on the last drop (Floor 100), then we have at most 19 drops total (floors 1 through 100, then 91 through 99).
+- In the first egg breaks on the first drop (Floor 10), then we have at most 10 drops total.
+- If the first egg breaks on the last drop (Floor 100), then we have at most 19 drops total (floors 1 through 100, then 91 through 99).
 - That’s pretty good, but all we’re considered about is the absolute worst case. We should do some “load balancing” to make those two cases more even.
 
-**Goal**: Create a system for dropping Marble1 so that the most drops required is **consistent**, whether Marble1 breaks on the first drop or the last drop.
+**Goal**: Create a system for dropping egg1 so that the most drops required is **consistent**, whether egg1 breaks on the first drop or the last drop.
 
-- A perfectly load balanced system would be one in which Drops of Marble1 + Drops of Marble2 is always the same, regardless of where Marble1 broke.
-- For that to be the case, since each drop of Marble1 takes one more step, Marble2 is allowed one fewer step.
-- We must, therefore, reduce the number of steps potentially required by Marble2 by one drop each time. For example, if Marble1 is dropped on Floor 20 and then Floor 30, Marble2 is potentially required to take 9 steps. When we drop Marble1 again, we must reduce potential Marble2 steps to only 8. eg, we must drop Marble1 at floor 39.
-- We know, therefore, Marble1 must start at Floor X, then go up by X-1 floors, then X-2, …, until it gets to 100.
+- A perfectly load balanced system would be one in which Drops of egg1 + Drops of egg2 is always the same, regardless of where egg1 broke.
+- For that to be the case, since each drop of egg1 takes one more step, egg2 is allowed one fewer step.
+- We must, therefore, reduce the number of steps potentially required by Marble2 by one drop each time. For example, if egg1 is dropped on Floor 20 and then Floor 30, egg2 is potentially required to take 9 steps. When we drop egg1 again, we must reduce potential egg2 steps to only 8. eg, we must drop egg1 at floor 39.
+- We know, therefore, egg1 must start at Floor X, then go up by X-1 floors, then X-2, …, until it gets to 100.
   Solve for X+(X-1)+(X-2)+…+1 = 100. X(X+1)/2 = 100 -> X = 14
 
 The computer algorithm would be like this. Drop first egg from floors 14, 27, 39, 50, 60, 69, 77, 84, 90, 95, 99, 100... 
