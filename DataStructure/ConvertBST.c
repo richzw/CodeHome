@@ -25,6 +25,43 @@ bst_node* sortedArrayConvertoBST(int arr[], int len){
 	return convertoBSTHelper(arr, 0, len-1);
 }
 
+/*
+ * convert sorted list to BST
+*/
+struct TNode* sortedListToBST(struct LNode *head)
+{
+    /*Count the number of nodes in Linked List */
+    int n = countLNodes(head);
+ 
+    /* Construct BST */
+    return sortedListToBSTRecur(&head, n);
+}
+ 
+struct TNode* sortedListToBSTRecur(struct LNode **head_ref, int n)
+{
+    /* Base Case */
+    if (n <= 0)
+        return NULL;
+ 
+    /* Recursively construct the left subtree */
+    struct TNode *left = sortedListToBSTRecur(head_ref, n/2);
+ 
+    /* Allocate memory for root, and link the above constructed left 
+       subtree with root */
+    struct TNode *root = newNode((*head_ref)->data);
+    root->left = left;
+ 
+    /* Change head pointer of Linked List for parent recursive calls */
+    *head_ref = (*head_ref)->next;
+ 
+    /* Recursively construct the right subtree and link it with root 
+      The number of nodes in right subtree  is total nodes - nodes in 
+      left subtree - 1 (for root) which is n-n/2-1*/
+    root->right = sortedListToBSTRecur(head_ref, n-n/2-1);
+ 
+    return root;
+}
+
 /*Write a function isBST(BinaryTree *node) to verify if a given binary tree is a Binary Search Tree (BST) or not.*/
 bool isBstLessThan(bst_node* tree, int val){
 	if (!tree)
