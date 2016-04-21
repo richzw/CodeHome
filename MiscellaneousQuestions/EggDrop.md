@@ -1,7 +1,8 @@
 Q1:**There is a 100-story building and you are given two eggs. The eggs (and the building) have an interesting property that if you throw the egg from a floor number less than X, it will not break. And it will always break if the floor number is equal or greater than X. Assuming that you can reuse the eggs which didn't break, you need to find X in 
 a minimal number of throws. Give an algorithm to find X in minimal number of throws.**
 
-**Approach:**
+**Approach:**:
+
 **A First Try**: Suppose we drop an Marble from the 10th floor, then the 20th, …
 
 - In the first Marble breaks on the first drop (Floor 10), then we have at most 10 drops total.
@@ -22,7 +23,7 @@ The computer algorithm would be like this. Drop first egg from floors 14, 27, 39
 =========
 Q2: **With 3 eggs, you could use the extra egg for binary divide-and-conquer.**
 
-Here is my thoughts:
+Here are my thoughts:
 
 1. Use the first egg to drop from floor 50. The worst case is it will be broken.
 2. Now we try with the remaining 2 eggs, for floor 1 to 49, using the same algorithm above.
@@ -44,9 +45,10 @@ Given an N story building and a supply of d eggs, ﬁnd the strategy which minim
 experimental drops required to determine the breakﬂoor.
 
 **A:**
+
 1). Consider the case that the first drop breaks the egg. Then you can determine the breakfloor if and only if it is at most `f[d-1, e-1]`. Therefore you can't start higher than `f[d-1, e-1] + 1` (and shouldn't start lower, of course).
 
-2). If your first drop doesn't breaks the egg, you are in the case of `f[d-1, e]`, just starting at the floor of your first drop + 1, instead of floor 1.
+2). If your first drop doesn't breaks the egg, you are in the case of `f[d-1, e]`, just starting at the floor of your first `drop + 1`, instead of floor `1`.
 
 So, the best you can do is to start dropping eggs at floor `f[d-1, e-1] + 1` (because of (1)), 
 and you can get up to `f[d-1, e]` floors higher than that (because of (2)). That's `f[d, e] = f[d-1, e-1] + 1 + f[d-1, e]`
