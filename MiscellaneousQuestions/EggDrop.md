@@ -2,25 +2,31 @@ Q1:**There is a 100-story building and you are given two eggs. The eggs (and the
 a minimal number of throws. Give an algorithm to find X in minimal number of throws.**
 
 **A:**
-the whole question grinds up to how to make use of the first egg to reduce the linear testing using the second egg.
-This problem can be solved by thinking backwards from the answer. So, here are the steps:
-1. Take N for the answer
-2. The best choice will be to start with floor N first.
-- if the egg breaks, do a linear search starting from 1 to N-1, guaranteeing a solution in N attempts.
-- else go to N + (N-1) floor.
-3. Continuing in this way, with N attempts, we can cover sum(N + N-1 + N-2... 2 + 1) floors.
-Thus we will need to cover 100 floors, so N *(N + 1) / 2 > 100
-N = 14, so the answer is 14 maximum drops and we can find the floor.
+_A First Try_: Suppose we drop an Marble from the 10th floor, then the 20th, …
+
+- In the first Marble breaks on the first drop (Floor 10), then we have at most 10 drops total.
+- If the first Marble breaks on the last drop (Floor 100), then we have at most 19 drops total (floors 1 through 100, then 91 through 99).
+- That’s pretty good, but all we’re considered about is the absolute worst case. We should do some “load balancing” to make those two cases more even.
+
+_Goal_: Create a system for dropping Marble1 so that the most drops required is **consistent**, whether Marble1 breaks on the first drop or the last drop.
+
+- A perfectly load balanced system would be one in which Drops of Marble1 + Drops of Marble2 is always the same, regardless of where Marble1 broke.
+- For that to be the case, since each drop of Marble1 takes one more step, Marble2 is allowed one fewer step.
+- We must, therefore, reduce the number of steps potentially required by Marble2 by one drop each time. For example, if Marble1 is dropped on Floor 20 and then Floor 30, Marble2 is potentially required to take 9 steps. When we drop Marble1 again, we must reduce potential Marble2 steps to only 8. eg, we must drop Marble1 at floor 39.
+- We know, therefore, Marble1 must start at Floor X, then go up by X-1 floors, then X-2, …, until it gets to 100.
+  Solve for X+(X-1)+(X-2)+…+1 = 100. X(X+1)/2 = 100 -> X = 14
 
 The computer algorithm would be like this. Drop first egg from floors 14, 27, 39, 50, 60, 69, 77, 84, 90, 95, 99, 100... 
 (i.e. move up 14 then 13, then 12 floors, etc) until it breaks (or doesn't at 100)
 
 =========
-Q2: **With 3 eggs, you could use the extra egg for binary divide-and-conquer.** Here is my thoughts:
+Q2: **With 3 eggs, you could use the extra egg for binary divide-and-conquer.**
+
+Here is my thoughts:
 
 1. Use the first egg to drop from floor 50. The worst case is it will be broken.
 2. Now we try with the remaining 2 eggs, for floor 1 to 49, using the same algorithm above.
-N *(N + 1) / 2 > 49, so N = 11. Since we already used one egg in 1), so, the maximum drops would be 12.
+`N *(N + 1) / 2 > 49`, so `N = 11`. Since we already used one egg in 1), so, the maximum drops would be 12.
 So, with 3 eggs, it is slightly better than 2 eggs. It seems there is a diminishing return on using more eggs.
 Overall, in terms of solving a computer science problem, certain optimization is better, but too much would be overkill.
 
