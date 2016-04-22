@@ -32,7 +32,7 @@ cause the eggs to break on landing. We make a few assumptions: An egg that survi
 Given an `N` story building and a supply of `d` eggs, ﬁnd the strategy which minimizes (in the worst case) the number of 
 experimental drops required to determine the breakﬂoor.
 
-**A:** When we drop an egg from a floor `x`, there can be two cases (1) The egg breaks (2) The egg doesn’t break.
+**Answer:** When we drop an egg from a floor `x`, there can be two cases (1) The egg breaks (2) The egg doesn’t break.
 
 - If the egg breaks after dropping from xth floor, then we only need to check for floors lower than `x` with remaining eggs; so the problem reduces to `x-1` floors and `n-1` eggs
 - If the egg doesn’t break after dropping from the xth floor, then we only need to check for floors higher than `x`; so the problem reduces to `k-x` floors and `n` eggs.
@@ -49,7 +49,7 @@ Since we need to minimize the number of trials in worst case, we take the maximu
 ```                 
 
 =========
-Q4: **Suppose that you have an N-story building and plenty of eggs. An egg breaks if it is dropped from floor T or higher and does not break otherwise. Your goal is to devise a strategy to determine the value of T given the following limitations on the number of eggs and tosses:**
+**Q3: Suppose that you have an N-story building and plenty of eggs. An egg breaks if it is dropped from floor T or higher and does not break otherwise. Your goal is to devise a strategy to determine the value of T given the following limitations on the number of eggs and tosses:**
 - Version 0: 1 egg, ≤T tosses.
 - Version 1: ∼1lgN eggs and ∼1lgN tosses.
 - Version 2: ∼lgT eggs and ∼2lgT tosses.
