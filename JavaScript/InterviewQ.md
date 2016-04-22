@@ -17,6 +17,12 @@ function isPalindrome(str) {
 }
 ```
 
+Source:
+
+- [quiz 1](http://kourge.net/node/130)
+- [quiz 2](http://perfectionkills.com/javascript-quiz/)
+- [interview question](https://www.toptal.com/javascript/interview-questions)
+
 
 
 
