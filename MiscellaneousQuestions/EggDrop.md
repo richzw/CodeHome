@@ -19,7 +19,7 @@
 The computer algorithm would be like this. Drop first egg from floors `14, 27, 39, 50, 60, 69, 77, 84, 90, 95, 99, 100... `
 (i.e. move up 14 then 13, then 12 floors, etc) until it breaks (or doesn't at 100)
 
-=========
+-----------------------------------------------
 **Q2: Suppose that we wish to know which stories in a N-story building are safe to drop eggs from, and which will
 cause the eggs to break on landing. We make a few assumptions: An egg that survives a fall can be used again.**
 
@@ -48,7 +48,77 @@ Since we need to minimize the number of trials in worst case, we take the maximu
                  x in {1, 2, ..., k}}
 ```                 
 
-=========
+Codes
+
+```c
+/*
+ * Prarams: 
+ *     e {int}, the number of eggs
+ *     f {int}, the number of floors
+ * Return:
+ *     {int}, the worst number of trails in the worst case 
+*/
+int max(int a, int b) { return a > b ? a : b; }
+int eggDrop(int e, int f) {
+	// edge cases: no floor, one floor, or one egg
+	if (f == 0 || f == 1 || e == 1)
+		return f;
+
+	int min = INT_MAX;
+	int res = 0;
+	for (int idx = 1; idx <= f; ++idx) {
+		res = max(eggDrop(e - 1, idx - 1), eggDrop(e, f - idx));
+		if (res < min)
+			min = res;
+	}
+
+	return min + 1; // Fixme: plus 1
+}
+
+// Dynamic Programming solution
+int eggDropDP(int e, int f) {
+	// create the dp array
+	int** eggFloor;
+	eggFloor = new int*[e + 1];
+	for (int i = 0; i < e + 1; ++i) {
+		eggFloor[i] = new int[f + 1];
+	}
+
+	// initialize the dp array
+	// case: zero floor, one floor
+	for (int i = 0; i < e + 1; ++i) {
+		eggFloor[i][0] = 0;
+		eggFloor[i][1] = 1;
+	}
+	// case: zero egg, one egg
+	for (int j = 0; j < f; ++j) {
+		eggFloor[0][j] = 0;
+		eggFloor[1][j] = j;
+	}
+
+	for (int i = 2; i < e + 1; ++i) {
+		for (int j = 2; j < f + 1; ++j) {
+			eggFloor[i][j] = INT_MAX;
+			int res = 0;
+			for (int idx = 1; idx <= j; ++idx)
+			{
+				res = 1 + max(eggFloor[i - 1][idx - 1], eggFloor[i][j - idx]);
+				if (res < eggFloor[i][j])
+					eggFloor[i][j] = res;
+			}
+		}
+	}
+
+	for (int i = 0; i < e + 1; ++i) {
+		delete eggFloor[i];
+	}
+	delete eggFloor;
+
+	return eggFloor[e][f];
+}
+```
+
+-----------------------------------------------------------------
 **Q3: Suppose that you have an N-story building and plenty of eggs. An egg breaks if it is dropped from floor T or higher and does not break otherwise. Your goal is to devise a strategy to determine the value of T given the following limitations on the number of eggs and tosses:**
 - Version 0: 1 egg, ≤T tosses.
 - Version 1: ∼1lgN eggs and ∼1lgN tosses.
