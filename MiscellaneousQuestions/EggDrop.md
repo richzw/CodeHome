@@ -85,7 +85,8 @@ int eggDropDP(int e, int f) {
 	}
 	
 	// another method to create 2-dim array
-	double (*eggFloor)[e+1] = malloc((f+1) * sizeof(*eggFloor));
+	double (*eggFloor)[e+1] = (int(*)[e+1])malloc((f+1) * sizeof(*eggFloor));
+	// int (*matrix)[row] = malloc(colums * sizeof *matrix);
 
 	// initialize the dp array
 	// case: zero floor, one floor
