@@ -1,3 +1,6 @@
+
+### Question
+
 We can pass reference of an array to a function like:
 
 ```c
@@ -33,6 +36,8 @@ int (*a)[M][N];
 where `M` and `N` is known at compile time!
 
 ----------------------------------------------------
+
+### Answer
 
 If you want to return a reference to an array from a function, the declaration would look like this:
 
@@ -83,4 +88,8 @@ auto foo () -> int (&)[3]
 }
 ```
 
+
+### Source
+
+[1](http://stackoverflow.com/questions/5398930/general-rules-of-passing-returning-reference-of-array-not-pointer-to-from-a-fu/5399014#5399014)
 
