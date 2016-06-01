@@ -173,3 +173,6 @@ Last step: calling `function3('bar')`:
 Similar here, a new environment is created and its "outer lexical environment" field points to the environment created when `function1`
 was called.
 
+### Source
+
+[1](http://stackoverflow.com/questions/37491626/where-does-a-javascript-closure-live)
