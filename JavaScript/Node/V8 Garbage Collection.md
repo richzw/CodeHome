@@ -2,7 +2,15 @@ Source: http://jayconrod.com/posts/55/a-tour-of-v8-garbage-collection
 
 -------------------------
 
-V8 heap is divided into several different spaces:
+V8 GC strategy
+
+- **Generational**: Young and Old
+- **Accurate**: Given a random word (4 bytes aligned) in the memory, V8 can tell you if it's a pointer or some data by looking at the last bit reserved as a tag
+- GC is triggered by allocation (new or var most of time)
+
+In V8, Objects live on the heap, and the heap is divided into several different spaces:
+
+![](https://cloud.githubusercontent.com/assets/1590890/16329668/4df6978c-3a16-11e6-8f6d-13f241fe3f8c.png)
 
 - **New Space**: This space is relatively small and has a size of between 1MB and 8MB. Most of the objects are allocated here.
 - **Old Pointer Space**: Has objects which may have pointers to other objects. If object survives long enough in New Space 
