@@ -37,7 +37,6 @@ int get_largest_rect(vector<int> vec){
 			int index = st.top();
 			st.pop();
 			max_area = max(max_area, vec[index]*(st.empty()? i: i-st.top()-1)); //Fix me: -1
-			i--;
 		}
 	}
 
