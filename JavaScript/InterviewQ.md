@@ -1,4 +1,6 @@
 
+[25 enssential question](https://www.toptal.com/javascript/interview-questions)
+
 --------------------------------------------------------------------------------
 
 ```javascript
