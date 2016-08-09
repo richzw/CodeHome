@@ -13,22 +13,22 @@ the second because its last difference is zero.
 
 Brute Force (recursive)
 
-```java
-public class Solution {
-    private int calculate(int[] nums, int index, boolean isUp) {
-        int maxcount = 0;
-        for (int i = index + 1; i < nums.length; i++) {
-            if ((isUp && nums[i] > nums[index]) || (!isUp && nums[i] < nums[index]))
-                maxcount = Math.max(maxcount, 1 + calculate(nums, i, !isUp));
-        }
-        return maxcount;
-    }
+```c
+int calc(int* num, int len, int idx, bool isUp) {
+	int maxCnt = 0;
 
-    public int wiggleMaxLength(int[] nums) {
-        if (nums.length < 2)
-            return nums.length;
-        return 1 + Math.max(calculate(nums, 0, true), calculate(nums, 0, false));
-    }
+	for (int i = idx + 1; i < len; ++i) {
+		if ((isUp && num[i] > num[idx]) || (!isUp && num[i] < num[idx]))
+			maxCnt = max(maxCnt, 1 + calc(num, len, i, !isUp));
+	}
+
+	return maxCnt;
+}
+
+int wiggleMaxLen(int* nums, int len) {
+	if (len < 2)
+		return len;
+	return 1 + max(calc(nums, len, 0, true), calc(nums, len, 0, false));
 }
 ```
 
