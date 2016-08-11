@@ -32,3 +32,21 @@ int wiggleMaxLen(int* nums, int len) {
 }
 ```
 
+### solution 2
+
+```c
+int wiggleMax(int* nums, int len) {
+	if (len < 2)
+		return len;
+
+	int down = 1, up = 1;
+	for (int i = 1; i < len; ++i) {
+		if (nums[i] > nums[i - 1])
+			up = down + 1;
+		else if (nums[i] < nums[i - 1])
+			down = up + 1;
+	}
+
+	return max(up, down);
+}
+```
