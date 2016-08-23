@@ -70,7 +70,25 @@ Output:
 
 `^((?!hede).)*$`
 
-**Explanation**
+**Explanation 1**
+
+`^`the beginning of the string
+
+`(` group and capture to `\1` (0 or more times (matching the most amount possible))
+
+`(?!` look ahead to see if there is not:
+
+`hede` your string
+
+`)` end of look-ahead
+
+`.` any character except `\n`
+
+`)*` end of `\1` (NOTE: because you are using a quantifier on this capture, only the LAST repetition of the captured pattern will be stored in `\1`)
+
+`$` before an optional `\n`, and the end of the string
+
+**Explanation 2**
 
 A string is just a list of n characters. Before, and after each character, there's an empty string. 
 So a list of n characters will have n+1 empty strings. Consider the string "ABhedeCD":
