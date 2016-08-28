@@ -52,4 +52,22 @@ On an input tree T, we build 3 arrays.
 
 - Representative[1,..n] – Representative[i] will hold the index of the first occurrence of node i in Euler[].
 
+```cpp
+void Euler_tour(TreeNode* root, vector<int>& result){
+    if (root == NULL)
+        return;
+
+    result.push_back(root->data);
+    if (root->left){
+        Euler_tour(root->left, result);
+        result.push_back(root->data);
+    }
+    if (root->right){
+        Euler_tour(root->right, result);
+        result.push_back(root->data);
+    }
+}
+```
+
+
 
