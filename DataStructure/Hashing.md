@@ -41,7 +41,7 @@ Hashing
 
 #####[LeapFrog](http://preshing.com/20160314/leapfrog-probing/)
 
-
+![](https://cloud.githubusercontent.com/assets/1590890/18465717/bcf53bea-79ca-11e6-8d95-59c9bda05705.png)
 
 To find a given key, proceed as follows:
 
