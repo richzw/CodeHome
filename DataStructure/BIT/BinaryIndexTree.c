@@ -8,6 +8,10 @@
 
   idx is some index of BIT. r is a position in idx of the last digit 1 (from left to right) in binary notation.
   tree[idx] is sum of frequencies from index (idx - 2^r + 1) to index idx
+  
+Source:
+  1. https://www.topcoder.com/community/data-science/data-science-tutorials/binary-indexed-trees/
+  2. http://www.geeksforgeeks.org/binary-indexed-tree-or-fenwick-tree-2/
 */
 
 int read(int idx){
