@@ -1,3 +1,75 @@
+// Merge sort for List
+void splitList(LNode* source, LNode** pfrontList, LNode** pbackList) {
+	if (source == NULL || source->next == NULL) {
+		*pfrontList = source;
+		*pbackList = NULL;
+	}
+	else
+	{
+		LNode* fast = source;
+		LNode* slow = source;
+
+		//while (fast != NULL && fast->next != NULL) {
+		//	fast = fast->next->next;
+		//	slow = slow->next;
+		//}
+
+		// Fixme: advance `fast` first, then advance `slow` node
+		while (fast != NULL) {
+			fast = fast->next;
+			if (fast != NULL) {
+				fast = fast->next;
+				slow = slow->next;
+			}
+		}
+
+		*pfrontList = source;
+		*pbackList = slow->next;
+
+		// break the source list
+		slow->next = NULL;
+	}
+}
+
+LNode* sortMerge(LNode* pfrontList, LNode* pbackList) {
+	if (pfrontList == NULL)
+		return pbackList;
+	else if (pbackList == NULL)
+		return pfrontList;
+
+	LNode* ret = NULL;
+
+	if (pfrontList->val <= pbackList->val) {
+		ret = pfrontList;
+		ret->next = sortMerge(pfrontList->next, pbackList);
+	}
+	else
+	{
+		ret = pbackList;
+		ret->next = sortMerge(pfrontList, pbackList->next);
+	}
+
+	return ret;
+}
+
+void mergeSortForList(LNode** phead) {
+	LNode* head = *phead;
+	LNode* a;
+	LNode* b;
+
+	if (head == NULL || head->next == NULL)
+		return;
+
+	splitList(head, &a, &b);
+	
+	mergeSortForList(&a);
+	mergeSortForList(&b);
+
+	*phead = sortMerge(a, b);
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+
 class Solution {
 public:
     ListNode *sortList(ListNode *head) {
