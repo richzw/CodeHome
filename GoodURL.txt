@@ -4,6 +4,14 @@
 志者忌妄自菲薄　胡亂設限礙築夢
 今學之道何其多　更有知友解君惑
 何不謀定而後動　日復精益求進哉
+
+// Interview
+http://www.ardendertat.com/2011/10/27/programming-interview-questions-10-kth-largest-element-in-array/
+https://www.interviewcake.com/
+https://llh911001.gitbooks.io/mostly-adequate-guide-chinese/content/ch9.html
+
+// memory barries
+http://preshing.com/20120710/memory-barriers-are-like-source-control-operations/
  
 // OS
 http://pages.cs.wisc.edu/~remzi/OSTEP/
