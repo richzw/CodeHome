@@ -65,3 +65,7 @@ To make sure values are uniformly distributed and represented as same-size integ
 The first few bits of the hashed values are used to divide them into different subsets, much like the separate series of coin flips in the example above. For each subset the maximum number of leading zeros within its values are stored in a register.
 
 To calculate the approximate cardinality of the whole set, the estimates for all the subsets are combined using a harmonic mean.
+
+--
+
+[Source](https://robots.thoughtbot.com/hyperloglogs-in-redis)
