@@ -99,6 +99,10 @@ a space-efficient probabilistic data structure that is used to test whether an e
 - but false negatives are not
 - Easy to insert and test
 
+***ML Hashing***:
+
+[Source](https://blog.bradfieldcs.com/an-introduction-to-hashing-in-the-era-of-machine-learning-6039394549b0)
+
 ***Cuckoo Hashing***:
 
 when you create your hash table you immediately break the table into two address spaces; we will call them the primary and secondary address spaces. Additionally, you also initialize two separate hash functions, one for each address space. These hash functions might be very similar — for example they could both be from the “prime multiplier” family, where each hash function uses a different prime number. We will call these the primary and secondary hash function.
