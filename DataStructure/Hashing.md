@@ -99,7 +99,15 @@ a space-efficient probabilistic data structure that is used to test whether an e
 - but false negatives are not
 - Easy to insert and test
 
+***Cuckoo Hashing***:
 
+when you create your hash table you immediately break the table into two address spaces; we will call them the primary and secondary address spaces. Additionally, you also initialize two separate hash functions, one for each address space. These hash functions might be very similar — for example they could both be from the “prime multiplier” family, where each hash function uses a different prime number. We will call these the primary and secondary hash function.
 
+Initially, inserts to a cuckoo hash only utilize the primary hash function and the primary address space. When a collision occurs, the new data evicts the old data; the old data is then hashed with the secondary hash function and put into the secondary address space.
 
+![](https://cdn-images-1.medium.com/max/1600/1*pVC3s-Z_w2y7xyjmkdnMpw.png)
+
+If that secondary address space is already occupied, another eviction occurs and the data in the secondary address space is sent back to the primary address space. Because it is possible to create an infinite loop of evictions, it is common to set a threshold of evictions-per-insert; if this number of evictions is reached the table is rebuilt, which may include allocating more space for the table and/or choosing new hash functions.
+
+![](https://cdn-images-1.medium.com/max/1600/1*nxvaEks08AUyjCmgKQ34Bg.png)
 
