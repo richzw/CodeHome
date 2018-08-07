@@ -16,11 +16,11 @@ gRPC使用ProtoBuf来定义服务，ProtoBuf是由Google开发的一种数据序
 HTTP/2 的**多路复用(Multiplexing)** 则允许同时通过单一的 HTTP/2 连接发起多重的请求-响应消息。 
 因此 HTTP/2 可以很容易的去实现多流并行而不用依赖建立多个 TCP 连接，HTTP/2 把 HTTP 协议通信的基本单位缩小为一个一个的帧，这些帧对应着逻辑流中的消息。并行地在同一个 TCP 连接上双向交换消息。
 
-![](https://img-blog.csdn.net/20171019105033713?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveHVkdW9ydWk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![m](https://img-blog.csdn.net/20171019105033713?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveHVkdW9ydWk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 HTTP/2 **传输的数据是二进制的**。相比 HTTP/1.1 的纯文本数据，二进制数据一个显而易见的好处是：更小的传输体积。这就意味着更低的负载。二进制的帧也更易于解析而且不易出错，纯文本帧在解析的时候还要考虑处理空格、大小写、空行和换行等问题，而二进制帧就不存在这个问题
 
-![](https://img-blog.csdn.net/20171019105519131?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveHVkdW9ydWk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![v](https://img-blog.csdn.net/20171019105519131?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveHVkdW9ydWk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 HTTP是无状态协议。简而言之，这意味着每个请求必须要携带服务器需要的所有细节，而不是让服务器保存住之前请求的元数据。因为http2没有改变这个范式，所以它也需要这样（携带所有细节），因此 HTTP 请求的头部需要包含用于标识身份的数据比如 cookies，而这些数据的量也在随着时间增长。每一个请求的头部都包含这些大量的重复数据，无疑是一种很大的负担。对请求头部进行压缩，将会大大减轻这种负担，尤其对移动端来说，性能提高非常明显。
 
@@ -28,13 +28,14 @@ HTTP/2 使用的**压缩方式是 HPACK**。 http://http2.github.io/http2-spec/c
 
 HTTP2.0在客户端和服务器端使用“首部表”来跟踪和存储之前发送的键-值对，对于相同的数据，不再通过每次请求和响应发送；通信期间几乎不会改变的通用键-值对（用户代理、可接受的媒体类型，等等）只需发送一次。
 
-[](https://img-blog.csdn.net/20171019105927130?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveHVkdW9ydWk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![d](https://img-blog.csdn.net/20171019105927130?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveHVkdW9ydWk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
 
 HTTP/2 的**服务器推送**所作的工作就是，服务器在收到客户端对某个资源的请求时，会判断客户端十有八九还要请求其他的什么资源，然后一同把这些资源都发送给客户端，即便客户端还没有明确表示它需要这些资源。
 
 客户端可以选择把额外的资源放入缓存中（所以这个特点也叫 Cache push），也可以选择发送一个 RST_STREAM frame 拒绝任何它不想要的资源
 
-![](https://img-blog.csdn.net/20171019110237588?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveHVkdW9ydWk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![q](https://img-blog.csdn.net/20171019110237588?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveHVkdW9ydWk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 
 gRPC Pooling
