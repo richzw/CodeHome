@@ -1,3 +1,5 @@
+Source [1](https://www.ardanlabs.com/blog/2018/08/scheduling-in-go-part2.html) [2](https://taohuawu.club/high-performance-implementation-of-goroutine-pool)
+
 在Go语言中，每一个goroutine是一个独立的执行单元，相较于每个OS线程固定分配2M内存的模式，goroutine的栈采取了动态扩容方式， 初始时仅为2KB，随着任务执行按需增长，最大可达1GB（64位机器最大是1G，32位机器最大是256M），且完全由golang自己的调度器 Go Scheduler 来调度。此外，GC还会周期性地将不再使用的内存回收，收缩栈空间。 因此，Go程序可以同时并发成千上万个goroutine是得益于它强劲的调度器和高效的内存模型。Go的创造者大概对goroutine的定位就是屠龙刀，因为他们不仅让goroutine作为golang并发编程的最核心组件（开发者的程序都是基于goroutine运行的）而且golang中的许多标准库的实现也到处能见到goroutine的身影，比如net/http这个包，甚至语言本身的组件runtime运行时和GC垃圾回收器都是运行在goroutine上的，作者对goroutine的厚望可见一斑。
 
 任何用户线程最终肯定都是要交由OS线程来执行的，goroutine（称为G）也不例外，但是G并不直接绑定OS线程运行，而是由Goroutine Scheduler中的 P - Logical Processor （逻辑处理器）来作为两者的『中介』，P可以看作是一个抽象的资源或者一个上下文，一个P绑定一个OS线程，在golang的实现里把OS线程抽象成一个数据结构：M，G实际上是由M通过P来进行调度运行的，但是在G的层面来看，P提供了G运行所需的一切资源和环境，因此在G看来P就是运行它的 “CPU”，由 G、P、M 这三种由Go抽象出来的实现，最终形成了Go调度器的基本结构：
