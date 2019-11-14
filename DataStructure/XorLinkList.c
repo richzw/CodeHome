@@ -9,155 +9,104 @@ More:
      Subtraction Link List
 */
 
- struct xorlist{
-    int data;
-    struct xorlist* next;
-};
-
-
-/* @func: create xorlist according to input array.
- * @params: an array that need to transform to xorlist.
- * @ret: the header of xor list
- */
-xorlist* create_xorlist(int arr[], int count){
-    int index = 0;
-    if (NULL == arr)
-         return NULL;
-
-    xorlist* head = NULL;
-    xorlist* prevnode = NULL;
-    xorlist* node = NULL;
-    xorlist* nextnode = NULL;
-
-    head = node = (xorlist*)malloc(sizeof(xorlist));
-    node->data = arr[index];
-    --count;
-
-    while (count){
-        ++index;
-        nextnode = (xorlist*)malloc(sizeof(xorlist));
-        nextnode->data = arr[index];
-        node->next = (xorlist*)((int)prevnode ^ (int)nextnode);
-        prevnode = node;
-        node = nextnode;
-        --count;
-    };
-
-    node->next = prevnode;
-
-    return head;
+//互斥或連結串列結點結構
+typedef struct XorNode {
+    char data;
+    struct XorNode *LRPtr;
 }
- /* @func: delete the xorlist
- * @params: the header of xorlist that need to be deleted
- *
- */
-void destroy_xorlist(xorlist* head){
-    if (NULL == head)
-        return;
-    xorlist* prevnode = NULL;
-    xorlist* node = NULL;
-    xorlist* nextnode = NULL;
+XorNode, *XorPointer;
+//互斥或指標雙向連結串列結構
+typedef struct XorLinkedList {
+    XorPointer left, right;
+}
+XorLinkedList;
 
-    node = head;
-    while (nextnode = (xorlist*)((int)node->next ^ (int)prevnode)){
-        free(prevnode);
-        prevnode = node;
-        node = nextnode;
+//互斥或操作
+XorPointer xor(XorPointer a, XorPointer b) {
+    return (XorPointer)((unsigned long)(a) ^ (unsigned long)(b));
+}
+
+//建立互斥或雙向連結串列
+void createXorLinkedList(XorLinkedList *list) {
+    char ch;
+    XorPointer lastNode = NULL;
+    int isFirstNode = 1;
+    while ((ch = getchar()) != '\n') {
+        XorPointer newNode = (XorPointer) malloc(sizeof(XorNode));
+        newNode -> data = ch;
+        newNode -> LRPtr = NULL;
+        if (lastNode) {
+            newNode -> LRPtr = xor(lastNode, NULL);
+            lastNode -> LRPtr = xor(xor(lastNode -> LRPtr, NULL), newNode);
+        }
+        lastNode = newNode;
+        if (isFirstNode) {
+            isFirstNode = 0;
+            list -> left = newNode;
+        }
+    }
+    list -> right = lastNode;
+}
+
+//按任意方向依次輸出各結點值
+void print(XorPointer a, XorPointer b) {
+    XorPointer nullFirst = a == NULL ? a : b;
+    XorPointer nonNullFirst = a != NULL ? a : b;
+    XorPointer tmp = NULL;
+    do {
+        printf("%c ", nonNullFirst -> data);
+        tmp = nonNullFirst;
+        nonNullFirst = xor(nullFirst, nonNullFirst -> LRPtr);
+        nullFirst = tmp;
+    } while (nonNullFirst != NULL);
+}
+
+//在第i個結點之前插入一個結點
+void XorLinkedListInsert(XorLinkedList *list, int pos, char data) {
+    XorPointer node = list -> left, tmp = NULL;
+    XorPointer last = NULL;
+    XorPointer newNode = NULL;
+    int i = 1;
+    while (i < pos && node != NULL) {
+        tmp = node;
+        node = xor(last, node -> LRPtr);
+        last = tmp;
+        i++;
+    }
+    newNode = (XorPointer) malloc(sizeof(XorNode));
+    newNode -> data = data;
+    newNode -> LRPtr = xor(last, node);
+    if (node != NULL) {
+        node -> LRPtr = xor(newNode, xor(last, node -> LRPtr));
+    }
+    if (last != NULL) {
+        last -> LRPtr = xor(xor(last -> LRPtr, node), newNode);
+    }
+    if (pos == 1) {
+        list -> left = newNode;
+    }
+}
+// 刪除第i個結點
+void XorLinkedListDelete(XorLinkedList *list, int pos) {
+    XorPointer node = list -> left, last = NULL, next = NULL, tmp = NULL;
+    int i = 1;
+    while (i < pos && node != NULL) {
+        i++;
+        tmp = node;
+        node = xor(last, node -> LRPtr);
+        last = tmp;
+    }
+    next = xor(last, node -> LRPtr);
+    if (last != NULL) {
+        last -> LRPtr = xor(xor(last -> LRPtr, node), next);
+    }
+    if (next != NULL) {
+        next -> LRPtr = xor(last, xor(node, next -> LRPtr));
+    } else {
+        list -> right = last; //删除了最后一个结点
+    }
+    if (pos == 1) {
+        list -> left = next;
     }
     free(node);
-    free(prevnode);
 }
-
-/* @func: insert one element into xorlist
- * @params: the new xorlist element
- * @ret: the header of the xorlist
- */
-xorlist* insert_xorlist(xorlist* head, int value){
-    if (NULL == head)
-        return NULL;
-    xorlist* prevnode = NULL;
-    xorlist* node = NULL;
-    xorlist* nextnode = NULL;
-
-    node = head;
-    while (nextnode = (xorlist*)((int)(node->next)^(int)prevnode)){
-        prevnode = node;
-        node = nextnode;
-    }
-    xorlist* tail = (xorlist*)malloc(sizeof(xorlist));
-    node->next = (xorlist*)((int)prevnode ^ (int)tail);
-    tail->data = value;
-    tail->next = node; //namely xor zero
-
-    return head;
-}
-
-/* @func: delete one element from xorlist
- * @params: the value of element that should be deleted
- * @ret: the header of the xorlist
- */
-xorlist* delete_xorlist(xorlist* head, int value){
-    if (NULL == head)
-        return NULL;
-     xorlist* prevnode = NULL;
-     xorlist* node = NULL;
-     xorlist* nextnode = NULL;
-
-     node = head;
-     while (nextnode = (xorlist*)((int)node->next^(int)prevnode)){
-         if (value == node->data){
-             if (node == head){
-                 nextnode->next = (xorlist*)((int)node ^ (int)nextnode->next);
-                 head = nextnode;
-             } else {
-                 prevnode->next = (xorlist*)(((int)node^(int)prevnode->next)^(int)nextnode);
-                 nextnode->next = (xorlist*)((int)prevnode ^ ((int)node^(int)nextnode->next));
-             }
-
-             free(node);
-             break;
-         }
-         prevnode = node;
-         node = nextnode;
-     }
-     //delete the tail node
-     if (node->data == value){
-         prevnode->next = (xorlist*)((int)node ^ (int)prevnode->next);
-         free(node);
-     }
-     return head;
- }
-
- /* @func: tranverse the xorlist.
-  * @params: the header of xorlist.
-  * @ret: return the header of xorlist.
-  */
- xorlist* tranverse_xorlist(xorlist* head){
-     if (NULL == head)
-         return NULL;
-     xorlist* prevnode = NULL;
-     xorlist* node = NULL;
-     xorlist* nextnode = NULL;
-
-     node = head;
-     while (nextnode = (xorlist*)((int)node->next^(int)prevnode)){
-         printf(" %d ", node->data);
-         prevnode = node;
-         node = nextnode;
-     }
-     printf(" %d \n", node->data);
-     return head;
- }
-
- int main(){
-     int array[] = {3, 4, 8, 9, 1, 7, 5, 6, 11};
-     xorlist* head = create_xorlist(array,  sizeof(array)/sizeof(array[0]));
-     head = tranverse_xorlist(head);
-     head = insert_xorlist(head, 2);
-     head = tranverse_xorlist(head);
-     head = delete_xorlist(head, 1);
-     head = tranverse_xorlist(head);
-
-     destroy_xorlist(head);
-     return 0;
- }
