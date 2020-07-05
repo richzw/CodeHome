@@ -80,7 +80,22 @@ TCP 第一次握手（收到 SYN 包）时会被丢弃的三种条件：
 
 syncookies 是这么做的：服务器根据当前状态计算出一个值，放在己方发出的 SYN+ACK 报文中发出，当客户端返回 ACK 报文时，取出该值验证，如果合法，就认为连接建立成功，如下图所示。
 
+![](https://user-images.githubusercontent.com/1590890/86534037-fa1b7080-bf07-11ea-8e45-cfcbe011e040.png)
 
+syncookies 参数主要有以下三个值：
 
+- 0 值，表示关闭该功能；
+- 1 值，表示仅当 SYN 半连接队列放不下时，再启用它；
+- 2 值，表示无条件开启功能；
+
+如何防御 SYN 攻击？
+-------
+
+- 增大半连接队列；
+   - 要想增大半连接队列，我们得知不能只单纯增大 tcp_max_syn_backlog 的值，还需一同增大 somaxconn 和 backlog，也就是增大全连接队列
+- 开启 tcp_syncookies 功能
+   - tcp_syncookie set to 1
+- 减少 SYN+ACK 重传次数
+   - `echo 1 > /proc/sys/net/ipv4/tcp_synack_retries`
 
 
