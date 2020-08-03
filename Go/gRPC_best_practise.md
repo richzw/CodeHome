@@ -1,0 +1,42 @@
+Ref: https://www.youtube.com/watch?v=Z_yD7YPL2oE
+
+- API Design - Idempotency. [04:15]    
+	- Request should include timestamp/guid to make idempotency
+- API Design - Performance
+	- Request: can imply unbounded work -- set limits
+	- Response: pagination
+	- Avoid long-running operations
+	
+- API Design - Defaults. [10:22]
+  - Unset enums default to zero value, perfer UNKNOWN/UNSECIFIED as the default
+  - Backward compatibility
+- API Design - Errors. [12:49]
+  - Do not include in response payload in most cases
+  - Avoid batching multiple, independent operations
+- Error Handling - Don't Panic! [16:09]
+  - Do not blindly return errors from libs or ther services
+- Deadlines - Propagation. [22:24]
+  - Context.WithDeadline(.. Time percificed) or WithTimeout(…)
+	
+- Rate Limiting. [26:23]
+  - Local rate limits
+    - Grpc.InTapHandler(rateLimiter)
+    - Golang.org/x/time/rate    -- rate.NewLimiter(…)
+- Retries.
+  - Officail grpc plan to do that
+    - Configured via server config
+    - Supports
+      - Sequential retries with backoff
+      - Concurrent hedged request
+  - Until then: use a client wrapper or interceptor 
+    - Accept a content and use its deadline
+- Memory Management
+  - Grpc does not limit goroutines
+    - Option1: set listener limits and concurrent stream limits
+      - Listener = netutil.LimitListener(listener, connectionLimit)
+      - Grpc.NewServer(grpc.MaxConcurrentSteams(streamsLimit))
+    - Option2: use TapHandler to error when too many rpcs are in flight
+    - Option3: use health report and load balance to redirect traffic
+  - Large request can OOM
+    - Set a max request payload size
+      - Grpc.NewServer(grpc.MaxRecvMsgSize(4096/*bytes*/))
