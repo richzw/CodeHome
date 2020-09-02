@@ -2,6 +2,7 @@ Source
 
 - https://juejin.im/post/5c7900bf518825407c7eafd0
 - http://antirez.com/news/75
+- http://blog.notdot.net/2012/09/Dam-Cool-Algorithms-Cardinality-Estimation
 
 它的实现中，设有 16384 个桶，即：2^14 = 16384，每个桶有 6 位，每个桶可以表达的最大数字是：2^5+2^4+...+1 = 63 ，二进制为： 111 111 。
 
