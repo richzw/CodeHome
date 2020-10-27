@@ -10,4 +10,86 @@
 
 hint: 单调栈
 
+// Q2
 
+请将切成不同长度的棒子拚接起来，做出长度相同的棒子，但是要考虑拚接起来的度必须是最短的。换句话说，就是尽量做出更多长度相同的棒子。 (POJ 1011)
+
+// Q3
+
+有一条长度为n的木棍，已知木棍的销售价格Pi与木棍长度i有关,i = 1,2,3,...n.问，怎样切割能获得最大收益
+
+|切割长度（seg） |	1   |	2 |	3 |	4 |	5  |	6   |	7   |	8   |	9   |	10|
+| ----         | ---- |----|----  |  ----|  -----|  -----|  ----| ---- | ---- |----|
+|销售价格（pi）  |	1   |	5 |	8 |	9 |	10 | 	17  |	17  |	20  | 	24  | 	30|
+
+profit[n] = max(pi[i] + profit[length - seg[i]])
+
+```c
+int Cut_Common(int seg[], int pi[], int arr_len, int source_len)
+{
+    if (source_len == 0)
+        return 0;
+	int tmp = -1;
+	for (int i = 0; i < arr_len; ++i)
+	{
+        if (source_len - seg[i] >= 0)
+		    tmp = max(tmp, pi[i] + Cut_Common(seg, pi, arr_len, source_len - seg[i]));
+```
+
+```c
+int _Cut_Dynamic_DownToTop(int seg[], int pi[], int arr_len, int length, int dump[])
+{
+    int tmp;
+    dump[0] = 0;
+    for (int i = 1; i <= length; ++i)
+    {
+        tmp = -1;   
+        for (int j = 0; j < arr_len; ++j)
+        {
+            if (i - seg[j] >= 0)
+                tmp = max(tmp, pi[j] + dump[i - seg[j]]);               
+        
+        }
+        dump[i] = tmp;
+ 
+    }
+    return dump[length];
+}
+ 
+int Cut_Dynamic_DownToTop(int seg[], int pi[], int arr_len, int length)
+{
+    int *dump = (int *)malloc(sizeof(int)*length + 1);
+    int tmp = _Cut_Dynamic_DownToTop(seg, pi, arr_len, length, dump);
+    free(dump);
+    return tmp;
+
+```
+
+```c
+int _Cut_Dynamic_TopToDown(int seg[], int pi[], int arr_len, int length, int dump[])
+{
+    if (dump[length] >= 0)
+        return dump[length];
+    int tmp = -1;
+    for (int i = 0; i < arr_len; ++i)
+    {
+        if (length - seg[i] >= 0)
+            tmp = max(tmp, pi[i] + _Cut_Dynamic_TopToDown(seg, pi, arr_len, length-seg[i], dump));
+    }
+    dump[length] = tmp;
+    return dump[length];
+}
+ 
+int Cut_Dynamic_TopToDown(int seg[], int pi[], int arr_len, int length)
+{
+    int *dump = (int *)malloc(sizeof(int)*length+1);
+    for (int i = 0; i <= length; ++i)
+    {
+        dump[i] = -1;
+    }
+    dump[0] = 0;
+    int tmp = _Cut_Dynamic_TopToDown(seg, pi, arr_len, length, dump);
+    free(dump);
+    return tmp;
+```
+                  
