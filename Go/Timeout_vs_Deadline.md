@@ -54,4 +54,19 @@ c := &http.Client{
 - `http.Transport.ResponseHeaderTimeout` limits the time spent reading the headers of the response.
 - `http.Transport.ExpectContinueTimeout` limits the time the client will wait between sending the request headers when including an Expect: 100-continue and receiving the go-ahead to send the body.
 
+With Cancel
+======
 
+```go
+ctx, cancel := context.WithCancel(context.TODO())
+timer := time.AfterFunc(5*time.Second, func() {
+	cancel()
+})
+
+req, err := http.NewRequest("GET", "http://httpbin.org/range/2048?duration=8&chunk_size=256", nil)
+if err != nil {
+	log.Fatal(err)
+}
+req = req.WithContext(ctx)
+
+```
