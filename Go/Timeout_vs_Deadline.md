@@ -24,6 +24,14 @@ Exposed by `net.Conn` with the `Set[Read|Write]Deadline(time.Time)` methods, Dea
 
 **Deadlines are not timeouts**. Once set they stay in force forever (or until the next call to SetDeadline), no matter if and how the connection is used in the meantime. So to build a timeout with SetDeadline you'll have to call it before every Read/Write operation
 
+server timeout
+======
+
 ![](https://blog.cloudflare.com/content/images/2016/06/Timeouts-001.png)
+
+client timeout
+======
+
+![](https://blog.cloudflare.com/content/images/2016/06/Timeouts-002.png)
 
 
