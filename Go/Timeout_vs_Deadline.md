@@ -35,3 +35,23 @@ client timeout
 ![](https://blog.cloudflare.com/content/images/2016/06/Timeouts-002.png)
 
 
+```go
+c := &http.Client{
+    Transport: &http.Transport{
+        Dial: (&net.Dialer{
+                Timeout:   30 * time.Second,
+                KeepAlive: 30 * time.Second,
+        }).Dial,
+        TLSHandshakeTimeout:   10 * time.Second,
+        ResponseHeaderTimeout: 10 * time.Second,
+        ExpectContinueTimeout: 1 * time.Second,
+    }
+}
+```
+
+- `net.Dialer.Timeout` limits the time spent establishing a TCP connection (if a new one is needed).
+- `http.Transport.TLSHandshakeTimeout` limits the time spent performing the TLS handshake.
+- `http.Transport.ResponseHeaderTimeout` limits the time spent reading the headers of the response.
+- `http.Transport.ExpectContinueTimeout` limits the time the client will wait between sending the request headers when including an Expect: 100-continue and receiving the go-ahead to send the body.
+
+
