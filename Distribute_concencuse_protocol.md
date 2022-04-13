@@ -86,5 +86,3 @@ leader收到client写请求后，先写自己的log，然后发到所有服务�
 每个提交的记录都是持久的，并且是最终一致的。当log记录成功复投票请求中包含了这个限制：请求中有关于candidate的log信息制到大多数服务器时，记录被提交。
 如果投票者的log比它新，则拒绝请求。
 
-作者：jsondream
-链接：https://www.jianshu.com/p/b193a5253c5a
