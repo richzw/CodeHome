@@ -637,3 +637,5 @@
     - Counter计数器
     - Gauge仪表盘
     - histogram和summary 分布数据分布情况
+![img.png](Question1.png)
+
