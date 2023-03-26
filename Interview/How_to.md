@@ -319,8 +319,68 @@
   - 整体建议
     - 看了你的简历，站在技术的角度还是蛮有竞争力的，可以按照我的建议再优化一版，把重点信息突出一下。当你做好了准备，并且用了比较科学的方法总结沉淀，面试的过程是自然而然的，不用太担心。
 
+-------
+
+- [介绍项目经验](https://mp.weixin.qq.com/s/vMdl3IWFjt9YrM8A7udUMA)
+  - 准备项目的各种细节，一旦被问倒了，就说明你没做过
+    - 一般来说，在面试前，大家应当准备项目描述的说辞，自信些，因为这部分你说了算，流利些，因为你经过充分准备后，可以知道你要说些什么。而且这些是你实际的项目经验（不是学习经验，也不是培训经验），那么一旦让面试官感觉你都说不上来，那么可信度就很低了。
+    - 不少人是拘泥于“项目里做了什么业务，以及代码实现的细节”，这就相当于把后继提问权直接交给面试官。下表列出了一些不好的回答方式。
+
+--------
+
+502 issue
+
+ 
+
+Server default timeout is 10 seconds, however, the default timeout of ELB is 60 seconds
+keepAliveTimeout incr
+Use the x-amazon-id trace id of ELB
+Add bi on client side and trace id
+Add GA to decrease hop number
+ 
+
+4xx issue
+
+ 
+
+   ALB trace log , 请求body 比较大，拆包 导致丢包
 
 
+For HTTP 408: Request timeout
+
+ 
+
+It means "The client did not send data before the idle timeout period expired. Sending a TCP keep-alive does not prevent this timeout. Send at least 1 byte of data before each idle timeout period elapses. Increase the length of the idle timeout period as needed. "
+
+ 
+
+Let's say if your client side is continuously sending the actual data, then in this case the connection will not be "idle" (since there is data sending through the connection); The 408 error will only occur when there is no actual data sent from client side before the idle timeout expired (for your ALB, it's 60 seconds).
+
+ 
+
+So for the 408 issue, we recommend you to either make sure your client side is sending actual data or increasing your ALB idle timeout to mitigate it.
+
+ 
+
+ 
+
+For HTTP 460
+
+ 
+
+It means :"The load balancer received a request from a client, but the client closed the connection with the load balancer before the idle timeout period elapsed. "
+
+ 
+
+This response code is logged when the client sends ALB the entire request but then terminates the connection before ALB could respond. In this case, the 460 error code never actually makes it to the client (because the connection has closed) but is logged in access logs and the ELB_4XX metric is incremented.
+
+ 
+
+Since I can see from the access log there are many different client IPs, so I am assuming that your client side is not single client side but client sides distributed all over the Internet (please kindly correct me if I understand it wrong here.)
+
+ 
+
+I was wondering do you know the timeout setting for your client sides ? Normally we recommend to configure both client side and backend timeout value greater than ALB idle timeout value (currently 60s), so that if there is connection needs to be closed because of timeout breaches, ALB is in charge of closing the connections (but not client side or server side actively close the connections). So if your client side timeout value is less than 60 seconds, would you mind increasing it to a value over 60 seconds (for example 61 seconds) ?
 
 
 
