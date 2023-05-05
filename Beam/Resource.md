@@ -7,3 +7,6 @@ https://docs.google.com/presentation/d/1FodfKy0azRQr7xOCSsLRK2RkG36yBlUMZu5Ktb8e
 trigger
 https://docs.google.com/presentation/u/1/d/1smGXb-0GGX_Fid1z3WWzZJWtyBjBA3Mo3t4oeRjJoZI/htmlpresent
 
+Stream System Figure
+http://www.streamingbook.net/fig
+
