@@ -15,3 +15,7 @@ http://www.streamingbook.net/fig
 
 Beam College https://github.com/griscz/beam-college
 
+[Advanced Windows and Triggers a practical guide](https://colab.research.google.com/github/griscz/beam-college/blob/main/day2/B1_Beam_College_Advanced_Windows_and_Triggers_a_practical_guide_v0_9_0.ipynb)
+
+
+
