@@ -395,19 +395,69 @@
   - 抛硬币，先抛到正面算赢，否则轮流抛。问先抛的人获胜的概率。
     - 设先抛先吃的概率为p1， 后抛先吃的概率为p2. 那么有：p1 = 1/2 + 1/2 * p2 and p1 + p2 = 1
   - 概率 p 生成 0，1-p 生成 1，如何 1/2 概率生成 1
-    - 让该随机数生成器生成两个数，那么序列是00,01,10,11概率分别为 p*p,p(1-p),(1-p)p,(1-p)*(1-p)
+    - 让该随机数生成器生成两个数，那么序列是00,01,10,11概率分别为 p*p,p*(1-p),(1-p)*p,(1-p)*(1-p)
       - 很明显，这四种情况中存在两个独立的事件概率是相等。也就是01和10，那么我把01看成是0,10看成是1，那么他们输出的概率均为p(1-p)，其他的情况舍弃。这样就得到了0和1均等生成的随机器了。
-  - 随机数生成函数f(),返回0的概率是 60%， 返回1的概率是 40%。
+      def random_index():
+        rate = [1, 9]
+        start = 0
+        index = 0
+        random = random.randint(1, sum(rate))
+        for index, scope in enumerate(rate):
+          start += scope
+          if random <= start:
+            break
+        return index
+    - 随机数生成函数f(),返回0的概率是 60%， 返回1的概率是 40%。
+  - 以 1/N 的概率产生 1~N 之间的数
+    - 采用位运算，i个二进制位随机选择0或者1，构成0~2^i的数，这些数字是等概率出现的
+      - 由 random index产生 rand1函数，rand1等概率生成0和1
+      - 计算整数n的二进制所拥有的位数k，k = 1+logn
+      - 调用k次 rand1产生随机数
   - 函数只能返回1-7的随机数，请用这个函数返回1-5，要求平均 4.
     - 可以通过拒绝采样来解决。我们可以生成两个随机数，如果它们都是偶数，则丢弃并重新生成，否则返回它们的平均值加 1。这样可以确保返回的数字在 1 到 5 之间，并且平均值为 4。
     - def random_1_to_5():
-    while True:
-        num1 = random.randint(1, 7)
-        num2 = random.randint(1, 7)
-        if num1 % 2 == 0 and num2 % 2 == 0:
-            continue
-        else:
-            return (num1 + num2) // 2 + 1
+        while True:
+          num1 = random.randint(1, 7)
+          num2 = random.randint(1, 7)
+          if num1 % 2 == 0 and num2 % 2 == 0:
+              continue
+          else:
+              return (num1 + num2) // 2 + 1
+  - 如何等概率的随机数 0出现1次，1出现2次，2出现三次 。。。
+    while true:
+      m = rand(size)
+      n = rand(size)
+      if m + n < size
+        return m+n
+  - rand5() -> rand7(), rand7() -> rand10()
+    - rand5() - 1 得到离散集合 {0, 1, 2, 3, 4}, 每个数的概率是 1/5. 而(rand5 - 1)*5 得到离散整数{1, 5, 10, 15, 20}， 每个数概率是1/5. 则(rand5 - 1)*5 + rand5分布在1~25之间，每个数的概率是1/25.
+      ```java
+        // 首先得到一个数
+        int num = (rand7() - 1) * 7 + rand7();
+        // 只要它还大于10，那就给我不断生成，因为我只要范围在1-10的，最后直接返回就可以了
+        while (num > 10){
+            num = (rand7() - 1) * 7 + rand7();
+        }
+        return num;
+     ```
+    - [Improve](https://leetcode.cn/problems/implement-rand10-using-rand7/solution/xiang-xi-si-lu-ji-you-hua-si-lu-fen-xi-zhu-xing-ji/)
+      // 首先得到一个数
+      int num = (rand7() - 1) * 7 + rand7();
+      // 只要它还大于40，那你就给我不断生成吧
+      while (num > 40)
+          num = (rand7() - 1) * 7 + rand7();
+      // 返回结果，+1是为了解决 40%10为0的情况
+      return 1 + num % 10;
+    - Again
+      int num = (rand7() - 1) * 7 + rand7();
+      // 如果在40以内，那就直接返回
+      if(num <= 40) return 1 + num % 10;
+      // 说明刚才生成的在41-49之间，利用随机数再操作一遍
+      num = (num - 40 - 1) * 7 + rand7();
+      if(num <= 60) return 1 + num % 10;
+      // 说明刚才生成的在61-63之间，利用随机数再操作一遍
+      num = (num - 60 - 1) * 7 + rand7();
+      if(num <= 20) return 1 + num % 10;
   - 已知有个rand7()的函数，返回1到7随机自然数，让利用这个rand7()构造rand10() 随机1~10
     - 发现(rand7()-1)*7+rand7(),可以等概率的生成1到49 只要把11-49砍掉就可以了。不过这样的效率比较低。可以砍掉41-49，然后在把1-40映射到1-10（例如模10），那么问题也就解决了
   - 调用RANDOM(0, 1)实现RANDOM(a, b)
