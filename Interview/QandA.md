@@ -368,9 +368,16 @@
   - k8s组 件，pod创建的过程，operator是什么? 3、docker是怎么实现的，底层基石 namespace和cgroup。4、k8s的workload类型，使用场景，statefulset你们是怎么用 的? 5、limit和request，探针，一般怎么排查pod问题，查看上次失败的pod日志。6、sidecar是什么，怎么实现的? 7、pv，pvc，动态pv怎么实现 8、k8s的声明式api 怎么实现的，informar源码。9、cicd，发布模式。10、svc的负载均衡、服务发现， ipvs与iptables。
   - list和watch区别，机制的原理；如何用deployment模拟daemoset；service 都有哪些类型，如果应用需要粘性会话如何配置
     - watch是tcp连接维持吧，list一般只是一次请求
-    - deployment可以设置pod的node亲和度完成deamonset的模拟 - Use PodAntiAffinity and topologyKey for this
+    - deployment可以设置pod的node亲和度完成deamonset的模拟 
+      - 可以在Deployment的PodAntiAffinity中设置labelSelector，使得同一labelSelector下的Pod不会被调度到同一节点上，从而达到模拟DaemonSet的效果。 
+      - hostPort - The kubernetes scheduler will be unable to schedule more than 1 pod on same host and in this way all nodes have at least one pod scheduled.
     - service配置sessionAffinity：clientIP
   - https://github.com/cloudnativeto/sig-kubernetes/issues/37
+  - kubernetes DaemonSet是如何进行版本管理的
+    - ControllerRevision 是专门用来管理某种Controller对象的版本的 `kc get controllerrevision -n kube-system`
+  - kubernetes DaemonSet是如何保证pod只在一个节点上运行并且保证数量是1
+    - 首先DaemonSet Controller会从Etcd里获取node的节点列表, 之后一个一个区遍历检查,看看node是不是有一个特定的label(这个label是创建DaemonSet 时指定的,即spec.template.metadata.labels) , 如果有这个pod就不管,没有就创建, 多了就删
+    - 在创建pod的时候, 会指定pod在指定的node上创建, 即在创建pod的时候DaemonSet 会自动在pod的API对象上加一个nodeAffinity字段 , 这个字段的作用就是指定pod只能运行在当前节点
 
 - Misc
   - CSP和Actor分布式模型的区别、内存对齐
