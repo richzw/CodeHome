@@ -366,6 +366,11 @@
   - Docker CNI 的实现
   - Docker 底层、多阶段构建
   - k8s组 件，pod创建的过程，operator是什么? 3、docker是怎么实现的，底层基石 namespace和cgroup。4、k8s的workload类型，使用场景，statefulset你们是怎么用 的? 5、limit和request，探针，一般怎么排查pod问题，查看上次失败的pod日志。6、sidecar是什么，怎么实现的? 7、pv，pvc，动态pv怎么实现 8、k8s的声明式api 怎么实现的，informar源码。9、cicd，发布模式。10、svc的负载均衡、服务发现， ipvs与iptables。
+  - list和watch区别，机制的原理；如何用deployment模拟daemoset；service 都有哪些类型，如果应用需要粘性会话如何配置
+    - watch是tcp连接维持吧，list一般只是一次请求
+    - deployment可以设置pod的node亲和度完成deamonset的模拟 - Use PodAntiAffinity and topologyKey for this
+    - service配置sessionAffinity：clientIP
+  - https://github.com/cloudnativeto/sig-kubernetes/issues/37
 
 - Misc
   - CSP和Actor分布式模型的区别、内存对齐
