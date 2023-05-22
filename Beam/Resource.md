@@ -17,5 +17,6 @@ Beam College https://github.com/griscz/beam-college
 
 [Advanced Windows and Triggers a practical guide](https://colab.research.google.com/github/griscz/beam-college/blob/main/day2/B1_Beam_College_Advanced_Windows_and_Triggers_a_practical_guide_v0_9_0.ipynb)
 
+[Splittable DoFn](https://docs.google.com/presentation/d/1cgQGBIXaACSwbYu_w3AkvvTdsCfeXAS1tBvQ77eVn74/edit#slide=id.g3f64cc4601_2_84)
 
 
