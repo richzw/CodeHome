@@ -589,6 +589,13 @@
   - 最长回文串
   - 根据前序中序恢复二叉树
   - 蛇形打印二叉树
+  - 密码本由一个字符串数组组成，不同元素之间使用空格隔开，每一个元素代表密码本每一页的密码。[ref](https://mp.weixin.qq.com/s/CVRx69HDSOFCK0BAnwUszA)
+    - password是一个有效密码，****当且仅当password[:-1]是一个有效密码。
+    - 需要对原来的字符串数组password_lst按照字典序进行排序，就可以保证在password进行判断时，password[:-1]已经被判断过了。
+    for password in password_lst:
+    if password[:-1] in valid_set:
+        valid_set.add(password)
+        ans = password
   - 数组A1 2和数组B2 3是一个关系圈，A能通过2找到3，数组A1 2和数组B2 3和数组 C 3 5也是一个关系圈，给一个二维数组求关系数
   - https://leetcode-cn.com/problems/find-peak-element/
   - https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/
