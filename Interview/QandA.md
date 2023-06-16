@@ -174,6 +174,7 @@
     - 主从模型下同步不保证一致会导致锁失效
   - Redis 分布式锁超时可以超时时间设长一点可以吗？不可以的话需要怎么解决？
     - 不根本解决问题，可以考虑旁路的 goroutine 不断自旋续期
+  - https://docs.qq.com/doc/DRXpXSEh6S0VmUFZD?u=cd4fd4c4ef494951aa47b3cc433a1115
 
 
 - Mysql
@@ -454,6 +455,15 @@
   - linux进程创建线程的流程是怎么样的？
   - 线程共享进程的资源在linux中是怎么实现的？
   - 线程有自己私有的栈，那么这个栈的内存是被分配到哪里的？是放在进程所属的内存里面，还是说放在独立于进程外部的内存中？
+  - Windows和linux的fs有什么区别
+  -  什么是超级块，超级快存储在哪儿
+  - Linux的vfs和fs是什么关系，核心如何实现
+  - 一次write（fd, flag）函数调用从用户态到磁盘的流程
+  - 磁盘io负载怎么查看，一般什么情况负载会满，满载的时候如何确定是哪个进程占用了io
+  - 磁盘碎片是什么，linux需要进行碎片整理么
+  - 文件系统为何有一个保留空间？这个大小默认是多少，何时需要调节
+  - 文件系统如何保证断电不丢数据（崩溃一致性）
+  - mmap和write的区别
 
 - MQ 
   - 怎么解决消息队列上的消息堆压？
@@ -770,6 +780,9 @@
   - https://leetcode-cn.com/problems/sorted-merge-lcci/
   - https://www.nowcoder.com/practice/35119064d0224c35ab1ab612bffee8df
   - 定义 Redis 跳跃表的结构，再实现一版它的插入方法。
+  - https://docs.qq.com/doc/DRWpDSlRYZ0lIUWhP?u=cd4fd4c4ef494951aa47b3cc433a1115
+    - Lc No.1372 二叉树最长交错路径
+    - Lc No.1353 最多参加会议数目
 
 
 - Tips:
