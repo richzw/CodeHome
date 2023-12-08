@@ -1,3 +1,23 @@
+- [Interview Experience at Google](https://medium.com/@rohitverma_87831/my-interview-experience-at-google-afc1080df175)
+  - [Pramp](https://www.pramp.com/#/)
+  - Emphasized the following topics for DSA round:
+    - Graph: BFS, DFS, Topological sort, Shortest Path
+    - Tree: Binary tree, Binary search Tree, N child tree
+    - Trie: Prefix search, Word search with counts
+    - Disjoint set union
+    - Heap: Median in a stream, Sliding window maximum, Top k elements
+    - Binary Search: Lower bound, Upper bound, Questions where binary search is not the obvious choice
+    - Sliding window and 2 pointers based questions
+    - Dynamic programming
+    - Strings: KMP, String sorting
+    - Adhoc questions on the application of Array, Stack, Queue, HashMap, TreeMap
+  - System design preparation:
+    – Amazon Dynamo: Amazon’s Highly Available Key-Value Store
+    – The Google File System
+    – Spanner: Google’s Globally Distributed Database
+    – Cassandra — A Decentralized Structured Storage System
+    – MapReduce: Simplified Data Processing on Large Clusters
+    – Bigtable: A Distributed Storage System for Structured Data
 
 - Network 
   - TCP vs UDP
