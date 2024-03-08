@@ -469,6 +469,11 @@
 - Go
   - Make和New的区别
   - Panic没被Recover怎么处理
+  - 空结构体有什么用法
+    - 作为 map 的值：当你只关心 map 的键，而不关心值时，可以使用空结构体作为值。这种情况下的 map 类似于一个 set 数据结构
+    - 作为通道的元素类型：当你只关心通道的发送和接收操作，而不关心发送的具体值时，可以使用空结构体作为通道的元素类型。这种情况下的通道常常被用作信号通道。
+    - 作为方法的接收者：当你想要创建一个不包含任何状态的对象，只包含方法时，可以使用空结构体作为方法的接收者。
+  - 关闭的channel写入数据会怎么样
   - gin框架路由怎么实现的，具体正则怎么匹配?限流中间件怎么实现
   - 直接撸码 (三个goroutine顺序打印)
   - golang的关键字defer、recover、pannic之类的实现 原理
@@ -644,6 +649,9 @@
 - K8S
   - Docker CNI 的实现
   - Docker 底层、多阶段构建
+  - Docker-compose 启动的服务之间怎么通信的
+  - Dockerfile CMD 和 ENDPOINT 区别；EXPOSE 什么作用
+  - Docker 桥接模式和主机模式区别
   - k8s组 件，pod创建的过程，operator是什么? 3、docker是怎么实现的，底层基石 namespace和cgroup。4、k8s的workload类型，使用场景，statefulset你们是怎么用 的? 5、limit和request，探针，一般怎么排查pod问题，查看上次失败的pod日志。6、sidecar是什么，怎么实现的? 7、pv，pvc，动态pv怎么实现 8、k8s的声明式api 怎么实现的，informar源码。9、cicd，发布模式。10、svc的负载均衡、服务发现， ipvs与iptables。
   - list和watch区别，机制的原理；如何用deployment模拟daemoset；service 都有哪些类型，如果应用需要粘性会话如何配置
     - watch是tcp连接维持吧，list一般只是一次请求
