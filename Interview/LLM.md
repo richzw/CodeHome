@@ -116,4 +116,34 @@
     - (3)其他评估指标：引入更多评估指标，如Precision@k、Recall@k、F1-score等，结合使用以获得更全面的性能评估。
 - Yolov4对IOU loss的改进
   - GIOU、DIOU、CIOU
+- GAN 和 diffusion 的优势
+- 为什么 GAN 不稳定
+- 对大模型哪个比较熟悉, 那比如 DALL·E 2, 它怎么通过文本来实现对图像的控制?
+- 了解 CLIP, GPT-4, miniGPT-4, LLaMA 吗
+- CLIP 原理, 模型怎么训练的
+- 讲解强化学习 PPO 模型
+- stable diffusion, cross attention 怎么做的，文本怎么控制图像生成的，文本没有权重是怎么控制的?
+- stable diffusion 不稳定的原因
+- clip 是怎么提取文本，clip 的缺点
+- lora原理, 训练, 推理过程中有额外计算吗
+- ddpm 和 ddim 的关系
+- self attention 和 cross attention 的区别
+- 对 inpainting 了解吗?
+- stable diffusion 生成结果怎么评价，定量指标
+- stable diffusion 训练推理过程
+- RL 中 policy-based 采样问题
+- reward 的设计问题，Actor critic 怎么调参
+- Diffusion 采样方式都有哪些，DPM+/DPM++
+ - Pixel diffusion 有哪些
+- 讲 Imagen
+- 细致讲从 DALLE 1 如何发展到 DALLE 3，每个算法的核心原理，每次的创新是什么
+- 推 DDPM 公式
+- 讲解 PPO 算法，推公式
+- 对 image verification 怎么做，输入是图片的话，mid journey 可以调整下一步图片
+- PyTorch 中 nn.eval 函数和训练的区别，BN，dropout 训练和测试的区别
+
+找数组的两峰
+爬楼梯最小消耗
+字符串最长的无重复字符的最长子串
+
 
