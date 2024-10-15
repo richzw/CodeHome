@@ -645,6 +645,8 @@
     -   * 简单来说就是减少【用户态与内核态的上下文切换】和【内存拷贝】的次数的方案。通常有2种：mmap + write和sendfile
   - * rocketmq是怎么实现的：
     -   * mmap + write + Page cache
+  - Kafka 分区的概念，积压问题，如何优化消费者，offset的概念，重复消费问题. 高可用的 isr 机制
+    - ISR 是一个副本集合，这些副本与 Leader 副本保持同步。具体来说，ISR 包含了所有在一定时间内（由参数 replica.lag.time.max.ms 控制）完成了 Leader 数据同步的副本
 
 - K8S
   - Docker CNI 的实现
