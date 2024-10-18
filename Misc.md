@@ -3,6 +3,9 @@
 - A: 美国IP注册一下Equifax看看
   
 - A: Fiverr itin
+  - IRS（800-908 9982）協助更改地址，她操作後說新地址系統無法提交，讓我填寫8822表格
+  - 客服让你填写表格你就说你不在美国需要电话直接更新
+  - 
   
 - Q: Cell phone number
 - A: 淘宝 Ultra Mobile PayGo 紫卡，一个月 3美元，每月带 100 条短信和 100 分钟通话和 100M 数据流量，数据流量无法在国内使用，短信和通话可以通过打开手机的 Wi-Fi Calling 使用，之后你的网银验证码接收，跟银行打电话沟通之类的，都需要用这个号码
@@ -22,6 +25,9 @@
   - proof是个专门认证notarization等机构，anytime和它合作的
   - 当时也是第三方“Notarize”，最后验证成功是 anytime 侧的认证成功，也是anytime确认
   - 自己打单邮寄，操作方法分享一下：首先可以通过邮件先问 Anytime 房东是否支持自己打快递单，可以的话就可以在 pirateship 上购买快递单，通过邮箱发给房东，同时在 Anytime 网页发起 Forward 邮件操作备注上自己打单即可
+  - 我anytimemailbox 忘记写那个#1234的号了, 一个地址 ste 后面还带一个 #子信箱号? 申卡不写后面的#只写前面的ste，房东会看名字指派给我
+  - 我申请 C1 卡的时候，也没输入 #信箱号，因为特殊字符，只能输入到 Ste/apt 号码
+  - 当时申请ITIN时的地址写了，但是出信上的地址里后面的 # 被删掉了
 - Q: c1有借记卡给开吗 或者说我想有个美国账户 别人要给我汇款 有啥办法不
   - C1的Checking需要有C1的信用卡一段时间后申请，可以在线秒过，不然申请到最后一步要打电话给客服然后大概率被告知ITIN需要去线下Branch开
   - 试试 Wise？ 带一个美元账户，可以收款 https://wise.com/invite/ihpc/zixuanw77
@@ -30,6 +36,7 @@
   - 申请加拿大区 Wise，然后把卡邮寄到国内，感兴趣的可以去搜方法，但是不确保这种账户什么时候就被封控关户了 https://www.xiaohongshu.com/explore/66f947ea000000001a021077?xsec_token=ABOSDeO2koFGaEWjSumCyBvaQBaiXZXD1d-sSG5nNf8SI=&xsec_source=pc_search&source=web_explore_feed
   - 你们记得 ITIN 申请下号之后先申请 Capital One 的卡，这非常重要，因为 C1 会一次给三大信用局回传信息建立你的信报
   - Capital One 押金卡我从 200 提额到 450 时上个月账单刷到 75%，我有刷 reddit 很多讨论，说 Capital One 提额非常慢，很看刷的够不够多
+  - 主要是第一步申请C1时候的地址证明，需要ITIN上的地址一致。后面申请完卡就好说了，C1 的 Residential 地址和 mail 地址是分开的
 - Q: 信用卡最好每月消费多少比较合适呢
   - 要是想C1快点退押金提额就刷满 把额度提上来 每个月消费高 那个时候涨的分才是真的
   - 只涨信用？ 可以，别超20%就行，几块也涨分
