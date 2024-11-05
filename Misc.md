@@ -3,7 +3,6 @@
   - 指定个人学习计划，目标是成为专家，避免停留在表面的进步
   - 在最初的15~20小时全力以赴，建立深刻印象，然后转入持续学习节奏
 
-
 - 长桥证券开户大门也差不多关上了
   - 6月前大陆身份随便开，只要有港卡或者OCBC就可以，无需所谓的其他券商存量证明；
   - 6月之后变成必须定位在非大陆，才能结合港卡或OCBC开，否则需提供其他券商的存量证明；
@@ -68,6 +67,7 @@ https://p.pandaremit.com/h5activity/launchInvitationCode?countryCode=CHN&shareCo
     - 3. 填写anytime发你的网页表格，之后会自动转到proof（此时自动扣费25美金做公证），你给id拍照，视频电话确认身份签字
     - 4. proof认证通过之后结果给到anytime，anytime再激活你的mailbox（虽说anytime写着激活需要两三天审核但实测30分钟就通过了）
   - AnytimeMailBox 有 App
+  - - 地址输进入，里面有个 Metadata 里面的 RDI 是 Residential，以及 Analysis 里面的 CMRA 是 N
   - 我的地址去掉末尾的 Ste 就是住宅地址，带上就会被识别成商业地址，所以我 C1 里目前的住宅地址是不带 Ste，邮寄地址可以写带 Ste 的完整版。昨天申请 Savor 系统抓取账户已有的资料，给我批了但是寄卡地址显示的是不完整的那个
   - 申请时候你选的地址不一定就是最后给你的，当时有个列表我选了个Montana然后查了确定是私人的，结果最后给分配了Iowa的
   - 要用服务商往国内转寄的时候再告诉你们便宜的方法具体怎么操作 海盗船 你选ups寄不了
@@ -107,3 +107,9 @@ https://p.pandaremit.com/h5activity/launchInvitationCode?countryCode=CHN&shareCo
   - 在当地要开户必须新加坡人 绿卡 or 工签。也能炒美股入盈透之类的。
   - OCBC 和长桥证券新加坡以及 Wise 之间转 SGD 新加坡元也特别方便
 - Wise 会比对地址是否为住宅地址，之前就因为没改，被停卡了，后来改了之后就好了，倒没有要住址证明，改之后自动就收到审核通过的邮件了
+- Wise 能替代吗？求稳就用中国资料开 Wise 中国区 没有实体卡 Wise 唯一好处转账快，汇率高，手续费低。可以作为中转站
+- 最开始申请 C1 押金卡的时候没多存一点，只存了 200，不然额度可以怼到 1000
+- Fast 网络然后 OCBC 里面是把 Wise 设置成“本地”收款人
+- webshare里面的静态住宅ip套餐. shadowrocket这种系统软件然后把ip添加成socks5代理使用
+- SoFi 卡地址卡的很严，你去 https://www.smarty.com/products/single-address 确认一下地址类型是不是住宅
+
