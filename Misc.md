@@ -112,4 +112,11 @@ https://p.pandaremit.com/h5activity/launchInvitationCode?countryCode=CHN&shareCo
 - Fast 网络然后 OCBC 里面是把 Wise 设置成“本地”收款人
 - webshare里面的静态住宅ip套餐. shadowrocket这种系统软件然后把ip添加成socks5代理使用
 - SoFi 卡地址卡的很严，你去 https://www.smarty.com/products/single-address 确认一下地址类型是不是住宅
-
+- 在香港可以把 汇立银行 下载 App 在线开了，输邀请码 FP5QD6，第二天账户可以拿 200HKD 现金 https://www.welab.bank/zh/feature/download/
+- 在香港境内把 ZA 和 汇立 里面的投资账户都开了，银行里还有个单独的投资账户， 汇立 ZA 都是虚拟银行，ZA 的海外汇款是跟 Wise 合作集成的 。中银香港办卡要以往券商的投资证明才能直接给卡
+- Wise 严格意义上来说不算银行，只是汇款工具
+- 内地的银行卡和账号是一体的，海外的银行账户是账户，卡是卡，账户是单独的号码用来汇款收款，卡是附属绑定账户的一个扣款方式。
+  汇丰的红狮子 ATM 卡是银联，主要是用来提款，蓝狮子是万事达，主要用来消费，也可以海外提款
+- eSIM  Roamless https://www.ahhhhfs.com/64071/
+- 盈透证券走邀请链接有开户奖励，大陆身份证可开 https://www.interactivebrokers.com/referral/zixuan467
+- 富途和长桥都需要存量证明才能开了
