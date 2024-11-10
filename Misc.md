@@ -78,6 +78,7 @@ https://p.pandaremit.com/h5activity/launchInvitationCode?countryCode=CHN&shareCo
   - 我anytimemailbox 忘记写那个#1234的号了, 一个地址 ste 后面还带一个 #子信箱号? 申卡不写后面的#只写前面的ste，房东会看名字指派给我
   - 我申请 C1 卡的时候，也没输入 #信箱号，因为特殊字符，只能输入到 Ste/apt 号码
   - 当时申请ITIN时的地址写了，但是出信上的地址里后面的 # 被删掉了
+  - Doc: https://www.wecloudsellers.com/123.html https://www.kuajingju.com/archives/627
 - Q: c1有借记卡给开吗 或者说我想有个美国账户 别人要给我汇款 有啥办法不
   - C1的Checking需要有C1的信用卡一段时间后申请，可以在线秒过，不然申请到最后一步要打电话给客服然后大概率被告知ITIN需要去线下Branch开
   - 试试 Wise？ 带一个美元账户，可以收款 https://wise.com/invite/ihpc/zixuanw77
