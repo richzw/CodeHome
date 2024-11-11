@@ -121,3 +121,5 @@ https://p.pandaremit.com/h5activity/launchInvitationCode?countryCode=CHN&shareCo
 - eSIM  Roamless https://www.ahhhhfs.com/64071/
 - 盈透证券走邀请链接有开户奖励，大陆身份证可开 https://www.interactivebrokers.com/referral/zixuan467
 - 富途和长桥都需要存量证明才能开了
+
+- [Xray自建上网服务器](https://www.zymn.cc/2024/11/10/%E4%BD%BF%E7%94%A8Xray%E8%87%AA%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%9C%8D%E5%8A%A1%E5%99%A8/)
