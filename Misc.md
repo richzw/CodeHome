@@ -140,6 +140,17 @@ https://p.pandaremit.com/h5activity/launchInvitationCode?countryCode=CHN&shareCo
 - 长桥证券支持「资金划转
 - 支付宝里汇款到境外银行了！在「闪速汇出」里，可以通过内地银行卡扣人民币直接汇款到境外银行，分钟级到账。这个跟熊猫速汇一样都是与金城银行合作，实际到账金额也接近，跟谷歌汇率差 ¥130 左右，算是非常省事的方式了，费用比内地一些银行电汇要便宜
 - 盈透不需要存量可以直接开，但是需要境外卡入金 走邀请链接可以拿 1% 入金返现，最高 $1000 https://www.interactivebrokers.com/referral/zixuan467
+- 长桥证券开户链接，走我的渠道私我辅助解决存量证明
+https://app.longbridgehk.com/ac/oa?account_channel=lb&channel=HB100006&invite-code=UWKREJ
+- 盈透的奖励，入金要在里面放一年， 长桥的奖励放5天就可以转走了
+- 熊猫速汇的邀请码 https://p.pandaremit.com/h5activity/launchInvitationCode?countryCode=CHN&shareCode=V0VCUUNB&lang=zh-hans
+- 50w的话可以存入内地汇丰汇丰卓越，要求客户经理远程开户汇丰香港。 一个边界情况，让他给你办理汇丰运筹，然后理解是卓越一年，一年之后再退回去
+- 长桥新加坡可以买比特币 etf。ibkr不行。 港卡，美卡，新加坡卡都通过 ibkr 中转
+- za国际汇款集成了wise 好用的  记得开户后把里面的投资账户也一起开了，用不用无所谓，反正开的时候要在香港
+- 免翻墙流量的esim  https://eskimo.travel/ZIXUAN163761
+- Wise 美元账户转账 USD，填写 SoFi 收款账户信息，在Reference栏中备注“Payroll”。资金来源选择Wise的余额。理论上来讲应该是当天或者第二天即可到账（实际会更快）
+- 
+
 
 - 虽然说境内的钱出去了就不要轻易回来，但是回来的方法有哪些呢？
   - 1. 通过传统国际电汇方式，从境外银行汇到国内银行，有较高手续费，时间周期长，回国之后要结汇，可能会被要求收入证明，另外占用个人每年 5 万美金的外汇额度；
@@ -147,5 +158,7 @@ https://p.pandaremit.com/h5activity/launchInvitationCode?countryCode=CHN&shareCo
   - 3. 用境外银行卡在境内 ATM 取现，手续费取决于境外银行加上境内 ATM 双重因素，比如汇丰香港蓝狮子卡在内地汇丰 ATM 取人民币，按照汇丰汇率转换，扣汇丰香港账户里的港币，无其他手续费，只是有一些换汇磨损，这个不占用每年 5 万美金的外汇额度；
   - 4. 在微信、支付宝上绑定境外银行卡，直接在境内消费，消费人民币，通过 Visa / MasterCard 等清算渠道结算，扣境外对应的币种，微信支付宝自身小于 200 人民币免手续费，大于 200 人民币收 3% 手续费，另外有的银行卡有 FTF 外币转换费，建议这种方式刷无 FTF 的境外银行卡，这个不占用每年 5 万美金的外汇额度；
   - 5. 一些境外银行自身的 App 可以支持扫内地云闪付银联二维码或者支付宝二维码进行支付，扣账户内的外币，无手续费，但是换汇会有一些磨损，这个不占用每年 5 万美金的外汇额度。这就要顺嘴提一句 OCBC 新加坡华侨银行的好处了，它的 App 是支持扫内地银联二维码 / 支付宝码在内地直接消费的。
+   
+
 
 - [Xray自建上网服务器](https://www.zymn.cc/2024/11/10/%E4%BD%BF%E7%94%A8Xray%E8%87%AA%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%9C%8D%E5%8A%A1%E5%99%A8/)
