@@ -153,7 +153,10 @@ https://app.longbridgehk.com/ac/oa?account_channel=lb&channel=HB100006&invite-co
 - SG 朋友在那边留学，让他开的esim二维码，我直接扫二维码添加就行了
 - 蓝狮子申请完可以app直接激活 不需要等卡到 推算有效期就可以， 汇丰默认账户带的红狮子，属于 ATM 提款卡，卡组织银联，可以银联渠道消费，所有外币按汇率扣账户内的港币
 - 蓝狮子是在线额外申请的借记卡，万事达卡组织，优先扣账户内的对应币种，在全球汇丰 ATM 取现免费
-
+- 因为中国身份买美股有税收优惠协定，买卖美股收益不收税，股息收益税额从 30% 降到 10%
+- 长桥证券开户链接，走我的渠道私我辅助解决存量证明
+https://app.longbridgehk.com/ac/oa?account_channel=lb&channel=HB100006&invite-code=UWKREJ
+-  Eskimo eSIM，通过邀请注册直接送 500M 全球流量 http://eskimo.travel/ZIXUAN163761
 
 
 - 虽然说境内的钱出去了就不要轻易回来，但是回来的方法有哪些呢？
