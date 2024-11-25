@@ -157,7 +157,13 @@ https://app.longbridgehk.com/ac/oa?account_channel=lb&channel=HB100006&invite-co
 - 长桥证券开户链接，走我的渠道私我辅助解决存量证明
 https://app.longbridgehk.com/ac/oa?account_channel=lb&channel=HB100006&invite-code=UWKREJ
 -  Eskimo eSIM，通过邀请注册直接送 500M 全球流量 http://eskimo.travel/ZIXUAN163761
-
+- 因为中国身份买美股有税收优惠协定，买卖美股收益不收税，股息收益税额从 30% 降到 10%
+- 长桥证券开户链接，走我的渠道私我辅助解决存量证明
+https://app.longbridgehk.com/ac/oa?account_channel=lb&channel=HB100006&invite-code=UWKREJ  https://www.youtube.com/watch?v=rHGI_HgS0T0
+-  Eskimo eSIM，通过邀请注册直接送 500M 全球流量 http://eskimo.travel/ZIXUAN163761
+- 香港数字银行众安银行（ZA Bank）今日宣布在其App推出加密货币交易服务
+- 汇丰信用卡red 确实是逆天，每天锻炼也给钱，签帐也给钱，去苹果店维修刷pulse也给钱
+- IBKR里兑换成离岸人民币，出金到汇丰香港，然后用蓝狮子在内地汇丰 ATM 直接取，北京这边线下汇丰 ATM 单次限额 4000
 
 - 虽然说境内的钱出去了就不要轻易回来，但是回来的方法有哪些呢？
   - 1. 通过传统国际电汇方式，从境外银行汇到国内银行，有较高手续费，时间周期长，回国之后要结汇，可能会被要求收入证明，另外占用个人每年 5 万美金的外汇额度；
