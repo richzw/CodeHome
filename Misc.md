@@ -164,6 +164,21 @@ https://app.longbridgehk.com/ac/oa?account_channel=lb&channel=HB100006&invite-co
 - 香港数字银行众安银行（ZA Bank）今日宣布在其App推出加密货币交易服务
 - 汇丰信用卡red 确实是逆天，每天锻炼也给钱，签帐也给钱，去苹果店维修刷pulse也给钱
 - IBKR里兑换成离岸人民币，出金到汇丰香港，然后用蓝狮子在内地汇丰 ATM 直接取，北京这边线下汇丰 ATM 单次限额 4000
+- - 香港虚拟银行「汇立银行 Welab Bank」新增了美元定存功能，目前活动是 2 个月 5% 。汇立的卡面很好看，目前也有羊毛，通过邀请码开户转入 2000HKD 第二天可得 200HKD。开户需要人在香港，里面的投资账户也可以一起开通备用，毕竟现在券商已经不是很好开了，邀请码可以输 FP5QD6
+- 在国内通过美卡花境外美元 也不占外汇额度（这点港卡也一样  ???
+- 内地中行购汇，无损转中银HK应该是比较好的方式
+- 安宫牛黄丸 黄道益双飞人红花 
+- 存50万可以办全球的汇丰卓越  汇丰自带的红狮子是平信，自己app里申请的蓝狮子是ems  美股可以带护照去汇丰填W8表格 汇丰香港红狮子和蓝狮子 https://x.com/levineeet/status/1861701879920816368
+- 香港汇丰线上免排队申请教程 https://x.com/tychozzz/status/1861642609225277631
+- 熊猫速汇 到 ZA
+- 开户的目的就是投资美股港股，然后按照要求在app上操作，很快就搞定了
+- 是不是可以先开卓越，然后放 20🧱，去申请 Pulse 或 Red，下卡之后六个月内降级到 One 就可以
+- 兴业到汇丰无手续费 	国内汇丰卓越到汇丰香港也没手续费  存50w开汇丰内地 然后远程开汇丰香港
+- 熊猫速汇邀请注册链接，需要的可以开：https://p.pandaremit.com/h5activity/launchInvitationCode?countryCode=CHN&shareCode=MTA4OTczNDE=&lang=zh-hans
+- 打 IRS 电话改地址 800-829-104  07 a.m. to 7 p.m. local time  https://www.irs.gov/faqs/irs-procedures/address-changes/address-changes
+  - 会问你itin号，full name，旧地址和要改的地址
+- ITIN 下来就申请了 C1 押金卡存了 $200，C1 两期账单后申请了 Amex EveryDay 额度 $1000，之后 C1 退押金提额到 $450，Amex 三倍提额到 $3000，目前 EQ 显示的总信用长度 1 年零 1 个月，平均账户年龄 10 个月，上周刚批 Apple Card 额度 $2000，下个月 Amex 预计可以再次三倍提额到 $9000
+
 
 - 虽然说境内的钱出去了就不要轻易回来，但是回来的方法有哪些呢？
   - 1. 通过传统国际电汇方式，从境外银行汇到国内银行，有较高手续费，时间周期长，回国之后要结汇，可能会被要求收入证明，另外占用个人每年 5 万美金的外汇额度；
