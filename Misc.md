@@ -179,6 +179,13 @@ https://app.longbridgehk.com/ac/oa?account_channel=lb&channel=HB100006&invite-co
   - 会问你itin号，full name，旧地址和要改的地址
 - ITIN 下来就申请了 C1 押金卡存了 $200，C1 两期账单后申请了 Amex EveryDay 额度 $1000，之后 C1 退押金提额到 $450，Amex 三倍提额到 $3000，目前 EQ 显示的总信用长度 1 年零 1 个月，平均账户年龄 10 个月，上周刚批 Apple Card 额度 $2000，下个月 Amex 预计可以再次三倍提额到 $9000
 
+- https://remote.co/
+- Wise 可以汇支付宝 手续费很贵
+- walk in 汇丰，取排队小票，到号了看通行证，身份证，小票。问目的，工作，股票账户，30分钟下卡了，至少存10块。
+- HSBC 直接去荃湾支行，普通话取号排队等开户
+- 长桥新加坡开户链接 https://app.longbridgehk.com/ac/oa?account_channel=lb&channel=HB100006&invite-code=UWKREJ
+- 香港和新加坡长桥是同个APP
+- alipay HK 可以用大陆手机注册了,可以绑定香港信用卡
 
 - 虽然说境内的钱出去了就不要轻易回来，但是回来的方法有哪些呢？
   - 1. 通过传统国际电汇方式，从境外银行汇到国内银行，有较高手续费，时间周期长，回国之后要结汇，可能会被要求收入证明，另外占用个人每年 5 万美金的外汇额度；
