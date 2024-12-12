@@ -192,21 +192,6 @@ https://app.longbridgehk.com/ac/oa?account_channel=lb&channel=HB100006&invite-co
 - 汇丰第一次开完，开投资账户要等汇丰寄的信拍照二次验证，但是没法买美股。我第二次去香港的时候才跑去汇丰柜台补了一下护照信息和W8表格，才能买美股
 - W8 的作用就是外国人身份声明，中国人买美股填 W8，股息税会从 30% 降到 10%
 - 其实即使柜台被拒，不要浪费时间，马上换一个网点。有的柜员刁难 换个网点就好，香港交通发达，网点也多
-- 长桥12月圣诞迎新奖励加码🎄🎁
-邀请码：UWKREJ
-
-12月1号-31号
-💵首次净入资1万HKD 得
-福利1️⃣：港股 终生免佣
-福利2️⃣：美股 终生免佣
-
-💵首次净入资2万HKD 再得
-福利3️⃣：800港币股票现金卡
-福利4️⃣：约5%货币基金 认购资格
-福利5️⃣：50 USD期权现金卡
-
-长桥证券开户链接，走我的渠道私我辅助开户
-https://app.longbridgehk.com/ac/oa?account_channel=lb&channel=HB100006&invite-code=UWKREJ
 
 - 红狮子是「ATM 提款卡」，卡组织银联+EPS  蓝狮子是「万事达借记卡」，卡组织万事达 Mastercard  https://x.com/levineeet/status/1861701879920816368?s=46
 - 港铁也有万事达了  之前只能visa
@@ -216,6 +201,16 @@ https://app.longbridgehk.com/ac/oa?account_channel=lb&channel=HB100006&invite-co
 - 长桥新加坡可以买大饼 ETF，港卡也可以通过入金长桥香港，再在长桥里划资到长桥新加坡
 - 应该 C1 不验证地址的，ITIN 信上的地址和申请时的住宅地址可以不一样，ITIN 信相当于资料确认，然后系统申请时的住宅地址会验证是否是住宅并且上报信用局
 - Capital One需要提供ITIN原件掃描件 作为身份地址证明
+- - 万里汇 https://www.worldfirst.com.cn/iquic/global/30w-new-user-240327/index.html?default_source=WF-1v00003XmLM0&referral_id=WF-1v00003XmLM0&utm_campaign=b2creferral
+- 中银香港用chats汇美元到汇丰无损的 https://www.bochk.com/tc/crossborder/remittance/express.html
+- iFAST保姆级教程 https://chaomeigu.com/jingwaiyinhangka/10037
+- 爱沙尼亚 公司户 可以免税（就是钱放在公户里面，收入不用纳税，分红的话需要纳税） 好像不必公司户 爱沙尼亚E Residency也可以 使馆核实身份
+- 爬虫 非商业地址  https://www.wecloudsellers.com/123.html
+- 线下开好汇丰one账户后，汇丰蓝狮子万事达借记卡申请教程：https://x.com/tychozzz/status/1866858062860149215
+- FPS: 有两个名称，一个是 fps，另外一个是 chats，fps 走港元/人民币， chats 走美元  fps 立刻到账，chats 工作日当日到
+- 盈透 客服电话 8602160868586 盈透经常维护，尤其周末 经常登不上去 
+- C1 不绑 Wise，用 US IP，没那么容易封控的 
+- 
 
 - 虽然说境内的钱出去了就不要轻易回来，但是回来的方法有哪些呢？
   - 1. 通过传统国际电汇方式，从境外银行汇到国内银行，有较高手续费，时间周期长，回国之后要结汇，可能会被要求收入证明，另外占用个人每年 5 万美金的外汇额度；
