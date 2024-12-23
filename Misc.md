@@ -210,7 +210,22 @@ https://app.longbridgehk.com/ac/oa?account_channel=lb&channel=HB100006&invite-co
 - FPS: 有两个名称，一个是 fps，另外一个是 chats，fps 走港元/人民币， chats 走美元  fps 立刻到账，chats 工作日当日到
 - 盈透 客服电话 8602160868586 盈透经常维护，尤其周末 经常登不上去 
 - C1 不绑 Wise，用 US IP，没那么容易封控的 
-- 
+
+- hsbc overseas，在持有 hsbc hk 的情况下，去开通 hsbc au 需要的资料. 我是这种情况 开了美国的, 我是要收美国的房租
+- 外国的卡我都不绑定任何东西，除非它app 有一键开关，都不用输入密码和背面数字的 只绑定了wise 消费
+- 嘉信取现卡超赞，汇率也好。外加HSBC hk的万事达扣帐卡，天星把USD换cnh转到HSBC hk
+- kraken 出英镑转到 ifast ,ifast 到 wise 也很快,到了 wise 再把英镑换港币再提到港卡  wise转钱回到支付宝手续费1%
+- 港卡 https://www.ahhhhfs.com/65484/
+- 嘉信国际就是偶尔会有0.01。。没其他费用
+- 身份证盖章翻译件，然后和身份证拍在一起，1583 认证证件类型选 Voter Card 
+- 你试试转寄的时候，给房东发件说自己打单 在 Anytime 里正常选已经 verified 的地址提交，然后备注一下说邮件发送自己买的 shipping label, 打单的时候输自己的地址，也就是运单上面是你自己的，如果房东允许打单，寄出，就可以.
+- 是否预约和选择的分行关系很大，汇丰可以不预约，早点去排队，推荐的分行有“葵芳分行、荃湾分行、荃湾西分行、粉岭分行、元朗分行、沙田分行、沙田广场分行、德辅道中分行等”。
+- 中银建议一定要预约，推荐的分行有“下葵涌分行、荃湾分行、元朗分行、西区分行、粉岭中心分行、教育路分行、青山道分行、大角咀分行、葵昌路分行等
+- https://www.migracija.lt/en/noriu-tapti-elektroniniu-rezidentues
+- 港岛的信号还得是CMHK和CSL好  电梯里都有稳定信号
+- PayPal USID add passport ITIN上傳了，但這寫著US ID所以我也不敢上傳護照，Checking 帳號倒是拿下了. 是的，申請 Debit 卡要我補充身份材料，然後就一直在訊息頁面了. 申請卡讓補充材料，上傳的CN護照和ITIN件審核通過，郵件通知就好了 
+- 美版转运香港带回来最便宜，美国和香港都没有税，我m4 pro macbook pro 24+512 黑五时候1749usd买的  转到免税洲，这次我用的是buy&ship转运公司  中转香港感觉还是用转运四方最优惠  但是现在香港自提路线限制1299usd，所以没用  美区ID下载app 
+- We do not accept self-printed shipping labels for the mail forwarding services provided by Anytime Mailbox 后来问了一下支持自己打单，之后每次都是自己买 UPS 26刀 五天收到 自己打單，我的房東收費25刀，也要接受了，他們運單要價是市價的5-6倍
 
 - 虽然说境内的钱出去了就不要轻易回来，但是回来的方法有哪些呢？
   - 1. 通过传统国际电汇方式，从境外银行汇到国内银行，有较高手续费，时间周期长，回国之后要结汇，可能会被要求收入证明，另外占用个人每年 5 万美金的外汇额度；
