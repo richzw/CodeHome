@@ -227,6 +227,15 @@ https://app.longbridgehk.com/ac/oa?account_channel=lb&channel=HB100006&invite-co
 - 美版转运香港带回来最便宜，美国和香港都没有税，我m4 pro macbook pro 24+512 黑五时候1749usd买的  转到免税洲，这次我用的是buy&ship转运公司  中转香港感觉还是用转运四方最优惠  但是现在香港自提路线限制1299usd，所以没用  美区ID下载app 
 - We do not accept self-printed shipping labels for the mail forwarding services provided by Anytime Mailbox 后来问了一下支持自己打单，之后每次都是自己买 UPS 26刀 五天收到 自己打單，我的房東收費25刀，也要接受了，他們運單要價是市價的5-6倍
 
+- wechat pay hk， alipay hk， 港卡去注册 stripe，收入 -> stripe -> 港卡，没有大陆那些收外钱要什么提交劳动合同，要证明自己是自己
+- 亚马逊海外购物 55海淘网上边看看攻略
+- remote.co / we work remotely / flexjobs
+- 支付宝导出基金交易明细
+- 原生美国 ip  tello  https://www.digitalnomadlc.com/how-to-use-tello-esim-in-china/  https://zhuanlan.zhihu.com/p/596598969  https://iproyal.com/static-residential-proxies/
+- hsbc开户证件得和ibkr的证件一样才能设置edda 如果不一样的话得在ibkr上上传新的证件类型 一般开还是不存香港都是用的港澳通行证吧
+- 香港虚拟银行开户  https://x.com/tychozzz/status/1871942591660597287?s=12
+- 香港卡线下开户  https://x.com/tychozzz/status/1865642779076124695
+
 - 虽然说境内的钱出去了就不要轻易回来，但是回来的方法有哪些呢？
   - 1. 通过传统国际电汇方式，从境外银行汇到国内银行，有较高手续费，时间周期长，回国之后要结汇，可能会被要求收入证明，另外占用个人每年 5 万美金的外汇额度；
   - 2. 通过 Wise、熊猫速汇等汇款平台汇款到国内支付宝或者银联卡，手续费相对低，时间周期短甚至秒到，平台汇款的时候会帮你换汇成人民币汇款，本质上类似对敲，但是也占用个人每年 5 万美金的外汇额度；
