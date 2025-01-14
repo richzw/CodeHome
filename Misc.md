@@ -236,6 +236,21 @@ https://app.longbridgehk.com/ac/oa?account_channel=lb&channel=HB100006&invite-co
 - 香港虚拟银行开户  https://x.com/tychozzz/status/1871942591660597287?s=12
 - 香港卡线下开户  https://x.com/tychozzz/status/1865642779076124695
 
+- 查信用 https://www.wecloudsellers.com/276.html
+- 微信小程序移民局12367下载PDF
+- HSBC 人少？ 青衣 ，荃湾， 总行
+- 香港西九龙地铁站1月20号新开了一家汇丰银行，最关键的是它周末也营业。新开的银行周六全天和周日上午都会营业。汇丰用的港澳通行证，早知道拿护照办.可以去柜台换护照. 说开美股账户。美股账户就是把银行留存证件换成护照后，在投资全速易上填W8
+- 中行内地到中银香港同名账户，大湾区工行到工银亚洲同名账户，兴业寰宇人生卡到香港账户，都是无损的. 中银香港彩园分行
+- 发送短信「WSJ」到 +1(833)979-0710，可以获得 WSJ 每天 PDF
+- 申請monzo us , paypal 卡，  嘉信保证金模式 
+
+-  用 http://scamalytics.com 全面检测 IP 质量
+-  通过 http://ipqualityscore.com 评估 IP 可信度
+-  使用 http://ipinfo.io 查看个人 IP 属性
+-  http://whoer.net 检测 IP 伪装程度 http://ipcheck.ing 提供中文界面检测服务
+
+---------  
+
 - 虽然说境内的钱出去了就不要轻易回来，但是回来的方法有哪些呢？
   - 1. 通过传统国际电汇方式，从境外银行汇到国内银行，有较高手续费，时间周期长，回国之后要结汇，可能会被要求收入证明，另外占用个人每年 5 万美金的外汇额度；
   - 2. 通过 Wise、熊猫速汇等汇款平台汇款到国内支付宝或者银联卡，手续费相对低，时间周期短甚至秒到，平台汇款的时候会帮你换汇成人民币汇款，本质上类似对敲，但是也占用个人每年 5 万美金的外汇额度；
@@ -243,6 +258,14 @@ https://app.longbridgehk.com/ac/oa?account_channel=lb&channel=HB100006&invite-co
   - 4. 在微信、支付宝上绑定境外银行卡，直接在境内消费，消费人民币，通过 Visa / MasterCard 等清算渠道结算，扣境外对应的币种，微信支付宝自身小于 200 人民币免手续费，大于 200 人民币收 3% 手续费，另外有的银行卡有 FTF 外币转换费，建议这种方式刷无 FTF 的境外银行卡，这个不占用每年 5 万美金的外汇额度；
   - 5. 一些境外银行自身的 App 可以支持扫内地云闪付银联二维码或者支付宝二维码进行支付，扣账户内的外币，无手续费，但是换汇会有一些磨损，这个不占用每年 5 万美金的外汇额度。这就要顺嘴提一句 OCBC 新加坡华侨银行的好处了，它的 App 是支持扫内地银联二维码 / 支付宝码在内地直接消费的。
    
-
+--------
 
 - [Xray自建上网服务器](https://www.zymn.cc/2024/11/10/%E4%BD%BF%E7%94%A8Xray%E8%87%AA%E5%BB%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%9C%8D%E5%8A%A1%E5%99%A8/)
+- https://mitce.com/
+- 内网穿透方案之tailscale+cloudflare tunnel
+  - 首先你需要在本地机器和一台海外vps上都部署tailscale并且完成登录。关于vps的选择，推荐使用新加坡的vps（可以做到一机多用，能够正常代理ChatGPT，大多直连效果也不错），。
+  - 此时你可以在tailscale中看到本地机器的tailscale ip。
+  - 之后在vps部署cloudflare tunnel，支持docker和主流操作系统安装。
+  - 在cloudflare tunnel中添加tailscale中本地机器的内网ip，映射到域名上。
+  - 在这种方案下，你可以同时保护本地机器、vps的IP不暴露，又可以保证服务稳定性（国内直连cloudflare tunnel稳定性很差），同时不会牺牲很多速度。
+  - 此外，你可以使用国内服务器自部署derp节点（tailscale的中继节点）来保障服务的稳定性。
