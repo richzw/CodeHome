@@ -249,6 +249,23 @@ https://app.longbridgehk.com/ac/oa?account_channel=lb&channel=HB100006&invite-co
 -  使用 http://ipinfo.io 查看个人 IP 属性
 -  http://whoer.net 检测 IP 伪装程度 http://ipcheck.ing 提供中文界面检测服务
 
+- 通过 IBKR，OSBC SG 无损进 IBKR，在 IBKR 换成 USD 无损出 HSBC HK
+- 获取海外地址证明的。排除找淘宝、在海外有房和找朋友帮忙外：
+  - 1. 将众安银行等香港虚拟银行APP里的个人通讯地址改成海外地址，隔月生成月结单，也可以作为地址证明；
+  - 2. airbnb联系海外房东，以较低价钱租房，让房东改水电单缴费人
+- 如何快速地将港币外汇转回到国内银行卡中，并且不占用结售汇额度？其实，在中银香港旗下的Boc Pay中，有一个跨境汇款功能
+- https://www.smarty.com/products/us-address-verification 查出来是Commercial，但是街景是独栋房子的，开银行账户啥的，问题大不
+- https://www.uscreditcardguide.com/moving-checklist/ 在美国搬家更新地址清单
+- 拨打 800-908-9982，这是 IRS ITIN 服务的专用号码。建议在晚上 10 点左右拨打，此时几乎无需排队，客服可以秒接
+  • 接通后，选择 1（英文服务）。
+  • 然后按 3 进入 ITIN 相关服务选项。
+  - I didn’t receive my CP565 notification letter, could you resend it to my new address?
+  注意在报地址时： 慢慢念，清楚读出每个字母，确保对方输入正确
+- 香港手机号 clubSim小红书有教程，我用的英国的giff，易博通也可以,微信公众号搜一下
+- 如果大家在香港开通银行账户之后，实体卡是邮寄的情况下，可以在通讯地址中填写一下你的手机号码，这样就可以减少平邮丢件的几率了
+
+
+
 ---------  
 
 - 虽然说境内的钱出去了就不要轻易回来，但是回来的方法有哪些呢？
