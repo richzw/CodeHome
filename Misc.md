@@ -276,8 +276,8 @@ https://app.longbridgehk.com/ac/oa?account_channel=lb&channel=HB100006&invite-co
   - Clash 稍微麻烦点，需要修改 yaml 文件; proxies 里添加静态住宅 IP 节点。proxy-groups 里添加链式代理。注意上面放你原来的梯子节点，下面放静态住宅 IP 节点。
   - https://x.com/fatwang2ai/status/1890608183795765251
 - https://raycat.substack.com/ 老猫美股研究
-- 港币出金小妙招：Apple Pay 绑定港卡，搭配云闪付 https://x.com/tychozzz/status/1892208302819520736?s=46
-- capital one的 checking account 线上开不了。。。
+
+
 
 
 
