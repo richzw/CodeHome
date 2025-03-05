@@ -276,7 +276,16 @@ https://app.longbridgehk.com/ac/oa?account_channel=lb&channel=HB100006&invite-co
   - Clash 稍微麻烦点，需要修改 yaml 文件; proxies 里添加静态住宅 IP 节点。proxy-groups 里添加链式代理。注意上面放你原来的梯子节点，下面放静态住宅 IP 节点。
   - https://x.com/fatwang2ai/status/1890608183795765251
 - https://raycat.substack.com/ 老猫美股研究
-
+- 账号安全
+  - 1-资金不过快进快出，避免被判定为异常交易。 
+  - 2-IP地址稳定，不要频繁更换设备。 
+  - 3-定期登录+小额转账，保持账户活跃。 
+  - 4-避免大额转账、陌生账户交易，规避风险。 
+  - 5-使用合规渠道还款、转账，让交易更安全。
+- iFAST https://x.com/tychozzz/status/1892904686199722054?s=46
+- BMO（蒙特利尔银行，Bank of Montreal） https://mp.weixin.qq.com/s/RFyrEG84L9CLYKgo2gbVYg
+- 个人信用报告 Equifax  https://mp.weixin.qq.com/s/L3nr6pSCNVE6IlsIgVq8nw
+- Tello https://x.com/dtdt666/status/1896442306561241263?s=46
 
 
 
