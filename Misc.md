@@ -287,7 +287,9 @@ https://app.longbridgehk.com/ac/oa?account_channel=lb&channel=HB100006&invite-co
 - 个人信用报告 Equifax  https://mp.weixin.qq.com/s/L3nr6pSCNVE6IlsIgVq8nw
 - Tello https://x.com/dtdt666/status/1896442306561241263?s=46
 
-- 开港卡 https://mp.weixin.qq.com/s/OVD5Q31eFCLkJPwRuvNldA https://mp.weixin.qq.com/s/9Z0T_tYIRJ_N4g9awJJ74g Walk in 天水围汇丰/中银 开户的时候，跟柜员讲，开一个体验卓越户口
+- 开港卡 https://mp.weixin.qq.com/s/OVD5Q31eFCLkJPwRuvNldA
+  - https://mp.weixin.qq.com/s/9Z0T_tYIRJ_N4g9awJJ74g Walk in 天水围汇丰/中银 开户的时候，跟柜员讲，开一个体验卓越户口
+  - https://mp.weixin.qq.com/s/0Ktna8-iaO_Ur9DBrwyqkQ
 - Helium esim卡 Helium 免费美国手机号  美国地址 + 中国身份证申请，全程流畅无卡点 https://ygkkk.blogspot.com/2025/03/helium.html
 - 签证续签 https://mp.weixin.qq.com/s/y8nifXb1bK1D80a5NdfcPw  https://mp.weixin.qq.com/s?__biz=MzI0NTI1ODUxNw==&mid=2247486795&idx=1&sn=3613ebbc0d59b9b55ae311ffa437c6fc&scene=21#wechat_redirect
 - VPN https://mullvad.net/en
