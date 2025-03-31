@@ -295,6 +295,11 @@ https://app.longbridgehk.com/ac/oa?account_channel=lb&channel=HB100006&invite-co
 - VPN https://mullvad.net/en
 - Charles Schwab  https://mp.weixin.qq.com/s/GaKgSKUnY8b5cUWgU-Q_sQ
 
+- 信用分 https://mp.weixin.qq.com/s/FnlDrFhAHxSzrh4uBPiqRQ
+- Security https://docs.flipper.net/u2f
+- Firstcard https://mp.weixin.qq.com/s/YZE5Q7AwxUv6LKbCNh7FDw
+- paypal  https://mp.weixin.qq.com/s/H8XOxg_D2_CixkQ91gl4WA
+- 汇丰香港在线开户，实体卡目前已经支持 EMS 邮寄 https://mp.weixin.qq.com/s/g6ncOGCEjHkAXY0CmQBnMA
 
 ---------  
 
