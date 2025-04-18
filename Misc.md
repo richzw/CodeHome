@@ -300,6 +300,25 @@ https://app.longbridgehk.com/ac/oa?account_channel=lb&channel=HB100006&invite-co
 - Firstcard https://mp.weixin.qq.com/s/YZE5Q7AwxUv6LKbCNh7FDw
 - paypal  https://mp.weixin.qq.com/s/H8XOxg_D2_CixkQ91gl4WA
 - 汇丰香港在线开户，实体卡目前已经支持 EMS 邮寄 https://mp.weixin.qq.com/s/g6ncOGCEjHkAXY0CmQBnMA
+  - - 中银香港：下葵涌分行（事少且当场下卡，服务态度好）。
+  - 汇丰银行： 葵芳分行（效率高，体验佳）
+  - Walk in汇丰/中银香港 https://mp.weixin.qq.com/s/YhSJXcsG_M3Tq_Kc3Q6tUQ
+- 信用分 https://mp.weixin.qq.com/s/FnlDrFhAHxSzrh4uBPiqRQ  https://mp.weixin.qq.com/s/wyqRwlU_5BdhZMaBvshBmw
+  - 成为别人信用卡的副卡持有人（Authorized User）
+  - 保持低使用率 + 每月准时还款
+     - 固定每月消费 5~10%，然后在出账单前全额还款。
+     - 比如额度是$500，就消费 $20～$50，账单出来后全额还清
+  - 增加账户数量
+     - 过两个月后，信用历史累积到了3~4个月以上，可以尝试：
+     - 申请第二张 starter 卡（如 Discover It、Petal、Deserve）。
+     - 尝试开户自我担保贷款（Credit Builder Loan），如Self或Chime。
+     - 加入本地信用合作社（Credit Union），他们对新信用人群更友好。
+  - 尽量避免 hard pull 过多
+     - 不要同时申请多张卡，每次申请间隔2-3个月。
+     - 每次被拒会留一个 Hard Inquiry，太多反而影响信用评分。
+- 汇丰pulse是银联卡，单笔和单日 支付宝 微信 云闪付 应该都是1w。而且 支付宝微信没有把pulse卡算信用卡 你要用微信支付宝扫商家码的话 算的是普通卡 也就是商家收款没有千分之三点八的信用卡手续费。但是云闪付 扫码是算信用卡消费的，但是有4.4%返现 而且还算travel 。支付宝微信只有2.4% 返现
+- pulse绑定云闪付 扫微信收款码 限额比较低 我自己测试下来 一般的账户 单笔限额1000 但是可以扫多次 ，被扫似乎额度高一些 我试过3000是可以的，单日总限额应该都是10000。Pulse其实可以绑定在非本人的微信或者支付宝消费，（外卡似乎都可以） 我家里人就绑定了我的卡 日常消费没问题
+- 大额消费可以走Apple pay，限额应该是非常高的，我在京东测试十几万的商品也可以调用（没有实际支付） ，我朋友付过两万多的没问题
 
 ---------  
 
