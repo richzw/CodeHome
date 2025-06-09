@@ -347,7 +347,17 @@ https://app.longbridgehk.com/ac/oa?account_channel=lb&channel=HB100006&invite-co
 - 美签 登记EVUS https://mp.weixin.qq.com/s/CiVFsE88slBGOvuIyD3RpQ
 - Paygo VS Tello https://www.flyert.com.cn/forum.php?mod=viewthread&tid=4698441&page=1
 
+- 工银亚洲信用卡主要是可以8:3累计国航里程，或者选择1.5%的返现，同时每个月消费送不记名龙腾1点数（每点价值100块）。如果是超市的MCC消费，有15%的回赠
+  - https://mp.weixin.qq.com/s/np7ca__0-RGnHxB6tg3yxw
+- 既然家宽和VPS均支持 IPv6，通过 DeepWiki 查询确认 Hysteria 2 也兼容 IPv6 协议。目前已稳定使用三小时，未遇到阻断的情况 (相比之下 IPv4 连接频繁被阻断)，此举或许绕过了运营商对 UDP 阻断以及 QoS 限速。
+- Tunnel https://x.com/geekbb/status/1930644923147260251?s=46
+- 东京游记 https://zdyxry.github.io/2025/05/18/%E4%B8%9C%E4%BA%AC%E6%B8%B8%E8%AE%B0/
+- shadowrocket  https://lowertop.github.io/Shadowrocket/
+- Paygo VS Tello https://www.flyert.com.cn/forum.php?mod=viewthread&tid=4698441&page=1
+- 中银香港 https://mp.weixin.qq.com/s/3iuhUP34rhLVog8sSD8_9Q
+- 香港3家银行在线开户 https://mp.weixin.qq.com/s/dxSw6pKNlCy4kQ3cQeF6QA
 
+  
 ---------  
 
 - 虽然说境内的钱出去了就不要轻易回来，但是回来的方法有哪些呢？
