@@ -369,6 +369,10 @@ https://app.longbridgehk.com/ac/oa?account_channel=lb&channel=HB100006&invite-co
 
 - 旅游AI  https://coyage.imean.ai/
 - Google暗网监控工具 https://myactivity.google.com/dark-web-report/
+- esim redteago 的链接：https://esim.redteago.com/zh-CN/esim-china 优惠码：PENG0053
+- US Visa https://mp.weixin.qq.com/s/LDQJeRUgmggK7-4HOAogGg
+- 用中国护照+海外税号在香港新加坡瑞士等CRS辖区开设账户，税务信息是否交换回中国 https://mp.weixin.qq.com/s/FLHvq4DsXNBcpJJiYH_Jxw
+- 注册.com顶级域名  https://mp.weixin.qq.com/s/mS5y6PkbaQVKulhveq4j7w
   
 ---------  
 
