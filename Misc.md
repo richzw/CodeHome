@@ -348,15 +348,18 @@ https://app.longbridgehk.com/ac/oa?account_channel=lb&channel=HB100006&invite-co
 
 - 工银亚洲信用卡主要是可以8:3累计国航里程，或者选择1.5%的返现，同时每个月消费送不记名龙腾1点数（每点价值100块）。如果是超市的MCC消费，有15%的回赠
   - https://mp.weixin.qq.com/s/np7ca__0-RGnHxB6tg3yxw
+  - 分行领卡时问问柜台，能不能激活之后马上修改ATM密码
+- US Mobile eSIM开通全过程 https://mp.weixin.qq.com/s/XU3qGFAw3BuPcXm_kbbXvQ    
 - 既然家宽和VPS均支持 IPv6，通过 DeepWiki 查询确认 Hysteria 2 也兼容 IPv6 协议。目前已稳定使用三小时，未遇到阻断的情况 (相比之下 IPv4 连接频繁被阻断)，此举或许绕过了运营商对 UDP 阻断以及 QoS 限速。
 - Tunnel https://x.com/geekbb/status/1930644923147260251?s=46
-- 东京游记 https://zdyxry.github.io/2025/05/18/%E4%B8%9C%E4%BA%AC%E6%B8%B8%E8%AE%B0/
 - shadowrocket  https://lowertop.github.io/Shadowrocket/
 - Paygo VS Tello https://www.flyert.com.cn/forum.php?mod=viewthread&tid=4698441&page=1
 - 中银香港 https://mp.weixin.qq.com/s/3iuhUP34rhLVog8sSD8_9Q
 - 香港3家银行在线开户 https://mp.weixin.qq.com/s/dxSw6pKNlCy4kQ3cQeF6QA
 - 香港银行开户 https://mp.weixin.qq.com/s/SVTm0NbwD5PGruaXOGeI4Q
-
+- 汇丰香港线上开户 https://mp.weixin.qq.com/s/pC1YuT1sNTlZcIHNypcpyg
+  - 内地人开香港银行卡 
+    - 日常小额消费和家庭汇款; 主要用于旅游消费和跨境购物; 香港银行严格要求住址证明（近3个月水电/信用卡账单）电子账单可能被拒，需纸质版+英文/拼音
 - 我们在香港线下开户银行的时候，填写的都是大陆地址，但这个地址其实是可以更改的。很多香港银行的 App 都支持更改地址，比如说众安、天星、汇丰等。我们把地址更改为香港地址之后，再在 App 内导出银行账户的结单，就可以作为香港地址证明。
 - 香港所有（25家）银行账户办理攻略 https://radial-canidae-7ef.notion.site/25-21112d63aa368011bf8ff778b8a76ad7
 - 6月香港银行开户线上速通指引 https://mp.weixin.qq.com/s/mN3w2h-mozi-EgDp-OY61Q
@@ -368,12 +371,26 @@ https://app.longbridgehk.com/ac/oa?account_channel=lb&channel=HB100006&invite-co
 - 跨境支付通类似于支付宝，支持手机号、FPS ID 汇款，无需输入银行账号，也可轻松汇款。
 
 - 旅游AI  https://coyage.imean.ai/
+- 东京游记 https://zdyxry.github.io/2025/05/18/%E4%B8%9C%E4%BA%AC%E6%B8%B8%E8%AE%B0/
+- 日本丝滑入境，电子申报详细指引 https://mp.weixin.qq.com/s/ko3HkTJfn7hsM6tJLJ0F_A
+- 日本超超超详细自由行 https://mp.weixin.qq.com/s/tApgf4NA32L4EXcY3VzECw
 - Google暗网监控工具 https://myactivity.google.com/dark-web-report/
 - esim redteago 的链接：https://esim.redteago.com/zh-CN/esim-china 优惠码：PENG0053
 - US Visa https://mp.weixin.qq.com/s/LDQJeRUgmggK7-4HOAogGg
 - 用中国护照+海外税号在香港新加坡瑞士等CRS辖区开设账户，税务信息是否交换回中国 https://mp.weixin.qq.com/s/FLHvq4DsXNBcpJJiYH_Jxw
 - 注册.com顶级域名  https://mp.weixin.qq.com/s/mS5y6PkbaQVKulhveq4j7w
-  
+
+- 开通 Stripe 境外公司（英国/美国/香港公司）可直接注册 Stripe 主账户。 香港个人也能开（港澳通行证注册）。 
+  - 替代方案：Stripe Express —— 属于 Stripe Connect 账户类型，适用于 Twitter/X、Shopify 等平台的创作者与自由职业者。通过平台邀请，填写姓名、邮箱、银行卡、税务信息即可几分钟搞定。  
+  - 直接用护照申请 Stripe （最佳实践）（没公司也可以开，很多人不知道）
+  - 申请下来之后，提现绑定一张 香港银行卡（港卡），秒变自由：
+  - •大陆任何场景都能消费，绑定微信、支付宝、银行卡都没问题
+  - •无需再头疼英国公司的续费和税务问题
+  - •账户干干净净，所有资金都在自己手里
+  - 2️⃣ Creem
+  - 这是一个最近比较流行的收款服务商，支持中国大陆，亲测可以直接提现到支付宝
+  - 3️⃣ Paypal
+  - 这是一个很多年的支付品牌了，国内比较少人用，但是国外用户使用频率非常多，直接提现到paypal绑定的银行卡
 ---------  
 
 - 虽然说境内的钱出去了就不要轻易回来，但是回来的方法有哪些呢？
