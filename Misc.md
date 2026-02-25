@@ -429,3 +429,15 @@ https://app.longbridgehk.com/ac/oa?account_channel=lb&channel=HB100006&invite-co
 - Signal 对元数据保护力度大，即使使用国内手机号注册，也难以追踪使用痕迹。
 - XMPP 可实现完全匿名，无需提供个人信息
 - 需要保存数据时，优先选择 Mega、Proton 等端到端加密服务
+- 一台 Mac Mini 24h 在线，ZeroTier 组网，Clash Pro TUN 模式。https://x.com/yan5xu/article/2022468233195065561
+- 科学上网：
+  - ZeroTier 默认路由指向 Mac Mini
+  - Clash Pro 开 TUN 模式接管全部流量
+  - ZeroTier DNS 指向 Clash DNS
+  - 任何设备装个 ZeroTier，打开 Allow DNS + Allow Default Route，直接无感翻墙
+  - 不用每台设备装代理客户端，不用同步订阅
+- 设备互通：
+  - 所有设备在同一个 ZeroTier 虚拟局域网里
+  - iPad 上 Termius 随时 SSH 到 Mac，突发事情，也能临时处理一下
+  - 手机传文件到电脑、远程访问 NAS、连开发服务器，内网 IP 直达
+  - 不受物理位置限制，在公司、咖啡厅、外面用流量，都跟在家一样
